@@ -145,7 +145,7 @@
   z-index: 1;
   background-image: url("../assets/images/hero-wide.png");
   background-size: cover;
-  background-position: 68% 8%;
+  background-position: 68% top;
   background-repeat: no-repeat;
 }
 
