@@ -130,7 +130,7 @@
 /* Hero Section */
 .hero-section {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   padding-top: calc(var(--header-height) + 40px);
   padding-bottom: 60px;
   background-color: var(--color-primary-dark);
@@ -156,7 +156,7 @@
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 68% 35%;
+  object-position: 68% 15%;
   transform: none;
   transition: none;
 }
