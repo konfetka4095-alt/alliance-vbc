@@ -159,12 +159,13 @@
   max-width: none;
   object-fit: cover;
   object-position: 68% 20%;
-  transform: none;
+  transform: scale(1.08);
+  transform-origin: 70% center;
   transition: none;
 }
 
 .hero-section:hover .hero-bg-img {
-  transform: none;
+  transform: scale(1.08);
 }
 
 .hero-overlay {
