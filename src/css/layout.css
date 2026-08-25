@@ -141,27 +141,17 @@
 
 .hero-background {
   position: absolute;
-  inset: 0;
-  display: block;
-  min-width: 100%;
-  min-height: 100%;
-  width: 100%;
-  height: 100%;
+  inset: -4%;
   z-index: 1;
   overflow: hidden;
+  background-image: url("../assets/images/hero-servi.png");
+  background-size: cover;
+  background-position: 68% 20%;
+  background-repeat: no-repeat;
 }
 
 .hero-bg-img {
-    position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: 68% 20%;
-  transform: scale(1.08);
-  transform-origin: 70% center;
-  transition: none;
+  display: none;
 }
 
 .hero-section:hover .hero-bg-img {
