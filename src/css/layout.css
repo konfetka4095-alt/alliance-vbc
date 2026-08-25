@@ -141,7 +141,7 @@
 
 .hero-background {
   position: absolute;
-  top: 0;
+  top: 100;
   right: 0;
   width: 100%;
   height: 100%;
@@ -150,16 +150,20 @@
 }
 
 .hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 68% 42%;
+  position: absolute;
+  top: 3%;
+  right: -4vw;
+  width: auto;
+  height: 97%;
+  max-width: none;
+  object-fit: contain;
+  object-position: right center;
   transform: none;
-  transition: transform 10s ease;
+  transition: none;
 }
 
 .hero-section:hover .hero-bg-img {
-  transform: scale(1.06);
+  transform: none;
 }
 
 .hero-overlay {
@@ -167,14 +171,14 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(6, 11, 24, 0.96) 0%,
-    rgba(6, 11, 24, 0.90) 38%,
-    rgba(6, 11, 24, 0.65) 65%,
-    rgba(6, 11, 24, 0.25) 100%
+    rgba(6, 11, 24, 0.97) 0%,
+    rgba(6, 11, 24, 0.90) 30%,
+    rgba(6, 11, 24, 0.45) 55%,
+    rgba(6, 11, 24, 0.16) 78%,
+    rgba(6, 11, 24, 0.05) 100%
   );
   z-index: 2;
 }
-
 .hero-content {
   position: relative;
   z-index: 3;
