@@ -1,0 +1,622 @@
+/* Page-specific & Sub-view Styles (Programs, Rep Teams, Tryouts, About, Coaches, Locations, FAQ, Contact, Registration Flow) */
+
+.page-hero {
+  padding: calc(var(--header-height) + 3.5rem) 0 3.5rem;
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  position: relative;
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.page-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.page-hero-desc {
+  font-size: 1.125rem;
+  color: #94a3b8;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.page-container {
+  padding: 4.5rem 0;
+}
+
+/* Tabs & Filter Bar */
+.filter-tab-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
+
+.filter-tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-light);
+  color: var(--text-light-secondary);
+  border: 1px solid var(--color-border-light);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-brand-pink);
+  color: #ffffff;
+  border-color: var(--color-brand-pink);
+  box-shadow: 0 4px 12px rgba(255, 0, 85, 0.25);
+}
+
+/* Program Detailed Cards */
+.program-detail-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.program-detail-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.program-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.program-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-light-secondary);
+}
+
+.program-feature-item svg {
+  color: var(--color-brand-green);
+  flex-shrink: 0;
+}
+
+.program-meta-box {
+  background: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border-light);
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+}
+
+.meta-row:last-of-type {
+  border-bottom: none;
+}
+
+.meta-label {
+  color: var(--text-light-muted);
+  font-weight: 600;
+}
+
+.meta-val {
+  font-weight: 700;
+  color: var(--text-light-primary);
+}
+
+/* Rep Teams Page */
+.rep-teams-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.rep-team-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.rep-team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-brand-pink);
+}
+
+.rep-team-header {
+  background: var(--color-navy-dark);
+  color: #ffffff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.rep-team-age {
+  font-size: 2.2rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-brand-pink);
+  line-height: 1;
+}
+
+.rep-team-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.rep-team-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+/* Tryout Schedule & Age Calculator */
+.tryout-calc-card {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-navy-dark) 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 3.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-dark);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.calc-input-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.calc-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.calc-input:focus {
+  outline: 2px solid var(--color-brand-pink);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.calc-result-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.schedule-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9375rem;
+  background: #ffffff;
+}
+
+.schedule-table th {
+  background: var(--color-navy-dark);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 1.25rem;
+  text-transform: uppercase;
+}
+
+.schedule-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--text-light-secondary);
+}
+
+.schedule-table tr:hover td {
+  background-color: var(--color-bg-light);
+}
+
+/* FAQ Accordion */
+.faq-filter-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.faq-search-box {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.faq-search-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem 0.9rem 3rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+  background-color: #ffffff;
+}
+
+.faq-search-input:focus {
+  outline: 2px solid var(--color-brand-pink);
+  border-color: transparent;
+}
+
+.faq-search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light-muted);
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: #cbd5e1;
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.35rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-light-primary);
+  text-align: left;
+  background: transparent;
+  gap: 1rem;
+}
+
+.faq-chevron {
+  transition: transform var(--transition-normal);
+  color: var(--color-brand-pink);
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal), padding var(--transition-normal);
+  background-color: var(--color-bg-light);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  padding: 1.25rem 1.75rem 1.75rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* Location Card & Map */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.location-info-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.facility-amenities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-light-secondary);
+}
+
+.amenity-item svg {
+  color: var(--color-brand-pink);
+}
+
+.map-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+  height: 420px;
+  background: #e2e8f0;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Contact Page */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3.5rem;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-card-box {
+  background: var(--color-navy-dark);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item-row:last-child {
+  margin-bottom: 0;
+}
+
+.contact-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-brand-pink-light);
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  color: var(--color-brand-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.contact-form-panel {
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-light-primary);
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-brand-pink);
+  box-shadow: 0 0 0 3px rgba(255, 0, 85, 0.15);
+}
+
+/* Multi-Step Registration Wizard Inside Modal */
+.reg-wizard-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.reg-step-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.reg-step-bubble {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text-light-muted);
+  transition: all var(--transition-fast);
+}
+
+.reg-step-indicator.active .reg-step-bubble {
+  background: var(--color-brand-pink);
+  border-color: var(--color-brand-pink);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+}
+
+.reg-step-indicator.completed .reg-step-bubble {
+  background: var(--color-brand-green);
+  border-color: var(--color-brand-green);
+  color: #ffffff;
+}
+
+.reg-step-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+.reg-step-indicator.active .reg-step-title {
+  color: var(--color-brand-pink);
+}
+
+.reg-option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reg-option-card {
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: #ffffff;
+}
+
+.reg-option-card:hover {
+  border-color: #cbd5e1;
+  background: var(--color-bg-light);
+}
+
+.reg-option-card.selected {
+  border-color: var(--color-brand-pink);
+  background: var(--color-brand-pink-light);
+}
+
+.reg-option-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-light-primary);
+}
+
+.reg-option-desc {
+  font-size: 0.8125rem;
+  color: var(--text-light-muted);
+}
+
+/* Responsive Pages */
+@media (max-width: 960px) {
+  .program-detail-card {
+    grid-template-columns: 1fr;
+  }
+  .rep-teams-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tryout-calc-card {
+    grid-template-columns: 1fr;
+  }
+  .location-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .reg-option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .rep-teams-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
