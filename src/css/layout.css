@@ -141,12 +141,11 @@
 
 .hero-background {
   position: absolute;
-  inset: -4%;
+  inset: 0;
   z-index: 1;
-  overflow: hidden;
-  background-image: url("../assets/images/hero-servi.png");
+  background-image: url("../assets/images/hero-wide.png");
   background-size: cover;
-  background-position: 68% 20%;
+  background-position: 68% center;
   background-repeat: no-repeat;
 }
 
