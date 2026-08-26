@@ -620,3 +620,127 @@
     grid-template-columns: 1fr;
   }
 }
+/* About Page */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.about-story-content > p {
+  color: var(--text-light-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.about-image-wrap {
+  width: 100%;
+}
+
+.about-main-image {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: 68% center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.about-principles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-principle {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  border-top: 3px solid var(--color-brand-pink);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.about-principle h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-light-primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-principle p {
+  color: var(--text-light-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.about-values-header {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.about-value-card {
+  min-height: 260px;
+  padding: 2rem;
+  background: var(--color-navy-dark);
+  border: 1px solid var(--color-border-dark);
+  border-top: 3px solid var(--color-brand-pink);
+  border-radius: var(--radius-md);
+}
+
+.about-value-number {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-brand-pink);
+  margin-bottom: 1.25rem;
+}
+
+.about-value-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.about-value-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-main-image {
+    height: 400px;
+  }
+
+  .about-values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-principles {
+    grid-template-columns: 1fr;
+  }
+
+  .about-main-image {
+    height: 300px;
+  }
+}
