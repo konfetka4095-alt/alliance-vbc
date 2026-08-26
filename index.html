@@ -770,78 +770,103 @@
 
       <section class="page-container">
         <div class="container">
+          
+          <!-- 2026-27 Rep Tryout Schedule -->
+          <h2 class="section-heading" style="margin-bottom: 1.5rem;">
+            2026–27 REP TRYOUT SCHEDULE
+          </h2>
 
-          <!-- Interactive Age Group & Schedule Calculator -->
-          <div class="tryout-calc-card">
-            <div>
-              <span class="badge-pill badge-pink" style="margin-bottom: 0.75rem;">Interactive Tool</span>
-              <h2 style="font-size: 1.85rem; color: #ffffff; margin-bottom: 0.75rem;">Which Age Group Is Right For You?</h2>
-              <p style="font-size: 0.9375rem; color: #cbd5e1; line-height: 1.6;">
-                Enter your birth year to immediately calculate your official OVA 2026-27 age group, tryout schedule, and session court assignment.
-              </p>
-              <div class="calc-input-group">
-                <input type="number" id="calcBirthYear" class="calc-input" placeholder="e.g. 2012" min="2008" max="2018">
-                <button class="btn btn-pink" id="calcAgeBtn">Check Division</button>
-              </div>
-            </div>
-            <div id="calcResultBox" class="calc-result-box">
-              <div style="color: #94a3b8; font-size: 0.9375rem;">
-                💡 Enter an athlete birth year on the left (e.g. 2012, 2013, 2014) to view your personalized tryout schedule.
-              </div>
-            </div>
-          </div>
-
-          <!-- Complete Master Tryouts Table -->
-          <h2 class="section-heading" style="margin-bottom: 1.5rem;">2026-27 Master Tryout Schedule</h2>
           <div class="schedule-table-wrapper">
             <table class="schedule-table">
               <thead>
                 <tr>
                   <th>Age Division</th>
                   <th>Birth Year</th>
-                  <th>Tryout Dates</th>
+                  <th>Tryout Date</th>
                   <th>Time</th>
-                  <th>Facility Location</th>
+                  <th>Location</th>
                   <th>Action</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr class="schedule-row" data-division="12u">
-                  <td><strong>12U Girls</strong></td>
-                  <td>2014 & Younger</td>
-                  <td>Sept 12 & 14, 2026</td>
-                  <td>6:00 PM – 7:30 PM</td>
-                  <td>121 Worth Blvd, Thornhill (Court 1)</td>
-                  <td><button class="btn btn-pink btn-sm" data-open-reg data-program-type="tryouts">Register</button></td>
-                </tr>
-                <tr class="schedule-row" data-division="13u">
-                  <td><strong>13U Girls</strong></td>
-                  <td>2013</td>
-                  <td>Sept 13 & 15, 2026</td>
-                  <td>6:00 PM – 8:00 PM</td>
-                  <td>121 Worth Blvd, Thornhill (Court 2)</td>
-                  <td><button class="btn btn-pink btn-sm" data-open-reg data-program-type="tryouts">Register</button></td>
-                </tr>
+
+                <!-- 14U Girls -->
                 <tr class="schedule-row" data-division="14u">
                   <td><strong>14U Girls</strong></td>
                   <td>2012</td>
-                  <td>Sept 16 & 18, 2026</td>
-                  <td>6:30 PM – 8:30 PM</td>
-                  <td>121 Worth Blvd, Thornhill (Court 1)</td>
-                  <td><button class="btn btn-pink btn-sm" data-open-reg data-program-type="tryouts">Register</button></td>
+                  <td>September 13, 2026</td>
+                  <td>5:00–6:30 PM</td>
+                  <td>7261 Victoria Park Avenue, Markham</td>
+                  <td>
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="tryouts"
+                      >
+                      Register
+                    </button>
+                  </td>
                 </tr>
+
+                <!-- 15U Girls -->
                 <tr class="schedule-row" data-division="15u">
                   <td><strong>15U Girls</strong></td>
                   <td>2011</td>
-                  <td>Sept 17 & 19, 2026</td>
-                  <td>7:00 PM – 9:00 PM</td>
-                  <td>121 Worth Blvd, Thornhill (Court 2)</td>
-                  <td><button class="btn btn-pink btn-sm" data-open-reg data-program-type="tryouts">Register</button></td>
+                  <td>September 13, 2026</td>
+                  <td>6:30–8:00 PM</td>
+                  <td>7261 Victoria Park Avenue, Markham</td>
+                  <td>
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="tryouts"
+                      >
+                      Register
+                    </button>
+                  </td>
                 </tr>
+
+                <!-- 12U Girls -->
+                <tr class="schedule-row" data-division="12u">
+                  <td><strong>12U Girls</strong></td>
+                  <td>2014 & Younger</td>
+                  <td>September 14, 2026</td>
+                  <td>5:00–6:30 PM</td>
+                  <td>7261 Victoria Park Avenue, Markham</td>
+                  <td>
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="tryouts"
+                      >
+                      Register
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- 13U Girls -->
+                <tr class="schedule-row" data-division="13u">
+                  <td><strong>13U Girls</strong></td>
+                  <td>2013</td>
+                  <td>September 14, 2026</td>
+                  <td>6:30–8:00 PM</td>
+                  <td>7261 Victoria Park Avenue, Markham</td>
+                  <td>
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="tryouts"
+                      >
+                      Register
+                    </button>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
           </div>
-
+          
           <!-- What to Expect at Tryouts -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem;">
             <div style="background: #ffffff; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 2rem;">
