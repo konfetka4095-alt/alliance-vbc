@@ -146,9 +146,10 @@
   bottom: 0;
   left: 0;
   z-index: 1;
+  background-color: var(--color-primary-dark);
   background-image: url("../assets/images/hero-wide.png");
-  background-size: cover;
-  background-position: 68% top;
+  background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 
