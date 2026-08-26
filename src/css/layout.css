@@ -149,7 +149,8 @@
   background-color: var(--color-primary-dark);
   background-image: url("../assets/images/hero-wide.png");
   background-size: 100% auto;
-  background-position: center -16px;
+  background-position-x: center !important;
+  background-position-y: -15px !important;
   background-repeat: no-repeat;
 }
 
