@@ -339,196 +339,295 @@
 
 
     <!-- ==========================================
-         VIEW: PROGRAMS (Sitemap: Youth Clinics, Prep for Rep, House League, Camps, Adult)
-         ========================================== -->
-    <div id="view-programs" class="view-panel" style="display: none;">
-      <section class="page-hero">
-        <div class="container">
-          <span class="section-tag">FIND THE RIGHT PROGRAM FOR YOU</span>
-          <h1 class="page-hero-title">OUR VOLLEYBALL PROGRAMS</h1>
-          <p class="page-hero-desc">
-            From beginner fundamentals to elite competitive training, Alliance Volleyball Club provides structured pathways for players of all ages and stages.
-          </p>
-        </div>
-      </section>
+     VIEW: PROGRAMS
+     ========================================== -->
+<div id="view-programs" class="view-panel" style="display: none;">
 
-      <section class="page-container">
-        <div class="container">
-          <!-- Filter Tabs -->
-          <div class="filter-tab-bar">
-            <button class="filter-btn active" onclick="filterPrograms('all')">All Programs</button>
-            <button class="filter-btn" onclick="filterPrograms('clinics')">Youth Clinics</button>
-            <button class="filter-btn" onclick="filterPrograms('prep')">Prep for Rep</button>
-            <button class="filter-btn" onclick="filterPrograms('house')">House League</button>
-            <button class="filter-btn" onclick="filterPrograms('camps')">Camps</button>
-            <button class="filter-btn" onclick="filterPrograms('adult')">Adult Volleyball</button>
-          </div>
+  <!-- Programs Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">FALL 2026 REGISTRATION</span>
 
-          <!-- Program Item 1: Youth Clinics -->
-          <div class="program-detail-card" data-program-cat="clinics">
-            <div>
-              <span class="badge-pill badge-pink">Ages 8 - 14</span>
-              <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">Youth Skill Development Clinics</h2>
-              <p style="color: var(--text-light-secondary);">
-                Focus on fundamental volleyball mechanics: passing (forearm platform), setting, serving, attacking footwork, and basic court positioning in a fun, positive learning atmosphere.
-              </p>
-              <div class="program-features-list">
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Low coach-to-player ratio (1:6) for individualized feedback</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>High-repetition technical drills + mini-scrimmages</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Official Alliance training t-shirt included</span>
-                </div>
-              </div>
-            </div>
-            <div class="program-meta-box">
-              <div>
-                <div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Saturdays 9:30 AM - 11:30 AM</span></div>
-                <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">121 Worth Blvd, Thornhill</span></div>
-                <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">10-Week Session</span></div>
-                <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color: var(--color-brand-pink);">$345 + HST</span></div>
-              </div>
-              <button class="btn btn-pink" style="width: 100%; margin-top: 1.5rem;" data-open-reg data-program-type="clinics">Register for Clinics</button>
-            </div>
-          </div>
+      <h1 class="page-hero-title">
+        MIXED YOUTH VOLLEYBALL CLINICS
+      </h1>
 
-          <!-- Program Item 2: Prep for Rep -->
-          <div class="program-detail-card" data-program-cat="prep">
-            <div>
-              <span class="badge-pill badge-pink">Ages 11 - 15</span>
-              <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">Prep for Rep (Bridge Program)</h2>
-              <p style="color: var(--text-light-secondary);">
-                Designed specifically for athletes aspiring to make competitive Rep teams (12U-15U). Emphasizes high-speed game tempo, offensive rotations (5-1 / 6-2), jump serving, and defensive transition systems.
-              </p>
-              <div class="program-features-list">
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Pre-tryout tactical and mental preparation</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Positional specialty sessions (Setters, Hitters, Libero)</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Evaluation report cards with targeted growth metrics</span>
-                </div>
-              </div>
-            </div>
-            <div class="program-meta-box">
-              <div>
-                <div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Tuesdays & Thursdays 6:00 PM</span></div>
-                <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">121 Worth Blvd, Thornhill</span></div>
-                <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">8-Week Cohort</span></div>
-                <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color: var(--color-brand-pink);">$420 + HST</span></div>
-              </div>
-              <button class="btn btn-pink" style="width: 100%; margin-top: 1.5rem;" data-open-reg data-program-type="prep">Register for Prep for Rep</button>
-            </div>
-          </div>
-
-          <!-- Program Item 3: House League -->
-          <div class="program-detail-card" data-program-cat="house">
-            <div>
-              <span class="badge-pill badge-green">Grades 5 - 10</span>
-              <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">Recreational House League & Games</h2>
-              <p style="color: var(--text-light-secondary);">
-                A balanced 50/50 format: 45 minutes of skill training followed by 45 minutes of referee-officiated gameplay each week. Great for school team players and athletes looking for fun, structured match play.
-              </p>
-              <div class="program-features-list">
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Equal playing time guaranteed for all participants</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Season playoff tournament with medals & awards</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Club jersey & volleyball included</span>
-                </div>
-              </div>
-            </div>
-            <div class="program-meta-box">
-              <div>
-                <div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Sundays 1:00 PM - 3:00 PM</span></div>
-                <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">121 Worth Blvd, Thornhill</span></div>
-                <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">12 Weeks + Playoffs</span></div>
-                <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color: var(--color-brand-pink);">$380 + HST</span></div>
-              </div>
-              <button class="btn btn-pink" style="width: 100%; margin-top: 1.5rem;" data-open-reg data-program-type="house">Register for House League</button>
-            </div>
-          </div>
-
-          <!-- Program Item 4: Camps -->
-          <div class="program-detail-card" data-program-cat="camps">
-            <div>
-              <span class="badge-pill badge-pink">March Break & Summer</span>
-              <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">High-Intensity Holiday & Summer Camps</h2>
-              <p style="color: var(--text-light-secondary);">
-                Full-day and half-day volleyball camps during March Break and Summer holidays. Intense physical conditioning, technical ball control mastery, gameplay strategy, and team building.
-              </p>
-              <div class="program-features-list">
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Full Day (9:00 AM - 3:30 PM) with before & after care options</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Guest university coaches and master skill clinics</span>
-                </div>
-              </div>
-            </div>
-            <div class="program-meta-box">
-              <div>
-                <div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">March Break & July/August Weeks</span></div>
-                <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">121 Worth Blvd, Thornhill</span></div>
-                <div class="meta-row"><span class="meta-label">Ages</span><span class="meta-val">Co-ed 9 - 16 Years</span></div>
-                <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color: var(--color-brand-pink);">$395 / Week</span></div>
-              </div>
-              <button class="btn btn-pink" style="width: 100%; margin-top: 1.5rem;" data-open-reg data-program-type="camps">Register for Camps</button>
-            </div>
-          </div>
-
-          <!-- Program Item 5: Adult Volleyball -->
-          <div class="program-detail-card" data-program-cat="adult">
-            <div>
-              <span class="badge-pill badge-green">Adults 18+</span>
-              <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">Adult Open Gym & Co-ed Leagues</h2>
-              <p style="color: var(--text-light-secondary);">
-                Competitive and recreational drop-in play, scrimmage nights, and structured weekly co-ed leagues for adults in Thornhill and North York.
-              </p>
-              <div class="program-features-list">
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>High quality Olympic-grade indoor sprung wood courts</span>
-                </div>
-                <div class="program-feature-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>Tiered divisions (Intermediate & Advanced)</span>
-                </div>
-              </div>
-            </div>
-            <div class="program-meta-box">
-              <div>
-                <div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Thursday Evenings 8:00 PM - 10:30 PM</span></div>
-                <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">121 Worth Blvd, Thornhill</span></div>
-                <div class="meta-row"><span class="meta-label">Format</span><span class="meta-val">Drop-In / 10-Pass / Full Season</span></div>
-                <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color: var(--color-brand-pink);">$15 / Drop-in</span></div>
-              </div>
-              <button class="btn btn-pink" style="width: 100%; margin-top: 1.5rem;" data-open-reg data-program-type="adult">Register for Adult Play</button>
-            </div>
-          </div>
-
-        </div>
-      </section>
+      <p class="page-hero-desc">
+        Structured volleyball training for boys and girls ages 8–15,
+        focused on developing strong fundamentals, confidence and game
+        understanding in a positive team environment.
+      </p>
     </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="page-container">
+    <div class="container">
+
+      <!-- Clinic 1: Ages 8–11 -->
+      <div class="program-detail-card" data-program-cat="clinics">
+        <div>
+          <span class="badge-pill badge-pink">
+            Boys & Girls · Ages 8–11
+          </span>
+
+          <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">
+            Mixed Youth Volleyball Clinic
+          </h2>
+
+          <p style="color: var(--text-light-secondary);">
+            A welcoming development program that helps young athletes
+            build strong volleyball fundamentals, improve coordination
+            and gain confidence through structured drills and game-based
+            activities.
+          </p>
+
+          <div class="program-features-list">
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Passing, setting, serving and attacking fundamentals
+              </span>
+            </div>
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Movement, coordination and basic court positioning
+              </span>
+            </div>
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Positive, age-appropriate training for boys and girls
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="program-meta-box">
+          <div>
+
+            <div class="meta-row">
+              <span class="meta-label">Schedule</span>
+              <span class="meta-val">Wednesdays, 6:00–8:00 PM</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Dates</span>
+              <span class="meta-val">
+                September 23–December 16, 2026
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Location</span>
+              <span class="meta-val">
+                Richmond Rose Public School
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Address</span>
+              <span class="meta-val">
+                160 Frank Endean Road
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Duration</span>
+              <span class="meta-val">13 weeks</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Fee</span>
+              <span
+                class="meta-val"
+                style="color: var(--color-brand-pink);"
+              >
+                $390
+              </span>
+            </div>
+
+          </div>
+
+          <button
+            class="btn btn-pink"
+            style="width: 100%; margin-top: 1.5rem;"
+            data-open-reg
+            data-program-type="clinics"
+          >
+            Register — Ages 8–11
+          </button>
+        </div>
+      </div>
+
+      <!-- Clinic 2: Ages 12–15 -->
+      <div class="program-detail-card" data-program-cat="clinics">
+        <div>
+          <span class="badge-pill badge-pink">
+            Boys & Girls · Ages 12–15
+          </span>
+
+          <h2 style="font-size: 1.8rem; margin: 0.5rem 0;">
+            Mixed Youth Volleyball Clinic
+          </h2>
+
+          <p style="color: var(--text-light-secondary);">
+            Structured training for developing athletes who want to
+            strengthen their technique, improve game awareness and build
+            confidence in a supportive team environment.
+          </p>
+
+          <div class="program-features-list">
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Technical development in passing, setting, serving and attacking
+              </span>
+            </div>
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Game positioning, communication and decision-making
+              </span>
+            </div>
+
+            <div class="program-feature-item">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+
+              <span>
+                Skill-focused training and game-based development
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="program-meta-box">
+          <div>
+
+            <div class="meta-row">
+              <span class="meta-label">Schedule</span>
+              <span class="meta-val">Mondays, 6:00–8:00 PM</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Dates</span>
+              <span class="meta-val">
+                September 21–December 14, 2026
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Location</span>
+              <span class="meta-val">
+                Pleasantville Public School
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Address</span>
+              <span class="meta-val">
+                400 Mill Street
+              </span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Duration</span>
+              <span class="meta-val">12 weeks</span>
+            </div>
+
+            <div class="meta-row">
+              <span class="meta-label">Fee</span>
+              <span
+                class="meta-val"
+                style="color: var(--color-brand-pink);"
+              >
+                $360
+              </span>
+            </div>
+
+          </div>
+
+          <button
+            class="btn btn-pink"
+            style="width: 100%; margin-top: 1.5rem;"
+            data-open-reg
+            data-program-type="clinics"
+          >
+            Register — Ages 12–15
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
 
 
     <!-- ==========================================
