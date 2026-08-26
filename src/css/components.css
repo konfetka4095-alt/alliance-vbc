@@ -650,3 +650,32 @@
     grid-column: span 1;
   }
 }
+/* Center the two main program cards */
+.programs-grid {
+  grid-template-columns: repeat(2, minmax(0, 420px));
+  justify-content: center;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto 3.5rem;
+}
+
+.program-card {
+  min-height: 280px;
+  padding: 2.5rem 2rem 2rem;
+}
+
+.program-card-title {
+  font-size: 1.65rem;
+}
+
+.program-card-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+    max-width: 430px;
+  }
+}
