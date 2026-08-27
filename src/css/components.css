@@ -1373,3 +1373,77 @@
     height: 40px;
   }
 }
+/* ==========================================
+   PATHWAY — TWO-COLUMN MOBILE GRID
+   ========================================== */
+
+@media (max-width: 640px) {
+  .pathway-section {
+    padding: 4rem 0;
+  }
+
+  .pathway-wrapper {
+    gap: 2rem;
+  }
+
+  .pathway-steps-flow {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+    width: 100%;
+  }
+
+  .pathway-step-card {
+    min-width: 0;
+    min-height: 190px;
+    padding: 1.25rem;
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+  }
+
+  /* Step 05 occupies the complete final row */
+  .pathway-step-card:nth-child(5) {
+    grid-column: 1 / -1;
+    min-height: 0;
+  }
+
+  .pathway-step-num {
+    font-size: 1.8rem;
+  }
+
+  .pathway-step-title {
+    font-size: 1rem;
+  }
+
+  .pathway-step-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .pathway-arrow {
+    display: none !important;
+  }
+
+  .pathway-mobile-button {
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  .pathway-steps-flow {
+    gap: 0.75rem !important;
+  }
+
+  .pathway-step-card {
+    min-height: 180px;
+    padding: 1rem 0.85rem;
+  }
+
+  .pathway-step-desc {
+    font-size: 0.75rem;
+  }
+}
