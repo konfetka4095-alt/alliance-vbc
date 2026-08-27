@@ -1003,7 +1003,10 @@
     font-size: 1.65rem;
   }
 }
-/* Compact Mobile Footer */
+/* ==========================================
+   COMPACT MOBILE FOOTER — TWO COLUMNS
+   ========================================== */
+
 @media (max-width: 580px) {
   .site-footer {
     padding-top: 2.75rem;
@@ -1018,13 +1021,14 @@
   .footer-top-grid {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 1.75rem 1.25rem !important;
+    gap: 2rem 1.25rem !important;
     margin-bottom: 2rem !important;
   }
 
-  /* Logo and social media */
+  /* Logo and social media take full width */
   .footer-top-grid > div:nth-child(1) {
-    grid-column: 1 / -1;
+    display: flex !important;
+    grid-column: 1 / -1 !important;
     gap: 0.9rem;
   }
 
@@ -1047,39 +1051,60 @@
     height: 34px;
   }
 
-  /* Hide duplicate Rep Teams age links */
-  .footer-top-grid > div:nth-child(3) {
-    display: none;
+  /* Display all four footer groups */
+  .footer-top-grid > div:nth-child(2),
+  .footer-top-grid > div:nth-child(3),
+  .footer-top-grid > div:nth-child(4),
+  .footer-top-grid > div:nth-child(5) {
+    display: block !important;
+    grid-column: auto !important;
+    min-width: 0;
+    padding: 0 !important;
+    border: 0 !important;
   }
 
   .footer-col-title {
-    margin-bottom: 0.7rem;
-    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.2;
   }
 
   .footer-links-list {
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .footer-link {
-    font-size: 0.8125rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
-  /* Contact section takes full width */
-  .footer-top-grid > div:nth-child(5) {
-    grid-column: 1 / -1;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-border-dark);
-  }
-
+  /* Compact contact information */
   .footer-contact-list {
-    gap: 0.7rem;
+    gap: 0.65rem;
   }
 
   .footer-contact-item {
-    gap: 0.6rem;
-    font-size: 0.8125rem;
-    line-height: 1.45;
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    align-items: start;
+    gap: 0.45rem;
+    min-width: 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .footer-contact-item svg {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+  }
+
+  .footer-contact-item a,
+  .footer-contact-item span,
+  .footer-contact-item div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   /* Copyright and legal links */
@@ -1088,7 +1113,7 @@
     align-items: flex-start;
     padding-top: 1.25rem;
     gap: 0.75rem;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
   .footer-bottom > div:last-child {
