@@ -773,3 +773,90 @@
     grid-template-columns: 1fr;
   }
 }
+/* Mobile Tryout Schedule Cards */
+@media (max-width: 700px) {
+  .tryout-schedule-wrapper {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .tryout-schedule-table,
+  .tryout-schedule-table tbody,
+  .tryout-schedule-table tr,
+  .tryout-schedule-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tryout-schedule-table {
+    background: transparent;
+  }
+
+  .tryout-schedule-table thead {
+    display: none;
+  }
+
+  .tryout-schedule-table .schedule-row {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tryout-schedule-table .schedule-row:hover td {
+    background: transparent;
+  }
+
+  .tryout-schedule-table td {
+    display: grid;
+    grid-template-columns: minmax(100px, 38%) 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--color-border-light);
+    text-align: right;
+  }
+
+  .tryout-schedule-table td::before {
+    content: attr(data-label);
+    color: var(--text-light-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .tryout-schedule-table .tryout-division-cell {
+    display: block;
+    margin-bottom: 0.25rem;
+    padding: 0 0 0.85rem;
+    border-bottom: 2px solid var(--color-brand-pink);
+    color: var(--text-light-primary);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    text-align: left;
+  }
+
+  .tryout-schedule-table .tryout-division-cell::before,
+  .tryout-schedule-table .tryout-action-cell::before {
+    display: none;
+  }
+
+  .tryout-schedule-table .tryout-action-cell {
+    display: block;
+    padding: 1rem 0 0;
+    border-bottom: 0;
+  }
+
+  .tryout-schedule-table .tryout-action-cell .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
