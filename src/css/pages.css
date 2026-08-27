@@ -1057,3 +1057,43 @@
     line-height: 1.7;
   }
 }
+/* About layout order */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-areas:
+    "content image"
+    "principles image";
+  column-gap: 3.5rem;
+  row-gap: 2rem;
+  align-items: start;
+}
+
+.about-story-content {
+  grid-area: content;
+}
+
+.about-image-wrap {
+  grid-area: image;
+}
+
+.about-principles {
+  grid-area: principles;
+  margin-top: 0;
+}
+
+/* Mobile order: text, image, principles */
+@media (max-width: 900px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "image"
+      "principles";
+    gap: 2rem;
+  }
+
+  .about-principles {
+    margin-top: 0;
+  }
+}
