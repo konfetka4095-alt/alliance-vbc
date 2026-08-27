@@ -1122,3 +1122,25 @@
     gap: 0.5rem 1rem !important;
   }
 }
+/* Pathway Philosophy Buttons */
+.pathway-mobile-button {
+  display: none;
+}
+
+/* Mobile Pathway */
+@media (max-width: 768px) {
+  .pathway-desktop-button {
+    display: none !important;
+  }
+
+  .pathway-mobile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 1.5rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
