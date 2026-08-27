@@ -492,3 +492,45 @@
     object-position: 68% center !important;
   }
 }
+/* Homepage Hero — Final Image */
+.hero-background {
+  background-image: url("../assets/images/hero-serve-alliance-v3.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center !important;
+}
+
+/* Mobile Hero */
+@media (max-width: 768px) {
+  .hero-background {
+    background-size: cover !important;
+    background-position: 68% center !important;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6, 11, 24, 0.55) 0%,
+        rgba(6, 11, 24, 0.76) 45%,
+        rgba(6, 11, 24, 0.96) 100%
+      ) !important;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.7rem, 13vw, 4rem);
+    line-height: 0.98;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .hero-background {
+    background-position: 70% center !important;
+  }
+}
