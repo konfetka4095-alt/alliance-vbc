@@ -841,3 +841,71 @@
     margin-bottom: 1.5rem;
   }
 }
+/* Ready to Join — Mobile */
+@media (max-width: 640px) {
+  .pre-footer-cta {
+    padding: 3.5rem 0;
+  }
+
+  .pre-footer-cta .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .cta-box {
+    width: 100%;
+    padding: 2rem 1.25rem;
+    gap: 1.75rem;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--radius-md);
+  }
+
+  .cta-title {
+    font-size: clamp(1.7rem, 8vw, 2.1rem);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-title span {
+    display: block;
+    font-style: normal;
+    margin-top: 0.2rem;
+  }
+
+  .cta-desc {
+    max-width: 340px;
+    margin: 0 auto;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .cta-actions .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  .cta-title {
+    font-size: 1.65rem;
+  }
+
+  .cta-box {
+    padding: 1.75rem 1rem;
+  }
+}
