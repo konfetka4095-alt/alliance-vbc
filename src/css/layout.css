@@ -469,3 +469,26 @@
     rgba(6, 11, 24, 0) 78%
   ) !important;
 }
+/* Homepage hero image fix */
+.hero-background {
+  background-image: none !important;
+}
+
+.hero-background .hero-bg-img {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform: none !important;
+}
+
+/* Keep the athlete visible on phones */
+@media (max-width: 768px) {
+  .hero-background .hero-bg-img {
+    object-position: 68% center !important;
+  }
+}
