@@ -1259,3 +1259,117 @@
     height: 40px;
   }
 }
+/* ==========================================
+   CLEAN MOBILE HEADER
+   ========================================== */
+
+@media (max-width: 868px) {
+  .site-header {
+    height: 72px !important;
+  }
+
+  .site-header.scrolled {
+    height: 64px !important;
+  }
+
+  .header-container {
+    width: 100%;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    gap: 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .site-logo {
+    height: 40px !important;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .site-logo img {
+    display: block;
+    width: 155px !important;
+    height: auto !important;
+    max-width: 155px !important;
+    max-height: 44px !important;
+    object-fit: contain;
+  }
+
+  .header-actions {
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-drawer {
+    width: 340px;
+    max-width: 90vw;
+    padding: 88px 1.25rem 1.25rem;
+    box-sizing: border-box;
+  }
+
+  .mobile-nav-links {
+    gap: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-nav-link {
+    min-height: 44px;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Register button remains available inside the menu */
+  #headerRegisterBtn {
+    display: none !important;
+  }
+
+  .site-logo {
+    height: 38px !important;
+  }
+
+  .site-logo img {
+    width: 145px !important;
+    max-width: 145px !important;
+    max-height: 40px !important;
+  }
+
+  .mobile-nav-drawer {
+    width: 100%;
+    max-width: 100vw;
+    padding: 82px 1.25rem 1.25rem;
+  }
+
+  .mobile-nav-link {
+    padding: 0.65rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-container {
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+
+  .site-logo img {
+    width: 135px !important;
+    max-width: 135px !important;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+}
