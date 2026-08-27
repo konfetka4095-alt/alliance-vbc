@@ -773,3 +773,71 @@
     grid-template-columns: 1fr;
   }
 }
+/* Homepage Programs — Desktop */
+.programs-section .section-tag {
+  font-size: 1.2rem;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 440px));
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto 3.5rem;
+}
+
+.program-card {
+  min-width: 0;
+  min-height: 290px;
+  padding: 2.75rem 2.25rem 2.25rem;
+}
+
+/* Homepage Programs — Mobile */
+@media (max-width: 640px) {
+  .programs-section {
+    padding: 4rem 0;
+  }
+
+  .programs-section .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .programs-section .section-header-center {
+    margin-bottom: 2rem;
+  }
+
+  .programs-section .section-tag {
+    font-size: 0.9rem;
+  }
+
+  .programs-section .section-heading {
+    font-size: clamp(1.85rem, 9vw, 2.3rem);
+    line-height: 1.1;
+  }
+
+  .programs-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    max-width: none;
+    margin-bottom: 2.5rem;
+  }
+
+  .program-card {
+    width: 100%;
+    min-height: 0;
+    padding: 1.75rem 1.35rem;
+  }
+
+  .program-card-title {
+    font-size: 1.4rem;
+  }
+
+  .program-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+}
