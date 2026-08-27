@@ -841,108 +841,10 @@
     margin-bottom: 1.5rem;
   }
 }
-/* Ready to Join — Mobile */
-@media (max-width: 640px) {
-  .pre-footer-cta {
-    padding: 3.5rem 0;
-  }
+/* ==========================================
+   READY TO JOIN — DESKTOP AND MOBILE
+   ========================================== */
 
-  .pre-footer-cta .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .cta-box {
-    width: 100%;
-    padding: 2rem 1.25rem;
-    gap: 1.75rem;
-    align-items: center;
-    text-align: center;
-    border-radius: var(--radius-md);
-  }
-
-  .cta-title {
-    font-size: clamp(1.7rem, 8vw, 2.1rem);
-    line-height: 1.1;
-    margin-bottom: 0.75rem;
-  }
-
-  .cta-title span {
-    display: block;
-    font-style: normal;
-    margin-top: 0.2rem;
-  }
-
-  .cta-desc {
-    max-width: 340px;
-    margin: 0 auto;
-    font-size: 0.9375rem;
-    line-height: 1.65;
-  }
-
-  .cta-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.75rem;
-  }
-
-  .cta-actions .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 50px;
-    margin: 0;
-    text-align: center;
-  }
-}
-
-/* Very Small Phones */
-@media (max-width: 360px) {
-  .cta-title {
-    font-size: 1.65rem;
-  }
-
-  .cta-box {
-    padding: 1.75rem 1rem;
-  }
-}
-/* Force CTA buttons to remain inside the mobile card */
-@media (max-width: 640px) {
-  .cta-box {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow: hidden;
-  }
-
-  .cta-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    flex: 0 1 auto !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    gap: 0.75rem !important;
-  }
-
-  .cta-actions .btn {
-    display: flex !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    justify-content: center !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    margin: 0 !important;
-    white-space: normal !important;
-  }
-}
-/* Ready to Join Section */
 .home-join-section {
   padding: 5rem 0;
   background: #f8fafc;
@@ -955,6 +857,7 @@
   align-items: center;
   gap: 2.5rem;
   width: 100%;
+  max-width: 100%;
   padding: 3rem 3.5rem;
   background: #ffffff;
   border: 1px solid var(--color-border-light);
@@ -995,21 +898,48 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
 }
 
-/* Ready to Join — Mobile */
+.home-join-actions > .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .home-join-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+
+  .home-join-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
   .home-join-section {
     padding: 3rem 0;
   }
 
   .home-join-section .container {
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
+    box-sizing: border-box;
   }
 
   .home-join-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
     width: 100%;
     padding: 1.75rem 1.25rem;
     border-radius: var(--radius-md);
@@ -1038,24 +968,38 @@
   }
 
   .home-join-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
-    margin-top: 1.5rem;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
     gap: 0.75rem;
   }
 
-  .home-join-actions .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .home-join-actions > .btn {
     width: 100%;
     min-width: 0;
     max-width: 100%;
     min-height: 50px;
     margin: 0;
     padding: 0.85rem 1rem;
-    box-sizing: border-box;
     white-space: normal;
+  }
+
+  .home-join-actions > .btn-outline-dark {
+    background: #ffffff;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  .home-join-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .home-join-title {
+    font-size: 1.65rem;
   }
 }
