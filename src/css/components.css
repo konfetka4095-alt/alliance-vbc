@@ -1518,3 +1518,42 @@
     font-size: 0.7rem;
   }
 }
+/* Final Footer Fix */
+.footer-phone-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+}
+
+.footer-phone-link:hover {
+  color: var(--color-brand-pink);
+}
+
+.footer-bottom {
+  border-top: 0 !important;
+}
+
+.footer-bottom-slogan {
+  display: block;
+  white-space: nowrap !important;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .footer-phone-link {
+    width: 100%;
+  }
+
+  .footer-bottom-slogan {
+    width: 100%;
+    font-size: 0.7rem;
+    text-align: center;
+    white-space: nowrap !important;
+  }
+}
