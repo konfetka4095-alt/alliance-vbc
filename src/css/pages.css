@@ -1382,6 +1382,11 @@
     font-size: 3.75rem;
   }
 
+  .location-count span {
+  font-size: 1.2rem;
+  line-height: 1.05;
+}
+  
   .location-directory-intro h2 {
     font-size: 2rem;
   }
