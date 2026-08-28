@@ -1231,10 +1231,12 @@
 }
 
 .location-count span {
-  max-width: 130px;
-  color: #cbd5e1;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  max-width: 175px;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.05;
 }
 
 .location-directory-intro h2 {
