@@ -1505,113 +1505,344 @@
           <!-- closes view-locations -->
 
     <!-- ==========================================
-         VIEW: FAQ (Searchable & Filterable Accordion)
-         ========================================== -->
-    <div id="view-faq" class="view-panel" style="display: none;">
-      <section class="page-hero">
-        <div class="container">
-          <span class="section-tag">QUESTIONS? WE'VE GOT ANSWERS.</span>
-          <h1 class="page-hero-title">FREQUENTLY ASKED QUESTIONS</h1>
-          <p class="page-hero-desc">
-            Find quick answers about Rep tryouts, youth clinics, season fees, uniform packages, practice locations, and club policies.
-          </p>
-        </div>
-      </section>
+          VIEW: FAQ
+     ========================================== -->
+          <div id="view-faq" class="view-panel" style="display: none;">
 
-      <section class="page-container">
-        <div class="container" style="max-width: 860px;">
+            <!-- FAQ Hero -->
+            <section class="page-hero">
+    <div class="container">
+      <span class="section-tag">QUESTIONS? WE’VE GOT ANSWERS.</span>
 
-          <!-- Search Bar -->
-          <div class="faq-search-box">
-            <svg class="faq-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search any question (e.g. Tryouts, Fees, Age, Schedule)...">
-          </div>
+      <h1 class="page-hero-title">
+        FREQUENTLY ASKED QUESTIONS
+      </h1>
 
-          <!-- Category Filter Bar -->
-          <div class="faq-filter-nav">
-            <button class="filter-btn faq-cat-btn active" data-category="all">All FAQs</button>
-            <button class="filter-btn faq-cat-btn" data-category="rep">Rep Volleyball</button>
-            <button class="filter-btn faq-cat-btn" data-category="programs">Programs & Clinics</button>
-            <button class="filter-btn faq-cat-btn" data-category="registration">Registration & Fees</button>
-            <button class="filter-btn faq-cat-btn" data-category="locations">Locations & Facilities</button>
-          </div>
-
-          <!-- FAQ Accordion List -->
-          <div class="faq-accordion" id="faqAccordion">
-
-            <div class="faq-item" data-category="rep">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">How do Rep team tryouts work and when are offers made?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>Tryouts take place each September for the upcoming Ontario Volleyball Association (OVA) season. Athletes participate in skill evaluation drills and match play across 2 evaluation sessions. In accordance with OVA tryout regulations, offers of commitment are extended following the completion of tryout windows.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" data-category="rep">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">What is the practice and tournament commitment for Rep teams?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>Rep teams train 2 to 3 times per week (2 hours each session) plus weekly strength & agility conditioning. Teams participate in 4 to 5 regular season OVA tournaments (held on Saturdays or Sundays) leading up to the 3-day Ontario Provincial Championships in April/May.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" data-category="programs">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">My child is a complete beginner. Which program is recommended?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>We recommend our <strong>Youth Skill Development Clinics</strong> or <strong>Recreational House League</strong>! These programs focus on teaching fundamental mechanics (passing, setting, serving) in an encouraging, low-pressure setting where athletes build confidence.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" data-category="programs">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">What is the difference between "Prep for Rep" and "Youth Clinics"?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>Youth Clinics focus primarily on beginner to intermediate fundamentals. <strong>Prep for Rep</strong> is an accelerated bridge program for athletes who already have basic volleyball experience and want to learn competitive offensive systems (5-1 rotations), high-speed defense, and jump serving to make a Rep team roster.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" data-category="registration">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">What is included in the club registration fees?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>Rep club fees cover gym rental time, head coach & assistant coach honorariums, OVA tournament entry fees, Provincial Championship registration, speed/agility coaching, official athlete uniform package (jerseys, warm-up shirts, backpack), and club insurance.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" data-category="locations">
-              <button class="faq-question-btn">
-                <span class="faq-question-text">Where are practices held and is parking available?</span>
-                <span class="faq-chevron">▼</span>
-              </button>
-              <div class="faq-answer">
-                <p>Our primary facility is located at <strong>121 Worth Blvd, Thornhill, ON L4J 8K1</strong>. The facility features sprung maple hardwood floors, high ceilings, and ample free parking for parents and athletes.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Question not answered banner -->
-          <div style="text-align: center; margin-top: 3.5rem; background: var(--color-bg-light); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--color-border-light);">
-            <h3 style="margin-bottom: 0.5rem;">Have a question that's not listed here?</h3>
-            <p style="color: var(--text-light-muted); margin-bottom: 1.25rem;">Our club coordinators are ready to help you with any questions.</p>
-            <a href="#contact" class="btn btn-pink">Contact Club Office</a>
-          </div>
-
-        </div>
-      </section>
+      <p class="page-hero-desc">
+        Find information about Alliance youth clinics, Rep Team tryouts,
+        registration, fees and training locations.
+      </p>
     </div>
+            </section>
 
+            <!-- FAQ Content -->
+            <section class="page-container">
+              <div class="container" style="max-width: 900px;">
+
+                <!-- Search -->
+                <div class="faq-search-box">
+                  <svg
+                    class="faq-search-icon"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+
+                  <input
+                    type="text"
+                    id="faqSearchInput"
+                    class="faq-search-input"
+                    placeholder="Search questions about programs, tryouts, fees or locations..."
+                    >
+                </div>
+
+                <!-- Category Filters -->
+                <div class="faq-filter-nav">
+                  <button
+                    type="button"
+                    class="filter-btn faq-cat-btn active"
+                    data-category="all"
+                    >
+                    All FAQs
+                  </button>
+
+                  <button
+                    type="button"
+                    class="filter-btn faq-cat-btn"
+                    data-category="programs"
+                    >
+                    Youth Clinics
+                  </button>
+
+                  <button
+                    type="button"
+                    class="filter-btn faq-cat-btn"
+                    data-category="tryouts"
+                    >
+                    Rep Tryouts
+                  </button>
+
+                  <button
+                    type="button"
+                    class="filter-btn faq-cat-btn"
+                    data-category="registration"
+                    >
+                    Registration &amp; Fees
+                  </button>
+
+                  <button
+                    type="button"
+                    class="filter-btn faq-cat-btn"
+                    data-category="locations"
+                    >
+                    Locations
+                  </button>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="faq-accordion" id="faqAccordion">
+
+                  <!-- Programs -->
+                  <div class="faq-item" data-category="programs">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        What programs does Alliance currently offer?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Alliance currently offers Mixed Youth Volleyball Clinics for
+                        boys and girls ages 8–15, along with competitive Rep Team
+                        opportunities for girls through our annual tryout process.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="programs">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        Who can participate in the Mixed Youth Clinics?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        The clinics are open to boys and girls ages 8–15. Athletes are
+                        separated into two age groups: ages 8–11 and ages 12–15.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="programs">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        Can beginners join the youth clinics?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Yes. The Mixed Youth Clinics are designed to help athletes build
+                        strong volleyball fundamentals, coordination, confidence and
+                        game understanding through structured, age-appropriate training.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="programs">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        When and where are the youth clinics held?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        <strong>Ages 8–11:</strong> Wednesdays from 6:00–8:00 PM at
+                        Richmond Rose Public School, 160 Frank Endean Road.
+                      </p>
+
+                      <p>
+                        <strong>Ages 12–15:</strong> Mondays from 6:00–8:00 PM at
+                        Pleasantville Public School, 400 Mill Street.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Tryouts -->
+                  <div class="faq-item" data-category="tryouts">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        Which Rep Team divisions are holding tryouts?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Alliance is currently holding 2026–27 Rep Team tryouts for
+                        12U, 13U, 14U and 15U Girls divisions.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="tryouts">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        When are the 2026–27 Rep Team tryouts?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        <strong>September 13, 2026</strong><br>
+                        14U Girls: 5:00–6:30 PM<br>
+                        15U Girls: 6:30–8:00 PM
+                      </p>
+
+                      <p>
+                        <strong>September 14, 2026</strong><br>
+                        12U Girls: 5:00–6:30 PM<br>
+                        13U Girls: 6:30–8:00 PM
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="tryouts">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        Where are Rep Team tryouts held?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Tryouts are held at The Colosseum Markham, located at
+                        7261 Victoria Park Avenue, Markham.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="tryouts">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        What should athletes bring to tryouts?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Athletes should bring clean indoor court shoes with non-marking
+                        soles, knee pads, athletic shorts or spandex and a refillable
+                        water bottle.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="tryouts">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        What do coaches evaluate during tryouts?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Coaches evaluate volleyball technique, athleticism,
+                        coachability and teamwork. This includes passing, setting,
+                        movement, communication, effort, attitude and positive energy.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Registration -->
+                  <div class="faq-item" data-category="registration">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        How do I register for a clinic or tryout?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        Select the Register button on the program or tryout page and
+                        choose the correct age group or division. All tryout athletes
+                        must register online before attending.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item" data-category="registration">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        How much do the Mixed Youth Clinics cost?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        The ages 8–11 clinic runs for 13 weeks and costs $390. The
+                        ages 12–15 clinic runs for 12 weeks and costs $360.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Locations -->
+                  <div class="faq-item" data-category="locations">
+                    <button type="button" class="faq-question-btn">
+                      <span class="faq-question-text">
+                        Which locations does Alliance currently use?
+                      </span>
+                      <span class="faq-chevron">▼</span>
+                    </button>
+
+                    <div class="faq-answer">
+                      <p>
+                        <strong>Richmond Rose Public School</strong><br>
+                        160 Frank Endean Road
+                      </p>
+
+                      <p>
+                        <strong>Pleasantville Public School</strong><br>
+                        400 Mill Street
+                      </p>
+
+                      <p>
+                        <strong>The Colosseum Markham</strong><br>
+                        7261 Victoria Park Avenue, Markham
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- closes faqAccordion -->
+
+                <!-- Contact Banner -->
+                <div class="faq-contact-banner">
+                  <h3>Still have a question?</h3>
+
+                  <p>
+                    Contact the Alliance team and we’ll help you find the information
+                    you need.
+                  </p>
+
+                  <a href="#contact" class="btn btn-pink">
+                    Contact Us
+                  </a>
+                </div>
+
+              </div>
+            </section>
+
+          </div>
+          <!-- closes view-faq -->
 
     <!-- ==========================================
          VIEW: CONTACT (Contact Details, Direct Links, Message Form)
