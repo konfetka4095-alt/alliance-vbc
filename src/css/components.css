@@ -1502,3 +1502,19 @@
     line-height: 1.4;
   }
 }
+/* Footer Bottom Adjustments */
+.footer-bottom {
+  border-top: none;
+}
+
+.footer-bottom-slogan {
+  white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .footer-bottom-slogan {
+    white-space: nowrap;
+    font-size: 0.7rem;
+  }
+}
