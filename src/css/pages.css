@@ -1409,3 +1409,34 @@
     box-sizing: border-box;
   }
 }
+/* FAQ Contact Banner */
+.faq-contact-banner {
+  margin-top: 3.5rem;
+  padding: 2.25rem;
+  text-align: center;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.faq-contact-banner h3 {
+  margin: 0 0 0.5rem;
+}
+
+.faq-contact-banner p {
+  margin: 0 0 1.25rem;
+  color: var(--text-light-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .faq-contact-banner {
+    margin-top: 2rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .faq-contact-banner .btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
