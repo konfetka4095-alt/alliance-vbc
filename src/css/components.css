@@ -1544,42 +1544,34 @@
   white-space: nowrap !important;
 }
 
-/* Mobile */
+/* Footer — Mobile */
 @media (max-width: 640px) {
   .footer-phone-link {
     width: 100%;
   }
 
-  .footer-bottom-slogan {
-    width: 100%;
-    font-size: 0.7rem;
-    text-align: center;
-    white-space: nowrap !important;
-  }
-}
-/* Footer slogan — mobile containment */
-@media (max-width: 640px) {
   .footer-bottom {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .footer-bottom-slogan {
     display: block;
-    width: 100%;
+    width: max-content;
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
 
-    font-size: clamp(0.58rem, 2.8vw, 0.7rem);
+    font-size: clamp(0.5rem, 2.6vw, 0.7rem);
     line-height: 1.4;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     text-align: center;
-    white-space: nowrap;
+    white-space: nowrap !important;
+    overflow: visible;
     overflow-wrap: normal;
     word-break: normal;
   }
