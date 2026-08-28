@@ -1460,6 +1460,7 @@
 .contact-details-card {
   position: relative;
   overflow: hidden;
+  min-width: 0;
   padding: 3rem;
   color: #ffffff;
   background:
@@ -1470,6 +1471,7 @@
     ),
     var(--color-navy-dark);
   border-radius: var(--radius-lg);
+  box-sizing: border-box;
 }
 
 .contact-details-label {
@@ -1497,7 +1499,7 @@
   line-height: 1.7;
 }
 
-/* Contact Details List */
+/* Contact Details */
 .contact-details-list {
   display: flex;
   flex-direction: column;
@@ -1509,6 +1511,7 @@
   grid-template-columns: 44px minmax(0, 1fr);
   gap: 1rem;
   align-items: center;
+  min-width: 0;
 }
 
 .contact-detail-icon {
@@ -1544,7 +1547,7 @@
   color: var(--color-brand-pink);
 }
 
-/* Social Media Section */
+/* Social Media */
 .contact-social-section {
   margin-top: 3rem;
   padding-top: 2rem;
@@ -1562,7 +1565,6 @@
   text-transform: uppercase;
 }
 
-/* Social Media Buttons */
 .contact-social-links {
   display: flex;
   flex-wrap: wrap;
@@ -1583,6 +1585,7 @@
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-sm);
+  box-sizing: border-box;
   transition:
     color 0.2s ease,
     background 0.2s ease,
@@ -1595,19 +1598,15 @@
   border-color: var(--color-brand-pink);
 }
 
-.contact-social-link:hover {
-  color: #ffffff;
-  background: var(--color-brand-pink);
-  border-color: var(--color-brand-pink);
-}
-
 /* Right Form Card */
 .contact-message-card {
+  min-width: 0;
   padding: 3rem;
   background: #ffffff;
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
 }
 
 .contact-message-card h2 {
@@ -1683,13 +1682,17 @@
   }
 
   .contact-page-layout {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
   .contact-details-card,
   .contact-message-card {
-    padding: 2rem 1.5rem;
+    width: 100%;
+    min-width: 0;
+    padding: 2rem 1.25rem;
     border-radius: var(--radius-md);
+    box-sizing: border-box;
   }
 
   .contact-details-card h2 {
@@ -1719,14 +1722,25 @@
     height: 40px;
   }
 
+  .contact-social-section {
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    padding-bottom: 0;
+  }
+
+  .contact-social-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .contact-social-link {
+    width: 100%;
+    min-width: 0;
+  }
+
   .contact-submit-button {
     min-height: 50px;
-  }
-}
-@media (max-width: 640px) {
-  .contact-social-section {
-    margin-top: 2.25rem;
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
   }
 }
