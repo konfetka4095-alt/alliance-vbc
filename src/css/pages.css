@@ -1744,3 +1744,261 @@
     min-height: 50px;
   }
 }
+/* ==========================================
+   REP TEAMS PAGE
+   ========================================== */
+
+.rep-page-section {
+  padding: 5rem 0;
+  background: #f7f8fb;
+}
+
+/* Introduction */
+.rep-page-intro {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.rep-page-intro .section-heading {
+  margin: 0.5rem 0 1rem;
+}
+
+.rep-page-intro > p {
+  margin: 0 auto;
+  color: var(--text-light-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Team Grid */
+.rep-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.rep-page-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.rep-page-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Header */
+.rep-page-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.75rem 2rem;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(236, 72, 153, 0.22),
+      transparent 42%
+    ),
+    var(--color-navy-dark);
+  border-top: 4px solid var(--color-brand-pink);
+}
+
+.rep-page-age {
+  display: block;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rep-page-birth-year {
+  margin: 0.45rem 0 0;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.rep-page-team-label {
+  padding: 0.45rem 0.75rem;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Card Body */
+.rep-page-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.rep-page-card-body h3 {
+  margin: 0 0 0.75rem;
+  color: var(--text-light-primary);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+
+.rep-page-card-body > p {
+  margin: 0 0 1.5rem;
+  color: var(--text-light-secondary);
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+.rep-page-focus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.rep-page-focus-list li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: start;
+  color: var(--text-light-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.rep-page-focus-list li span {
+  color: var(--color-brand-pink);
+  font-weight: 800;
+}
+
+.rep-page-button {
+  width: 100%;
+  margin-top: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Closing CTA */
+.rep-page-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 3rem;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(236, 72, 153, 0.24),
+      transparent 38%
+    ),
+    var(--color-navy-dark);
+  border-radius: var(--radius-lg);
+}
+
+.rep-page-cta h2 {
+  margin: 0.5rem 0 0.75rem;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.rep-page-cta p {
+  max-width: 600px;
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .rep-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rep-page-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .rep-page-cta .btn {
+    width: fit-content;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .rep-page-section {
+    padding: 3rem 0;
+  }
+
+  .rep-page-section .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .rep-page-intro {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .rep-page-intro .section-heading {
+    font-size: 1.85rem;
+  }
+
+  .rep-page-grid {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .rep-page-card-header {
+    padding: 1.5rem;
+  }
+
+  .rep-page-age {
+    font-size: 2.75rem;
+  }
+
+  .rep-page-card-body {
+    padding: 1.5rem;
+  }
+
+  .rep-page-card-body h3 {
+    font-size: 1.3rem;
+  }
+
+  .rep-page-cta {
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .rep-page-cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .rep-page-cta .btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
