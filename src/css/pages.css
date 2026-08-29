@@ -2169,3 +2169,42 @@
     border-radius: calc(var(--radius-md) - 5px);
   }
 }
+/* FINAL Programs Photo Override */
+.programs-feature-image {
+  width: 100% !important;
+  height: 410px !important;
+  padding: 9px !important;
+  margin-bottom: 2.5rem !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+
+  background: var(--color-navy-dark) !important;
+  border: 2px solid var(--color-navy-dark) !important;
+  border-bottom: 5px solid var(--color-brand-pink) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16) !important;
+}
+
+.programs-feature-image img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+
+  /* Shows more of the upper part of the original photo */
+  object-position: center 20% !important;
+
+  border-radius: 10px !important;
+}
+
+@media (max-width: 640px) {
+  .programs-feature-image {
+    height: 320px !important;
+    padding: 6px !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .programs-feature-image img {
+    object-position: center 18% !important;
+  }
+}
