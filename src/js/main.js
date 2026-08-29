@@ -13,6 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.ScheduleModule) window.ScheduleModule.init();
   if (window.FaqModule) window.FaqModule.init();
 
+    /* Program skills: expanded desktop, collapsed mobile */
+  const programDropdownMedia = window.matchMedia('(max-width: 640px)');
+
+  const updateProgramDropdowns = (media) => {
+    document
+      .querySelectorAll('.program-skills-dropdown')
+      .forEach((dropdown) => {
+        if (media.matches) {
+          dropdown.removeAttribute('open');
+        } else {
+          dropdown.setAttribute('open', '');
+        }
+      });
+  };
+
+  updateProgramDropdowns(programDropdownMedia);
+  programDropdownMedia.addEventListener(
+    'change',
+    updateProgramDropdowns
+  );
+
   // Mobile Navigation Drawer
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const mobileDrawer = document.getElementById('mobileNavDrawer');
