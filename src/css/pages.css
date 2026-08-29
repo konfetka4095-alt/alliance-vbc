@@ -2102,3 +2102,28 @@
     order: 2 !important;
   }
 }
+/* Tryout Fee Notice */
+.tryout-fee-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  border-left: 4px solid var(--color-brand-pink);
+  border-radius: var(--radius-sm);
+}
+
+.tryout-fee-notice span {
+  color: var(--text-light-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tryout-fee-notice strong {
+  color: var(--color-brand-pink);
+  font-size: 1.4rem;
+}
