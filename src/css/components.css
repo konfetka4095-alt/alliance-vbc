@@ -1703,3 +1703,11 @@
     margin: 0;
   }
 }
+/* Site Map — Left Aligned Everywhere */
+.footer-sitemap-link {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
+  align-self: flex-start !important;
+}
