@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Site Map | Alliance Volleyball Club</title>
+
+  <meta
+    name="description"
+    content="Browse all pages and sections of the Alliance Volleyball Club website."
+  >
+
+  <link rel="stylesheet" href="src/css/variables.css">
+  <link rel="stylesheet" href="src/css/base.css">
+  <link rel="stylesheet" href="src/css/layout.css">
+
+  <style>
+    .sitemap-page {
+      min-height: 100vh;
+      padding: 5rem 1rem;
+      background: #f7f8fb;
+    }
+
+    .sitemap-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .sitemap-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .sitemap-header span {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--color-brand-pink);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .sitemap-header h1 {
+      margin: 0 0 1rem;
+      color: var(--text-light-primary);
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1;
+    }
+
+    .sitemap-header p {
+      max-width: 600px;
+      margin: 0;
+      color: var(--text-light-muted);
+      line-height: 1.7;
+    }
+
+    .sitemap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .sitemap-group {
+      padding: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--color-border-light);
+      border-top: 3px solid var(--color-brand-pink);
+      border-radius: var(--radius-md);
+    }
+
+    .sitemap-group h2 {
+      margin: 0 0 1rem;
+      color: var(--text-light-primary);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+    }
+
+    .sitemap-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .sitemap-links a {
+      color: var(--text-light-secondary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .sitemap-links a:hover {
+      color: var(--color-brand-pink);
+    }
+
+    .sitemap-back {
+      display: inline-flex;
+      margin-top: 2rem;
+      color: var(--color-brand-pink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .sitemap-page {
+        padding: 3rem 1rem;
+      }
+
+      .sitemap-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="sitemap-page">
+    <div class="sitemap-container">
+
+      <header class="sitemap-header">
+        <span>Alliance Volleyball Club</span>
+
+        <h1>Site Map</h1>
+
+        <p>
+          Use this page to quickly find Alliance programs, Rep Team
+          information, tryouts, coaches, locations and contact details.
+        </p>
+      </header>
+
+      <div class="sitemap-grid">
+
+        <section class="sitemap-group">
+          <h2>Main</h2>
+
+          <nav class="sitemap-links" aria-label="Main pages">
+            <a href="./#home">Home</a>
+            <a href="./#programs">Mixed Youth Clinics</a>
+            <a href="./#rep-teams">Rep Teams</a>
+            <a href="./#tryouts">Rep Team Tryouts</a>
+          </nav>
+        </section>
+
+        <section class="sitemap-group">
+          <h2>Our Club</h2>
+
+          <nav class="sitemap-links" aria-label="Club pages">
+            <a href="./#about">About Alliance</a>
+            <a href="./#coaches">Coaches</a>
+            <a href="./#locations">Training Locations</a>
+          </nav>
+        </section>
+
+        <section class="sitemap-group">
+          <h2>Information</h2>
+
+          <nav class="sitemap-links" aria-label="Information pages">
+            <a href="./#faq">Frequently Asked Questions</a>
+            <a href="./#contact">Contact Us</a>
+          </nav>
+        </section>
+
+      </div>
+
+      <a class="sitemap-back" href="./#home">
+        ← Back to Alliance Volleyball Club
+      </a>
+
+    </div>
+  </main>
+</body>
+</html>
