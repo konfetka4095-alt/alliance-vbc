@@ -1,3 +1,9 @@
+// Google Apps Script endpoint for contact submissions
+const ALLIANCE_CONTACT_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycby1DLrLFTpxZRFeOqxtIFBNTnwLZJC8rAq2bMRrurbvZMv0GC2NY5m2Q68SLFtLN_uI/exec";
+
+
+
 // Main Orchestration & Global UI interactions
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,31 +57,108 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Contact Form Submission Handler
-  const contactForm = document.getElementById('contactUsForm');
-  const contactSuccess = document.getElementById('contactSuccessMsg');
+const contactForm =
+  document.getElementById("contactUsForm");
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+const contactSuccess =
+  document.getElementById("contactSuccessMsg");
+
+if (contactForm) {
+  contactForm.addEventListener(
+    "submit",
+    async (e) => {
       e.preventDefault();
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      const submitBtn =
+        contactForm.querySelector(
+          'button[type="submit"]'
+        );
+
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'Sending Message...';
+
+      submitBtn.innerHTML = "Sending Message...";
       submitBtn.disabled = true;
 
-      setTimeout(() => {
+      const payload = new URLSearchParams({
+        formType: "contact",
+
+        name:
+          document
+            .getElementById("cntName")
+            .value.trim(),
+
+        email:
+          document
+            .getElementById("cntEmail")
+            .value.trim(),
+
+        phone:
+          document
+            .getElementById("cntPhone")
+            .value.trim(),
+
+        program:
+          document
+            .getElementById("cntSubject")
+            .value,
+
+        athlete:
+          document
+            .getElementById("cntAthlete")
+            .value.trim(),
+
+        message:
+          document
+            .getElementById("cntMsg")
+            .value.trim(),
+
+        website: "",
+        sourceUrl: window.location.href
+      });
+
+      try {
+        await fetch(
+          ALLIANCE_CONTACT_ENDPOINT,
+          {
+            method: "POST",
+            mode: "no-cors",
+            body: payload
+          }
+        );
+
         contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+
         if (contactSuccess) {
-          contactSuccess.style.display = 'block';
+          contactSuccess.style.display = "block";
+
           setTimeout(() => {
-            contactSuccess.style.display = 'none';
+            contactSuccess.style.display = "none";
           }, 6000);
         }
-      }, 900);
-    });
-  }
 
+      } catch (error) {
+        console.error(
+          "Contact submission failed:",
+          error
+        );
+
+        alert(
+          "Your message could not be sent. Please try again or email us directly."
+        );
+
+      } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+  );
+}
+  
   // Newsletter Form Handler
   const newsForms = document.querySelectorAll('.newsletter-form');
   newsForms.forEach(form => {
