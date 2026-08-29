@@ -1,3 +1,7 @@
+const ALLIANCE_REGISTRATION_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycby1DLrLFTpxZRFeOqxtIFBNTnwLZJC8rAq2bMRrurbvZMv0GC2NY5m2Q68SLFtLN_uI/exec";
+
+
 // Interactive Registration Wizard for Alliance Volleyball Club
 
 const RegistrationModule = {
@@ -222,15 +226,91 @@ const RegistrationModule = {
     document.getElementById('revParentPhone').textContent = this.formData.parentPhone;
   },
 
-  submitRegistration(e) {
-    e.preventDefault();
+ async submitRegistration(e) {
+  e.preventDefault();
+
+  const submitBtn =
+    document.getElementById("regSubmitBtn");
+
+  const originalText = submitBtn.innerHTML;
+
+  submitBtn.innerHTML = "Submitting...";
+  submitBtn.disabled = true;
+
+  const payload = new URLSearchParams({
+    formType: "registration",
+
+    category:
+      this.formData.category || "",
+
+    division:
+      this.formData.division || "",
+
+    athleteName:
+      this.formData.athleteName || "",
+
+    athleteDob:
+      this.formData.athleteDob || "",
+
+    athletePosition:
+      this.formData.athletePosition || "",
+
+    experienceYears:
+      this.formData.experienceYears || "",
+
+    parentName:
+      this.formData.parentName || "",
+
+    parentEmail:
+      this.formData.parentEmail || "",
+
+    parentPhone:
+      this.formData.parentPhone || "",
+
+    comments:
+      this.formData.comments || "",
+
+    website: "",
+    sourceUrl: window.location.href
+  });
+
+  try {
+    await fetch(
+      ALLIANCE_REGISTRATION_ENDPOINT,
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: payload
+      }
+    );
+
     this.currentStep = 5;
     this.renderStep(5);
-    
-    // Confirmed banner
-    const confirmName = document.getElementById('confirmAthleteName');
-    if (confirmName) confirmName.textContent = this.formData.athleteName;
+
+    const confirmName =
+      document.getElementById(
+        "confirmAthleteName"
+      );
+
+    if (confirmName) {
+      confirmName.textContent =
+        this.formData.athleteName;
+    }
+
+  } catch (error) {
+    console.error(
+      "Registration submission failed:",
+      error
+    );
+
+    alert(
+      "Registration could not be submitted. Please try again or contact Alliance directly."
+    );
+
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
   }
+}
 };
 
 window.RegistrationModule = RegistrationModule;
