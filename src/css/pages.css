@@ -2087,13 +2087,18 @@
     text-align: left;
   }
 }
-/* Contact page order — mobile only */
+/* Contact cards — mobile order */
 @media (max-width: 640px) {
-  .contact-message-card {
-    order: 1;
+  #view-contact .contact-page-layout {
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .contact-details-card {
-    order: 2;
+  #view-contact .contact-message-card {
+    order: 1 !important;
+  }
+
+  #view-contact .contact-details-card {
+    order: 2 !important;
   }
 }
