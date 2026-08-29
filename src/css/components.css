@@ -1663,3 +1663,12 @@
     white-space: normal;
   }
 }
+/* Registration Option Fee */
+.reg-option-fee {
+  margin-top: 0.75rem;
+  color: var(--color-brand-pink);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
