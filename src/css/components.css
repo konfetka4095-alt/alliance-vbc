@@ -1576,3 +1576,90 @@
     word-break: normal;
   }
 }
+/* Registration Form Layout */
+#registrationModal .form-group {
+  min-width: 0;
+  margin-bottom: 1.25rem;
+}
+
+#registrationModal .form-label {
+  display: block;
+  margin-bottom: 0.55rem;
+  line-height: 1.4;
+}
+
+#registrationModal .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+#registrationModal .form-control {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.reg-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.reg-modal-actions-primary {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+/* Registration Modal — Mobile */
+@media (max-width: 640px) {
+  #registrationModal .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  #registrationModal .form-group {
+    margin-bottom: 1.15rem;
+  }
+
+  #regStepView4 .meta-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+    text-align: left;
+  }
+
+  #regStepView4 .meta-val {
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .reg-modal-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .reg-modal-actions-primary {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .reg-modal-actions .btn,
+  .reg-modal-actions-primary .btn {
+    width: 100%;
+    max-width: 100%;
+    min-height: 50px;
+    box-sizing: border-box;
+    white-space: normal;
+  }
+}
