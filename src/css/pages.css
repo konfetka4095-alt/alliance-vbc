@@ -2161,60 +2161,38 @@
     object-position: center 60%;
   }
 }
-/* Rep Teams Feature Photo — Complete Image */
+/* Rep Teams Photo — Crop Empty Ceiling Only */
 .rep-teams-feature-image {
-  width: 100%;
-  height: auto;
-  margin-bottom: 2.5rem;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  margin-bottom: 2.5rem !important;
+  overflow: hidden !important;
+  border-radius: var(--radius-lg) !important;
 }
 
 .rep-teams-feature-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: contain;
-  border-radius: var(--radius-lg);
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+
+  /* Anchors the bottom and crops only from the top */
+  object-position: center bottom !important;
+
+  border-radius: var(--radius-lg) !important;
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .rep-teams-feature-image {
-    margin-bottom: 1.5rem;
-    border-radius: var(--radius-md);
+    aspect-ratio: 16 / 9 !important;
+    margin-bottom: 1.5rem !important;
+    border-radius: var(--radius-md) !important;
   }
 
   .rep-teams-feature-image img {
-    border-radius: var(--radius-md);
-  }
-}
-/* FINAL Rep Teams Photo — Never Crop */
-.rep-teams-feature-image {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
-  margin-bottom: 2.5rem !important;
-  overflow: visible !important;
-  border-radius: var(--radius-lg) !important;
-}
-
-.rep-teams-feature-image img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  border-radius: var(--radius-lg) !important;
-}
-
-@media (max-width: 640px) {
-  .rep-teams-feature-image {
-    margin-bottom: 1.5rem !important;
+    border-radius: var(--radius-md) !important;
   }
 }
