@@ -2146,7 +2146,7 @@
   object-fit: cover;
 
   /* Keeps the girl’s head and more of her shoulders visible */
-  object-position: center 48%;
+  object-position: center 65%;
 
   border-radius: var(--radius-lg);
 }
@@ -2158,6 +2158,6 @@
   }
 
   .programs-feature-image img {
-    object-position: center 45%;
+    object-position: center 60%;
   }
 }
