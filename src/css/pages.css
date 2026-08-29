@@ -2196,3 +2196,87 @@
     border-radius: var(--radius-md) !important;
   }
 }
+/* Program Skills Dropdown */
+.program-skills-dropdown > summary {
+  display: none;
+}
+
+/* Desktop: always display the skills */
+@media (min-width: 641px) {
+  .program-skills-dropdown > .program-features-list {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .program-skills-dropdown {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .program-skills-dropdown > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+
+    color: var(--text-light-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+  }
+
+  .program-skills-dropdown > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .program-skills-dropdown > summary::after {
+    content: "+";
+    color: var(--color-brand-pink);
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .program-skills-dropdown[open] > summary::after {
+    content: "−";
+  }
+
+  .program-skills-dropdown[open] > summary {
+    border-color: var(--color-brand-pink);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .program-skills-dropdown > .program-features-list {
+    margin-top: 0;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+
+  .program-skills-dropdown .program-feature-item {
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .program-skills-dropdown .program-feature-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .program-skills-dropdown .program-feature-item svg {
+    flex: 0 0 18px;
+    margin-top: 0.15rem;
+  }
+}
