@@ -2161,10 +2161,10 @@
     object-position: center 60%;
   }
 }
-/* Rep Teams Feature Photo */
+/* Rep Teams Feature Photo — Complete Image */
 .rep-teams-feature-image {
   width: 100%;
-  height: 520px;
+  height: auto;
   margin-bottom: 2.5rem;
   overflow: hidden;
   border-radius: var(--radius-lg);
@@ -2173,27 +2173,20 @@
 .rep-teams-feature-image img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  /* Removes excess ceiling while keeping the team visible */
-  object-position: center 68%;
-
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
   border-radius: var(--radius-lg);
 }
 
-/* Mobile — show the complete photograph */
+/* Mobile */
 @media (max-width: 640px) {
   .rep-teams-feature-image {
-    height: auto;
     margin-bottom: 1.5rem;
     border-radius: var(--radius-md);
   }
 
   .rep-teams-feature-image img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
     border-radius: var(--radius-md);
   }
 }
