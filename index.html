@@ -2703,11 +2703,27 @@
         </div>
 
         <!-- Wizard Navigation Footer -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border-light);">
-          <button class="btn btn-outline-dark" id="regPrevBtn" style="display: none;">← Back</button>
-          <div style="margin-left: auto; display: flex; gap: 0.75rem;">
-            <button class="btn btn-pink" id="regNextBtn">Continue →</button>
-            <button class="btn btn-pink" id="regSubmitBtn" style="display: none;">Complete Registration ✓</button>
+        <div class="reg-modal-actions">
+          <button
+            class="btn btn-outline-dark"
+            id="regPrevBtn"
+            style="display: none;"
+            >
+            ← Back
+          </button>
+
+          <div class="reg-modal-actions-primary">
+            <button class="btn btn-pink" id="regNextBtn">
+              Continue →
+            </button>
+
+            <button
+              class="btn btn-pink"
+              id="regSubmitBtn"
+              style="display: none;"
+              >
+              Complete Registration ✓
+            </button>
           </div>
         </div>
 
