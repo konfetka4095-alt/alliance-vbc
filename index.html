@@ -2588,12 +2588,15 @@
           <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Athlete & Age Division</h3>
           <p style="color: var(--text-light-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Select your specific session and enter athlete details.</p>
 
-          <div class="form-group">
-            <label class="form-label" for="regDivisionSelect">Select Division / Session *</label>
-            <select id="regDivisionSelect" class="form-control">
-              <!-- Dynamically populated -->
-            </select>
-          </div>
+         <div class="form-group" id="regDivisionGroup">
+           <label class="form-label" for="regDivisionSelect">
+             Select Division / Session *
+           </label>
+
+           <select id="regDivisionSelect" class="form-control">
+             <!-- Dynamically populated -->
+           </select>
+         </div>
 
           <div class="form-row">
             <div class="form-group">
@@ -2695,8 +2698,8 @@
             <span style="display: block; margin-top: 0.25rem;">
               Call
               <a href="tel:+16478244898">(647) 824-4898</a>
-              or email
-              <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>
+
+              <a href="mailto:info@alliancevbc.ca">or email info@alliancevbc.ca</a>
             </span>
           </div>
           <button class="btn btn-pink" onclick="window.RegistrationModule.closeModal()">Back to Website</button>
