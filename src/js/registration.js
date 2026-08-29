@@ -171,10 +171,18 @@ const RegistrationModule = {
   },
 
   updateDivisions() {
-    const select = document.getElementById('regDivisionSelect');
-    if (!select) return;
+  const select = document.getElementById('regDivisionSelect');
+  const divisionGroup = document.getElementById('regDivisionGroup');
 
-    select.innerHTML = '';
+  if (!select) return;
+
+  const isTryout = this.selectedCategory === 'tryouts';
+
+  if (divisionGroup) {
+    divisionGroup.style.display = isTryout ? 'block' : 'none';
+  }
+
+  select.innerHTML = '';
     const divisionsMap = {
       tryouts: [
         '12U Girls (Born 2014 or later)',
