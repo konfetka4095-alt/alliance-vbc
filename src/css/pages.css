@@ -2087,3 +2087,13 @@
     text-align: left;
   }
 }
+/* Contact page order — mobile only */
+@media (max-width: 640px) {
+  .contact-message-card {
+    order: 1;
+  }
+
+  .contact-details-card {
+    order: 2;
+  }
+}
