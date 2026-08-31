@@ -180,34 +180,6 @@ if (contactForm) {
   );
 }
 
-  // Interactive Tryout Age Eligibility
-const eligibilityTabs =
-  document.querySelectorAll('.eligibility-tab');
-
-const eligibilityPanels =
-  document.querySelectorAll('.eligibility-panel');
-
-eligibilityTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    const targetId =
-      tab.getAttribute('data-eligibility-target');
-
-    eligibilityTabs.forEach((item) => {
-      const isActive = item === tab;
-
-      item.classList.toggle('active', isActive);
-      item.setAttribute(
-        'aria-pressed',
-        String(isActive)
-      );
-    });
-
-    eligibilityPanels.forEach((panel) => {
-      panel.hidden = panel.id !== targetId;
-    });
-  });
-});
-  
   // Newsletter Form Handler
   const newsForms = document.querySelectorAll('.newsletter-form');
   newsForms.forEach(form => {
