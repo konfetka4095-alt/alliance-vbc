@@ -268,15 +268,46 @@
   background-color: var(--color-bg-light);
 }
 
-/* Age Group Eligibility */
+/* ==========================================
+   ALLIANCE AGE GROUP ELIGIBILITY
+   ========================================== */
 
 .eligibility-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.35rem, 3vw, 2.25rem);
   margin-bottom: 4rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 17, 40, 0.04),
+      transparent 55%
+    ),
+    #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Alliance multicolour accent */
+.eligibility-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-pink),
+    var(--color-brand-purple),
+    var(--color-brand-cyan)
+  );
 }
 
 .eligibility-heading-wrap {
   max-width: 720px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .eligibility-heading-wrap .section-heading {
@@ -288,91 +319,163 @@
   line-height: 1.65;
 }
 
+/* Table container */
 .eligibility-table-wrapper {
   overflow: hidden;
   background: #ffffff;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(10, 17, 40, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(10, 17, 40, 0.09);
 }
 
 .eligibility-table {
   width: 100%;
   table-layout: fixed;
+  border-spacing: 0;
   border-collapse: collapse;
   background: #ffffff;
 }
 
+/* Navy header */
 .eligibility-table th {
-  padding: 1rem 1.5rem;
-  background: var(--color-navy-dark);
+  padding: 1.05rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-navy-dark),
+    var(--color-navy-light)
+  );
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
   text-align: left;
   text-transform: uppercase;
 }
 
 .eligibility-table th:first-child,
 .eligibility-table td:first-child {
-  width: 30%;
+  width: 31%;
   text-align: center;
 }
 
 .eligibility-table th:nth-child(2),
 .eligibility-table td:nth-child(2) {
-  width: 70%;
-  border-left: 1px solid var(--color-border-light);
+  width: 69%;
 }
 
+.eligibility-table th + th,
+.eligibility-table td + td {
+  border-left: 1px solid rgba(10, 17, 40, 0.1);
+}
+
+/* Table rows */
 .eligibility-table td {
-  padding: 1rem 1.5rem;
+  padding: 1.15rem 1.5rem;
   border-bottom: 1px solid var(--color-border-light);
   color: var(--text-light-secondary);
-  font-size: 0.95rem;
   line-height: 1.5;
+  transition: background-color var(--transition-fast);
+}
+
+.eligibility-table tbody tr:nth-child(even) td {
+  background: var(--color-bg-light);
+}
+
+.eligibility-table tbody tr:hover td {
+  background: rgba(255, 0, 85, 0.045);
 }
 
 .eligibility-table tr:last-child td {
   border-bottom: 0;
 }
 
-.eligibility-table td strong {
+/* Rep Team column */
+.eligibility-team-cell {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 17, 40, 0.045),
+    rgba(255, 0, 85, 0.035)
+  );
+}
+
+.eligibility-team-cell::before {
+  content: "";
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: 0;
+  width: 4px;
+  background: var(--color-brand-pink);
+  border-radius: 0 4px 4px 0;
+}
+
+.eligibility-team-cell strong {
+  display: block;
   color: var(--text-light-primary);
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 2rem;
+  line-height: 1;
 }
 
-.eligibility-table td span {
+.eligibility-team-cell span {
   display: block;
-  margin-top: 0.25rem;
-  color: var(--text-light-muted);
-  font-size: 0.82rem;
-  line-height: 1.4;
+  margin-top: 0.35rem;
+  color: var(--color-brand-pink);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.eligibility-note,
-.rep-eligibility-note {
-  color: var(--text-light-muted);
-  font-size: 0.8rem;
-  line-height: 1.5;
+/* Birth-year column */
+.eligibility-year-cell > strong {
+  display: block;
+  color: var(--text-light-primary);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.eligibility-detail {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--text-light-secondary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* Pink play-up badge */
+.eligibility-play-up {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.55rem;
+  padding: 0.28rem 0.6rem;
+  color: var(--color-brand-pink);
+  background: var(--color-brand-pink-light);
+  border: 1px solid rgba(255, 0, 85, 0.16);
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .eligibility-note {
   margin: 1rem 0 0;
+  color: var(--text-light-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
 }
 
 .eligibility-note strong {
   color: var(--color-brand-pink);
 }
 
-.rep-eligibility-note {
-  margin: -2rem 0 3rem;
-}
-
+/* Mobile */
 @media (max-width: 700px) {
   .eligibility-section {
+    padding: 1.2rem;
     margin-bottom: 3rem;
   }
 
@@ -383,12 +486,12 @@
 
   .eligibility-table th:first-child,
   .eligibility-table td:first-child {
-    width: 35%;
+    width: 34%;
   }
 
   .eligibility-table th:nth-child(2),
   .eligibility-table td:nth-child(2) {
-    width: 65%;
+    width: 66%;
   }
 
   .eligibility-table th {
@@ -396,20 +499,28 @@
     letter-spacing: 0.035em;
   }
 
-  .eligibility-table td {
-    font-size: 0.78rem;
+  .eligibility-team-cell strong {
+    font-size: 1.45rem;
   }
 
-  .eligibility-table td strong {
-    font-size: 1.05rem;
+  .eligibility-team-cell span {
+    font-size: 0.58rem;
   }
 
-  .eligibility-table td span {
-    font-size: 0.7rem;
+  .eligibility-year-cell > strong {
+    font-size: 1.3rem;
   }
 
-  .eligibility-note,
-  .rep-eligibility-note {
+  .eligibility-detail {
+    font-size: 0.69rem;
+  }
+
+  .eligibility-play-up {
+    padding: 0.22rem 0.48rem;
+    font-size: 0.57rem;
+  }
+
+  .eligibility-note {
     font-size: 0.72rem;
   }
 }
