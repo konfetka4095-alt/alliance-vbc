@@ -268,6 +268,152 @@
   background-color: var(--color-bg-light);
 }
 
+/* Age Group Eligibility */
+
+.eligibility-section {
+  margin-bottom: 4rem;
+}
+
+.eligibility-heading-wrap {
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+.eligibility-heading-wrap .section-heading {
+  margin: 0.7rem 0 0.75rem;
+}
+
+.eligibility-heading-wrap p {
+  color: var(--text-light-secondary);
+  line-height: 1.65;
+}
+
+.eligibility-table-wrapper {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.eligibility-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.eligibility-table th {
+  padding: 1rem 1.5rem;
+  background: var(--color-navy-dark);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.eligibility-table th:first-child,
+.eligibility-table td:first-child {
+  width: 30%;
+  text-align: center;
+}
+
+.eligibility-table th:nth-child(2),
+.eligibility-table td:nth-child(2) {
+  width: 70%;
+  border-left: 1px solid var(--color-border-light);
+}
+
+.eligibility-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--text-light-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.eligibility-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.eligibility-table td strong {
+  color: var(--text-light-primary);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.eligibility-table td span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-light-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.eligibility-note,
+.rep-eligibility-note {
+  color: var(--text-light-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.eligibility-note {
+  margin: 1rem 0 0;
+}
+
+.eligibility-note strong {
+  color: var(--color-brand-pink);
+}
+
+.rep-eligibility-note {
+  margin: -2rem 0 3rem;
+}
+
+@media (max-width: 700px) {
+  .eligibility-section {
+    margin-bottom: 3rem;
+  }
+
+  .eligibility-table th,
+  .eligibility-table td {
+    padding: 0.85rem 0.7rem;
+  }
+
+  .eligibility-table th:first-child,
+  .eligibility-table td:first-child {
+    width: 35%;
+  }
+
+  .eligibility-table th:nth-child(2),
+  .eligibility-table td:nth-child(2) {
+    width: 65%;
+  }
+
+  .eligibility-table th {
+    font-size: 0.72rem;
+    letter-spacing: 0.035em;
+  }
+
+  .eligibility-table td {
+    font-size: 0.78rem;
+  }
+
+  .eligibility-table td strong {
+    font-size: 1.05rem;
+  }
+
+  .eligibility-table td span {
+    font-size: 0.7rem;
+  }
+
+  .eligibility-note,
+  .rep-eligibility-note {
+    font-size: 0.72rem;
+  }
+}
+
 /* FAQ Accordion */
 .faq-filter-nav {
   display: flex;
