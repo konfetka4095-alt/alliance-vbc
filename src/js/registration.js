@@ -9,7 +9,7 @@ const RegistrationModule = {
   selectedCategory: 'tryouts',
   formData: {
     category: 'Rep Tryouts',
-    division: '14U Girls (Born 2012)',
+    division: '14U Girls (Born 2013)',
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',
@@ -185,10 +185,10 @@ const RegistrationModule = {
   select.innerHTML = '';
     const divisionsMap = {
       tryouts: [
-        '12U Girls (Born 2014 or later)',
-        '13U Girls (Born 2013)',
-        '14U Girls (Born 2012)',
-        '15U Girls (Born 2011)'
+        '12U Girls (Born 2015)',
+        '13U Girls (Born 2014)',
+        '14U Girls (Born 2013)',
+        '15U Girls (Born 2012)'
       ],
       clinics: [
         'Youth Skills Clinic - Ages 9-11 (Saturday Morning)',
