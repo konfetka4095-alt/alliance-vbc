@@ -1020,7 +1020,7 @@
       <section class="page-container">
         <div class="container">
           
-          <!-- 2026-27 Age Group Eligibility -->
+          <!-- 2026-27 Interactive Age Eligibility -->
           <div class="eligibility-section">
 
             <div class="eligibility-heading-wrap">
@@ -1031,111 +1031,179 @@
               </h2>
 
               <p>
-                Find the appropriate Alliance Girls Rep Team based on the
-                athlete’s year of birth.
+                Select a Girls Rep division to view its birth-year eligibility.
               </p>
             </div>
 
-            <div class="eligibility-table-wrapper">
-              <table
-                class="eligibility-table"
-                aria-label="2026–27 Alliance Girls Rep Team age eligibility"
+            <!-- Age Division Buttons -->
+            <div
+              class="eligibility-tabs"
+              role="group"
+              aria-label="Alliance Girls Rep divisions"
+              >
+
+              <button
+                class="eligibility-tab active"
+                type="button"
+                aria-pressed="true"
+                aria-controls="eligibility-12u"
+                data-eligibility-target="eligibility-12u"
                 >
+                <strong>12U</strong>
+                <span>Girls Rep</span>
+              </button>
 
-                <thead>
-                  <tr>
-                    <th>Rep Team</th>
-                    <th>Year Born</th>
-                  </tr>
-                </thead>
+              <button
+                class="eligibility-tab"
+                type="button"
+                aria-pressed="false"
+                aria-controls="eligibility-13u"
+                data-eligibility-target="eligibility-13u"
+                >
+                <strong>13U</strong>
+                <span>Girls Rep</span>
+              </button>
 
-                <tbody>
+              <button
+                class="eligibility-tab"
+                type="button"
+                aria-pressed="false"
+                aria-controls="eligibility-14u"
+                data-eligibility-target="eligibility-14u"
+                >
+                <strong>14U</strong>
+                <span>Girls Rep</span>
+              </button>
 
-                  <tr>
-                    <td class="eligibility-team-cell">
-                      <strong>12U</strong>
-                      <span>Girls Rep</span>
-                    </td>
+              <button
+                class="eligibility-tab"
+                type="button"
+                aria-pressed="false"
+                aria-controls="eligibility-15u"
+                data-eligibility-target="eligibility-15u"
+                >
+                <strong>15U</strong>
+                <span>Girls Rep</span>
+              </button>
 
-                    <td class="eligibility-year-cell">
-                      <strong>2015</strong>
-
-                      <span class="eligibility-detail">
-                        September 1–December 31, 2014 also eligible
-                      </span>
-
-                      <span class="eligibility-play-up">
-                        2016 may play up
-                      </span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td class="eligibility-team-cell">
-                      <strong>13U</strong>
-                      <span>Girls Rep</span>
-                    </td>
-
-                    <td class="eligibility-year-cell">
-                      <strong>2014</strong>
-
-                      <span class="eligibility-detail">
-                        September 1–December 31, 2013 also eligible
-                      </span>
-
-                      <span class="eligibility-play-up">
-                        2015 may play up
-                      </span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td class="eligibility-team-cell">
-                      <strong>14U</strong>
-                      <span>Girls Rep</span>
-                    </td>
-
-                    <td class="eligibility-year-cell">
-                      <strong>2013</strong>
-
-                      <span class="eligibility-detail">
-                        September 1–December 31, 2012 also eligible*
-                      </span>
-
-                      <span class="eligibility-play-up">
-                        2014 may play up
-                      </span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td class="eligibility-team-cell">
-                      <strong>15U</strong>
-                      <span>Girls Rep</span>
-                    </td>
-
-                    <td class="eligibility-year-cell">
-                      <strong>2012</strong>
-
-                      <span class="eligibility-detail">
-                        September 1–December 31, 2011 also eligible
-                      </span>
-
-                      <span class="eligibility-play-up">
-                        2013 may play up
-                      </span>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
             </div>
 
-            <p class="eligibility-note">
-              <strong>*</strong>
-              Players born January 1–August 31, 2012 require an approved OVA
-              application to participate with the 14U team.
-            </p>
+            <!-- Eligibility Information -->
+            <div class="eligibility-panels">
+
+              <!-- 12U -->
+              <article
+                class="eligibility-panel"
+                id="eligibility-12u"
+                >
+                <div class="eligibility-primary-year">
+                  <span>Primary birth year</span>
+                  <strong>2015</strong>
+                </div>
+
+                <div class="eligibility-panel-details">
+                  <div>
+                    <span>Also eligible</span>
+
+                    <strong>
+                      September 1–December 31, 2014
+                    </strong>
+                  </div>
+
+                  <div class="eligibility-play-up-box">
+                    <span>Play-up option</span>
+                    <strong>2016 may play up</strong>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 13U -->
+              <article
+                class="eligibility-panel"
+                id="eligibility-13u"
+                hidden
+                >
+                <div class="eligibility-primary-year">
+                  <span>Primary birth year</span>
+                  <strong>2014</strong>
+                </div>
+
+                <div class="eligibility-panel-details">
+                  <div>
+                    <span>Also eligible</span>
+
+                    <strong>
+                      September 1–December 31, 2013
+                    </strong>
+                  </div>
+
+                  <div class="eligibility-play-up-box">
+                    <span>Play-up option</span>
+                    <strong>2015 may play up</strong>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 14U -->
+              <article
+                class="eligibility-panel"
+                id="eligibility-14u"
+                hidden
+                >
+                <div class="eligibility-primary-year">
+                  <span>Primary birth year</span>
+                  <strong>2013</strong>
+                </div>
+
+                <div class="eligibility-panel-details">
+                  <div>
+                    <span>Also eligible</span>
+
+                    <strong>
+                      September 1–December 31, 2012
+                    </strong>
+                  </div>
+
+                  <div class="eligibility-play-up-box">
+                    <span>Play-up option</span>
+                    <strong>2014 may play up</strong>
+                  </div>
+                </div>
+
+                <p class="eligibility-panel-note">
+                  Players born January 1–August 31, 2012 require an approved
+                  OVA application to participate with the 14U team.
+                </p>
+              </article>
+
+              <!-- 15U -->
+              <article
+                class="eligibility-panel"
+                id="eligibility-15u"
+                hidden
+                >
+                <div class="eligibility-primary-year">
+                  <span>Primary birth year</span>
+                  <strong>2012</strong>
+                </div>
+
+                <div class="eligibility-panel-details">
+                  <div>
+                    <span>Also eligible</span>
+
+                    <strong>
+                      September 1–December 31, 2011
+                    </strong>
+                  </div>
+
+                  <div class="eligibility-play-up-box">
+                    <span>Play-up option</span>
+                    <strong>2013 may play up</strong>
+                  </div>
+                </div>
+              </article>
+
+            </div>
 
           </div>
           
