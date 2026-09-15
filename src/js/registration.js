@@ -1362,13 +1362,14 @@ function initAllianceRegistration() {
 }
 
 
-/*
- * Wait until the entire page has finished loading.
- * This guarantees that all registration buttons
- * already exist before we attach click handlers.
- */
+if (document.readyState === "loading") {
 
-window.addEventListener(
-  "load",
-  initAllianceRegistration
-);
+  document.addEventListener(
+    "DOMContentLoaded",
+    initAllianceRegistration
+  );
+
+} else {
+
+  initAllianceRegistration();
+}
