@@ -666,12 +666,10 @@ const RegistrationModule = {
         }
       );
 
-
-    const currentView =
-      document.getElementById(
-        `regStepView${step}`
-      );
-
+const currentView =
+  document.getElementById(
+    "regStepView" + step
+  );
 
     if (currentView) {
 
