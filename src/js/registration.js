@@ -1370,14 +1370,20 @@ function initAllianceRegistration() {
 }
 
 
-if (document.readyState === "loading") {
+/*
+ * Always initialize after the full page has loaded.
+ * This guarantees that all registration buttons
+ * already exist before click handlers are attached.
+ */
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    initAllianceRegistration
-  );
+if (document.readyState === "complete") {
+
+  initAllianceRegistration();
 
 } else {
 
-  initAllianceRegistration();
+  window.addEventListener(
+    "load",
+    initAllianceRegistration
+  );
 }
