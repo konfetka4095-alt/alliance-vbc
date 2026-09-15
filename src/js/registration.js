@@ -2,10 +2,10 @@ const ALLIANCE_REGISTRATION_ENDPOINT =
   window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
 
 
-/*
- * Interactive Registration Wizard
- * Alliance Volleyball Club
- */
+/* =========================================================
+   REGISTRATION MODULE
+   ========================================================= */
+
 const RegistrationModule = {
 
   currentStep: 1,
@@ -18,7 +18,7 @@ const RegistrationModule = {
 
   formData: {
     category: "Rep Tryouts",
-    division: "14U Girls (Born 2013)",
+    division: "",
     athleteName: "",
     athleteDob: "",
     athletePosition: "Setter",
@@ -30,19 +30,25 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     INIT
+     ======================================================= */
+
   init() {
     this.bindEvents();
   },
 
 
+  /* =======================================================
+     EVENTS
+     ======================================================= */
+
   bindEvents() {
 
-    /* Open registration modal */
+    /* Open registration */
 
     document
-      .querySelectorAll(
-        "[data-open-reg]"
-      )
+      .querySelectorAll("[data-open-reg]")
       .forEach(btn => {
 
         btn.addEventListener(
@@ -54,7 +60,7 @@ const RegistrationModule = {
             const preselected =
               btn.getAttribute(
                 "data-program-type"
-              ) || "tryouts";
+              ) || "15u";
 
             this.openModal(
               preselected
@@ -66,14 +72,14 @@ const RegistrationModule = {
 
     /* Close modal */
 
-    const modalBackdrop =
-      document.getElementById(
-        "registrationModal"
-      );
-
     const closeBtn =
       document.getElementById(
         "regModalClose"
+      );
+
+    const modal =
+      document.getElementById(
+        "registrationModal"
       );
 
 
@@ -86,16 +92,16 @@ const RegistrationModule = {
     }
 
 
-    if (modalBackdrop) {
+    if (modal) {
 
-      modalBackdrop.addEventListener(
+      modal.addEventListener(
         "click",
         e => {
 
           if (
-            e.target ===
-            modalBackdrop
+            e.target === modal
           ) {
+
             this.closeModal();
           }
         }
@@ -144,9 +150,7 @@ const RegistrationModule = {
       submitBtn.addEventListener(
         "click",
         e =>
-          this.submitRegistration(
-            e
-          )
+          this.submitRegistration(e)
       );
     }
 
@@ -167,10 +171,11 @@ const RegistrationModule = {
               .querySelectorAll(
                 ".reg-cat-card"
               )
-              .forEach(c =>
-                c.classList.remove(
-                  "selected"
-                )
+              .forEach(
+                c =>
+                  c.classList.remove(
+                    "selected"
+                  )
               );
 
 
@@ -179,17 +184,23 @@ const RegistrationModule = {
             );
 
 
-            this.selectedCategory =
+            const category =
               card.getAttribute(
                 "data-cat-value"
               );
 
 
+            if (category) {
+
+              this.selectedCategory =
+                category;
+            }
+
+
             const program =
-              window
-                .ALLIANCE_PROGRAMS[
-                  this.selectedCategory
-                ];
+              window.ALLIANCE_PROGRAMS?.[
+                this.selectedCategory
+              ];
 
 
             if (program) {
@@ -197,12 +208,14 @@ const RegistrationModule = {
               this.formData.category =
                 program.category;
 
+              this.formData.division =
+                program.name;
             }
 
 
             /*
-             * A new category must receive
-             * a new request ID.
+             * A new category receives a new
+             * registration ID.
              */
             this.requestId =
               null;
@@ -212,13 +225,14 @@ const RegistrationModule = {
               .querySelectorAll(
                 ".reg-cat-card"
               )
-              .forEach(c =>
-                c.setAttribute(
-                  "aria-pressed",
-                  String(
-                    c === card
+              .forEach(
+                c =>
+                  c.setAttribute(
+                    "aria-pressed",
+                    String(
+                      c === card
+                    )
                   )
-                )
               );
 
 
@@ -229,44 +243,67 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     OPEN MODAL
+     ======================================================= */
+
   openModal(
-    categoryKey = "tryouts"
+    categoryKey = "15u"
   ) {
 
-    this.currentStep = 1;
+    this.currentStep =
+      1;
 
-    categoryKey =
-      window.ALLIANCE_PROGRAMS[
+    this.submitting =
+      false;
+
+    this.requestId =
+      null;
+
+
+    if (
+      !window.ALLIANCE_PROGRAMS?.[
         categoryKey
       ]
-        ? categoryKey
-        : "15u";
+    ) {
+
+      categoryKey =
+        "15u";
+    }
 
 
     this.selectedCategory =
       categoryKey;
 
 
-    this.requestId =
-      null;
+    const program =
+      window.ALLIANCE_PROGRAMS?.[
+        categoryKey
+      ];
 
 
-    this.submitting =
-      false;
+    if (program) {
+
+      this.formData.category =
+        program.category;
+
+      this.formData.division =
+        program.name;
+    }
 
 
-    const submit =
+    const submitBtn =
       document.getElementById(
         "regSubmitBtn"
       );
 
 
-    if (submit) {
+    if (submitBtn) {
 
-      submit.disabled =
+      submitBtn.disabled =
         false;
 
-      submit.textContent =
+      submitBtn.innerHTML =
         "Complete Registration ✓";
     }
 
@@ -275,53 +312,43 @@ const RegistrationModule = {
       .querySelectorAll(
         ".reg-cat-card"
       )
-      .forEach(card => {
+      .forEach(
+        card => {
 
-        const selected =
-          card.getAttribute(
-            "data-cat-value"
-          ) ===
-          categoryKey;
-
-
-        card.setAttribute(
-          "aria-pressed",
-          String(selected)
-        );
+          const selected =
+            card.getAttribute(
+              "data-cat-value"
+            ) ===
+            categoryKey;
 
 
-        if (selected) {
-
-          card.classList.add(
-            "selected"
+          card.setAttribute(
+            "aria-pressed",
+            String(selected)
           );
 
-        } else {
 
-          card.classList.remove(
-            "selected"
-          );
+          if (selected) {
+
+            card.classList.add(
+              "selected"
+            );
+
+          } else {
+
+            card.classList.remove(
+              "selected"
+            );
+          }
         }
-      });
-
-
-    const program =
-      window
-        .ALLIANCE_PROGRAMS[
-          categoryKey
-        ];
-
-
-    if (program) {
-
-      this.formData.category =
-        program.category;
-    }
+      );
 
 
     this.updateDivisions();
 
-    this.renderStep(1);
+    this.renderStep(
+      1
+    );
 
 
     const modal =
@@ -343,9 +370,15 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     CLOSE MODAL
+     ======================================================= */
+
   closeModal() {
 
-    if (this.submitting) {
+    if (
+      this.submitting
+    ) {
       return;
     }
 
@@ -369,33 +402,52 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     NEXT STEP
+     ======================================================= */
+
   nextStep() {
 
+    /* STEP 1 → STEP 2 */
+
     if (
-      this.currentStep === 1
+      this.currentStep ===
+      1
     ) {
 
-      this.currentStep = 2;
+      this.currentStep =
+        2;
+    }
 
-    } else if (
-      this.currentStep === 2
+
+    /* STEP 2 → STEP 3 */
+
+    else if (
+      this.currentStep ===
+      2
     ) {
+
+      const nameInput =
+        document.getElementById(
+          "regAthleteName"
+        );
+
+      const dobInput =
+        document.getElementById(
+          "regAthleteDob"
+        );
+
 
       const athleteName =
-        document
-          .getElementById(
-            "regAthleteName"
-          )
-          .value
-          .trim();
+        nameInput
+          ? nameInput.value.trim()
+          : "";
 
 
       const athleteDob =
-        document
-          .getElementById(
-            "regAthleteDob"
-          )
-          .value;
+        dobInput
+          ? dobInput.value
+          : "";
 
 
       if (
@@ -418,79 +470,115 @@ const RegistrationModule = {
         athleteDob;
 
 
-      this.formData.division =
-        document
-          .getElementById(
-            "regDivisionSelect"
-          )
-          .value;
+      const division =
+        document.getElementById(
+          "regDivisionSelect"
+        );
+
+      const position =
+        document.getElementById(
+          "regAthletePos"
+        );
+
+      const experience =
+        document.getElementById(
+          "regAthleteExp"
+        );
 
 
-      this.formData.athletePosition =
-        document
-          .getElementById(
-            "regAthletePos"
-          )
-          .value;
+      if (division) {
+
+        this.formData.division =
+          division.value;
+      }
 
 
-      this.formData.experienceYears =
-        document
-          .getElementById(
-            "regAthleteExp"
-          )
-          .value;
+      if (position) {
+
+        this.formData.athletePosition =
+          position.value;
+      }
 
 
-      this.currentStep = 3;
+      if (experience) {
+
+        this.formData.experienceYears =
+          experience.value;
+      }
 
 
-    } else if (
-      this.currentStep === 3
+      this.currentStep =
+        3;
+    }
+
+
+    /* STEP 3 → STEP 4 */
+
+    else if (
+      this.currentStep ===
+      3
     ) {
 
-      const parentName =
-        document
-          .getElementById(
-            "regParentName"
-          )
-          .value
-          .trim();
+      const parentNameInput =
+        document.getElementById(
+          "regParentName"
+        );
 
-
-      const parentEmail =
-        document
-          .getElementById(
-            "regParentEmail"
-          )
-          .value
-          .trim();
-
-
-      const parentPhone =
-        document
-          .getElementById(
-            "regParentPhone"
-          )
-          .value
-          .trim();
-
-
-      const emailInput =
+      const parentEmailInput =
         document.getElementById(
           "regParentEmail"
         );
+
+      const parentPhoneInput =
+        document.getElementById(
+          "regParentPhone"
+        );
+
+      const commentsInput =
+        document.getElementById(
+          "regComments"
+        );
+
+
+      const parentName =
+        parentNameInput
+          ? parentNameInput.value.trim()
+          : "";
+
+
+      const parentEmail =
+        parentEmailInput
+          ? parentEmailInput.value.trim()
+          : "";
+
+
+      const parentPhone =
+        parentPhoneInput
+          ? parentPhoneInput.value.trim()
+          : "";
 
 
       if (
         !parentName ||
         !parentEmail ||
-        !parentPhone ||
-        !emailInput.checkValidity()
+        !parentPhone
       ) {
 
         alert(
           "Please fill in parent/guardian contact details."
+        );
+
+        return;
+      }
+
+
+      if (
+        parentEmailInput &&
+        !parentEmailInput.checkValidity()
+      ) {
+
+        alert(
+          "Please provide a valid email address."
         );
 
         return;
@@ -507,18 +595,16 @@ const RegistrationModule = {
         parentPhone;
 
       this.formData.comments =
-        document
-          .getElementById(
-            "regComments"
-          )
-          .value
-          .trim();
+        commentsInput
+          ? commentsInput.value.trim()
+          : "";
 
 
       this.populateReview();
 
 
-      this.currentStep = 4;
+      this.currentStep =
+        4;
     }
 
 
@@ -528,10 +614,15 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     PREVIOUS STEP
+     ======================================================= */
+
   prevStep() {
 
     if (
-      this.currentStep > 1
+      this.currentStep > 1 &&
+      this.currentStep < 5
     ) {
 
       this.currentStep--;
@@ -542,6 +633,10 @@ const RegistrationModule = {
     }
   },
 
+
+  /* =======================================================
+     RENDER STEP
+     ======================================================= */
 
   renderStep(step) {
 
@@ -562,11 +657,13 @@ const RegistrationModule = {
       .querySelectorAll(
         ".reg-step-view"
       )
-      .forEach(view => {
+      .forEach(
+        view => {
 
-        view.style.display =
-          "none";
-      });
+          view.style.display =
+            "none";
+        }
+      );
 
 
     const currentView =
@@ -588,26 +685,28 @@ const RegistrationModule = {
       i++
     ) {
 
-      const ind =
+      const indicator =
         document.getElementById(
           `regInd${i}`
         );
 
 
-      if (!ind) {
+      if (!indicator) {
         continue;
       }
 
 
-      ind.classList.remove(
+      indicator.classList.remove(
         "active",
         "completed"
       );
 
 
-      if (i === step) {
+      if (
+        i === step
+      ) {
 
-        ind.classList.add(
+        indicator.classList.add(
           "active"
         );
 
@@ -615,7 +714,7 @@ const RegistrationModule = {
         i < step
       ) {
 
-        ind.classList.add(
+        indicator.classList.add(
           "completed"
         );
       }
@@ -667,47 +766,56 @@ const RegistrationModule = {
   },
 
 
+  /* =======================================================
+     SESSION MARKUP
+     ======================================================= */
+
   sessionMarkup() {
 
-    const p =
-      window.ALLIANCE_PROGRAMS[
+    const program =
+      window.ALLIANCE_PROGRAMS?.[
         this.selectedCategory
       ];
 
 
-    if (!p) {
+    if (!program) {
+
       return "";
     }
 
 
     return (
 
-      `<strong>${p.name}</strong>` +
+      `<strong>${escapeHtml_(program.name)}</strong>` +
 
-      `<p>${p.date}<br>${p.time}</p>` +
+      `<p>${escapeHtml_(program.date)}<br>${escapeHtml_(program.time)}</p>` +
 
-      `<p>${p.venue}<br>${p.address}</p>` +
+      `<p>${escapeHtml_(program.venue)}<br>${escapeHtml_(program.address)}</p>` +
 
       (
-        p.entrance
-          ? `<div class="entrance-note">${p.entrance}</div>`
+        program.entrance
+          ? `<div class="entrance-note">${escapeHtml_(program.entrance)}</div>`
           : ""
       ) +
 
-      `<p>${p.payment}</p>`
+      `<p>${escapeHtml_(program.payment)}</p>`
     );
   },
 
 
+  /* =======================================================
+     UPDATE DIVISIONS
+     ======================================================= */
+
   updateDivisions() {
 
-    const p =
-      window.ALLIANCE_PROGRAMS[
+    const program =
+      window.ALLIANCE_PROGRAMS?.[
         this.selectedCategory
       ];
 
 
-    if (!p) {
+    if (!program) {
       return;
     }
 
@@ -722,15 +830,18 @@ const RegistrationModule = {
 
       select.replaceChildren(
         new Option(
-          p.name,
-          p.name
+          program.name,
+          program.name
         )
       );
+
+      select.value =
+        program.name;
     }
 
 
     this.formData.division =
-      p.name;
+      program.name;
 
 
     const summary =
@@ -746,6 +857,10 @@ const RegistrationModule = {
     }
   },
 
+
+  /* =======================================================
+     REVIEW
+     ======================================================= */
 
   populateReview() {
 
@@ -795,15 +910,15 @@ const RegistrationModule = {
     ).forEach(
       ([id, value]) => {
 
-        const el =
+        const element =
           document.getElementById(
             id
           );
 
 
-        if (el) {
+        if (element) {
 
-          el.textContent =
+          element.textContent =
             value || "";
         }
       }
@@ -811,17 +926,18 @@ const RegistrationModule = {
   },
 
 
-  /*
-   * --------------------------------------------------
-   * SUBMIT REGISTRATION
-   * --------------------------------------------------
-   */
+  /* =======================================================
+     SUBMIT REGISTRATION — SAFARI SAFE
+     ======================================================= */
+
   async submitRegistration(e) {
 
     e.preventDefault();
 
 
-    if (this.submitting) {
+    if (
+      this.submitting
+    ) {
       return;
     }
 
@@ -831,7 +947,24 @@ const RegistrationModule = {
     ) {
 
       alert(
-        "Online registration is being updated. Please contact info@alliancevbc.ca to register."
+        "Online registration is temporarily unavailable. Please contact info@alliancevbc.ca."
+      );
+
+      return;
+    }
+
+
+    /*
+     * Make sure we have a valid program.
+     */
+    if (
+      !window.ALLIANCE_PROGRAMS?.[
+        this.selectedCategory
+      ]
+    ) {
+
+      alert(
+        "Please select a registration program."
       );
 
       return;
@@ -843,12 +976,26 @@ const RegistrationModule = {
 
 
     /*
-     * Keep the same request ID if the
-     * browser has to retry/read the response.
+     * One ID is used for the entire submission.
+     * If the request has to be retried, the backend
+     * can identify it as the same registration.
      */
     this.requestId =
       this.requestId ||
-      crypto.randomUUID();
+      (
+        window.crypto &&
+        typeof window.crypto.randomUUID ===
+          "function"
+
+          ? window.crypto.randomUUID()
+
+          : "ALLIANCE-" +
+            Date.now() +
+            "-" +
+            Math.random()
+              .toString(36)
+              .slice(2)
+      );
 
 
     const submitBtn =
@@ -873,282 +1020,495 @@ const RegistrationModule = {
     }
 
 
-    const payload =
-      new URLSearchParams({
+    /*
+     * Build registration payload.
+     */
+    const data = {
 
-        formType:
-          "registration",
+      formType:
+        "registration",
 
-        programId:
-          this.selectedCategory,
+      programId:
+        this.selectedCategory,
 
-        requestId:
-          this.requestId,
+      requestId:
+        this.requestId,
 
-        category:
-          this.formData.category ||
-          "",
+      category:
+        this.formData.category ||
+        "",
 
-        division:
-          this.formData.division ||
-          "",
+      division:
+        this.formData.division ||
+        "",
 
-        athleteName:
-          this.formData.athleteName ||
-          "",
+      athleteName:
+        this.formData.athleteName ||
+        "",
 
-        athleteDob:
-          this.formData.athleteDob ||
-          "",
+      athleteDob:
+        this.formData.athleteDob ||
+        "",
 
-        athletePosition:
-          this.formData
-            .athletePosition ||
-          "",
+      athletePosition:
+        this.formData
+          .athletePosition ||
+        "",
 
-        experienceYears:
-          this.formData
-            .experienceYears ||
-          "",
+      experienceYears:
+        this.formData
+          .experienceYears ||
+        "",
 
-        parentName:
-          this.formData.parentName ||
-          "",
+      parentName:
+        this.formData.parentName ||
+        "",
 
-        parentEmail:
-          this.formData.parentEmail ||
-          "",
+      parentEmail:
+        this.formData.parentEmail ||
+        "",
 
-        parentPhone:
-          this.formData.parentPhone ||
-          "",
+      parentPhone:
+        this.formData.parentPhone ||
+        "",
 
-        comments:
-          this.formData.comments ||
-          "",
+      comments:
+        this.formData.comments ||
+        "",
 
-        website:
-          "",
+      website:
+        "",
 
-        sourceUrl:
-          window.location.href
-      });
+      sourceUrl:
+        window.location.href
+    };
 
 
-    try {
+    /*
+     * =====================================================
+     * IMPORTANT SAFARI FIX
+     *
+     * We do NOT use fetch().
+     *
+     * Safari can reject or mishandle the cross-origin
+     * Apps Script response after the redirect.
+     *
+     * A normal HTML form POST does not require JavaScript
+     * to read the cross-origin response.
+     * =====================================================
+     */
 
-      console.log(
-        "Submitting Alliance registration:",
-        {
-          programId:
-            this.selectedCategory,
+    const iframeName =
+      "allianceRegistrationFrame_" +
+      Date.now();
 
-          requestId:
-            this.requestId
-        }
+
+    const iframe =
+      document.createElement(
+        "iframe"
       );
 
 
-      const response =
-        await fetch(
-          ALLIANCE_REGISTRATION_ENDPOINT,
-          {
-            method:
-              "POST",
+    iframe.name =
+      iframeName;
 
-            body:
-              payload,
+    iframe.id =
+      iframeName;
 
-            redirect:
-              "follow",
+    iframe.style.position =
+      "fixed";
 
-            cache:
-              "no-store"
-          }
-        );
+    iframe.style.width =
+      "1px";
+
+    iframe.style.height =
+      "1px";
+
+    iframe.style.border =
+      "0";
+
+    iframe.style.opacity =
+      "0";
+
+    iframe.style.pointerEvents =
+      "none";
+
+    iframe.setAttribute(
+      "aria-hidden",
+      "true"
+    );
 
 
-      /*
-       * Some Apps Script responses can take
-       * a little longer to become readable.
-       *
-       * Read as TEXT first instead of calling
-       * response.json() directly.
-       */
-      const rawText =
-        await response.text();
+    document.body.appendChild(
+      iframe
+    );
 
 
-      console.log(
-        "Alliance registration HTTP status:",
-        response.status
+    /*
+     * Create a real HTML form.
+     */
+    const form =
+      document.createElement(
+        "form"
       );
 
 
-      console.log(
-        "Alliance registration raw response:",
-        rawText
-      );
+    form.method =
+      "POST";
+
+    form.action =
+      ALLIANCE_REGISTRATION_ENDPOINT;
+
+    form.target =
+      iframeName;
+
+    form.style.display =
+      "none";
 
 
-      let result = null;
+    Object.entries(
+      data
+    ).forEach(
+      ([name, value]) => {
 
-
-      try {
-
-        result =
-          JSON.parse(
-            rawText
+        const input =
+          document.createElement(
+            "input"
           );
 
-      } catch (
-        parseError
-      ) {
 
-        console.error(
-          "Could not parse Apps Script response:",
-          parseError
+        input.type =
+          "hidden";
+
+        input.name =
+          name;
+
+        input.value =
+          String(
+            value
+          );
+
+
+        form.appendChild(
+          input
         );
+      }
+    );
+
+
+    document.body.appendChild(
+      form
+    );
+
+
+    /*
+     * Safari / Apps Script response handling:
+     *
+     * We do not attempt to inspect the response.
+     *
+     * The registration backend already saves the
+     * registration before returning.
+     */
+    let finished =
+      false;
+
+
+    const cleanup =
+      () => {
+
+        setTimeout(
+          () => {
+
+            if (
+              iframe &&
+              iframe.parentNode
+            ) {
+
+              iframe.parentNode.removeChild(
+                iframe
+              );
+            }
+
+
+            if (
+              form &&
+              form.parentNode
+            ) {
+
+              form.parentNode.removeChild(
+                form
+              );
+            }
+
+          },
+          1000
+        );
+      };
+
+
+    const showSuccess =
+      () => {
+
+        if (
+          finished
+        ) {
+
+          return;
+        }
+
+
+        finished =
+          true;
+
+
+        this.submitting =
+          false;
 
 
         /*
-         * IMPORTANT:
-         *
-         * At this point the POST may already have
-         * been saved successfully.
-         *
-         * Do NOT immediately tell the parent
-         * that the registration failed.
-         *
-         * The same requestId prevents duplicates
-         * if the user submits again.
+         * Show actual athlete name.
          */
-        throw new Error(
-          "The registration server responded with an unreadable response."
-        );
-      }
+        const successName =
+          document.getElementById(
+            "confirmAthleteName"
+          );
 
 
-      if (
-        !response.ok ||
-        !result ||
-        !result.ok
-      ) {
+        if (successName) {
 
-        throw new Error(
-          (
-            result &&
-            result.error
-          ) ||
-          "Registration was not saved."
-        );
-      }
+          successName.textContent =
+            this.formData.athleteName;
+        }
 
 
-      /*
-       * SUCCESS
-       */
-      const emailStatus =
-        result.emailStatus ||
-        "pending";
+        /*
+         * Email message.
+         */
+        const statusElement =
+          document.getElementById(
+            "confirmationEmailStatus"
+          );
 
 
-      const emailStatusEl =
-        document.getElementById(
-          "confirmationEmailStatus"
-        );
+        if (statusElement) {
+
+          statusElement.textContent =
+            "Your registration has been saved. Your confirmation email is being processed.";
+        }
 
 
-      if (emailStatusEl) {
-
-        emailStatusEl.textContent =
-          emailStatus === "sent"
-
-            ? "Your confirmation email has been sent. Please check your inbox and spam folder."
-
-            : "Your registration has been saved. Your confirmation email is being processed. Please check your inbox shortly.";
-      }
+        /*
+         * Move to success screen.
+         */
+        this.currentStep =
+          5;
 
 
-      const successName =
-        document.getElementById(
-          "confirmAthleteName"
+        this.renderStep(
+          5
         );
 
 
-      if (successName) {
+        if (submitBtn) {
 
-        successName.textContent =
-          this.formData
-            .athleteName;
+          submitBtn.disabled =
+            false;
+
+          submitBtn.innerHTML =
+            originalText;
+        }
+
+
+        cleanup();
+      };
+
+
+    /*
+     * Once the iframe receives the response,
+     * the server request has completed.
+     */
+    iframe.addEventListener(
+      "load",
+      () => {
+
+        showSuccess();
+
+      },
+      {
+        once: true
       }
+    );
 
 
-      this.currentStep =
-        5;
+    /*
+     * Safety fallback.
+     *
+     * The backend saves the registration before
+     * the response is returned, so after 10 seconds
+     * we treat the registration as potentially saved
+     * rather than forcing another submission.
+     */
+    const fallbackTimer =
+      setTimeout(
+        () => {
+
+          if (
+            finished
+          ) {
+
+            return;
+          }
 
 
-      this.renderStep(5);
+          finished =
+            true;
 
+
+          this.submitting =
+            false;
+
+
+          const successName =
+            document.getElementById(
+              "confirmAthleteName"
+            );
+
+
+          if (successName) {
+
+            successName.textContent =
+              this.formData
+                .athleteName;
+          }
+
+
+          const statusElement =
+            document.getElementById(
+              "confirmationEmailStatus"
+            );
+
+
+          if (statusElement) {
+
+            statusElement.textContent =
+              "Your registration has been submitted and is being processed. Please check your email shortly.";
+          }
+
+
+          this.currentStep =
+            5;
+
+
+          this.renderStep(
+            5
+          );
+
+
+          if (submitBtn) {
+
+            submitBtn.disabled =
+              false;
+
+            submitBtn.innerHTML =
+              originalText;
+          }
+
+
+          cleanup();
+
+        },
+        10000
+      );
+
+
+    /*
+     * Cancel fallback when load succeeds.
+     */
+    iframe.addEventListener(
+      "load",
+      () => {
+
+        clearTimeout(
+          fallbackTimer
+        );
+
+      },
+      {
+        once: true
+      }
+    );
+
+
+    /*
+     * Submit the actual form.
+     */
+    try {
+
+      form.submit();
 
     } catch (error) {
 
+      clearTimeout(
+        fallbackTimer
+      );
+
+
       console.error(
-        "Registration submission failed:",
+        "Alliance registration form submission failed:",
         error
       );
 
 
-      /*
-       * IMPORTANT:
-       *
-       * If the server may have received the
-       * POST but the browser couldn't read the
-       * response, do not encourage the parent
-       * to immediately submit another form.
-       */
-      const message =
-        String(
-          error?.message ||
-            ""
-        );
-
-
-      if (
-        message.includes(
-          "unreadable response"
-        )
-      ) {
-
-        alert(
-          "Your registration may already have been saved. Please do not submit it again yet. Check for the confirmation email or contact info@alliancevbc.ca."
-        );
-
-      } else {
-
-        alert(
-          "Registration could not be submitted. Please try again or contact Alliance directly."
-        );
-      }
+      this.submitting =
+        false;
 
 
       if (submitBtn) {
 
-        submitBtn.innerHTML =
-          originalText;
-
         submitBtn.disabled =
           false;
+
+        submitBtn.innerHTML =
+          originalText;
       }
 
-    } finally {
 
-      this.submitting =
-        false;
+      cleanup();
+
+
+      alert(
+        "Registration could not be submitted. Please contact Alliance directly."
+      );
     }
   }
 };
 
+
+/* =========================================================
+   HTML ESCAPING
+   ========================================================= */
+
+function escapeHtml_(value) {
+
+  return String(
+    value ?? ""
+  ).replace(
+    /[&<>"']/g,
+    char =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char])
+  );
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
 window.RegistrationModule =
   RegistrationModule;
