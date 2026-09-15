@@ -22,14 +22,14 @@
   <!-- Google Fonts: Oswald (Athletic Condensed) & Plus Jakarta Sans (Clean Modern) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="src/css/fonts.css?v=1" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="src/css/variables.css">
   <link rel="stylesheet" href="src/css/base.css">
   <link rel="stylesheet" href="src/css/layout.css">
   <link rel="stylesheet" href="src/css/components.css?v=17">
-  <link rel="stylesheet" href="src/css/pages.css?v=31">
+  <link rel="stylesheet" href="src/css/pages.css?v=33">
 </head>
 <body>
 
@@ -143,7 +143,7 @@
                 </div>
                 <div>
                   <div class="banner-text-title">2026-27 REP TRYOUTS</div>
-                  <div class="banner-text-sub">Tryout dates are now available!</div>
+                  <div class="banner-text-sub">September 17 &amp; 20 · View your division’s time</div>
                 </div>
               </div>
               <a href="#tryouts" class="banner-link">
@@ -1041,38 +1041,6 @@
 
               <tbody>
 
-                <!-- 14U Girls -->
-                <tr class="schedule-row" data-division="14u">
-                  <td class="tryout-division-cell" data-label="Age Division">
-                    <strong>14U Girls</strong>
-                  </td>
-                  <td class="tryout-year-cell" data-label="Year Born">
-                    <div class="tryout-year-content">
-                      <strong>2013</strong>
-
-                      <small>
-                        Sept.–Dec. 2012 also eligible*
-                      </small>
-
-                      <span>2014 may play up</span>
-                    </div>
-                  </td>
-                  <td data-label="Tryout Date">September 13, 2026</td>
-                  <td data-label="Time">5:00–6:30 PM</td>
-                  <td data-label="Location">
-                    7261 Victoria Park Avenue, Markham
-                  </td>
-                  <td class="tryout-action-cell" data-label="Action">
-                    <button
-                      class="btn btn-pink btn-sm"
-                      data-open-reg
-                      data-program-type="tryouts"
-                      >
-                      Register
-                    </button>
-                  </td>
-                </tr>
-
                 <!-- 15U Girls -->
                 <tr class="schedule-row" data-division="15u">
                   <td class="tryout-division-cell" data-label="Age Division">
@@ -1089,48 +1057,18 @@
                       <span>2013 may play up</span>
                     </div>
                   </td>
-                  <td data-label="Tryout Date">September 13, 2026</td>
-                  <td data-label="Time">6:30–8:00 PM</td>
-                  <td data-label="Location">
-                    7261 Victoria Park Avenue, Markham
-                  </td>
-                  <td class="tryout-action-cell" data-label="Action">
-                    <button
-                      class="btn btn-pink btn-sm"
-                      data-open-reg
-                      data-program-type="tryouts"
-                      >
-                      Register
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- 12U Girls -->
-                <tr class="schedule-row" data-division="12u">
-                  <td class="tryout-division-cell" data-label="Age Division">
-                    <strong>12U Girls</strong>
-                  </td>
-                  <td class="tryout-year-cell" data-label="Year Born">
-                    <div class="tryout-year-content">
-                      <strong>2015</strong>
-
-                      <small>
-                        Sept.–Dec. 2014 also eligible
-                      </small>
-
-                      <span>2016 may play up</span>
-                    </div>
-                  </td>
-                  <td data-label="Tryout Date">September 14, 2026</td>
+                  <td data-label="Tryout Date">Thursday, September 17, 2026</td>
                   <td data-label="Time">5:00–6:30 PM</td>
-                  <td data-label="Location">
-                    7261 Victoria Park Avenue, Markham
-                  </td>
+                  <td data-label="Location"><div class="tryout-location-details">
+                    The Colosseum Markham (former Battle Arena)<br>
+                    7261 Victoria Park Avenue, Markham<br>
+                    <strong>FRONT entrance — GLASS door</strong>
+                  </div></td>
                   <td class="tryout-action-cell" data-label="Action">
                     <button
                       class="btn btn-pink btn-sm"
                       data-open-reg
-                      data-program-type="tryouts"
+                      data-program-type="15u"
                       >
                       Register
                     </button>
@@ -1153,16 +1091,86 @@
                       <span>2015 may play up</span>
                     </div>
                   </td>
-                  <td data-label="Tryout Date">September 14, 2026</td>
+                  <td data-label="Tryout Date">Thursday, September 17, 2026</td>
                   <td data-label="Time">6:30–8:00 PM</td>
-                  <td data-label="Location">
-                    7261 Victoria Park Avenue, Markham
-                  </td>
+                  <td data-label="Location"><div class="tryout-location-details">
+                    The Colosseum Markham (former Battle Arena)<br>
+                    7261 Victoria Park Avenue, Markham<br>
+                    <strong>FRONT entrance — GLASS door</strong>
+                  </div></td>
                   <td class="tryout-action-cell" data-label="Action">
                     <button
                       class="btn btn-pink btn-sm"
                       data-open-reg
-                      data-program-type="tryouts"
+                      data-program-type="13u"
+                      >
+                      Register
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- 12U Girls -->
+                <tr class="schedule-row" data-division="12u">
+                  <td class="tryout-division-cell" data-label="Age Division">
+                    <strong>12U Girls</strong>
+                  </td>
+                  <td class="tryout-year-cell" data-label="Year Born">
+                    <div class="tryout-year-content">
+                      <strong>2015</strong>
+
+                      <small>
+                        Sept.–Dec. 2014 also eligible
+                      </small>
+
+                      <span>2016 may play up</span>
+                    </div>
+                  </td>
+                  <td data-label="Tryout Date">Sunday, September 20, 2026</td>
+                  <td data-label="Time">6:00–7:30 PM</td>
+                  <td data-label="Location"><div class="tryout-location-details">
+                    The Colosseum Markham<br>
+                    7261 Victoria Park Avenue, Markham<br>
+                    <strong>BACK entrance — BLUE door</strong>
+                  </div></td>
+                  <td class="tryout-action-cell" data-label="Action">
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="12u"
+                      >
+                      Register
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- 14U Girls -->
+                <tr class="schedule-row" data-division="14u">
+                  <td class="tryout-division-cell" data-label="Age Division">
+                    <strong>14U Girls</strong>
+                  </td>
+                  <td class="tryout-year-cell" data-label="Year Born">
+                    <div class="tryout-year-content">
+                      <strong>2013</strong>
+
+                      <small>
+                        Sept.–Dec. 2012 also eligible*
+                      </small>
+
+                      <span>2014 may play up</span>
+                    </div>
+                  </td>
+                  <td data-label="Tryout Date">Sunday, September 20, 2026</td>
+                  <td data-label="Time">7:30–9:00 PM</td>
+                  <td data-label="Location"><div class="tryout-location-details">
+                    The Colosseum Markham<br>
+                    7261 Victoria Park Avenue, Markham<br>
+                    <strong>BACK entrance — BLUE door</strong>
+                  </div></td>
+                  <td class="tryout-action-cell" data-label="Action">
+                    <button
+                      class="btn btn-pink btn-sm"
+                      data-open-reg
+                      data-program-type="14u"
                       >
                       Register
                     </button>
@@ -1700,6 +1708,8 @@
               <h2>The Colosseum Markham</h2>
 
               <p>7261 Victoria Park Avenue, Markham</p>
+              <p><strong>September 17:</strong> Former Battle Arena — FRONT entrance, GLASS door.<br>
+              <strong>September 20:</strong> BACK entrance, BLUE door.</p>
             </div>
 
             <a
@@ -1920,15 +1930,15 @@
 
                     <div class="faq-answer">
                       <p>
-                        <strong>September 13, 2026</strong><br>
-                        14U Girls: 5:00–6:30 PM<br>
-                        15U Girls: 6:30–8:00 PM
+                        <strong>Thursday, September 17, 2026</strong><br>
+                        15U Girls: 5:00–6:30 PM<br>
+                        13U Girls: 6:30–8:00 PM
                       </p>
 
                       <p>
-                        <strong>September 14, 2026</strong><br>
-                        12U Girls: 5:00–6:30 PM<br>
-                        13U Girls: 6:30–8:00 PM
+                        <strong>Sunday, September 20, 2026</strong><br>
+                        12U Girls: 6:00–7:30 PM<br>
+                        14U Girls: 7:30–9:00 PM
                       </p>
                     </div>
                   </div>
@@ -1944,7 +1954,9 @@
                     <div class="faq-answer">
                       <p>
                         Tryouts are held at The Colosseum Markham, located at
-                        7261 Victoria Park Avenue, Markham.
+                        7261 Victoria Park Avenue, Markham.<br>
+                        <strong>Thursday, September 17:</strong> The Colosseum Markham (former Battle Arena). Enter through the <strong>GLASS door at the FRONT</strong> of the building.<br>
+                        <strong>Sunday, September 20:</strong> Enter through the <strong>BLUE door at the BACK</strong> of the building.
                       </p>
                     </div>
                   </div>
@@ -2643,51 +2655,15 @@
             What would you like to register for today?
           </p>
 
-          <div class="reg-option-grid">
-
-            <div
-              class="reg-option-card reg-cat-card selected"
-              data-cat-value="tryouts"
-              >
-              <div class="reg-option-name">Rep Team Tryouts</div>
-              <div class="reg-option-desc">
-                Tryouts for 12U, 13U, 14U and 15U Girls Rep Teams.
-              </div>
-            </div>
-
-            <div
-              class="reg-option-card reg-cat-card"
-              data-cat-value="clinic-8-11"
-              >
-              <div class="reg-option-name">
-                Mixed Youth Clinic — Ages 8–11
-              </div>
-              <div class="reg-option-desc">
-                Wednesday evening volleyball development program.
-              </div>
-            </div>
-
-            <div
-              class="reg-option-card reg-cat-card"
-              data-cat-value="clinic-12-15"
-              >
-              <div class="reg-option-name">
-                Mixed Youth Clinic — Ages 12–15
-              </div>
-              <div class="reg-option-desc">
-                Monday evening skill and game development program.
-              </div>
-            </div>
-
-          </div>
-        </div>
+<div class="reg-option-grid"><button type="button" class="reg-option-card reg-cat-card" data-cat-value="15u" aria-pressed="false"><span class="reg-program-kind">Rep Team Tryouts</span><span class="reg-option-name">15U Girls</span><span class="reg-option-desc">Thursday, September 17, 2026<br>5:00–6:30 PM<br>The Colosseum Markham (former Battle Arena)</span><span class="reg-option-fee">$20</span></button><button type="button" class="reg-option-card reg-cat-card" data-cat-value="13u" aria-pressed="false"><span class="reg-program-kind">Rep Team Tryouts</span><span class="reg-option-name">13U Girls</span><span class="reg-option-desc">Thursday, September 17, 2026<br>6:30–8:00 PM<br>The Colosseum Markham (former Battle Arena)</span><span class="reg-option-fee">$20</span></button><button type="button" class="reg-option-card reg-cat-card" data-cat-value="12u" aria-pressed="false"><span class="reg-program-kind">Rep Team Tryouts</span><span class="reg-option-name">12U Girls</span><span class="reg-option-desc">Sunday, September 20, 2026<br>6:00–7:30 PM<br>The Colosseum Markham</span><span class="reg-option-fee">$20</span></button><button type="button" class="reg-option-card reg-cat-card" data-cat-value="14u" aria-pressed="false"><span class="reg-program-kind">Rep Team Tryouts</span><span class="reg-option-name">14U Girls</span><span class="reg-option-desc">Sunday, September 20, 2026<br>7:30–9:00 PM<br>The Colosseum Markham</span><span class="reg-option-fee">$20</span></button><button type="button" class="reg-option-card reg-cat-card" data-cat-value="clinic-8-11" aria-pressed="false"><span class="reg-program-kind">Mixed Youth Clinic</span><span class="reg-option-name">Mixed Youth Clinic — Ages 8–11</span><span class="reg-option-desc">September 23–December 16, 2026 · 13 weeks<br>Wednesdays, 6:00–8:00 PM<br>Richmond Rose Public School</span><span class="reg-option-fee">$390</span></button><button type="button" class="reg-option-card reg-cat-card" data-cat-value="clinic-12-15" aria-pressed="false"><span class="reg-program-kind">Mixed Youth Clinic</span><span class="reg-option-name">Mixed Youth Clinic — Ages 12–15</span><span class="reg-option-desc">September 21–December 14, 2026 · 12 weeks<br>Mondays, 6:00–8:00 PM<br>Pleasantville Public School</span><span class="reg-option-fee">$360</span></button></div></div>
 
         <!-- STEP 2: Athlete & Division Details -->
         <div class="reg-step-view" id="regStepView2" style="display: none;">
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Athlete & Age Division</h3>
-          <p style="color: var(--text-light-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Select your specific session and enter athlete details.</p>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Athlete Details</h3>
+          <p style="color: var(--text-light-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Review your session and enter athlete details.</p>
 
-         <div class="form-group" id="regDivisionGroup">
+         <div id="regSessionSummary" class="registration-session-summary"></div>
+         <div class="form-group" id="regDivisionGroup" hidden>
            <label class="form-label" for="regDivisionSelect">
              Select Division / Session *
            </label>
@@ -2763,7 +2739,7 @@
 
           <div style="background: var(--color-bg-light); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
             <div class="meta-row"><span class="meta-label">Program</span><span class="meta-val" id="revCategory">Rep Tryouts</span></div>
-            <div class="meta-row"><span class="meta-label">Division</span><span class="meta-val" id="revDivision">14U Girls</span></div>
+            <div id="revSessionSummary" class="registration-session-summary"></div><div class="meta-row"><span class="meta-label">Session</span><span class="meta-val" id="revDivision">14U Girls</span></div>
             <div class="meta-row"><span class="meta-label">Athlete Name</span><span class="meta-val" id="revAthleteName">-</span></div>
             <div class="meta-row"><span class="meta-label">Date of Birth</span><span class="meta-val" id="revAthleteDob">-</span></div>
             <div class="meta-row"><span class="meta-label">Position</span><span class="meta-val" id="revPosition">-</span></div>
@@ -2786,8 +2762,7 @@
           <p style="color: var(--text-light-secondary); max-width: 480px; margin: 0 auto 1.5rem;">
             Thank you! The registration request for
             <strong id="confirmAthleteName">your athlete</strong>
-            has been received. The Alliance team will review the submission
-            and contact the parent or guardian with the next steps.
+            has been saved. <span id="confirmationEmailStatus"></span>
           </p>
           <div style="line-height: 1.6;">
             <strong style="display: block;">
@@ -2835,7 +2810,9 @@
 
   <!-- JavaScript Scripts -->
   <script src="src/js/router.js"></script>
-  <script src="src/js/registration.js?v=4"></script>
+  <script src="src/js/programs.js?v=2"></script>
+  <script src="src/js/registration-config.js?v=1"></script>
+  <script src="src/js/registration.js?v=5"></script>
   <script src="src/js/schedule.js"></script>
   <script src="src/js/faq.js"></script>
   <script src="src/js/main.js?v=5"></script>
