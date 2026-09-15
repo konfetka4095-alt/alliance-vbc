@@ -173,7 +173,10 @@ var RegistrationModule = {
 
         card.addEventListener(
           "click",
-          function () {
+          function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
 
             var cards =
               document.querySelectorAll(".reg-cat-card");
