@@ -1,4 +1,3 @@
-```javascript
 var ALLIANCE_REGISTRATION_ENDPOINT = "";
 
 if (
@@ -1379,4 +1378,3 @@ if (document.readyState === "loading") {
 
   initAllianceRegistration();
 }
-```
