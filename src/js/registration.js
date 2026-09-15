@@ -1,12 +1,11 @@
-const ALLIANCE_REGISTRATION_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycby1DLrLFTpxZRFeOqxtIFBNTnwLZJC8rAq2bMRrurbvZMv0GC2NY5m2Q68SLFtLN_uI/exec";
+const ALLIANCE_REGISTRATION_ENDPOINT = window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
 
 
 // Interactive Registration Wizard for Alliance Volleyball Club
 
 const RegistrationModule = {
   currentStep: 1,
-  selectedCategory: 'tryouts',
+  selectedCategory: '15u',
   formData: {
     category: 'Rep Tryouts',
     division: '14U Girls (Born 2013)',
@@ -63,7 +62,9 @@ const RegistrationModule = {
         document.querySelectorAll('.reg-cat-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         this.selectedCategory = card.getAttribute('data-cat-value');
-        this.formData.category = card.querySelector('.reg-option-name').textContent;
+        this.formData.category = window.ALLIANCE_PROGRAMS[this.selectedCategory].category;
+        this.requestId = null;
+        document.querySelectorAll('.reg-cat-card').forEach(c => c.setAttribute('aria-pressed', String(c === card)));
         this.updateDivisions();
       });
     });
@@ -71,13 +72,18 @@ const RegistrationModule = {
 
   openModal(categoryKey = 'tryouts') {
     this.currentStep = 1;
+    categoryKey = window.ALLIANCE_PROGRAMS[categoryKey] ? categoryKey : '15u';
     this.selectedCategory = categoryKey;
+    this.requestId = null;
+    const submit = document.getElementById('regSubmitBtn');
+    submit.disabled = false; submit.textContent = 'Complete Registration ✓';
     
     // Select category card
     document.querySelectorAll('.reg-cat-card').forEach(c => {
+      c.setAttribute('aria-pressed', String(c.getAttribute('data-cat-value') === categoryKey));
       if (c.getAttribute('data-cat-value') === categoryKey) {
         c.classList.add('selected');
-        this.formData.category = c.querySelector('.reg-option-name').textContent;
+        this.formData.category = window.ALLIANCE_PROGRAMS[categoryKey].category;
       } else {
         c.classList.remove('selected');
       }
@@ -92,6 +98,7 @@ const RegistrationModule = {
   },
 
   closeModal() {
+    if (this.submitting) return;
     const modal = document.getElementById('registrationModal');
     if (modal) modal.classList.remove('open');
     document.body.style.overflow = '';
@@ -120,7 +127,7 @@ const RegistrationModule = {
       const parentName = document.getElementById('regParentName').value.trim();
       const parentEmail = document.getElementById('regParentEmail').value.trim();
       const parentPhone = document.getElementById('regParentPhone').value.trim();
-      if (!parentName || !parentEmail || !parentPhone) {
+      if (!parentName || !parentEmail || !parentPhone || !document.getElementById('regParentEmail').checkValidity()) {
         alert('Please fill in parent/guardian contact details.');
         return;
       }
@@ -144,6 +151,8 @@ const RegistrationModule = {
   },
 
   renderStep(step) {
+    const container = document.querySelector("#registrationModal .modal-container");
+    if (container) container.scrollTop = 0;
     document.querySelectorAll('.reg-step-view').forEach(view => {
       view.style.display = 'none';
     });
@@ -170,60 +179,21 @@ const RegistrationModule = {
     if (submitBtn) submitBtn.style.display = step === 4 ? 'inline-flex' : 'none';
   },
 
+  sessionMarkup() {
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.venue}<br>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;
+  },
+
   updateDivisions() {
-  const select = document.getElementById('regDivisionSelect');
-  const divisionGroup = document.getElementById('regDivisionGroup');
-
-  if (!select) return;
-
-  const isTryout = this.selectedCategory === 'tryouts';
-
-  if (divisionGroup) {
-    divisionGroup.style.display = isTryout ? 'block' : 'none';
-  }
-
-  select.innerHTML = '';
-    const divisionsMap = {
-      tryouts: [
-        '12U Girls (Born 2015)',
-        '13U Girls (Born 2014)',
-        '14U Girls (Born 2013)',
-        '15U Girls (Born 2012)'
-      ],
-      clinics: [
-        'Youth Skills Clinic - Ages 9-11 (Saturday Morning)',
-        'Intermediate Clinic - Ages 12-14 (Saturday Afternoon)',
-        'High Performance Clinic - Ages 14-17 (Sunday)'
-      ],
-      prep: [
-        'Prep for Rep - Fall Cohort (Ages 11-13)',
-        'Prep for Rep - Winter Cohort (Ages 12-14)'
-      ],
-      camps: [
-        'March Break Intensive Volleyball Camp (Ages 10-15)',
-        'Summer Elite Volleyball Camp - July Session',
-        'Summer Elite Volleyball Camp - August Session'
-      ],
-      house: [
-        'Junior House League (Grades 5-7)',
-        'Senior House League (Grades 8-10)'
-      ],
-      adult: [
-        'Adult Co-ed Open Play (Thursday Evenings)',
-        'Adult Intermediate Skills & Scrimmage (Sunday Evenings)'
-      ]
-    };
-
-    const list = divisionsMap[this.selectedCategory] || divisionsMap.tryouts;
-    list.forEach(item => {
-      const opt = document.createElement('option');
-      opt.value = item;
-      opt.textContent = item;
-      select.appendChild(opt);
-    });
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    const select = document.getElementById('regDivisionSelect');
+    select.replaceChildren(new Option(p.name, p.name));
+    this.formData.division = p.name;
+    document.getElementById('regSessionSummary').innerHTML = this.sessionMarkup();
   },
 
   populateReview() {
+    document.getElementById('revSessionSummary').innerHTML = this.sessionMarkup();
     document.getElementById('revCategory').textContent = this.formData.category;
     document.getElementById('revDivision').textContent = this.formData.division;
     document.getElementById('revAthleteName').textContent = this.formData.athleteName;
@@ -236,6 +206,13 @@ const RegistrationModule = {
 
  async submitRegistration(e) {
   e.preventDefault();
+  if (this.submitting) return;
+  if (!ALLIANCE_REGISTRATION_ENDPOINT) {
+    alert('Online registration is being updated. Please contact info@alliancevbc.ca to register.');
+    return;
+  }
+  this.submitting = true;
+  this.requestId = this.requestId || crypto.randomUUID();
 
   const submitBtn =
     document.getElementById("regSubmitBtn");
@@ -247,6 +224,8 @@ const RegistrationModule = {
 
   const payload = new URLSearchParams({
     formType: "registration",
+    programId: this.selectedCategory,
+    requestId: this.requestId,
 
     category:
       this.formData.category || "",
@@ -283,15 +262,20 @@ const RegistrationModule = {
   });
 
   try {
-    await fetch(
+    const response = await fetch(
       ALLIANCE_REGISTRATION_ENDPOINT,
       {
         method: "POST",
-        mode: "no-cors",
+
         body: payload
       }
     );
 
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.error || 'Registration was not saved.');
+    document.getElementById('confirmationEmailStatus').textContent = result.emailStatus === 'sent'
+      ? 'Your confirmation email has been sent. Please check your inbox and spam folder.'
+      : 'Your confirmation email is pending. Please contact info@alliancevbc.ca if it does not arrive.';
     this.currentStep = 5;
     this.renderStep(5);
 
@@ -317,6 +301,8 @@ const RegistrationModule = {
 
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
+  } finally {
+    this.submitting = false;
   }
 }
 };

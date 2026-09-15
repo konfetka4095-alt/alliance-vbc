@@ -2345,3 +2345,30 @@
     margin-top: 0.15rem;
   }
 }
+
+/* Six program choices using the existing Alliance registration style. */
+.reg-option-card { text-align:left; font-family:var(--font-sans); width:100%; }
+.reg-option-card > span { display:block; }
+.reg-program-kind { font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--text-light-muted); margin-bottom:6px; }
+.reg-option-card:focus-visible { outline:3px solid var(--color-brand-pink); outline-offset:3px; }
+#registrationModal .reg-option-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#registrationModal .reg-option-name { font-family:var(--font-display); font-size:1.3rem; text-transform:uppercase; }
+#registrationModal .reg-option-desc { line-height:1.65; }
+.registration-session-summary { padding:18px; background:var(--color-bg-light); border:1px solid var(--color-border-light); border-top:3px solid var(--color-brand-pink); border-radius:var(--radius-md); margin-bottom:20px; color:var(--text-light-primary); font-size:.875rem; line-height:1.65; }
+.registration-session-summary > strong { font-family:var(--font-display); font-size:1.4rem; text-transform:uppercase; }
+.registration-session-summary p { margin:8px 0; }
+.entrance-note { padding:10px 0; color:var(--color-brand-pink); font-weight:700; font-size:.85rem; }
+.tryout-schedule-table [data-label="Location"] { line-height:1.65; }
+.tryout-schedule-table [data-label="Location"] strong { color:var(--color-brand-pink); font-size:.8rem; }
+#registrationModal .modal-close-btn { flex-shrink:0; }
+html { overflow-x:clip; }
+@media(max-width:700px) {
+ #registrationModal .reg-option-grid { grid-template-columns:1fr; }
+ #registrationModal .modal-header { padding:18px 20px; gap:12px; }
+ #registrationModal .modal-title { font-size:1.35rem; line-height:1.2; }
+ #registrationModal .modal-body { padding:20px; }
+ .footer-bottom-slogan { white-space:normal; overflow-wrap:anywhere; }
+}
+
+.tryout-location-details { min-width:0; }
+.tryout-schedule-table [data-label="Time"] { white-space:nowrap; }
