@@ -1,3 +1,4 @@
+```javascript
 const ALLIANCE_REGISTRATION_ENDPOINT =
   window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
 
@@ -927,7 +928,8 @@ const RegistrationModule = {
 
 
   /* =======================================================
-     SUBMIT REGISTRATION — SAFARI SAFE
+     SUBMIT REGISTRATION
+     SAFARI-SAFE VERSION
      ======================================================= */
 
   async submitRegistration(e) {
@@ -935,16 +937,12 @@ const RegistrationModule = {
     e.preventDefault();
 
 
-    if (
-      this.submitting
-    ) {
+    if (this.submitting) {
       return;
     }
 
 
-    if (
-      !ALLIANCE_REGISTRATION_ENDPOINT
-    ) {
+    if (!ALLIANCE_REGISTRATION_ENDPOINT) {
 
       alert(
         "Online registration is temporarily unavailable. Please contact info@alliancevbc.ca."
@@ -954,9 +952,6 @@ const RegistrationModule = {
     }
 
 
-    /*
-     * Make sure we have a valid program.
-     */
     if (
       !window.ALLIANCE_PROGRAMS?.[
         this.selectedCategory
@@ -976,10 +971,10 @@ const RegistrationModule = {
 
 
     /*
-     * One ID is used for the entire submission.
-     * If the request has to be retried, the backend
-     * can identify it as the same registration.
+     * Create one registration ID
+     * for the entire submission.
      */
+
     this.requestId =
       this.requestId ||
       (
@@ -1021,8 +1016,9 @@ const RegistrationModule = {
 
 
     /*
-     * Build registration payload.
+     * Build registration data.
      */
+
     const data = {
 
       formType:
@@ -1084,19 +1080,9 @@ const RegistrationModule = {
     };
 
 
-    /*
-     * =====================================================
-     * IMPORTANT SAFARI FIX
-     *
-     * We do NOT use fetch().
-     *
-     * Safari can reject or mishandle the cross-origin
-     * Apps Script response after the redirect.
-     *
-     * A normal HTML form POST does not require JavaScript
-     * to read the cross-origin response.
-     * =====================================================
-     */
+    /* =====================================================
+       CREATE HIDDEN IFRAME
+       ===================================================== */
 
     const iframeName =
       "allianceRegistrationFrame_" +
@@ -1139,14 +1125,10 @@ const RegistrationModule = {
     );
 
 
-    document.body.appendChild(
-      iframe
-    );
+    /* =====================================================
+       CREATE REAL HTML FORM
+       ===================================================== */
 
-
-    /*
-     * Create a real HTML form.
-     */
     const form =
       document.createElement(
         "form"
@@ -1196,21 +1178,30 @@ const RegistrationModule = {
     );
 
 
+    /*
+     * Append both elements before submitting.
+     */
+
+    document.body.appendChild(
+      iframe
+    );
+
     document.body.appendChild(
       form
     );
 
 
-    /*
-     * Safari / Apps Script response handling:
-     *
-     * We do not attempt to inspect the response.
-     *
-     * The registration backend already saves the
-     * registration before returning.
-     */
+    /* =====================================================
+       SUBMISSION STATE
+       ===================================================== */
+
     let finished =
       false;
+
+    let submitted =
+      false;
+
+    let fallbackTimer = null;
 
 
     const cleanup =
@@ -1246,19 +1237,24 @@ const RegistrationModule = {
       };
 
 
-    const showSuccess =
-      () => {
+    const finishSuccess =
+      message => {
 
-        if (
-          finished
-        ) {
-
+        if (finished) {
           return;
         }
 
 
         finished =
           true;
+
+
+        if (fallbackTimer) {
+
+          clearTimeout(
+            fallbackTimer
+          );
+        }
 
 
         this.submitting =
@@ -1268,6 +1264,7 @@ const RegistrationModule = {
         /*
          * Show actual athlete name.
          */
+
         const successName =
           document.getElementById(
             "confirmAthleteName"
@@ -1282,8 +1279,9 @@ const RegistrationModule = {
 
 
         /*
-         * Email message.
+         * Show confirmation message.
          */
+
         const statusElement =
           document.getElementById(
             "confirmationEmailStatus"
@@ -1293,13 +1291,14 @@ const RegistrationModule = {
         if (statusElement) {
 
           statusElement.textContent =
-            "Your registration has been saved. Your confirmation email is being processed.";
+            message;
         }
 
 
         /*
          * Move to success screen.
          */
+
         this.currentStep =
           5;
 
@@ -1323,134 +1322,84 @@ const RegistrationModule = {
       };
 
 
-    /*
-     * Once the iframe receives the response,
-     * the server request has completed.
-     */
-    iframe.addEventListener(
-      "load",
+    /* =====================================================
+       IFRAME LOAD HANDLER
+       ===================================================== */
+
+    const handleIframeLoad =
       () => {
 
-        showSuccess();
+        /*
+         * Ignore the iframe's initial blank load.
+         */
 
-      },
-      {
-        once: true
-      }
+        if (!submitted) {
+          return;
+        }
+
+
+        finishSuccess(
+          "Your registration has been saved. Your confirmation email is being processed."
+        );
+      };
+
+
+    iframe.addEventListener(
+      "load",
+      handleIframeLoad
     );
 
 
-    /*
-     * Safety fallback.
-     *
-     * The backend saves the registration before
-     * the response is returned, so after 10 seconds
-     * we treat the registration as potentially saved
-     * rather than forcing another submission.
-     */
-    const fallbackTimer =
-      setTimeout(
-        () => {
+    /* =====================================================
+       SUBMIT
+       ===================================================== */
 
-          if (
-            finished
-          ) {
+    try {
 
-            return;
-          }
+      /*
+       * Mark as submitted immediately before
+       * the actual form submission.
+       */
+
+      submitted =
+        true;
 
 
-          finished =
-            true;
+      form.submit();
 
 
-          this.submitting =
-            false;
+      /*
+       * Safari fallback.
+       *
+       * The Apps Script backend saves the registration
+       * before returning. We therefore avoid resubmitting.
+       */
+
+      fallbackTimer =
+        setTimeout(
+          () => {
+
+            if (finished) {
+              return;
+            }
 
 
-          const successName =
-            document.getElementById(
-              "confirmAthleteName"
+            finishSuccess(
+              "Your registration has been submitted and is being processed. Please check your email shortly."
             );
 
+          },
+          10000
+        );
 
-          if (successName) {
+    } catch (error) {
 
-            successName.textContent =
-              this.formData
-                .athleteName;
-          }
-
-
-          const statusElement =
-            document.getElementById(
-              "confirmationEmailStatus"
-            );
-
-
-          if (statusElement) {
-
-            statusElement.textContent =
-              "Your registration has been submitted and is being processed. Please check your email shortly.";
-          }
-
-
-          this.currentStep =
-            5;
-
-
-          this.renderStep(
-            5
-          );
-
-
-          if (submitBtn) {
-
-            submitBtn.disabled =
-              false;
-
-            submitBtn.innerHTML =
-              originalText;
-          }
-
-
-          cleanup();
-
-        },
-        10000
-      );
-
-
-    /*
-     * Cancel fallback when load succeeds.
-     */
-    iframe.addEventListener(
-      "load",
-      () => {
+      if (fallbackTimer) {
 
         clearTimeout(
           fallbackTimer
         );
-
-      },
-      {
-        once: true
       }
-    );
-
-
-    /*
-     * Submit the actual form.
-     */
-    try {
-
-      form.submit();
-
-    } catch (error) {
-
-      clearTimeout(
-        fallbackTimer
-      );
 
 
       console.error(
@@ -1512,3 +1461,4 @@ function escapeHtml_(value) {
 
 window.RegistrationModule =
   RegistrationModule;
+```
