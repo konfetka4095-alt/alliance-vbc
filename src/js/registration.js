@@ -46,7 +46,7 @@ const RegistrationModule = {
 
   bindEvents() {
 
-    /* Open registration */
+    /* Open registration buttons */
 
     document
       .querySelectorAll("[data-open-reg]")
@@ -59,13 +59,9 @@ const RegistrationModule = {
             e.preventDefault();
 
             const preselected =
-              btn.getAttribute(
-                "data-program-type"
-              ) || "15u";
+              btn.getAttribute("data-program-type") || "15u";
 
-            this.openModal(
-              preselected
-            );
+            this.openModal(preselected);
           }
         );
       });
@@ -74,14 +70,10 @@ const RegistrationModule = {
     /* Close modal */
 
     const closeBtn =
-      document.getElementById(
-        "regModalClose"
-      );
+      document.getElementById("regModalClose");
 
     const modal =
-      document.getElementById(
-        "registrationModal"
-      );
+      document.getElementById("registrationModal");
 
 
     if (closeBtn) {
@@ -99,10 +91,7 @@ const RegistrationModule = {
         "click",
         e => {
 
-          if (
-            e.target === modal
-          ) {
-
+          if (e.target === modal) {
             this.closeModal();
           }
         }
@@ -113,19 +102,13 @@ const RegistrationModule = {
     /* Wizard buttons */
 
     const nextBtn =
-      document.getElementById(
-        "regNextBtn"
-      );
+      document.getElementById("regNextBtn");
 
     const prevBtn =
-      document.getElementById(
-        "regPrevBtn"
-      );
+      document.getElementById("regPrevBtn");
 
     const submitBtn =
-      document.getElementById(
-        "regSubmitBtn"
-      );
+      document.getElementById("regSubmitBtn");
 
 
     if (nextBtn) {
@@ -150,8 +133,7 @@ const RegistrationModule = {
 
       submitBtn.addEventListener(
         "click",
-        e =>
-          this.submitRegistration(e)
+        e => this.submitRegistration(e)
       );
     }
 
@@ -159,9 +141,7 @@ const RegistrationModule = {
     /* Category cards */
 
     document
-      .querySelectorAll(
-        ".reg-cat-card"
-      )
+      .querySelectorAll(".reg-cat-card")
       .forEach(card => {
 
         card.addEventListener(
@@ -169,39 +149,26 @@ const RegistrationModule = {
           () => {
 
             document
-              .querySelectorAll(
-                ".reg-cat-card"
-              )
-              .forEach(
-                c =>
-                  c.classList.remove(
-                    "selected"
-                  )
-              );
+              .querySelectorAll(".reg-cat-card")
+              .forEach(c => {
+                c.classList.remove("selected");
+              });
 
 
-            card.classList.add(
-              "selected"
-            );
+            card.classList.add("selected");
 
 
             const category =
-              card.getAttribute(
-                "data-cat-value"
-              );
+              card.getAttribute("data-cat-value");
 
 
             if (category) {
-
-              this.selectedCategory =
-                category;
+              this.selectedCategory = category;
             }
 
 
             const program =
-              window.ALLIANCE_PROGRAMS?.[
-                this.selectedCategory
-              ];
+              window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
 
 
             if (program) {
@@ -214,27 +181,20 @@ const RegistrationModule = {
             }
 
 
-            /*
-             * A new category receives a new
-             * registration ID.
-             */
-            this.requestId =
-              null;
+            /* New category = new registration ID */
+
+            this.requestId = null;
 
 
             document
-              .querySelectorAll(
-                ".reg-cat-card"
-              )
-              .forEach(
-                c =>
-                  c.setAttribute(
-                    "aria-pressed",
-                    String(
-                      c === card
-                    )
-                  )
-              );
+              .querySelectorAll(".reg-cat-card")
+              .forEach(c => {
+
+                c.setAttribute(
+                  "aria-pressed",
+                  String(c === card)
+                );
+              });
 
 
             this.updateDivisions();
@@ -248,39 +208,25 @@ const RegistrationModule = {
      OPEN MODAL
      ======================================================= */
 
-  openModal(
-    categoryKey = "15u"
-  ) {
+  openModal(categoryKey = "15u") {
 
-    this.currentStep =
-      1;
+    this.currentStep = 1;
 
-    this.submitting =
-      false;
+    this.submitting = false;
 
-    this.requestId =
-      null;
+    this.requestId = null;
 
 
-    if (
-      !window.ALLIANCE_PROGRAMS?.[
-        categoryKey
-      ]
-    ) {
-
-      categoryKey =
-        "15u";
+    if (!window.ALLIANCE_PROGRAMS?.[categoryKey]) {
+      categoryKey = "15u";
     }
 
 
-    this.selectedCategory =
-      categoryKey;
+    this.selectedCategory = categoryKey;
 
 
     const program =
-      window.ALLIANCE_PROGRAMS?.[
-        categoryKey
-      ];
+      window.ALLIANCE_PROGRAMS?.[categoryKey];
 
 
     if (program) {
@@ -294,15 +240,12 @@ const RegistrationModule = {
 
 
     const submitBtn =
-      document.getElementById(
-        "regSubmitBtn"
-      );
+      document.getElementById("regSubmitBtn");
 
 
     if (submitBtn) {
 
-      submitBtn.disabled =
-        false;
+      submitBtn.disabled = false;
 
       submitBtn.innerHTML =
         "Complete Registration ✓";
@@ -310,64 +253,42 @@ const RegistrationModule = {
 
 
     document
-      .querySelectorAll(
-        ".reg-cat-card"
-      )
-      .forEach(
-        card => {
+      .querySelectorAll(".reg-cat-card")
+      .forEach(card => {
 
-          const selected =
-            card.getAttribute(
-              "data-cat-value"
-            ) ===
-            categoryKey;
+        const selected =
+          card.getAttribute("data-cat-value") === categoryKey;
 
 
-          card.setAttribute(
-            "aria-pressed",
-            String(selected)
-          );
+        card.setAttribute(
+          "aria-pressed",
+          String(selected)
+        );
 
 
-          if (selected) {
-
-            card.classList.add(
-              "selected"
-            );
-
-          } else {
-
-            card.classList.remove(
-              "selected"
-            );
-          }
+        if (selected) {
+          card.classList.add("selected");
+        } else {
+          card.classList.remove("selected");
         }
-      );
+      });
 
 
     this.updateDivisions();
 
-    this.renderStep(
-      1
-    );
+    this.renderStep(1);
 
 
     const modal =
-      document.getElementById(
-        "registrationModal"
-      );
+      document.getElementById("registrationModal");
 
 
     if (modal) {
-
-      modal.classList.add(
-        "open"
-      );
+      modal.classList.add("open");
     }
 
 
-    document.body.style.overflow =
-      "hidden";
+    document.body.style.overflow = "hidden";
   },
 
 
@@ -377,29 +298,21 @@ const RegistrationModule = {
 
   closeModal() {
 
-    if (
-      this.submitting
-    ) {
+    if (this.submitting) {
       return;
     }
 
 
     const modal =
-      document.getElementById(
-        "registrationModal"
-      );
+      document.getElementById("registrationModal");
 
 
     if (modal) {
-
-      modal.classList.remove(
-        "open"
-      );
+      modal.classList.remove("open");
     }
 
 
-    document.body.style.overflow =
-      "";
+    document.body.style.overflow = "";
   },
 
 
@@ -409,34 +322,23 @@ const RegistrationModule = {
 
   nextStep() {
 
-    /* STEP 1 → STEP 2 */
+    /* STEP 1 -> STEP 2 */
 
-    if (
-      this.currentStep ===
-      1
-    ) {
+    if (this.currentStep === 1) {
 
-      this.currentStep =
-        2;
+      this.currentStep = 2;
     }
 
 
-    /* STEP 2 → STEP 3 */
+    /* STEP 2 -> STEP 3 */
 
-    else if (
-      this.currentStep ===
-      2
-    ) {
+    else if (this.currentStep === 2) {
 
       const nameInput =
-        document.getElementById(
-          "regAthleteName"
-        );
+        document.getElementById("regAthleteName");
 
       const dobInput =
-        document.getElementById(
-          "regAthleteDob"
-        );
+        document.getElementById("regAthleteDob");
 
 
       const athleteName =
@@ -451,10 +353,7 @@ const RegistrationModule = {
           : "";
 
 
-      if (
-        !athleteName ||
-        !athleteDob
-      ) {
+      if (!athleteName || !athleteDob) {
 
         alert(
           "Please provide the athlete's full name and date of birth."
@@ -472,73 +371,49 @@ const RegistrationModule = {
 
 
       const division =
-        document.getElementById(
-          "regDivisionSelect"
-        );
+        document.getElementById("regDivisionSelect");
 
       const position =
-        document.getElementById(
-          "regAthletePos"
-        );
+        document.getElementById("regAthletePos");
 
       const experience =
-        document.getElementById(
-          "regAthleteExp"
-        );
+        document.getElementById("regAthleteExp");
 
 
       if (division) {
-
-        this.formData.division =
-          division.value;
+        this.formData.division = division.value;
       }
 
 
       if (position) {
-
-        this.formData.athletePosition =
-          position.value;
+        this.formData.athletePosition = position.value;
       }
 
 
       if (experience) {
-
-        this.formData.experienceYears =
-          experience.value;
+        this.formData.experienceYears = experience.value;
       }
 
 
-      this.currentStep =
-        3;
+      this.currentStep = 3;
     }
 
 
-    /* STEP 3 → STEP 4 */
+    /* STEP 3 -> STEP 4 */
 
-    else if (
-      this.currentStep ===
-      3
-    ) {
+    else if (this.currentStep === 3) {
 
       const parentNameInput =
-        document.getElementById(
-          "regParentName"
-        );
+        document.getElementById("regParentName");
 
       const parentEmailInput =
-        document.getElementById(
-          "regParentEmail"
-        );
+        document.getElementById("regParentEmail");
 
       const parentPhoneInput =
-        document.getElementById(
-          "regParentPhone"
-        );
+        document.getElementById("regParentPhone");
 
       const commentsInput =
-        document.getElementById(
-          "regComments"
-        );
+        document.getElementById("regComments");
 
 
       const parentName =
@@ -603,15 +478,11 @@ const RegistrationModule = {
 
       this.populateReview();
 
-
-      this.currentStep =
-        4;
+      this.currentStep = 4;
     }
 
 
-    this.renderStep(
-      this.currentStep
-    );
+    this.renderStep(this.currentStep);
   },
 
 
@@ -628,9 +499,7 @@ const RegistrationModule = {
 
       this.currentStep--;
 
-      this.renderStep(
-        this.currentStep
-      );
+      this.renderStep(this.currentStep);
     }
   },
 
@@ -648,33 +517,33 @@ const RegistrationModule = {
 
 
     if (container) {
-
-      container.scrollTop =
-        0;
+      container.scrollTop = 0;
     }
 
 
     document
-      .querySelectorAll(
-        ".reg-step-view"
-      )
-      .forEach(
-        view => {
+      .querySelectorAll(".reg-step-view")
+      .forEach(view => {
 
-          view.style.display =
-            "none";
-        }
+        view.style.display = "none";
+      });
+
+
+    /*
+     * IMPORTANT:
+     * No template literal here.
+     * This avoids the Safari parsing error.
+     */
+
+    const currentView =
+      document.getElementById(
+        "regStepView" + step
       );
 
-const currentView =
-  document.getElementById(
-    "regStepView" + step
-  );
 
     if (currentView) {
 
-      currentView.style.display =
-        "block";
+      currentView.style.display = "block";
     }
 
 
@@ -686,7 +555,7 @@ const currentView =
 
       const indicator =
         document.getElementById(
-          `regInd${i}`
+          "regInd" + i
         );
 
 
@@ -701,46 +570,31 @@ const currentView =
       );
 
 
-      if (
-        i === step
-      ) {
+      if (i === step) {
 
-        indicator.classList.add(
-          "active"
-        );
+        indicator.classList.add("active");
 
-      } else if (
-        i < step
-      ) {
+      } else if (i < step) {
 
-        indicator.classList.add(
-          "completed"
-        );
+        indicator.classList.add("completed");
       }
     }
 
 
     const prevBtn =
-      document.getElementById(
-        "regPrevBtn"
-      );
+      document.getElementById("regPrevBtn");
 
     const nextBtn =
-      document.getElementById(
-        "regNextBtn"
-      );
+      document.getElementById("regNextBtn");
 
     const submitBtn =
-      document.getElementById(
-        "regSubmitBtn"
-      );
+      document.getElementById("regSubmitBtn");
 
 
     if (prevBtn) {
 
       prevBtn.style.display =
-        step === 1 ||
-        step === 5
+        step === 1 || step === 5
           ? "none"
           : "inline-flex";
     }
@@ -772,32 +626,42 @@ const currentView =
   sessionMarkup() {
 
     const program =
-      window.ALLIANCE_PROGRAMS?.[
-        this.selectedCategory
-      ];
+      window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
 
 
     if (!program) {
-
       return "";
     }
 
 
     return (
+      "<strong>" +
+      escapeHtml_(program.name) +
+      "</strong>" +
 
-      `<strong>${escapeHtml_(program.name)}</strong>` +
+      "<p>" +
+      escapeHtml_(program.date) +
+      "<br>" +
+      escapeHtml_(program.time) +
+      "</p>" +
 
-      `<p>${escapeHtml_(program.date)}<br>${escapeHtml_(program.time)}</p>` +
-
-      `<p>${escapeHtml_(program.venue)}<br>${escapeHtml_(program.address)}</p>` +
+      "<p>" +
+      escapeHtml_(program.venue) +
+      "<br>" +
+      escapeHtml_(program.address) +
+      "</p>" +
 
       (
         program.entrance
-          ? `<div class="entrance-note">${escapeHtml_(program.entrance)}</div>`
+          ? "<div class=\"entrance-note\">" +
+            escapeHtml_(program.entrance) +
+            "</div>"
           : ""
       ) +
 
-      `<p>${escapeHtml_(program.payment)}</p>`
+      "<p>" +
+      escapeHtml_(program.payment) +
+      "</p>"
     );
   },
 
@@ -809,9 +673,7 @@ const currentView =
   updateDivisions() {
 
     const program =
-      window.ALLIANCE_PROGRAMS?.[
-        this.selectedCategory
-      ];
+      window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
 
 
     if (!program) {
@@ -820,9 +682,7 @@ const currentView =
 
 
     const select =
-      document.getElementById(
-        "regDivisionSelect"
-      );
+      document.getElementById("regDivisionSelect");
 
 
     if (select) {
@@ -844,9 +704,7 @@ const currentView =
 
 
     const summary =
-      document.getElementById(
-        "regSessionSummary"
-      );
+      document.getElementById("regSessionSummary");
 
 
     if (summary) {
@@ -864,9 +722,7 @@ const currentView =
   populateReview() {
 
     const summary =
-      document.getElementById(
-        "revSessionSummary"
-      );
+      document.getElementById("revSessionSummary");
 
 
     if (summary) {
@@ -904,15 +760,11 @@ const currentView =
     };
 
 
-    Object.entries(
-      fields
-    ).forEach(
+    Object.entries(fields).forEach(
       ([id, value]) => {
 
         const element =
-          document.getElementById(
-            id
-          );
+          document.getElementById(id);
 
 
         if (element) {
@@ -927,7 +779,7 @@ const currentView =
 
   /* =======================================================
      SUBMIT REGISTRATION
-     SAFARI-SAFE VERSION
+     SAFARI-SAFE
      ======================================================= */
 
   async submitRegistration(e) {
@@ -964,21 +816,18 @@ const currentView =
     }
 
 
-    this.submitting =
-      true;
+    this.submitting = true;
 
 
     /*
-     * Create one registration ID
-     * for the entire submission.
+     * Create one registration ID.
      */
 
     this.requestId =
       this.requestId ||
       (
         window.crypto &&
-        typeof window.crypto.randomUUID ===
-          "function"
+        typeof window.crypto.randomUUID === "function"
 
           ? window.crypto.randomUUID()
 
@@ -992,9 +841,7 @@ const currentView =
 
 
     const submitBtn =
-      document.getElementById(
-        "regSubmitBtn"
-      );
+      document.getElementById("regSubmitBtn");
 
 
     const originalText =
@@ -1013,9 +860,9 @@ const currentView =
     }
 
 
-    /*
-     * Build registration data.
-     */
+    /* =====================================================
+       BUILD PAYLOAD
+       ===================================================== */
 
     const data = {
 
@@ -1029,46 +876,34 @@ const currentView =
         this.requestId,
 
       category:
-        this.formData.category ||
-        "",
+        this.formData.category || "",
 
       division:
-        this.formData.division ||
-        "",
+        this.formData.division || "",
 
       athleteName:
-        this.formData.athleteName ||
-        "",
+        this.formData.athleteName || "",
 
       athleteDob:
-        this.formData.athleteDob ||
-        "",
+        this.formData.athleteDob || "",
 
       athletePosition:
-        this.formData
-          .athletePosition ||
-        "",
+        this.formData.athletePosition || "",
 
       experienceYears:
-        this.formData
-          .experienceYears ||
-        "",
+        this.formData.experienceYears || "",
 
       parentName:
-        this.formData.parentName ||
-        "",
+        this.formData.parentName || "",
 
       parentEmail:
-        this.formData.parentEmail ||
-        "",
+        this.formData.parentEmail || "",
 
       parentPhone:
-        this.formData.parentPhone ||
-        "",
+        this.formData.parentPhone || "",
 
       comments:
-        this.formData.comments ||
-        "",
+        this.formData.comments || "",
 
       website:
         "",
@@ -1079,7 +914,7 @@ const currentView =
 
 
     /* =====================================================
-       CREATE HIDDEN IFRAME
+       HIDDEN IFRAME
        ===================================================== */
 
     const iframeName =
@@ -1088,9 +923,7 @@ const currentView =
 
 
     const iframe =
-      document.createElement(
-        "iframe"
-      );
+      document.createElement("iframe");
 
 
     iframe.name =
@@ -1124,13 +957,11 @@ const currentView =
 
 
     /* =====================================================
-       CREATE REAL HTML FORM
+       REAL HTML FORM
        ===================================================== */
 
     const form =
-      document.createElement(
-        "form"
-      );
+      document.createElement("form");
 
 
     form.method =
@@ -1146,15 +977,11 @@ const currentView =
       "none";
 
 
-    Object.entries(
-      data
-    ).forEach(
+    Object.entries(data).forEach(
       ([name, value]) => {
 
         const input =
-          document.createElement(
-            "input"
-          );
+          document.createElement("input");
 
 
         input.type =
@@ -1164,29 +991,22 @@ const currentView =
           name;
 
         input.value =
-          String(
-            value
-          );
+          String(value);
 
 
-        form.appendChild(
-          input
-        );
+        form.appendChild(input);
       }
     );
 
 
     /*
-     * Append both elements before submitting.
+     * IMPORTANT:
+     * Add iframe and form to document before submitting.
      */
 
-    document.body.appendChild(
-      iframe
-    );
+    document.body.appendChild(iframe);
 
-    document.body.appendChild(
-      form
-    );
+    document.body.appendChild(form);
 
 
     /* =====================================================
@@ -1199,7 +1019,8 @@ const currentView =
     let submitted =
       false;
 
-    let fallbackTimer = null;
+    let fallbackTimer =
+      null;
 
 
     const cleanup =
@@ -1260,7 +1081,7 @@ const currentView =
 
 
         /*
-         * Show actual athlete name.
+         * Show athlete name.
          */
 
         const successName =
@@ -1277,7 +1098,7 @@ const currentView =
 
 
         /*
-         * Show confirmation message.
+         * Show status.
          */
 
         const statusElement =
@@ -1294,16 +1115,13 @@ const currentView =
 
 
         /*
-         * Move to success screen.
+         * Show success page.
          */
 
         this.currentStep =
           5;
 
-
-        this.renderStep(
-          5
-        );
+        this.renderStep(5);
 
 
         if (submitBtn) {
@@ -1321,14 +1139,14 @@ const currentView =
 
 
     /* =====================================================
-       IFRAME LOAD HANDLER
+       IFRAME LOAD
        ===================================================== */
 
     const handleIframeLoad =
       () => {
 
         /*
-         * Ignore the iframe's initial blank load.
+         * Ignore any load before submission.
          */
 
         if (!submitted) {
@@ -1349,15 +1167,10 @@ const currentView =
 
 
     /* =====================================================
-       SUBMIT
+       SUBMIT FORM
        ===================================================== */
 
     try {
-
-      /*
-       * Mark as submitted immediately before
-       * the actual form submission.
-       */
 
       submitted =
         true;
@@ -1369,8 +1182,8 @@ const currentView =
       /*
        * Safari fallback.
        *
-       * The Apps Script backend saves the registration
-       * before returning. We therefore avoid resubmitting.
+       * The backend saves first, then processes email
+       * separately, so do NOT submit again.
        */
 
       fallbackTimer =
