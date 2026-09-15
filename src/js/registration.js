@@ -1,13 +1,20 @@
 ```javascript
-const ALLIANCE_REGISTRATION_ENDPOINT =
-  window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
+var ALLIANCE_REGISTRATION_ENDPOINT = "";
+
+if (
+  window.ALLIANCE_REGISTRATION_CONFIG &&
+  window.ALLIANCE_REGISTRATION_CONFIG.endpoint
+) {
+  ALLIANCE_REGISTRATION_ENDPOINT =
+    window.ALLIANCE_REGISTRATION_CONFIG.endpoint;
+}
 
 
 /* =========================================================
    REGISTRATION MODULE
    ========================================================= */
 
-const RegistrationModule = {
+var RegistrationModule = {
 
   currentStep: 1,
 
@@ -35,7 +42,7 @@ const RegistrationModule = {
      INIT
      ======================================================= */
 
-  init() {
+  init: function () {
     this.bindEvents();
   },
 
@@ -44,35 +51,43 @@ const RegistrationModule = {
      EVENTS
      ======================================================= */
 
-  bindEvents() {
+  bindEvents: function () {
+
+    var self = this;
+
 
     /* Open registration buttons */
 
-    document
-      .querySelectorAll("[data-open-reg]")
-      .forEach(btn => {
+    var openButtons =
+      document.querySelectorAll("[data-open-reg]");
 
-        btn.addEventListener(
-          "click",
-          e => {
 
-            e.preventDefault();
+    for (var i = 0; i < openButtons.length; i++) {
 
-            const preselected =
-              btn.getAttribute("data-program-type") || "15u";
+      (function (btn) {
 
-            this.openModal(preselected);
-          }
-        );
-      });
+        btn.addEventListener("click", function (e) {
+
+          e.preventDefault();
+
+          var preselected =
+            btn.getAttribute("data-program-type") ||
+            "15u";
+
+          self.openModal(preselected);
+
+        });
+
+      })(openButtons[i]);
+    }
 
 
     /* Close modal */
 
-    const closeBtn =
+    var closeBtn =
       document.getElementById("regModalClose");
 
-    const modal =
+    var modal =
       document.getElementById("registrationModal");
 
 
@@ -80,7 +95,9 @@ const RegistrationModule = {
 
       closeBtn.addEventListener(
         "click",
-        () => this.closeModal()
+        function () {
+          self.closeModal();
+        }
       );
     }
 
@@ -89,11 +106,12 @@ const RegistrationModule = {
 
       modal.addEventListener(
         "click",
-        e => {
+        function (e) {
 
           if (e.target === modal) {
-            this.closeModal();
+            self.closeModal();
           }
+
         }
       );
     }
@@ -101,13 +119,13 @@ const RegistrationModule = {
 
     /* Wizard buttons */
 
-    const nextBtn =
+    var nextBtn =
       document.getElementById("regNextBtn");
 
-    const prevBtn =
+    var prevBtn =
       document.getElementById("regPrevBtn");
 
-    const submitBtn =
+    var submitBtn =
       document.getElementById("regSubmitBtn");
 
 
@@ -115,7 +133,9 @@ const RegistrationModule = {
 
       nextBtn.addEventListener(
         "click",
-        () => this.nextStep()
+        function () {
+          self.nextStep();
+        }
       );
     }
 
@@ -124,7 +144,9 @@ const RegistrationModule = {
 
       prevBtn.addEventListener(
         "click",
-        () => this.prevStep()
+        function () {
+          self.prevStep();
+        }
       );
     }
 
@@ -133,74 +155,86 @@ const RegistrationModule = {
 
       submitBtn.addEventListener(
         "click",
-        e => this.submitRegistration(e)
+        function (e) {
+          self.submitRegistration(e);
+        }
       );
     }
 
 
     /* Category cards */
 
-    document
-      .querySelectorAll(".reg-cat-card")
-      .forEach(card => {
+    var categoryCards =
+      document.querySelectorAll(".reg-cat-card");
+
+
+    for (var j = 0; j < categoryCards.length; j++) {
+
+      (function (card) {
 
         card.addEventListener(
           "click",
-          () => {
+          function () {
 
-            document
-              .querySelectorAll(".reg-cat-card")
-              .forEach(c => {
-                c.classList.remove("selected");
-              });
+            var cards =
+              document.querySelectorAll(".reg-cat-card");
+
+
+            for (var x = 0; x < cards.length; x++) {
+
+              cards[x].classList.remove("selected");
+
+            }
 
 
             card.classList.add("selected");
 
 
-            const category =
+            var category =
               card.getAttribute("data-cat-value");
 
 
             if (category) {
-              this.selectedCategory = category;
+              self.selectedCategory = category;
             }
 
 
-            const program =
-              window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
+            var programs =
+              window.ALLIANCE_PROGRAMS || {};
+
+            var program =
+              programs[self.selectedCategory];
 
 
             if (program) {
 
-              this.formData.category =
+              self.formData.category =
                 program.category;
 
-              this.formData.division =
+              self.formData.division =
                 program.name;
             }
 
 
-            /* New category = new registration ID */
-
-            this.requestId = null;
+            self.requestId = null;
 
 
-            document
-              .querySelectorAll(".reg-cat-card")
-              .forEach(c => {
+            for (var y = 0; y < cards.length; y++) {
 
-                c.setAttribute(
-                  "aria-pressed",
-                  String(c === card)
-                );
-              });
+              cards[y].setAttribute(
+                "aria-pressed",
+                String(cards[y] === card)
+              );
+            }
 
 
-            this.updateDivisions();
+            self.updateDivisions();
+
           }
         );
-      });
+
+      })(categoryCards[j]);
+    }
   },
 
 
@@ -208,7 +242,12 @@ const RegistrationModule = {
      OPEN MODAL
      ======================================================= */
 
-  openModal(categoryKey = "15u") {
+  openModal: function (categoryKey) {
+
+    if (!categoryKey) {
+      categoryKey = "15u";
+    }
+
 
     this.currentStep = 1;
 
@@ -217,16 +256,21 @@ const RegistrationModule = {
     this.requestId = null;
 
 
-    if (!window.ALLIANCE_PROGRAMS?.[categoryKey]) {
+    var programs =
+      window.ALLIANCE_PROGRAMS || {};
+
+
+    if (!programs[categoryKey]) {
       categoryKey = "15u";
     }
 
 
-    this.selectedCategory = categoryKey;
+    this.selectedCategory =
+      categoryKey;
 
 
-    const program =
-      window.ALLIANCE_PROGRAMS?.[categoryKey];
+    var program =
+      programs[categoryKey];
 
 
     if (program) {
@@ -239,7 +283,7 @@ const RegistrationModule = {
     }
 
 
-    const submitBtn =
+    var submitBtn =
       document.getElementById("regSubmitBtn");
 
 
@@ -252,26 +296,29 @@ const RegistrationModule = {
     }
 
 
-    document
-      .querySelectorAll(".reg-cat-card")
-      .forEach(card => {
-
-        const selected =
-          card.getAttribute("data-cat-value") === categoryKey;
+    var cards =
+      document.querySelectorAll(".reg-cat-card");
 
 
-        card.setAttribute(
-          "aria-pressed",
-          String(selected)
-        );
+    for (var i = 0; i < cards.length; i++) {
+
+      var selected =
+        cards[i].getAttribute("data-cat-value") ===
+        categoryKey;
 
 
-        if (selected) {
-          card.classList.add("selected");
-        } else {
-          card.classList.remove("selected");
-        }
-      });
+      cards[i].setAttribute(
+        "aria-pressed",
+        String(selected)
+      );
+
+
+      if (selected) {
+        cards[i].classList.add("selected");
+      } else {
+        cards[i].classList.remove("selected");
+      }
+    }
 
 
     this.updateDivisions();
@@ -279,7 +326,7 @@ const RegistrationModule = {
     this.renderStep(1);
 
 
-    const modal =
+    var modal =
       document.getElementById("registrationModal");
 
 
@@ -296,14 +343,14 @@ const RegistrationModule = {
      CLOSE MODAL
      ======================================================= */
 
-  closeModal() {
+  closeModal: function () {
 
     if (this.submitting) {
       return;
     }
 
 
-    const modal =
+    var modal =
       document.getElementById("registrationModal");
 
 
@@ -320,34 +367,38 @@ const RegistrationModule = {
      NEXT STEP
      ======================================================= */
 
-  nextStep() {
+  nextStep: function () {
 
     /* STEP 1 -> STEP 2 */
 
     if (this.currentStep === 1) {
 
       this.currentStep = 2;
+
+      this.renderStep(this.currentStep);
+
+      return;
     }
 
 
     /* STEP 2 -> STEP 3 */
 
-    else if (this.currentStep === 2) {
+    if (this.currentStep === 2) {
 
-      const nameInput =
+      var nameInput =
         document.getElementById("regAthleteName");
 
-      const dobInput =
+      var dobInput =
         document.getElementById("regAthleteDob");
 
 
-      const athleteName =
+      var athleteName =
         nameInput
           ? nameInput.value.trim()
           : "";
 
 
-      const athleteDob =
+      var athleteDob =
         dobInput
           ? dobInput.value
           : "";
@@ -370,13 +421,13 @@ const RegistrationModule = {
         athleteDob;
 
 
-      const division =
+      var division =
         document.getElementById("regDivisionSelect");
 
-      const position =
+      var position =
         document.getElementById("regAthletePos");
 
-      const experience =
+      var experience =
         document.getElementById("regAthleteExp");
 
 
@@ -396,39 +447,43 @@ const RegistrationModule = {
 
 
       this.currentStep = 3;
+
+      this.renderStep(this.currentStep);
+
+      return;
     }
 
 
     /* STEP 3 -> STEP 4 */
 
-    else if (this.currentStep === 3) {
+    if (this.currentStep === 3) {
 
-      const parentNameInput =
+      var parentNameInput =
         document.getElementById("regParentName");
 
-      const parentEmailInput =
+      var parentEmailInput =
         document.getElementById("regParentEmail");
 
-      const parentPhoneInput =
+      var parentPhoneInput =
         document.getElementById("regParentPhone");
 
-      const commentsInput =
+      var commentsInput =
         document.getElementById("regComments");
 
 
-      const parentName =
+      var parentName =
         parentNameInput
           ? parentNameInput.value.trim()
           : "";
 
 
-      const parentEmail =
+      var parentEmail =
         parentEmailInput
           ? parentEmailInput.value.trim()
           : "";
 
 
-      const parentPhone =
+      var parentPhone =
         parentPhoneInput
           ? parentPhoneInput.value.trim()
           : "";
@@ -479,10 +534,11 @@ const RegistrationModule = {
       this.populateReview();
 
       this.currentStep = 4;
+
+      this.renderStep(this.currentStep);
+
+      return;
     }
-
-
-    this.renderStep(this.currentStep);
   },
 
 
@@ -490,7 +546,7 @@ const RegistrationModule = {
      PREVIOUS STEP
      ======================================================= */
 
-  prevStep() {
+  prevStep: function () {
 
     if (
       this.currentStep > 1 &&
@@ -508,9 +564,9 @@ const RegistrationModule = {
      RENDER STEP
      ======================================================= */
 
-  renderStep(step) {
+  renderStep: function (step) {
 
-    const container =
+    var container =
       document.querySelector(
         "#registrationModal .modal-container"
       );
@@ -521,41 +577,37 @@ const RegistrationModule = {
     }
 
 
-    document
-      .querySelectorAll(".reg-step-view")
-      .forEach(view => {
+    var views =
+      document.querySelectorAll(".reg-step-view");
 
-        view.style.display = "none";
-      });
+
+    for (var i = 0; i < views.length; i++) {
+
+      views[i].style.display = "none";
+    }
 
 
     /*
-     * IMPORTANT:
-     * No template literal here.
-     * This avoids the Safari parsing error.
+     * Plain string concatenation.
+     * No template literals.
      */
 
-    const currentView =
+    var currentView =
       document.getElementById(
         "regStepView" + step
       );
 
 
     if (currentView) {
-
       currentView.style.display = "block";
     }
 
 
-    for (
-      let i = 1;
-      i <= 4;
-      i++
-    ) {
+    for (var j = 1; j <= 4; j++) {
 
-      const indicator =
+      var indicator =
         document.getElementById(
-          "regInd" + i
+          "regInd" + j
         );
 
 
@@ -570,51 +622,54 @@ const RegistrationModule = {
       );
 
 
-      if (i === step) {
+      if (j === step) {
 
         indicator.classList.add("active");
 
-      } else if (i < step) {
+      } else if (j < step) {
 
         indicator.classList.add("completed");
       }
     }
 
 
-    const prevBtn =
+    var prevBtn =
       document.getElementById("regPrevBtn");
 
-    const nextBtn =
+    var nextBtn =
       document.getElementById("regNextBtn");
 
-    const submitBtn =
+    var submitBtn =
       document.getElementById("regSubmitBtn");
 
 
     if (prevBtn) {
 
-      prevBtn.style.display =
-        step === 1 || step === 5
-          ? "none"
-          : "inline-flex";
+      if (step === 1 || step === 5) {
+        prevBtn.style.display = "none";
+      } else {
+        prevBtn.style.display = "inline-flex";
+      }
     }
 
 
     if (nextBtn) {
 
-      nextBtn.style.display =
-        step >= 4
-          ? "none"
-          : "inline-flex";
+      if (step >= 4) {
+        nextBtn.style.display = "none";
+      } else {
+        nextBtn.style.display = "inline-flex";
+      }
     }
 
 
     if (submitBtn) {
 
-      submitBtn.style.display =
-        step === 4
-          ? "inline-flex"
-          : "none";
+      if (step === 4) {
+        submitBtn.style.display = "inline-flex";
+      } else {
+        submitBtn.style.display = "none";
+      }
     }
   },
 
@@ -623,10 +678,13 @@ const RegistrationModule = {
      SESSION MARKUP
      ======================================================= */
 
-  sessionMarkup() {
+  sessionMarkup: function () {
 
-    const program =
-      window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
+    var programs =
+      window.ALLIANCE_PROGRAMS || {};
+
+    var program =
+      programs[this.selectedCategory];
 
 
     if (!program) {
@@ -634,35 +692,47 @@ const RegistrationModule = {
     }
 
 
-    return (
+    var html = "";
+
+
+    html +=
       "<strong>" +
       escapeHtml_(program.name) +
-      "</strong>" +
+      "</strong>";
 
+
+    html +=
       "<p>" +
       escapeHtml_(program.date) +
       "<br>" +
       escapeHtml_(program.time) +
-      "</p>" +
+      "</p>";
 
+
+    html +=
       "<p>" +
       escapeHtml_(program.venue) +
       "<br>" +
       escapeHtml_(program.address) +
-      "</p>" +
+      "</p>";
 
-      (
-        program.entrance
-          ? "<div class=\"entrance-note\">" +
-            escapeHtml_(program.entrance) +
-            "</div>"
-          : ""
-      ) +
 
+    if (program.entrance) {
+
+      html +=
+        "<div class=\"entrance-note\">" +
+        escapeHtml_(program.entrance) +
+        "</div>";
+    }
+
+
+    html +=
       "<p>" +
       escapeHtml_(program.payment) +
-      "</p>"
-    );
+      "</p>";
+
+
+    return html;
   },
 
 
@@ -670,10 +740,13 @@ const RegistrationModule = {
      UPDATE DIVISIONS
      ======================================================= */
 
-  updateDivisions() {
+  updateDivisions: function () {
 
-    const program =
-      window.ALLIANCE_PROGRAMS?.[this.selectedCategory];
+    var programs =
+      window.ALLIANCE_PROGRAMS || {};
+
+    var program =
+      programs[this.selectedCategory];
 
 
     if (!program) {
@@ -681,18 +754,26 @@ const RegistrationModule = {
     }
 
 
-    const select =
+    var select =
       document.getElementById("regDivisionSelect");
 
 
     if (select) {
 
-      select.replaceChildren(
-        new Option(
-          program.name,
-          program.name
-        )
-      );
+      select.innerHTML = "";
+
+      var option =
+        document.createElement("option");
+
+
+      option.value =
+        program.name;
+
+      option.textContent =
+        program.name;
+
+
+      select.appendChild(option);
 
       select.value =
         program.name;
@@ -703,7 +784,7 @@ const RegistrationModule = {
       program.name;
 
 
-    const summary =
+    var summary =
       document.getElementById("regSessionSummary");
 
 
@@ -719,9 +800,9 @@ const RegistrationModule = {
      REVIEW
      ======================================================= */
 
-  populateReview() {
+  populateReview: function () {
 
-    const summary =
+    var summary =
       document.getElementById("revSessionSummary");
 
 
@@ -732,7 +813,7 @@ const RegistrationModule = {
     }
 
 
-    const fields = {
+    var fields = {
 
       revCategory:
         this.formData.category,
@@ -760,31 +841,38 @@ const RegistrationModule = {
     };
 
 
-    Object.entries(fields).forEach(
-      ([id, value]) => {
+    for (
+      var id in fields
+    ) {
 
-        const element =
-          document.getElementById(id);
-
-
-        if (element) {
-
-          element.textContent =
-            value || "";
-        }
+      if (!fields.hasOwnProperty(id)) {
+        continue;
       }
-    );
+
+
+      var element =
+        document.getElementById(id);
+
+
+      if (element) {
+
+        element.textContent =
+          fields[id] || "";
+      }
+    }
   },
 
 
   /* =======================================================
      SUBMIT REGISTRATION
-     SAFARI-SAFE
      ======================================================= */
 
-  async submitRegistration(e) {
+  submitRegistration: function (e) {
 
     e.preventDefault();
+
+
+    var self = this;
 
 
     if (this.submitting) {
@@ -802,11 +890,11 @@ const RegistrationModule = {
     }
 
 
-    if (
-      !window.ALLIANCE_PROGRAMS?.[
-        this.selectedCategory
-      ]
-    ) {
+    var programs =
+      window.ALLIANCE_PROGRAMS || {};
+
+
+    if (!programs[this.selectedCategory]) {
 
       alert(
         "Please select a registration program."
@@ -820,31 +908,37 @@ const RegistrationModule = {
 
 
     /*
-     * Create one registration ID.
+     * Registration ID
      */
 
-    this.requestId =
-      this.requestId ||
-      (
+    if (!this.requestId) {
+
+      if (
         window.crypto &&
-        typeof window.crypto.randomUUID === "function"
+        window.crypto.randomUUID
+      ) {
 
-          ? window.crypto.randomUUID()
+        this.requestId =
+          window.crypto.randomUUID();
 
-          : "ALLIANCE-" +
-            Date.now() +
-            "-" +
-            Math.random()
-              .toString(36)
-              .slice(2)
-      );
+      } else {
+
+        this.requestId =
+          "ALLIANCE-" +
+          Date.now() +
+          "-" +
+          Math.random()
+            .toString(36)
+            .substring(2);
+      }
+    }
 
 
-    const submitBtn =
+    var submitBtn =
       document.getElementById("regSubmitBtn");
 
 
-    const originalText =
+    var originalText =
       submitBtn
         ? submitBtn.innerHTML
         : "Complete Registration ✓";
@@ -855,16 +949,15 @@ const RegistrationModule = {
       submitBtn.innerHTML =
         "Submitting...";
 
-      submitBtn.disabled =
-        true;
+      submitBtn.disabled = true;
     }
 
 
-    /* =====================================================
-       BUILD PAYLOAD
-       ===================================================== */
+    /*
+     * Build data
+     */
 
-    const data = {
+    var data = {
 
       formType:
         "registration",
@@ -913,16 +1006,16 @@ const RegistrationModule = {
     };
 
 
-    /* =====================================================
-       HIDDEN IFRAME
-       ===================================================== */
+    /*
+     * IFRAME
+     */
 
-    const iframeName =
+    var iframeName =
       "allianceRegistrationFrame_" +
       Date.now();
 
 
-    const iframe =
+    var iframe =
       document.createElement("iframe");
 
 
@@ -950,17 +1043,18 @@ const RegistrationModule = {
     iframe.style.pointerEvents =
       "none";
 
+
     iframe.setAttribute(
       "aria-hidden",
       "true"
     );
 
 
-    /* =====================================================
-       REAL HTML FORM
-       ===================================================== */
+    /*
+     * FORM
+     */
 
-    const form =
+    var form =
       document.createElement("form");
 
 
@@ -977,177 +1071,155 @@ const RegistrationModule = {
       "none";
 
 
-    Object.entries(data).forEach(
-      ([name, value]) => {
+    for (
+      var name in data
+    ) {
 
-        const input =
-          document.createElement("input");
-
-
-        input.type =
-          "hidden";
-
-        input.name =
-          name;
-
-        input.value =
-          String(value);
-
-
-        form.appendChild(input);
+      if (!data.hasOwnProperty(name)) {
+        continue;
       }
-    );
 
 
-    /*
-     * IMPORTANT:
-     * Add iframe and form to document before submitting.
-     */
+      var input =
+        document.createElement("input");
+
+
+      input.type =
+        "hidden";
+
+      input.name =
+        name;
+
+      input.value =
+        String(data[name]);
+
+
+      form.appendChild(input);
+    }
+
 
     document.body.appendChild(iframe);
 
     document.body.appendChild(form);
 
 
-    /* =====================================================
-       SUBMISSION STATE
-       ===================================================== */
-
-    let finished =
+    var finished =
       false;
 
-    let submitted =
-      false;
 
-    let fallbackTimer =
+    var fallbackTimer =
       null;
 
 
-    const cleanup =
-      () => {
+    function cleanup() {
 
-        setTimeout(
-          () => {
+      setTimeout(
+        function () {
 
-            if (
-              iframe &&
-              iframe.parentNode
-            ) {
+          if (
+            iframe &&
+            iframe.parentNode
+          ) {
 
-              iframe.parentNode.removeChild(
-                iframe
-              );
-            }
+            iframe.parentNode.removeChild(
+              iframe
+            );
+          }
 
 
-            if (
-              form &&
-              form.parentNode
-            ) {
+          if (
+            form &&
+            form.parentNode
+          ) {
 
-              form.parentNode.removeChild(
-                form
-              );
-            }
+            form.parentNode.removeChild(
+              form
+            );
+          }
 
-          },
-          1000
+        },
+        1000
+      );
+    }
+
+
+    function finishSuccess(message) {
+
+      if (finished) {
+        return;
+      }
+
+
+      finished = true;
+
+
+      if (fallbackTimer) {
+
+        clearTimeout(
+          fallbackTimer
         );
-      };
+      }
 
 
-    const finishSuccess =
-      message => {
-
-        if (finished) {
-          return;
-        }
+      self.submitting = false;
 
 
-        finished =
-          true;
+      var successName =
+        document.getElementById(
+          "confirmAthleteName"
+        );
 
 
-        if (fallbackTimer) {
+      if (successName) {
 
-          clearTimeout(
-            fallbackTimer
-          );
-        }
-
-
-        this.submitting =
-          false;
+        successName.textContent =
+          self.formData.athleteName;
+      }
 
 
-        /*
-         * Show athlete name.
-         */
-
-        const successName =
-          document.getElementById(
-            "confirmAthleteName"
-          );
+      var statusElement =
+        document.getElementById(
+          "confirmationEmailStatus"
+        );
 
 
-        if (successName) {
+      if (statusElement) {
 
-          successName.textContent =
-            this.formData.athleteName;
-        }
-
-
-        /*
-         * Show status.
-         */
-
-        const statusElement =
-          document.getElementById(
-            "confirmationEmailStatus"
-          );
+        statusElement.textContent =
+          message;
+      }
 
 
-        if (statusElement) {
+      self.currentStep = 5;
 
-          statusElement.textContent =
-            message;
-        }
+      self.renderStep(5);
 
 
-        /*
-         * Show success page.
-         */
+      if (submitBtn) {
 
-        this.currentStep =
-          5;
+        submitBtn.disabled = false;
 
-        this.renderStep(5);
-
-
-        if (submitBtn) {
-
-          submitBtn.disabled =
-            false;
-
-          submitBtn.innerHTML =
-            originalText;
-        }
+        submitBtn.innerHTML =
+          originalText;
+      }
 
 
-        cleanup();
-      };
+      cleanup();
+    }
 
 
-    /* =====================================================
-       IFRAME LOAD
-       ===================================================== */
+    /*
+     * The iframe load is only used after the
+     * actual form submission has started.
+     */
 
-    const handleIframeLoad =
-      () => {
+    var submitted =
+      false;
 
-        /*
-         * Ignore any load before submission.
-         */
+
+    iframe.addEventListener(
+      "load",
+      function () {
 
         if (!submitted) {
           return;
@@ -1157,43 +1229,30 @@ const RegistrationModule = {
         finishSuccess(
           "Your registration has been saved. Your confirmation email is being processed."
         );
-      };
 
-
-    iframe.addEventListener(
-      "load",
-      handleIframeLoad
+      }
     );
 
 
-    /* =====================================================
-       SUBMIT FORM
-       ===================================================== */
+    /*
+     * SUBMIT
+     */
 
     try {
 
-      submitted =
-        true;
-
+      submitted = true;
 
       form.submit();
 
 
       /*
        * Safari fallback.
-       *
-       * The backend saves first, then processes email
-       * separately, so do NOT submit again.
+       * Do not submit twice.
        */
 
       fallbackTimer =
         setTimeout(
-          () => {
-
-            if (finished) {
-              return;
-            }
-
+          function () {
 
             finishSuccess(
               "Your registration has been submitted and is being processed. Please check your email shortly."
@@ -1219,14 +1278,12 @@ const RegistrationModule = {
       );
 
 
-      this.submitting =
-        false;
+      self.submitting = false;
 
 
       if (submitBtn) {
 
-        submitBtn.disabled =
-          false;
+        submitBtn.disabled = false;
 
         submitBtn.innerHTML =
           originalText;
@@ -1250,18 +1307,33 @@ const RegistrationModule = {
 
 function escapeHtml_(value) {
 
-  return String(
-    value ?? ""
-  ).replace(
+  if (value === null || value === undefined) {
+    value = "";
+  }
+
+
+  return String(value).replace(
     /[&<>"']/g,
-    char =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[char])
+    function (char) {
+
+      if (char === "&") {
+        return "&amp;";
+      }
+
+      if (char === "<") {
+        return "&lt;";
+      }
+
+      if (char === ">") {
+        return "&gt;";
+      }
+
+      if (char === '"') {
+        return "&quot;";
+      }
+
+      return "&#39;";
+    }
   );
 }
 
@@ -1272,4 +1344,39 @@ function escapeHtml_(value) {
 
 window.RegistrationModule =
   RegistrationModule;
+
+
+/* =========================================================
+   AUTO INITIALIZE
+   ========================================================= */
+
+function initAllianceRegistration() {
+
+  if (
+    window.RegistrationModule &&
+    typeof window.RegistrationModule.init === "function"
+  ) {
+
+    window.RegistrationModule.init();
+
+  }
+}
+
+
+/*
+ * Handle both cases:
+ * registration.js loaded before or after DOMContentLoaded.
+ */
+
+if (document.readyState === "loading") {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initAllianceRegistration
+  );
+
+} else {
+
+  initAllianceRegistration();
+}
 ```
