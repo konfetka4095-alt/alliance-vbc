@@ -20,9 +20,9 @@ const ScheduleModule = {
 
     if (!container) return;
 
-    const rows = order.flatMap(programId => {
+    const rows = order.map(programId => {
       const program = programs[programId];
-      if (!program || !program.sessions) return [];
+      if (!program || !program.sessions) return '';
 
       return program.sessions.map((session, index) => `
         <tr class="schedule-row${index === program.sessions.length - 1 ? ' division-end' : ''}" data-division="${programId}">
@@ -38,7 +38,7 @@ const ScheduleModule = {
           <td class="tryout-action-cell">
             <button class="btn btn-pink btn-sm" data-open-reg data-program-type="${programId}" data-session-id="${session.id}" aria-label="Register for ${program.name} on ${session.date}">Register</button>
           </td>
-        </tr>`);
+        </tr>`).join('');
     }).join('');
 
     container.className = 'schedule-table-wrapper tryout-schedule-wrapper';

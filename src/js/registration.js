@@ -1,4 +1,7 @@
-const ALLIANCE_REGISTRATION_ENDPOINT = window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
+const ALLIANCE_REGISTRATION_ENDPOINT =
+  window.ALLIANCE_REGISTRATION_CONFIG && window.ALLIANCE_REGISTRATION_CONFIG.endpoint
+    ? window.ALLIANCE_REGISTRATION_CONFIG.endpoint
+    : "";
 
 
 // Interactive Registration Wizard for Alliance Volleyball Club
@@ -226,7 +229,8 @@ const RegistrationModule = {
   updateDivisions() {
     const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
     const select = document.getElementById('regDivisionSelect');
-    select.replaceChildren(new Option(p.name, p.name));
+    while (select.firstChild) select.removeChild(select.firstChild);
+    select.appendChild(new Option(p.name, p.name));
     this.formData.division = p.name;
     document.getElementById('regSessionSummary').innerHTML = this.sessionMarkup();
 
@@ -261,7 +265,7 @@ const RegistrationModule = {
     return;
   }
   this.submitting = true;
-  this.requestId = this.requestId || crypto.randomUUID();
+  this.requestId = this.requestId || this.createRequestId();
 
   const submitBtn =
     document.getElementById("regSubmitBtn");
@@ -354,6 +358,15 @@ const RegistrationModule = {
   } finally {
     this.submitting = false;
   }
+},
+
+createRequestId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+
+  const randomPart = Math.random().toString(36).slice(2);
+  return 'reg-' + Date.now().toString(36) + '-' + randomPart + '-' + Math.random().toString(36).slice(2);
 }
 };
 
