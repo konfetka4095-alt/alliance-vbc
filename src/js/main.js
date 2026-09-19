@@ -9,6 +9,7 @@ const ALLIANCE_CONTACT_ENDPOINT =
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Modules
   if (window.RouterModule) window.RouterModule.init();
+  if (window.RegistrationModule) window.RegistrationModule.init();
   if (window.ScheduleModule) window.ScheduleModule.init();
   if (window.FaqModule) window.FaqModule.init();
 

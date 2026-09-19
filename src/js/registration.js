@@ -4,6 +4,7 @@ const ALLIANCE_REGISTRATION_ENDPOINT = window.ALLIANCE_REGISTRATION_CONFIG?.endp
 // Interactive Registration Wizard for Alliance Volleyball Club
 
 const RegistrationModule = {
+  initialized: false,
   currentStep: 1,
   selectedCategory: '15u',
   selectedSessionId: '',
@@ -21,17 +22,20 @@ const RegistrationModule = {
   },
 
   init() {
+    if (this.initialized) return;
+    this.initialized = true;
     this.bindEvents();
   },
 
   bindEvents() {
     // Open Modal Triggers
-    document.querySelectorAll('[data-open-reg]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const preselected = btn.getAttribute('data-program-type') || 'tryouts';
-        this.openModal(preselected);
-      });
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-open-reg]');
+      if (!btn) return;
+      e.preventDefault();
+      const preselected = btn.getAttribute('data-program-type') || 'tryouts';
+      const preselectedSession = btn.getAttribute('data-session-id') || '';
+      this.openModal(preselected, preselectedSession);
     });
 
     // Close Modal
@@ -72,11 +76,12 @@ const RegistrationModule = {
     });
   },
 
-  openModal(categoryKey = 'tryouts') {
+  openModal(categoryKey = 'tryouts', sessionId = '') {
     this.currentStep = 1;
     categoryKey = window.ALLIANCE_PROGRAMS[categoryKey] ? categoryKey : '15u';
     this.selectedCategory = categoryKey;
-    this.selectedSessionId = '';
+    const sessions = window.ALLIANCE_PROGRAMS[categoryKey].sessions || [];
+    this.selectedSessionId = sessions.some(session => session.id === sessionId) ? sessionId : '';
     this.requestId = null;
     const submit = document.getElementById('regSubmitBtn');
     submit.disabled = false; submit.textContent = 'Complete Registration ✓';
@@ -353,3 +358,9 @@ const RegistrationModule = {
 };
 
 window.RegistrationModule = RegistrationModule;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => RegistrationModule.init(), { once: true });
+} else {
+  RegistrationModule.init();
+}

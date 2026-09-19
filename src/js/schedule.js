@@ -9,7 +9,46 @@ const ScheduleModule = {
   },
 
   init() {
+    this.renderTryoutSchedule();
     this.bindEvents();
+  },
+
+  renderTryoutSchedule() {
+    const container = document.querySelector('.tryout-session-grid');
+    const programs = window.ALLIANCE_PROGRAMS || {};
+    const order = ['12u', '13u', '14u', '15u'];
+
+    if (!container) return;
+
+    const rows = order.flatMap(programId => {
+      const program = programs[programId];
+      if (!program || !program.sessions) return [];
+
+      return program.sessions.map((session, index) => `
+        <tr class="schedule-row${index === program.sessions.length - 1 ? ' division-end' : ''}" data-division="${programId}">
+          <td class="tryout-division-cell" data-label="Division">
+            <strong>${program.name}</strong>
+            <small>Born ${program.born}</small>
+          </td>
+          <td data-label="Date & Time">
+            <strong>${session.date}</strong>
+            <small>${session.time}</small>
+          </td>
+          <td data-label="Location">${session.location}</td>
+          <td class="tryout-action-cell">
+            <button class="btn btn-pink btn-sm" data-open-reg data-program-type="${programId}" data-session-id="${session.id}" aria-label="Register for ${program.name} on ${session.date}">Register</button>
+          </td>
+        </tr>`);
+    }).join('');
+
+    container.className = 'schedule-table-wrapper tryout-schedule-wrapper';
+    container.innerHTML = `
+      <table class="schedule-table tryout-schedule-table">
+        <thead>
+          <tr><th>Division</th><th>Date & Time</th><th>Location</th><th>Registration</th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
   },
 
   bindEvents() {
