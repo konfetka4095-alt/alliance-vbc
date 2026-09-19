@@ -2346,29 +2346,54 @@
   }
 }
 
-/* Six program choices using the existing Alliance registration style. */
-.reg-option-card { text-align:left; font-family:var(--font-sans); width:100%; }
+/* September sessions and program registration */
+.tryout-session-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin:28px 0; }
+.tryout-session { border:1px solid #27324a; border-radius:18px; overflow:hidden; background:#10182c; }
+.tryout-session-heading { padding:28px; background:#091127; }
+.tryout-session-heading h3 { font-family:var(--font-display); font-size:2rem; color:white; margin:8px 0 16px; }
+.tryout-session-heading p { color:#cbd5e1; line-height:1.7; font-size:.9rem; }
+.entrance-note { padding:10px 14px; margin-top:14px; border-left:3px solid #ff0055; background:rgba(255,0,85,.09); color:inherit; font-weight:700; font-size:.85rem; }
+.tryout-session-heading .entrance-note { color:#fff; }
+.tryout-session-row { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 28px; color:white; }
+.tryout-session-row + .tryout-session-row { border-top:1px solid #27324a; }
+.tryout-session-row h4 { font-size:1.6rem; font-family:var(--font-display); color:#fff; }
+.session-time { color:#fff; font-weight:700; margin:6px 0 12px; }
+.session-eligibility { font-size:.78rem; color:#b8c3d8; line-height:1.6; }
+.session-eligibility > * { display:block; }
+.reg-option-card { text-align:left; font-family:inherit; width:100%; }
 .reg-option-card > span { display:block; }
-.reg-program-kind { font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--text-light-muted); margin-bottom:6px; }
-.reg-option-card:focus-visible { outline:3px solid var(--color-brand-pink); outline-offset:3px; }
+.reg-program-kind { font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#6b7280; margin-bottom:6px; }
+.reg-option-card:focus-visible { outline:3px solid #ff0055; outline-offset:3px; }
 #registrationModal .reg-option-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-#registrationModal .reg-option-name { font-family:var(--font-display); font-size:1.3rem; text-transform:uppercase; }
-#registrationModal .reg-option-desc { line-height:1.65; }
-.registration-session-summary { padding:18px; background:var(--color-bg-light); border:1px solid var(--color-border-light); border-top:3px solid var(--color-brand-pink); border-radius:var(--radius-md); margin-bottom:20px; color:var(--text-light-primary); font-size:.875rem; line-height:1.65; }
-.registration-session-summary > strong { font-family:var(--font-display); font-size:1.4rem; text-transform:uppercase; }
+.registration-session-summary { padding:18px; background:#f4f6fa; border:1px solid #dce1ea; border-radius:12px; margin-bottom:20px; color:#10182c; font-size:.875rem; line-height:1.65; }
+.registration-session-summary > strong { font-family:var(--font-display); font-size:1.3rem; }
 .registration-session-summary p { margin:8px 0; }
-.entrance-note { padding:10px 0; color:var(--color-brand-pink); font-weight:700; font-size:.85rem; }
-.tryout-schedule-table [data-label="Location"] { line-height:1.65; }
-.tryout-schedule-table [data-label="Location"] strong { color:var(--color-brand-pink); font-size:.8rem; }
-#registrationModal .modal-close-btn { flex-shrink:0; }
-html { overflow-x:clip; }
+.session-choice-instruction { color:#5c687d; font-weight:700; }
+.tryout-session-choices { display:grid; gap:10px; margin-top:12px; }
+.tryout-session-choice { display:flex; gap:12px; align-items:flex-start; padding:14px; border:1px solid #cfd6e2; border-radius:10px; background:#fff; cursor:pointer; transition:border-color .2s ease,box-shadow .2s ease,background .2s ease; }
+.tryout-session-choice:hover { border-color:#ff0055; }
+.tryout-session-choice.selected { border-color:#ff0055; background:#fff2f6; box-shadow:0 0 0 2px rgba(255,0,85,.12); }
+.tryout-session-choice input { width:18px; height:18px; margin:3px 0 0; accent-color:#ff0055; flex:0 0 auto; }
+.tryout-session-choice span,.tryout-session-choice small { display:block; }
+.tryout-session-choice > span > strong { color:#060b18; font-size:.95rem; }
+.tryout-session-choice small { color:#5c687d; margin-top:3px; line-height:1.45; }
 @media(max-width:700px) {
+ .tryout-session-grid { grid-template-columns:1fr; }
+ .tryout-session-heading { padding:22px; }
+ .tryout-session-row { padding:22px; }
  #registrationModal .reg-option-grid { grid-template-columns:1fr; }
+}
+@media(max-width:380px) { .tryout-session-row { align-items:flex-start; flex-direction:column; } }
+#registrationModal .modal-close-btn { flex-shrink:0; }
+@media(max-width:700px) {
  #registrationModal .modal-header { padding:18px 20px; gap:12px; }
- #registrationModal .modal-title { font-size:1.35rem; line-height:1.2; }
+ #registrationModal .modal-title { font-size:1.2rem; line-height:1.2; }
  #registrationModal .modal-body { padding:20px; }
  .footer-bottom-slogan { white-space:normal; overflow-wrap:anywhere; }
 }
-
-.tryout-location-details { min-width:0; }
-.tryout-schedule-table [data-label="Time"] { white-space:nowrap; }
+@media(max-width:500px) {
+ .tryout-session-row { align-items:stretch; flex-direction:column; }
+ .tryout-session-row .btn { width:100%; }
+}
+/* Keep the closed mobile drawer from widening the page. */
+html { overflow-x:clip; }
