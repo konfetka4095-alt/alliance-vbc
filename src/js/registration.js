@@ -1349,6 +1349,223 @@ function escapeHtml_(value) {
    GLOBAL
    ========================================================= */
 
+/*
+ * Reliable submission override.
+ *
+ * The original hidden-iframe transport cannot read the Apps Script
+ * response and may show a success screen even when no row was saved.
+ * This version waits for the JSON response and only confirms success
+ * when Apps Script explicitly returns { ok: true }.
+ */
+RegistrationModule.submitRegistration = function (e) {
+
+  if (e && typeof e.preventDefault === "function") {
+    e.preventDefault();
+  }
+
+  var self = this;
+
+  if (this.submitting) {
+    return;
+  }
+
+  if (!ALLIANCE_REGISTRATION_ENDPOINT) {
+    alert(
+      "Online registration is temporarily unavailable. Please contact info@alliancevbc.ca."
+    );
+    return;
+  }
+
+  var programs =
+    window.ALLIANCE_PROGRAMS || {};
+
+  if (!programs[this.selectedCategory]) {
+    alert("Please select a registration program.");
+    return;
+  }
+
+  this.submitting = true;
+
+  if (!this.requestId) {
+    if (
+      window.crypto &&
+      typeof window.crypto.randomUUID === "function"
+    ) {
+      this.requestId =
+        window.crypto.randomUUID();
+    } else {
+      this.requestId =
+        "ALLIANCE-" +
+        Date.now() +
+        "-" +
+        Math.random()
+          .toString(36)
+          .substring(2);
+    }
+  }
+
+  var submitBtn =
+    document.getElementById("regSubmitBtn");
+
+  var originalText =
+    submitBtn
+      ? submitBtn.innerHTML
+      : "Complete Registration ✓";
+
+  if (submitBtn) {
+    submitBtn.innerHTML = "Submitting...";
+    submitBtn.disabled = true;
+  }
+
+  var data = {
+    formType: "registration",
+    programId: this.selectedCategory,
+    requestId: this.requestId,
+    category: this.formData.category || "",
+    division: this.formData.division || "",
+    athleteName: this.formData.athleteName || "",
+    athleteDob: this.formData.athleteDob || "",
+    athletePosition: this.formData.athletePosition || "",
+    experienceYears: this.formData.experienceYears || "",
+    parentName: this.formData.parentName || "",
+    parentEmail: this.formData.parentEmail || "",
+    parentPhone: this.formData.parentPhone || "",
+    comments: this.formData.comments || "",
+    website: "",
+    sourceUrl: window.location.href
+  };
+
+  var body =
+    new URLSearchParams();
+
+  Object.keys(data).forEach(
+    function (name) {
+      body.append(
+        name,
+        String(data[name])
+      );
+    }
+  );
+
+  var controller =
+    typeof AbortController === "function"
+      ? new AbortController()
+      : null;
+
+  var timeoutId =
+    controller
+      ? setTimeout(
+          function () {
+            controller.abort();
+          },
+          45000
+        )
+      : null;
+
+  fetch(
+    ALLIANCE_REGISTRATION_ENDPOINT,
+    {
+      method: "POST",
+      mode: "cors",
+      credentials: "omit",
+      redirect: "follow",
+      body: body,
+      signal:
+        controller
+          ? controller.signal
+          : undefined
+    }
+  )
+    .then(
+      function (response) {
+        return response.text();
+      }
+    )
+    .then(
+      function (responseText) {
+
+        var result;
+
+        try {
+          result = JSON.parse(responseText);
+        } catch (parseError) {
+          throw new Error(
+            "The registration server returned an unexpected response. Please try again."
+          );
+        }
+
+        if (!result || result.ok !== true) {
+          throw new Error(
+            result && result.error
+              ? result.error
+              : "The registration could not be saved. Please try again."
+          );
+        }
+
+        self.submitting = false;
+
+        var successName =
+          document.getElementById(
+            "confirmAthleteName"
+          );
+
+        if (successName) {
+          successName.textContent =
+            self.formData.athleteName;
+        }
+
+        var statusElement =
+          document.getElementById(
+            "confirmationEmailStatus"
+          );
+
+        if (statusElement) {
+          statusElement.textContent =
+            result.duplicate
+              ? "This registration was already received. Your confirmation email status is " +
+                (result.emailStatus || "being processed") +
+                "."
+              : "Your registration has been saved. Your confirmation email is being processed.";
+        }
+
+        self.currentStep = 5;
+        self.renderStep(5);
+      }
+    )
+    .catch(
+      function (error) {
+
+        self.submitting = false;
+
+        console.error(
+          "Alliance registration submission failed:",
+          error
+        );
+
+        alert(
+          error && error.name === "AbortError"
+            ? "The registration request timed out. Please try again."
+            : error && error.message
+              ? error.message
+              : "Registration could not be submitted. Please contact Alliance directly."
+        );
+      }
+    )
+    .then(
+      function () {
+
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      }
+    );
+};
+
 window.RegistrationModule =
   RegistrationModule;
 
