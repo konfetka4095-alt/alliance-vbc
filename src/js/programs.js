@@ -2,49 +2,71 @@ window.ALLIANCE_PROGRAMS = {
   "15u": {
     "name": "15U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Thursday, September 17, 2026",
-    "time": "5:00–6:30 PM",
-    "venue": "The Colosseum Markham (former Battle Arena)",
-    "address": "7261 Victoria Park Ave, Markham",
-    "entrance": "FRONT entrance — GLASS door",
+    "date": "September 22, 24 & 25, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the available sessions below",
+    "entrance": "",
+    "sessions": [
+      { "id": "15u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "6:00–8:00 PM", "location": "121 Rollinghill Road, Richmond Hill" },
+      { "id": "15u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "8:15–10:15 PM", "location": "141 Kirk Drive, Thornhill" },
+      { "id": "15u-2026-09-25", "date": "Friday, September 25, 2026", "time": "8:15–10:15 PM", "location": "2 Glass Drive, Aurora" }
+    ],
     "fee": 20,
-    "payment": "Please e-transfer $20 to Alliancevb2025@gmail.com. Include your child’s full name, age division, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2012
   },
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Thursday, September 17, 2026",
-    "time": "6:30–8:00 PM",
-    "venue": "The Colosseum Markham (former Battle Arena)",
-    "address": "7261 Victoria Park Ave, Markham",
-    "entrance": "FRONT entrance — GLASS door",
+    "date": "September 22, 24 & 25, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the available sessions below",
+    "entrance": "",
+    "sessions": [
+      { "id": "13u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "8:15–10:15 PM", "location": "121 Rollinghill Road, Richmond Hill" },
+      { "id": "13u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "6:00–8:00 PM", "location": "141 Kirk Drive, Thornhill" },
+      { "id": "13u-2026-09-25", "date": "Friday, September 25, 2026", "time": "6:00–8:00 PM", "location": "2 Glass Drive, Aurora" }
+    ],
     "fee": 20,
-    "payment": "Please e-transfer $20 to Alliancevb2025@gmail.com. Include your child’s full name, age division, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2014
   },
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Sunday, September 20, 2026",
-    "time": "6:00–7:30 PM",
-    "venue": "The Colosseum Markham",
-    "address": "7261 Victoria Park Ave, Markham",
-    "entrance": "BACK entrance — BLUE door",
+    "date": "September 20, 25, 28 & October 6, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Markham, Thornhill & North York",
+    "address": "See the available sessions below",
+    "entrance": "",
+    "sessions": [
+      { "id": "12u-2026-09-20", "date": "Sunday, September 20, 2026", "time": "6:00–7:30 PM", "location": "The Colosseum Markham, 7261 Victoria Park Avenue, Markham — BACK entrance, BLUE door" },
+      { "id": "12u-2026-09-25", "date": "Friday, September 25, 2026", "time": "6:00–8:00 PM", "location": "135 Green Lane, Thornhill" },
+      { "id": "12u-2026-09-28", "date": "Monday, September 28, 2026", "time": "6:00–8:00 PM", "location": "141 Kirk Drive, Thornhill" },
+      { "id": "12u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "6:00–8:00 PM", "location": "360 Hollywood Avenue, North York" }
+    ],
     "fee": 20,
-    "payment": "Please e-transfer $20 to Alliancevb2025@gmail.com. Include your child’s full name, age division, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2015
   },
   "14u": {
     "name": "14U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Sunday, September 20, 2026",
-    "time": "7:30–9:00 PM",
-    "venue": "The Colosseum Markham",
-    "address": "7261 Victoria Park Ave, Markham",
-    "entrance": "BACK entrance — BLUE door",
+    "date": "September 20, 21, 22 & 24, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Markham, Thornhill, Richmond Hill & Maple",
+    "address": "See the available sessions below",
+    "entrance": "",
+    "sessions": [
+      { "id": "14u-2026-09-20", "date": "Sunday, September 20, 2026", "time": "7:30–9:00 PM", "location": "The Colosseum Markham, 7261 Victoria Park Avenue, Markham — BACK entrance, BLUE door" },
+      { "id": "14u-2026-09-21", "date": "Monday, September 21, 2026", "time": "6:00–8:00 PM", "location": "66 Henderson Avenue, Thornhill" },
+      { "id": "14u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "6:00–8:00 PM", "location": "85 Rolling Hill Road, Richmond Hill" },
+      { "id": "14u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "6:00–8:00 PM", "location": "240 Killian Road, Maple" }
+    ],
     "fee": 20,
-    "payment": "Please e-transfer $20 to Alliancevb2025@gmail.com. Include your child’s full name, age division, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2013
   },
   "clinic-8-11": {
@@ -56,7 +78,7 @@ window.ALLIANCE_PROGRAMS = {
     "address": "160 Frank Endean Rd, Richmond Hill",
     "entrance": "",
     "fee": 390,
-    "payment": "Please e-transfer $390 to Alliancevb.clinic@gmail.com. Include your child’s full name, program location and day, age group, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
   "clinic-12-15": {
     "name": "Mixed Youth Clinic — Ages 12–15",
@@ -67,6 +89,6 @@ window.ALLIANCE_PROGRAMS = {
     "address": "400 Mill St, Richmond Hill",
     "entrance": "",
     "fee": 360,
-    "payment": "Please e-transfer $360 to Alliancevb.clinic@gmail.com. Include your child’s full name, program location and day, age group, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   }
 };

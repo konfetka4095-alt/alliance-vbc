@@ -1,14 +1,11 @@
-// Tryout Schedule & Age Category Calculator (Ontario Volleyball Association 2026-27 Standard)
+// Tryout Schedule & Age Category Calculator — 2026–27 season
 
 const ScheduleModule = {
   ageData: {
-    2014: { division: '12U Girls', dates: 'September 12 & 14, 2026', time: '6:00 PM – 7:30 PM', court: 'Court 1 - Thornhill Gym' },
-    2015: { division: '12U Girls', dates: 'September 12 & 14, 2026', time: '6:00 PM – 7:30 PM', court: 'Court 1 - Thornhill Gym' },
-    2016: { division: '12U Girls', dates: 'September 12 & 14, 2026', time: '6:00 PM – 7:30 PM', court: 'Court 1 - Thornhill Gym' },
-    2013: { division: '13U Girls', dates: 'September 13 & 15, 2026', time: '6:00 PM – 8:00 PM', court: 'Court 2 - Thornhill Gym' },
-    2012: { division: '14U Girls', dates: 'September 16 & 18, 2026', time: '6:30 PM – 8:30 PM', court: 'Court 1 - Thornhill Gym' },
-    2011: { division: '15U Girls', dates: 'September 17 & 19, 2026', time: '7:00 PM – 9:00 PM', court: 'Court 2 - Thornhill Gym' },
-    2010: { division: '16U (Special Invitation)', dates: 'September 20, 2026', time: '7:30 PM – 9:30 PM', court: 'Main Gym' }
+    2015: { division: '12U Girls', programId: '12u' },
+    2014: { division: '13U Girls', programId: '13u' },
+    2013: { division: '14U Girls', programId: '14u' },
+    2012: { division: '15U Girls', programId: '15u' }
   },
 
   init() {
@@ -21,67 +18,53 @@ const ScheduleModule = {
 
     if (calcBtn && calcInput) {
       calcBtn.addEventListener('click', () => this.calculateCategory(calcInput.value));
-      calcInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') this.calculateCategory(calcInput.value);
+      calcInput.addEventListener('keypress', event => {
+        if (event.key === 'Enter') this.calculateCategory(calcInput.value);
       });
     }
 
-    // Filter Tryouts Table
     document.querySelectorAll('.schedule-filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.schedule-filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.schedule-filter-btn').forEach(item => item.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-        this.filterTable(filter);
+        this.filterTable(btn.getAttribute('data-filter'));
       });
     });
   },
 
-  calculateCategory(yearStr) {
-    const year = parseInt(yearStr, 10);
+  calculateCategory(yearValue) {
+    const year = parseInt(yearValue, 10);
     const resultBox = document.getElementById('calcResultBox');
     if (!resultBox) return;
 
-    if (!year || year < 2008 || year > 2018) {
-      resultBox.innerHTML = `
-        <div style="color: #f87171; font-weight: 600;">
-          Please enter a valid birth year between 2008 and 2018 (e.g. 2012).
-        </div>
-      `;
+    const match = this.ageData[year];
+    if (!match) {
+      resultBox.innerHTML = '<div style="color:#f87171;font-weight:600;">Please contact Alliance to confirm the correct age division for this birth year.</div>';
       return;
     }
 
-    const match = this.ageData[year] || {
-      division: year > 2016 ? 'Youth Development Clinic' : 'Senior Competitive / Adult',
-      dates: 'Contact coach for customized assessment',
-      time: 'Flexible Sessions',
-      court: '121 Worth Blvd, Thornhill'
-    };
+    const program = window.ALLIANCE_PROGRAMS[match.programId];
+    const sessionList = program.sessions.map(session =>
+      `<li style="margin-bottom:.55rem;"><strong>${session.date} · ${session.time}</strong><br>${session.location}</li>`
+    ).join('');
 
     resultBox.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-        <span class="badge-pill badge-pink" style="font-size: 0.85rem;">Assigned Division: ${match.division}</span>
-        <span style="font-size: 0.8rem; color: #94a3b8;">OVA 2026-27 Season</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;gap:1rem;">
+        <span class="badge-pill badge-pink" style="font-size:.85rem;">Assigned Division: ${match.division}</span>
+        <span style="font-size:.8rem;color:#94a3b8;">OVA 2026–27 Season</span>
       </div>
-      <div style="font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
-        <p><strong>Tryout Dates:</strong> ${match.dates}</p>
-        <p><strong>Session Time:</strong> ${match.time}</p>
-        <p><strong>Location:</strong> ${match.court}</p>
+      <div style="font-size:.95rem;line-height:1.6;color:#e2e8f0;">
+        <p><strong>Available tryout sessions:</strong></p>
+        <ul style="padding-left:1.25rem;">${sessionList}</ul>
       </div>
-      <button class="btn btn-pink btn-sm" style="margin-top: 1rem; width: 100%;" onclick="window.RegistrationModule.openModal('tryouts')">
-        Register for ${match.division} Tryout →
-      </button>
-    `;
+      <button class="btn btn-pink btn-sm" style="margin-top:1rem;width:100%;" onclick="window.RegistrationModule.openModal('${match.programId}')">
+        Register for ${match.division} Tryouts →
+      </button>`;
   },
 
   filterTable(filter) {
-    const rows = document.querySelectorAll('.schedule-row');
-    rows.forEach(row => {
-      if (filter === 'all' || row.getAttribute('data-division') === filter) {
-        row.style.display = '';
-      } else {
-        row.style.display = 'none';
-      }
+    document.querySelectorAll('.schedule-row').forEach(row => {
+      row.style.display = filter === 'all' || row.getAttribute('data-division') === filter ? '' : 'none';
     });
   }
 };

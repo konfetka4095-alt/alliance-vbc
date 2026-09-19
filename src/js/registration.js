@@ -1,1606 +1,355 @@
-var ALLIANCE_REGISTRATION_ENDPOINT = "";
-
-if (
-  window.ALLIANCE_REGISTRATION_CONFIG &&
-  window.ALLIANCE_REGISTRATION_CONFIG.endpoint
-) {
-  ALLIANCE_REGISTRATION_ENDPOINT =
-    window.ALLIANCE_REGISTRATION_CONFIG.endpoint;
-}
+const ALLIANCE_REGISTRATION_ENDPOINT = window.ALLIANCE_REGISTRATION_CONFIG?.endpoint || "";
 
 
-/* =========================================================
-   REGISTRATION MODULE
-   ========================================================= */
+// Interactive Registration Wizard for Alliance Volleyball Club
 
-var RegistrationModule = {
-
+const RegistrationModule = {
   currentStep: 1,
-
-  selectedCategory: "15u",
-
-  submitting: false,
-
-  requestId: null,
-
+  selectedCategory: '15u',
+  selectedSessionId: '',
   formData: {
-    category: "Rep Tryouts",
-    division: "",
-    athleteName: "",
-    athleteDob: "",
-    athletePosition: "Setter",
-    experienceYears: "2",
-    parentName: "",
-    parentEmail: "",
-    parentPhone: "",
-    comments: ""
+    category: 'Rep Tryouts',
+    division: '14U Girls (Born 2013)',
+    athleteName: '',
+    athleteDob: '',
+    athletePosition: 'Setter',
+    experienceYears: '2',
+    parentName: '',
+    parentEmail: '',
+    parentPhone: '',
+    comments: ''
   },
 
-
-  /* =======================================================
-     INIT
-     ======================================================= */
-  init: function () {
-
-    if (this._initialized) {
-      return;
-    }
-
-    this._initialized = true;
-
+  init() {
     this.bindEvents();
   },
 
-  /* =======================================================
-     EVENTS
-     ======================================================= */
+  bindEvents() {
+    // Open Modal Triggers
+    document.querySelectorAll('[data-open-reg]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const preselected = btn.getAttribute('data-program-type') || 'tryouts';
+        this.openModal(preselected);
+      });
+    });
 
-  bindEvents: function () {
-
-    var self = this;
-
-
-    /* Open registration buttons */
-
-    var openButtons =
-      document.querySelectorAll("[data-open-reg]");
-
-
-    for (var i = 0; i < openButtons.length; i++) {
-
-      (function (btn) {
-
-        btn.addEventListener("click", function (e) {
-
-          e.preventDefault();
-
-          var preselected =
-            btn.getAttribute("data-program-type") ||
-            "15u";
-
-          self.openModal(preselected);
-
-        });
-
-      })(openButtons[i]);
-    }
-
-
-    /* Close modal */
-
-    var closeBtn =
-      document.getElementById("regModalClose");
-
-    var modal =
-      document.getElementById("registrationModal");
-
-
+    // Close Modal
+    const modalBackdrop = document.getElementById('registrationModal');
+    const closeBtn = document.getElementById('regModalClose');
+    
     if (closeBtn) {
-
-      closeBtn.addEventListener(
-        "click",
-        function () {
-          self.closeModal();
-        }
-      );
+      closeBtn.addEventListener('click', () => this.closeModal());
     }
 
-
-    if (modal) {
-
-      modal.addEventListener(
-        "click",
-        function (e) {
-
-          if (e.target === modal) {
-            self.closeModal();
-          }
-
-        }
-      );
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) this.closeModal();
+      });
     }
 
+    // Wizard Next & Prev Buttons
+    const nextBtn = document.getElementById('regNextBtn');
+    const prevBtn = document.getElementById('regPrevBtn');
+    const submitBtn = document.getElementById('regSubmitBtn');
 
-    /* Wizard buttons */
+    if (nextBtn) nextBtn.addEventListener('click', () => this.nextStep());
+    if (prevBtn) prevBtn.addEventListener('click', () => this.prevStep());
+    if (submitBtn) submitBtn.addEventListener('click', (e) => this.submitRegistration(e));
 
-    var nextBtn =
-      document.getElementById("regNextBtn");
-
-    var prevBtn =
-      document.getElementById("regPrevBtn");
-
-    var submitBtn =
-      document.getElementById("regSubmitBtn");
-
-
-    if (nextBtn) {
-
-      nextBtn.addEventListener(
-        "click",
-        function () {
-          self.nextStep();
-        }
-      );
-    }
-
-
-    if (prevBtn) {
-
-      prevBtn.addEventListener(
-        "click",
-        function () {
-          self.prevStep();
-        }
-      );
-    }
-
-
-    if (submitBtn) {
-
-      submitBtn.addEventListener(
-        "click",
-        function (e) {
-          self.submitRegistration(e);
-        }
-      );
-    }
-
-
-    /* Category cards */
-
-    var categoryCards =
-      document.querySelectorAll(".reg-cat-card");
-
-
-    for (var j = 0; j < categoryCards.length; j++) {
-
-      (function (card) {
-
-        card.addEventListener(
-          "click",
-          function (e) {
-
-            e.preventDefault();
-            e.stopPropagation();
-
-            var cards =
-              document.querySelectorAll(".reg-cat-card");
-
-
-            for (var x = 0; x < cards.length; x++) {
-
-              cards[x].classList.remove("selected");
-
-            }
-
-
-            card.classList.add("selected");
-
-
-            var category =
-              card.getAttribute("data-cat-value");
-
-
-            if (category) {
-              self.selectedCategory = category;
-            }
-
-
-            var programs =
-              window.ALLIANCE_PROGRAMS || {};
-
-            var program =
-              programs[self.selectedCategory];
-
-
-            if (program) {
-
-              self.formData.category =
-                program.category;
-
-              self.formData.division =
-                program.name;
-            }
-
-
-            self.requestId = null;
-
-
-            for (var y = 0; y < cards.length; y++) {
-
-              cards[y].setAttribute(
-                "aria-pressed",
-                String(cards[y] === card)
-              );
-            }
-
-
-            self.updateDivisions();
-
-          }
-        );
-
-      })(categoryCards[j]);
-    }
+    // Category Selector Cards
+    document.querySelectorAll('.reg-cat-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.reg-cat-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        this.selectedCategory = card.getAttribute('data-cat-value');
+        this.selectedSessionId = '';
+        this.formData.category = window.ALLIANCE_PROGRAMS[this.selectedCategory].category;
+        this.requestId = null;
+        document.querySelectorAll('.reg-cat-card').forEach(c => c.setAttribute('aria-pressed', String(c === card)));
+        this.updateDivisions();
+      });
+    });
   },
 
-
-  /* =======================================================
-     OPEN MODAL
-     ======================================================= */
-
-  openModal: function (categoryKey) {
-
-    if (!categoryKey) {
-      categoryKey = "15u";
-    }
-
-
+  openModal(categoryKey = 'tryouts') {
     this.currentStep = 1;
-
-    this.submitting = false;
-
+    categoryKey = window.ALLIANCE_PROGRAMS[categoryKey] ? categoryKey : '15u';
+    this.selectedCategory = categoryKey;
+    this.selectedSessionId = '';
     this.requestId = null;
-
-
-    var programs =
-      window.ALLIANCE_PROGRAMS || {};
-
-
-    if (!programs[categoryKey]) {
-      categoryKey = "15u";
-    }
-
-
-    this.selectedCategory =
-      categoryKey;
-
-
-    var program =
-      programs[categoryKey];
-
-
-    if (program) {
-
-      this.formData.category =
-        program.category;
-
-      this.formData.division =
-        program.name;
-    }
-
-
-    var submitBtn =
-      document.getElementById("regSubmitBtn");
-
-
-    if (submitBtn) {
-
-      submitBtn.disabled = false;
-
-      submitBtn.innerHTML =
-        "Complete Registration ✓";
-    }
-
-
-    var cards =
-      document.querySelectorAll(".reg-cat-card");
-
-
-    for (var i = 0; i < cards.length; i++) {
-
-      var selected =
-        cards[i].getAttribute("data-cat-value") ===
-        categoryKey;
-
-
-      cards[i].setAttribute(
-        "aria-pressed",
-        String(selected)
-      );
-
-
-      if (selected) {
-        cards[i].classList.add("selected");
+    const submit = document.getElementById('regSubmitBtn');
+    submit.disabled = false; submit.textContent = 'Complete Registration ✓';
+    
+    // Select category card
+    document.querySelectorAll('.reg-cat-card').forEach(c => {
+      c.setAttribute('aria-pressed', String(c.getAttribute('data-cat-value') === categoryKey));
+      if (c.getAttribute('data-cat-value') === categoryKey) {
+        c.classList.add('selected');
+        this.formData.category = window.ALLIANCE_PROGRAMS[categoryKey].category;
       } else {
-        cards[i].classList.remove("selected");
+        c.classList.remove('selected');
       }
-    }
-
+    });
 
     this.updateDivisions();
-
     this.renderStep(1);
 
-
-    var modal =
-      document.getElementById("registrationModal");
-
-
-    if (modal) {
-      modal.classList.add("open");
-    }
-
-
-    document.body.style.overflow = "hidden";
+    const modal = document.getElementById('registrationModal');
+    if (modal) modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
   },
 
-
-  /* =======================================================
-     CLOSE MODAL
-     ======================================================= */
-
-  closeModal: function () {
-
-    if (this.submitting) {
-      return;
-    }
-
-
-    var modal =
-      document.getElementById("registrationModal");
-
-
-    if (modal) {
-      modal.classList.remove("open");
-    }
-
-
-    document.body.style.overflow = "";
+  closeModal() {
+    if (this.submitting) return;
+    const modal = document.getElementById('registrationModal');
+    if (modal) modal.classList.remove('open');
+    document.body.style.overflow = '';
   },
 
-
-  /* =======================================================
-     NEXT STEP
-     ======================================================= */
-
-  nextStep: function () {
-
-    /* STEP 1 -> STEP 2 */
-
+  nextStep() {
     if (this.currentStep === 1) {
-
+      // Move to Step 2
       this.currentStep = 2;
-
-      this.renderStep(this.currentStep);
-
-      return;
-    }
-
-
-    /* STEP 2 -> STEP 3 */
-
-    if (this.currentStep === 2) {
-
-      var nameInput =
-        document.getElementById("regAthleteName");
-
-      var dobInput =
-        document.getElementById("regAthleteDob");
-
-
-      var athleteName =
-        nameInput
-          ? nameInput.value.trim()
-          : "";
-
-
-      var athleteDob =
-        dobInput
-          ? dobInput.value
-          : "";
-
-
+    } else if (this.currentStep === 2) {
+      // Validate Step 2 inputs
+      const athleteName = document.getElementById('regAthleteName').value.trim();
+      const athleteDob = document.getElementById('regAthleteDob').value;
+      const program = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+      if (program.sessions && program.sessions.length && !this.getSelectedSession()) {
+        alert('Please choose the tryout date your athlete will attend.');
+        return;
+      }
       if (!athleteName || !athleteDob) {
-
-        alert(
-          "Please provide the athlete's full name and date of birth."
-        );
-
+        alert('Please provide the athlete\'s full name and date of birth.');
         return;
       }
-
-
-      this.formData.athleteName =
-        athleteName;
-
-      this.formData.athleteDob =
-        athleteDob;
-
-
-      var division =
-        document.getElementById("regDivisionSelect");
-
-      var position =
-        document.getElementById("regAthletePos");
-
-      var experience =
-        document.getElementById("regAthleteExp");
-
-
-      if (division) {
-        this.formData.division = division.value;
-      }
-
-
-      if (position) {
-        this.formData.athletePosition = position.value;
-      }
-
-
-      if (experience) {
-        this.formData.experienceYears = experience.value;
-      }
-
-
+      this.formData.athleteName = athleteName;
+      this.formData.athleteDob = athleteDob;
+      this.formData.division = document.getElementById('regDivisionSelect').value;
+      this.formData.athletePosition = document.getElementById('regAthletePos').value;
+      this.formData.experienceYears = document.getElementById('regAthleteExp').value;
       this.currentStep = 3;
-
-      this.renderStep(this.currentStep);
-
-      return;
-    }
-
-
-    /* STEP 3 -> STEP 4 */
-
-    if (this.currentStep === 3) {
-
-      var parentNameInput =
-        document.getElementById("regParentName");
-
-      var parentEmailInput =
-        document.getElementById("regParentEmail");
-
-      var parentPhoneInput =
-        document.getElementById("regParentPhone");
-
-      var commentsInput =
-        document.getElementById("regComments");
-
-
-      var parentName =
-        parentNameInput
-          ? parentNameInput.value.trim()
-          : "";
-
-
-      var parentEmail =
-        parentEmailInput
-          ? parentEmailInput.value.trim()
-          : "";
-
-
-      var parentPhone =
-        parentPhoneInput
-          ? parentPhoneInput.value.trim()
-          : "";
-
-
-      if (
-        !parentName ||
-        !parentEmail ||
-        !parentPhone
-      ) {
-
-        alert(
-          "Please fill in parent/guardian contact details."
-        );
-
+    } else if (this.currentStep === 3) {
+      // Validate Step 3 inputs
+      const parentName = document.getElementById('regParentName').value.trim();
+      const parentEmail = document.getElementById('regParentEmail').value.trim();
+      const parentPhone = document.getElementById('regParentPhone').value.trim();
+      if (!parentName || !parentEmail || !parentPhone || !document.getElementById('regParentEmail').checkValidity()) {
+        alert('Please fill in parent/guardian contact details.');
         return;
       }
-
-
-      if (
-        parentEmailInput &&
-        !parentEmailInput.checkValidity()
-      ) {
-
-        alert(
-          "Please provide a valid email address."
-        );
-
-        return;
-      }
-
-
-      this.formData.parentName =
-        parentName;
-
-      this.formData.parentEmail =
-        parentEmail;
-
-      this.formData.parentPhone =
-        parentPhone;
-
-      this.formData.comments =
-        commentsInput
-          ? commentsInput.value.trim()
-          : "";
-
-
+      this.formData.parentName = parentName;
+      this.formData.parentEmail = parentEmail;
+      this.formData.parentPhone = parentPhone;
+      this.formData.comments = document.getElementById('regComments').value.trim();
+      
       this.populateReview();
-
       this.currentStep = 4;
-
-      this.renderStep(this.currentStep);
-
-      return;
     }
+
+    this.renderStep(this.currentStep);
   },
 
-
-  /* =======================================================
-     PREVIOUS STEP
-     ======================================================= */
-
-  prevStep: function () {
-
-    if (
-      this.currentStep > 1 &&
-      this.currentStep < 5
-    ) {
-
+  prevStep() {
+    if (this.currentStep > 1) {
       this.currentStep--;
-
       this.renderStep(this.currentStep);
     }
   },
 
+  renderStep(step) {
+    const container = document.querySelector("#registrationModal .modal-container");
+    if (container) container.scrollTop = 0;
+    document.querySelectorAll('.reg-step-view').forEach(view => {
+      view.style.display = 'none';
+    });
 
-  /* =======================================================
-     RENDER STEP
-     ======================================================= */
+    const currentView = document.getElementById(`regStepView${step}`);
+    if (currentView) currentView.style.display = 'block';
 
-  renderStep: function (step) {
-
-    var container =
-      document.querySelector(
-        "#registrationModal .modal-container"
-      );
-
-
-    if (container) {
-      container.scrollTop = 0;
+    // Update Indicators
+    for (let i = 1; i <= 4; i++) {
+      const ind = document.getElementById(`regInd${i}`);
+      if (!ind) continue;
+      ind.classList.remove('active', 'completed');
+      if (i === step) ind.classList.add('active');
+      else if (i < step) ind.classList.add('completed');
     }
 
+    // Buttons visibility
+    const prevBtn = document.getElementById('regPrevBtn');
+    const nextBtn = document.getElementById('regNextBtn');
+    const submitBtn = document.getElementById('regSubmitBtn');
 
-    var views =
-      document.querySelectorAll(".reg-step-view");
-
-
-    for (var i = 0; i < views.length; i++) {
-
-      views[i].style.display = "none";
-    }
-
-
-    /*
-     * Plain string concatenation.
-     * No template literals.
-     */
-
-    var currentView =
-      document.getElementById(
-        "regStepView" + step
-      );
-
-
-    if (currentView) {
-      currentView.style.display = "block";
-    }
-
-
-    for (var j = 1; j <= 4; j++) {
-
-      var indicator =
-        document.getElementById(
-          "regInd" + j
-        );
-
-
-      if (!indicator) {
-        continue;
-      }
-
-
-      indicator.classList.remove(
-        "active",
-        "completed"
-      );
-
-
-      if (j === step) {
-
-        indicator.classList.add("active");
-
-      } else if (j < step) {
-
-        indicator.classList.add("completed");
-      }
-    }
-
-
-    var prevBtn =
-      document.getElementById("regPrevBtn");
-
-    var nextBtn =
-      document.getElementById("regNextBtn");
-
-    var submitBtn =
-      document.getElementById("regSubmitBtn");
-
-
-    if (prevBtn) {
-
-      if (step === 1 || step === 5) {
-        prevBtn.style.display = "none";
-      } else {
-        prevBtn.style.display = "inline-flex";
-      }
-    }
-
-
-    if (nextBtn) {
-
-      if (step >= 4) {
-        nextBtn.style.display = "none";
-      } else {
-        nextBtn.style.display = "inline-flex";
-      }
-    }
-
-
-    if (submitBtn) {
-
-      if (step === 4) {
-        submitBtn.style.display = "inline-flex";
-      } else {
-        submitBtn.style.display = "none";
-      }
-    }
+    if (prevBtn) prevBtn.style.display = step === 1 || step === 5 ? 'none' : 'inline-flex';
+    if (nextBtn) nextBtn.style.display = step >= 4 ? 'none' : 'inline-flex';
+    if (submitBtn) submitBtn.style.display = step === 4 ? 'inline-flex' : 'none';
   },
 
-
-  /* =======================================================
-     SESSION MARKUP
-     ======================================================= */
-
-  sessionMarkup: function () {
-
-    var programs =
-      window.ALLIANCE_PROGRAMS || {};
-
-    var program =
-      programs[this.selectedCategory];
-
-
-    if (!program) {
-      return "";
-    }
-
-
-    var html = "";
-
-
-    html +=
-      "<strong>" +
-      escapeHtml_(program.name) +
-      "</strong>";
-
-
-    html +=
-      "<p>" +
-      escapeHtml_(program.date) +
-      "<br>" +
-      escapeHtml_(program.time) +
-      "</p>";
-
-
-    html +=
-      "<p>" +
-      escapeHtml_(program.venue) +
-      "<br>" +
-      escapeHtml_(program.address) +
-      "</p>";
-
-
-    if (program.entrance) {
-
-      html +=
-        "<div class=\"entrance-note\">" +
-        escapeHtml_(program.entrance) +
-        "</div>";
-    }
-
-
-    html +=
-      "<p>" +
-      escapeHtml_(program.payment) +
-      "</p>";
-
-
-    return html;
+  getSelectedSession() {
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    if (!p || !p.sessions || !p.sessions.length) return null;
+    return p.sessions.find(session => session.id === this.selectedSessionId) || null;
   },
 
+  sessionMarkup(reviewOnly = false) {
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    const selected = this.getSelectedSession();
 
-  /* =======================================================
-     UPDATE DIVISIONS
-     ======================================================= */
+    if (p.sessions && p.sessions.length) {
+      if (reviewOnly && selected) {
+        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${selected.location}</p><p>${p.payment}</p>`;
+      }
 
-  updateDivisions: function () {
+      const options = p.sessions.map(session => `
+        <label class="tryout-session-choice${session.id === this.selectedSessionId ? ' selected' : ''}">
+          <input type="radio" name="tryoutSession" value="${session.id}" ${session.id === this.selectedSessionId ? 'checked' : ''}>
+          <span>
+            <strong>${session.date}</strong>
+            <small>${session.time}</small>
+            <small>${session.location}</small>
+          </span>
+        </label>`).join('');
 
-    var programs =
-      window.ALLIANCE_PROGRAMS || {};
-
-    var program =
-      programs[this.selectedCategory];
-
-
-    if (!program) {
-      return;
+      return `<strong>${p.name}</strong><p class="session-choice-instruction">Choose the tryout date your athlete will attend *</p><div class="tryout-session-choices">${options}</div>`;
     }
 
-
-    var select =
-      document.getElementById("regDivisionSelect");
-
-
-    if (select) {
-
-      select.innerHTML = "";
-
-      var option =
-        document.createElement("option");
-
-
-      option.value =
-        program.name;
-
-      option.textContent =
-        program.name;
-
-
-      select.appendChild(option);
-
-      select.value =
-        program.name;
-    }
-
-
-    this.formData.division =
-      program.name;
-
-
-    var summary =
-      document.getElementById("regSessionSummary");
-
-
-    if (summary) {
-
-      summary.innerHTML =
-        this.sessionMarkup();
-    }
+    return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.venue}<br>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;
   },
 
+  updateDivisions() {
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    const select = document.getElementById('regDivisionSelect');
+    select.replaceChildren(new Option(p.name, p.name));
+    this.formData.division = p.name;
+    document.getElementById('regSessionSummary').innerHTML = this.sessionMarkup();
 
-  /* =======================================================
-     REVIEW
-     ======================================================= */
-
-  populateReview: function () {
-
-    var summary =
-      document.getElementById("revSessionSummary");
-
-
-    if (summary) {
-
-      summary.innerHTML =
-        this.sessionMarkup();
-    }
-
-
-    var fields = {
-
-      revCategory:
-        this.formData.category,
-
-      revDivision:
-        this.formData.division,
-
-      revAthleteName:
-        this.formData.athleteName,
-
-      revAthleteDob:
-        this.formData.athleteDob,
-
-      revPosition:
-        this.formData.athletePosition,
-
-      revParentName:
-        this.formData.parentName,
-
-      revParentEmail:
-        this.formData.parentEmail,
-
-      revParentPhone:
-        this.formData.parentPhone
-    };
-
-
-    for (
-      var id in fields
-    ) {
-
-      if (!fields.hasOwnProperty(id)) {
-        continue;
-      }
-
-
-      var element =
-        document.getElementById(id);
-
-
-      if (element) {
-
-        element.textContent =
-          fields[id] || "";
-      }
-    }
+    document.querySelectorAll('input[name="tryoutSession"]').forEach(input => {
+      input.addEventListener('change', () => {
+        this.selectedSessionId = input.value;
+        this.requestId = null;
+        document.querySelectorAll('.tryout-session-choice').forEach(choice => {
+          choice.classList.toggle('selected', choice.contains(input) && input.checked);
+        });
+      });
+    });
   },
 
-
-  /* =======================================================
-     SUBMIT REGISTRATION
-     ======================================================= */
-
-  submitRegistration: function (e) {
-
-    e.preventDefault();
-
-
-    var self = this;
-
-
-    if (this.submitting) {
-      return;
-    }
-
-
-    if (!ALLIANCE_REGISTRATION_ENDPOINT) {
-
-      alert(
-        "Online registration is temporarily unavailable. Please contact info@alliancevbc.ca."
-      );
-
-      return;
-    }
-
-
-    var programs =
-      window.ALLIANCE_PROGRAMS || {};
-
-
-    if (!programs[this.selectedCategory]) {
-
-      alert(
-        "Please select a registration program."
-      );
-
-      return;
-    }
-
-
-    this.submitting = true;
-
-
-    /*
-     * Registration ID
-     */
-
-    if (!this.requestId) {
-
-      if (
-        window.crypto &&
-        window.crypto.randomUUID
-      ) {
-
-        this.requestId =
-          window.crypto.randomUUID();
-
-      } else {
-
-        this.requestId =
-          "ALLIANCE-" +
-          Date.now() +
-          "-" +
-          Math.random()
-            .toString(36)
-            .substring(2);
-      }
-    }
-
-
-    var submitBtn =
-      document.getElementById("regSubmitBtn");
-
-
-    var originalText =
-      submitBtn
-        ? submitBtn.innerHTML
-        : "Complete Registration ✓";
-
-
-    if (submitBtn) {
-
-      submitBtn.innerHTML =
-        "Submitting...";
-
-      submitBtn.disabled = true;
-    }
-
-
-    /*
-     * Build data
-     */
-
-    var data = {
-
-      formType:
-        "registration",
-
-      programId:
-        this.selectedCategory,
-
-      requestId:
-        this.requestId,
-
-      category:
-        this.formData.category || "",
-
-      division:
-        this.formData.division || "",
-
-      athleteName:
-        this.formData.athleteName || "",
-
-      athleteDob:
-        this.formData.athleteDob || "",
-
-      athletePosition:
-        this.formData.athletePosition || "",
-
-      experienceYears:
-        this.formData.experienceYears || "",
-
-      parentName:
-        this.formData.parentName || "",
-
-      parentEmail:
-        this.formData.parentEmail || "",
-
-      parentPhone:
-        this.formData.parentPhone || "",
-
-      comments:
-        this.formData.comments || "",
-
-      website:
-        "",
-
-      sourceUrl:
-        window.location.href
-    };
-
-
-    /*
-     * IFRAME
-     */
-
-    var iframeName =
-      "allianceRegistrationFrame_" +
-      Date.now();
-
-
-    var iframe =
-      document.createElement("iframe");
-
-
-    iframe.name =
-      iframeName;
-
-    iframe.id =
-      iframeName;
-
-    iframe.style.position =
-      "fixed";
-
-    iframe.style.width =
-      "1px";
-
-    iframe.style.height =
-      "1px";
-
-    iframe.style.border =
-      "0";
-
-    iframe.style.opacity =
-      "0";
-
-    iframe.style.pointerEvents =
-      "none";
-
-
-    iframe.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-
-    /*
-     * FORM
-     */
-
-    var form =
-      document.createElement("form");
-
-
-    form.method =
-      "POST";
-
-    form.action =
-      ALLIANCE_REGISTRATION_ENDPOINT;
-
-    form.target =
-      iframeName;
-
-    form.style.display =
-      "none";
-
-
-    for (
-      var name in data
-    ) {
-
-      if (!data.hasOwnProperty(name)) {
-        continue;
-      }
-
-
-      var input =
-        document.createElement("input");
-
-
-      input.type =
-        "hidden";
-
-      input.name =
-        name;
-
-      input.value =
-        String(data[name]);
-
-
-      form.appendChild(input);
-    }
-
-
-    document.body.appendChild(iframe);
-
-    document.body.appendChild(form);
-
-
-    var finished =
-      false;
-
-
-    var fallbackTimer =
-      null;
-
-
-    function cleanup() {
-
-      setTimeout(
-        function () {
-
-          if (
-            iframe &&
-            iframe.parentNode
-          ) {
-
-            iframe.parentNode.removeChild(
-              iframe
-            );
-          }
-
-
-          if (
-            form &&
-            form.parentNode
-          ) {
-
-            form.parentNode.removeChild(
-              form
-            );
-          }
-
-        },
-        1000
-      );
-    }
-
-
-    function finishSuccess(message) {
-
-      if (finished) {
-        return;
-      }
-
-
-      finished = true;
-
-
-      if (fallbackTimer) {
-
-        clearTimeout(
-          fallbackTimer
-        );
-      }
-
-
-      self.submitting = false;
-
-
-      var successName =
-        document.getElementById(
-          "confirmAthleteName"
-        );
-
-
-      if (successName) {
-
-        successName.textContent =
-          self.formData.athleteName;
-      }
-
-
-      var statusElement =
-        document.getElementById(
-          "confirmationEmailStatus"
-        );
-
-
-      if (statusElement) {
-
-        statusElement.textContent =
-          message;
-      }
-
-
-      self.currentStep = 5;
-
-      self.renderStep(5);
-
-
-      if (submitBtn) {
-
-        submitBtn.disabled = false;
-
-        submitBtn.innerHTML =
-          originalText;
-      }
-
-
-      cleanup();
-    }
-
-
-    /*
-     * The iframe load is only used after the
-     * actual form submission has started.
-     */
-
-    var submitted =
-      false;
-
-
-    iframe.addEventListener(
-      "load",
-      function () {
-
-        if (!submitted) {
-          return;
-        }
-
-
-        finishSuccess(
-          "Your registration has been saved. Your confirmation email is being processed."
-        );
-
-      }
-    );
-
-
-    /*
-     * SUBMIT
-     */
-
-    try {
-
-      submitted = true;
-
-      form.submit();
-
-
-      /*
-       * Safari fallback.
-       * Do not submit twice.
-       */
-
-      fallbackTimer =
-        setTimeout(
-          function () {
-
-            finishSuccess(
-              "Your registration has been submitted and is being processed. Please check your email shortly."
-            );
-
-          },
-          10000
-        );
-
-    } catch (error) {
-
-      if (fallbackTimer) {
-
-        clearTimeout(
-          fallbackTimer
-        );
-      }
-
-
-      console.error(
-        "Alliance registration form submission failed:",
-        error
-      );
-
-
-      self.submitting = false;
-
-
-      if (submitBtn) {
-
-        submitBtn.disabled = false;
-
-        submitBtn.innerHTML =
-          originalText;
-      }
-
-
-      cleanup();
-
-
-      alert(
-        "Registration could not be submitted. Please contact Alliance directly."
-      );
-    }
-  }
-};
-
-
-/* =========================================================
-   HTML ESCAPING
-   ========================================================= */
-
-function escapeHtml_(value) {
-
-  if (value === null || value === undefined) {
-    value = "";
-  }
-
-
-  return String(value).replace(
-    /[&<>"']/g,
-    function (char) {
-
-      if (char === "&") {
-        return "&amp;";
-      }
-
-      if (char === "<") {
-        return "&lt;";
-      }
-
-      if (char === ">") {
-        return "&gt;";
-      }
-
-      if (char === '"') {
-        return "&quot;";
-      }
-
-      return "&#39;";
-    }
-  );
-}
-
-
-/* =========================================================
-   GLOBAL
-   ========================================================= */
-
-/*
- * Reliable submission override.
- *
- * The original hidden-iframe transport cannot read the Apps Script
- * response and may show a success screen even when no row was saved.
- * This version waits for the JSON response and only confirms success
- * when Apps Script explicitly returns { ok: true }.
- */
-RegistrationModule.submitRegistration = function (e) {
-
-  if (e && typeof e.preventDefault === "function") {
-    e.preventDefault();
-  }
-
-  var self = this;
-
-  if (this.submitting) {
-    return;
-  }
-
+  populateReview() {
+    document.getElementById('revSessionSummary').innerHTML = this.sessionMarkup(true);
+    document.getElementById('revCategory').textContent = this.formData.category;
+    document.getElementById('revDivision').textContent = this.formData.division;
+    document.getElementById('revAthleteName').textContent = this.formData.athleteName;
+    document.getElementById('revAthleteDob').textContent = this.formData.athleteDob;
+    document.getElementById('revPosition').textContent = this.formData.athletePosition;
+    document.getElementById('revParentName').textContent = this.formData.parentName;
+    document.getElementById('revParentEmail').textContent = this.formData.parentEmail;
+    document.getElementById('revParentPhone').textContent = this.formData.parentPhone;
+  },
+
+ async submitRegistration(e) {
+  e.preventDefault();
+  if (this.submitting) return;
   if (!ALLIANCE_REGISTRATION_ENDPOINT) {
-    alert(
-      "Online registration is temporarily unavailable. Please contact info@alliancevbc.ca."
-    );
+    alert('Online registration is being updated. Please contact info@alliancevbc.ca to register.');
     return;
   }
-
-  var programs =
-    window.ALLIANCE_PROGRAMS || {};
-
-  if (!programs[this.selectedCategory]) {
-    alert("Please select a registration program.");
-    return;
-  }
-
   this.submitting = true;
+  this.requestId = this.requestId || crypto.randomUUID();
 
-  if (!this.requestId) {
-    if (
-      window.crypto &&
-      typeof window.crypto.randomUUID === "function"
-    ) {
-      this.requestId =
-        window.crypto.randomUUID();
-    } else {
-      this.requestId =
-        "ALLIANCE-" +
-        Date.now() +
-        "-" +
-        Math.random()
-          .toString(36)
-          .substring(2);
-    }
-  }
-
-  var submitBtn =
+  const submitBtn =
     document.getElementById("regSubmitBtn");
 
-  var originalText =
-    submitBtn
-      ? submitBtn.innerHTML
-      : "Complete Registration ✓";
+  const originalText = submitBtn.innerHTML;
 
-  if (submitBtn) {
-    submitBtn.innerHTML = "Submitting...";
-    submitBtn.disabled = true;
-  }
+  submitBtn.innerHTML = "Submitting...";
+  submitBtn.disabled = true;
 
-  var data = {
+  const payload = new URLSearchParams({
     formType: "registration",
     programId: this.selectedCategory,
+    sessionId: this.selectedSessionId || '',
     requestId: this.requestId,
-    category: this.formData.category || "",
-    division: this.formData.division || "",
-    athleteName: this.formData.athleteName || "",
-    athleteDob: this.formData.athleteDob || "",
-    athletePosition: this.formData.athletePosition || "",
-    experienceYears: this.formData.experienceYears || "",
-    parentName: this.formData.parentName || "",
-    parentEmail: this.formData.parentEmail || "",
-    parentPhone: this.formData.parentPhone || "",
-    comments: this.formData.comments || "",
+
+    category:
+      this.formData.category || "",
+
+    division:
+      this.formData.division || "",
+
+    athleteName:
+      this.formData.athleteName || "",
+
+    athleteDob:
+      this.formData.athleteDob || "",
+
+    athletePosition:
+      this.formData.athletePosition || "",
+
+    experienceYears:
+      this.formData.experienceYears || "",
+
+    parentName:
+      this.formData.parentName || "",
+
+    parentEmail:
+      this.formData.parentEmail || "",
+
+    parentPhone:
+      this.formData.parentPhone || "",
+
+    comments:
+      this.formData.comments || "",
+
     website: "",
     sourceUrl: window.location.href
-  };
+  });
 
-  var body =
-    new URLSearchParams();
+  try {
+    const response = await fetch(
+      ALLIANCE_REGISTRATION_ENDPOINT,
+      {
+        method: "POST",
 
-  Object.keys(data).forEach(
-    function (name) {
-      body.append(
-        name,
-        String(data[name])
-      );
-    }
-  );
-
-  var controller =
-    typeof AbortController === "function"
-      ? new AbortController()
-      : null;
-
-  var timeoutId =
-    controller
-      ? setTimeout(
-          function () {
-            controller.abort();
-          },
-          45000
-        )
-      : null;
-
-  fetch(
-    ALLIANCE_REGISTRATION_ENDPOINT,
-    {
-      method: "POST",
-      mode: "cors",
-      credentials: "omit",
-      redirect: "follow",
-      body: body,
-      signal:
-        controller
-          ? controller.signal
-          : undefined
-    }
-  )
-    .then(
-      function (response) {
-        return response.text();
-      }
-    )
-    .then(
-      function (responseText) {
-
-        var result;
-
-        try {
-          result = JSON.parse(responseText);
-        } catch (parseError) {
-          throw new Error(
-            "The registration server returned an unexpected response. Please try again."
-          );
-        }
-
-        if (!result || result.ok !== true) {
-          throw new Error(
-            result && result.error
-              ? result.error
-              : "The registration could not be saved. Please try again."
-          );
-        }
-
-        self.submitting = false;
-
-        var successName =
-          document.getElementById(
-            "confirmAthleteName"
-          );
-
-        if (successName) {
-          successName.textContent =
-            self.formData.athleteName;
-        }
-
-        var statusElement =
-          document.getElementById(
-            "confirmationEmailStatus"
-          );
-
-        if (statusElement) {
-          statusElement.textContent =
-            result.duplicate
-              ? "This registration was already received. Your confirmation email status is " +
-                (result.emailStatus || "being processed") +
-                "."
-              : "Your registration has been saved. Your confirmation email is being processed.";
-        }
-
-        self.currentStep = 5;
-        self.renderStep(5);
-      }
-    )
-    .catch(
-      function (error) {
-
-        self.submitting = false;
-
-        console.error(
-          "Alliance registration submission failed:",
-          error
-        );
-
-        alert(
-          error && error.name === "AbortError"
-            ? "The registration request timed out. Please try again."
-            : error && error.message
-              ? error.message
-              : "Registration could not be submitted. Please contact Alliance directly."
-        );
-      }
-    )
-    .then(
-      function () {
-
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-        }
+        body: payload
       }
     );
-};
 
-window.RegistrationModule =
-  RegistrationModule;
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.error || 'Registration was not saved.');
+    document.getElementById('confirmationEmailStatus').textContent = result.emailStatus === 'sent'
+      ? 'Your confirmation email has been sent. Please check your inbox and spam folder.'
+      : 'Your confirmation email is pending. Please contact info@alliancevbc.ca if it does not arrive.';
+    this.currentStep = 5;
+    this.renderStep(5);
 
+    const confirmName =
+      document.getElementById(
+        "confirmAthleteName"
+      );
 
-/* =========================================================
-   AUTO INITIALIZE
-   ========================================================= */
+    if (confirmName) {
+      confirmName.textContent =
+        this.formData.athleteName;
+    }
 
-function initAllianceRegistration() {
+  } catch (error) {
+    console.error(
+      "Registration submission failed:",
+      error
+    );
 
-  if (
-    window.RegistrationModule &&
-    typeof window.RegistrationModule.init === "function"
-  ) {
+    alert(
+      "Registration could not be submitted. Please try again or contact Alliance directly."
+    );
 
-    window.RegistrationModule.init();
-
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+  } finally {
+    this.submitting = false;
   }
 }
+};
 
-
-/*
- * Always initialize after the full page has loaded.
- * This guarantees that all registration buttons
- * already exist before click handlers are attached.
- */
-
-if (document.readyState === "complete") {
-
-  initAllianceRegistration();
-
-} else {
-
-  window.addEventListener(
-    "load",
-    initAllianceRegistration
-  );
-}
+window.RegistrationModule = RegistrationModule;
