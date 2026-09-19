@@ -2347,6 +2347,20 @@
 }
 
 /* September sessions and program registration */
+.tryout-schedule-wrapper { margin:28px 0 24px; border-radius:16px; box-shadow:0 12px 34px rgba(6,11,24,.08); }
+.tryout-schedule-table th:first-child { width:16%; }
+.tryout-schedule-table th:nth-child(2) { width:25%; }
+.tryout-schedule-table th:nth-child(3) { width:41%; }
+.tryout-schedule-table th:last-child { width:18%; text-align:right; }
+.tryout-schedule-table td { vertical-align:middle; line-height:1.5; }
+.tryout-schedule-table td strong { color:#060b18; }
+.tryout-schedule-table td small { display:block; margin-top:4px; color:#6b7280; line-height:1.45; }
+.tryout-schedule-table .tryout-division-cell strong { display:block; font-family:var(--font-display); font-size:1.15rem; }
+.tryout-schedule-table .tryout-action-cell { text-align:right; }
+.tryout-schedule-table .division-end td { border-bottom:3px solid #10182c; }
+.tryout-schedule-table tbody tr[data-division="13u"] td,
+.tryout-schedule-table tbody tr[data-division="15u"] td { background:#fafbfe; }
+.tryout-schedule-table tbody tr:hover td { background:#fff2f6; }
 .tryout-session-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin:28px 0; }
 .tryout-session { border:1px solid #27324a; border-radius:18px; overflow:hidden; background:#10182c; }
 .tryout-session-heading { padding:28px; background:#091127; }
@@ -2378,6 +2392,8 @@
 .tryout-session-choice > span > strong { color:#060b18; font-size:.95rem; }
 .tryout-session-choice small { color:#5c687d; margin-top:3px; line-height:1.45; }
 @media(max-width:700px) {
+ .tryout-schedule-table tbody tr[data-division] td { background:#fff; }
+ .tryout-schedule-table .division-end td { border-bottom:1px solid var(--color-border-light); }
  .tryout-session-grid { grid-template-columns:1fr; }
  .tryout-session-heading { padding:22px; }
  .tryout-session-row { padding:22px; }
