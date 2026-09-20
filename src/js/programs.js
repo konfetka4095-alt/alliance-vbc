@@ -8,9 +8,24 @@ window.ALLIANCE_PROGRAMS = {
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      { "id": "15u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "6:00–8:00 PM", "location": "121 Rollinghill Road, Richmond Hill" },
-      { "id": "15u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "8:15–10:15 PM", "location": "141 Kirk Drive, Thornhill" },
-      { "id": "15u-2026-09-25", "date": "Friday, September 25, 2026", "time": "8:15–10:15 PM", "location": "2 Glass Drive, Aurora" }
+      {
+        "id": "15u-2026-09-22",
+        "date": "Tuesday, September 22, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
+      },
+      {
+        "id": "15u-2026-09-24",
+        "date": "Thursday, September 24, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "141 Kirk Drive, Thornhill"
+      },
+      {
+        "id": "15u-2026-09-25",
+        "date": "Friday, September 25, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "2 Glass Drive, Aurora"
+      }
     ],
     "fee": 20,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
@@ -25,9 +40,24 @@ window.ALLIANCE_PROGRAMS = {
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      { "id": "13u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "8:15–10:15 PM", "location": "121 Rollinghill Road, Richmond Hill" },
-      { "id": "13u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "6:00–8:00 PM", "location": "141 Kirk Drive, Thornhill" },
-      { "id": "13u-2026-09-25", "date": "Friday, September 25, 2026", "time": "6:00–8:00 PM", "location": "2 Glass Drive, Aurora" }
+      {
+        "id": "13u-2026-09-22",
+        "date": "Tuesday, September 22, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
+      },
+      {
+        "id": "13u-2026-09-24",
+        "date": "Thursday, September 24, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "141 Kirk Drive, Thornhill"
+      },
+      {
+        "id": "13u-2026-09-25",
+        "date": "Friday, September 25, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "2 Glass Drive, Aurora"
+      }
     ],
     "fee": 20,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
@@ -36,16 +66,30 @@ window.ALLIANCE_PROGRAMS = {
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 20, 25, 28 & October 6, 2026",
+    "date": "September 22, 24 & 25, 2026",
     "time": "Choose one tryout session",
-    "venue": "Markham, Thornhill & North York",
+    "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      { "id": "12u-2026-09-20", "date": "Sunday, September 20, 2026", "time": "6:00–7:30 PM", "location": "The Colosseum Markham, 7261 Victoria Park Avenue, Markham — BACK entrance, BLUE door" },
-      { "id": "12u-2026-09-25", "date": "Friday, September 25, 2026", "time": "6:00–8:00 PM", "location": "135 Green Lane, Thornhill" },
-      { "id": "12u-2026-09-28", "date": "Monday, September 28, 2026", "time": "6:00–8:00 PM", "location": "141 Kirk Drive, Thornhill" },
-      { "id": "12u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "6:00–8:00 PM", "location": "360 Hollywood Avenue, North York" }
+      {
+        "id": "12u-2026-09-22",
+        "date": "Tuesday, September 22, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
+      },
+      {
+        "id": "12u-2026-09-24",
+        "date": "Thursday, September 24, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "141 Kirk Drive, Thornhill"
+      },
+      {
+        "id": "12u-2026-09-25-mazi",
+        "date": "Friday, September 25, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "2 Glass Drive, Aurora"
+      }
     ],
     "fee": 20,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
@@ -54,16 +98,30 @@ window.ALLIANCE_PROGRAMS = {
   "14u": {
     "name": "14U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 20, 21, 22 & 24, 2026",
+    "date": "September 21, 22 & 24, 2026",
     "time": "Choose one tryout session",
-    "venue": "Markham, Thornhill, Richmond Hill & Maple",
+    "venue": "Thornhill, Richmond Hill & Maple",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      { "id": "14u-2026-09-20", "date": "Sunday, September 20, 2026", "time": "7:30–9:00 PM", "location": "The Colosseum Markham, 7261 Victoria Park Avenue, Markham — BACK entrance, BLUE door" },
-      { "id": "14u-2026-09-21", "date": "Monday, September 21, 2026", "time": "6:00–8:00 PM", "location": "66 Henderson Avenue, Thornhill" },
-      { "id": "14u-2026-09-22", "date": "Tuesday, September 22, 2026", "time": "6:00–8:00 PM", "location": "85 Rolling Hill Road, Richmond Hill" },
-      { "id": "14u-2026-09-24", "date": "Thursday, September 24, 2026", "time": "6:00–8:00 PM", "location": "240 Killian Road, Maple" }
+      {
+        "id": "14u-2026-09-21",
+        "date": "Monday, September 21, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "66 Henderson Avenue, Thornhill"
+      },
+      {
+        "id": "14u-2026-09-22",
+        "date": "Tuesday, September 22, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "85 Rolling Hill Road, Richmond Hill"
+      },
+      {
+        "id": "14u-2026-09-24",
+        "date": "Thursday, September 24, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "240 Killian Road, Maple"
+      }
     ],
     "fee": 20,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
