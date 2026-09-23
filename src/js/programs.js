@@ -190,19 +190,19 @@ window.ALLIANCE_PROGRAMS["clinic-grade-7-8"] = {
 window.ALLIANCE_PROGRAMS["clinic-richmond-rose-6-8"] = {
   "name": "Richmond Rose Students Clinic — Grades 6–8",
   "category": "Mixed Youth Clinic",
-  "date": "September 23–October 7, 2026 · 3 free weeks",
+  "date": "September 23–December 31, 2026 · Choose individual Wednesdays",
   "time": "Wednesdays, 6:00–8:00 PM",
   "venue": "Richmond Rose Public School",
   "address": "160 Frank Endean Rd, Richmond Hill",
   "entrance": "",
-  "fee": 0,
+  "fee": 30,
   "recurringDay": 3,
   "startDate": "2026-09-23",
-  "endDate": "2026-10-07",
+  "endDate": "2026-12-31",
   "freeThrough": "2026-10-07",
   "grades": "6–8",
   "dayName": "Wednesday",
   "sessionTime": "6:00–8:00 PM",
-  "payment": "$0 for the first 3 weeks: September 23, September 30 and October 7. For Richmond Rose Public School students in Grades 6–8 only. No payment required.",
+  "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 23, September 30 or October 7.",
   "eligibility": "Richmond Rose Public School students in Grades 6–8 only."
 };
