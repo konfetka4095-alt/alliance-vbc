@@ -124,8 +124,8 @@ const RegistrationModule = {
       const athleteName = document.getElementById('regAthleteName').value.trim();
       const athleteDob = document.getElementById('regAthleteDob').value;
       const program = window.ALLIANCE_PROGRAMS[this.selectedCategory];
-      if ((program.recurringThursday || (program.sessions && program.sessions.length)) && !this.getSelectedSession()) {
-        alert('Please choose a valid practice or tryout date. The Grades 4–5 clinic runs on Thursdays from September 24 through December 31, 2026.');
+      if ((program.recurringDay !== undefined || (program.sessions && program.sessions.length)) && !this.getSelectedSession()) {
+        alert('Please choose a valid upcoming date for the selected program.');
         return;
       }
       if (!athleteName || !athleteDob) {
@@ -197,29 +197,32 @@ const RegistrationModule = {
 
   getSelectedSession() {
     const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
-    if (p && p.recurringThursday) {
+    if (p && p.recurringDay !== undefined) {
       const date = this.selectedSessionId;
       if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
       const parsed = new Date(date + 'T12:00:00Z');
-      if (isNaN(parsed) || parsed.toISOString().slice(0,10) !== date || parsed.getUTCDay() !== 4 || date < this.clinicMinimumDate() || date > '2026-12-31') return null;
-      return {id: date, date: parsed.toLocaleDateString('en-CA', {timeZone:'UTC', weekday:'long', year:'numeric', month:'long', day:'numeric'}), time:'6:00–8:00 PM', location:p.venue + ', ' + p.address};
+      if (isNaN(parsed) || parsed.toISOString().slice(0,10) !== date || parsed.getUTCDay() !== p.recurringDay || date < this.clinicMinimumDate() || date > p.endDate) return null;
+      return {id: date, date: parsed.toLocaleDateString('en-CA', {timeZone:'UTC', weekday:'long', year:'numeric', month:'long', day:'numeric'}), time:p.sessionTime, location:p.venue + ', ' + p.address};
     }
     if (!p || !p.sessions || !p.sessions.length) return null;
     return p.sessions.find(session => session.id === this.selectedSessionId) || null;
   },
 
   clinicMinimumDate() {
+    const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
     const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Toronto', year:'numeric', month:'2-digit', day:'2-digit'}).formatToParts(new Date());
     const part = type => parts.find(p => p.type === type).value;
-    return [part('year'),part('month'),part('day')].join('-') < '2026-09-24' ? '2026-09-24' : [part('year'),part('month'),part('day')].join('-');
+    return [part('year'),part('month'),part('day')].join('-') < p.startDate ? p.startDate : [part('year'),part('month'),part('day')].join('-');
   },
 
   sessionMarkup(reviewOnly = false) {
     const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
     const selected = this.getSelectedSession();
-    if (p.recurringThursday) {
-      if (reviewOnly && selected) return `<strong>${p.name}</strong><p>${selected.date}<br>${selected.time}<br>${selected.location}</p><p><strong>$30 — one practice</strong></p><p>${p.payment}</p>`;
-      return `<strong>${p.name}</strong><p>Hollywood Public School<br>360 Hollywood Ave, North York<br>Thursdays, 6:00–8:00 PM · $30 per practice</p><label for="regClinicDate">Choose a Thursday practice date *</label><input class="form-control" type="date" id="regClinicDate" min="${this.clinicMinimumDate()}" max="2026-12-31" value="${/^\d{4}-\d{2}-\d{2}$/.test(this.selectedSessionId) ? this.selectedSessionId : ''}" required><p class="session-choice-instruction">September 24–December 31, 2026. Book one date per registration; register again for additional dates.</p>`;
+    if (p.recurringDay !== undefined) {
+      const fee = selected && selected.id <= p.freeThrough ? 0 : p.fee;
+      const payment = fee === 0 ? 'No payment required for this practice.' : 'Please e-transfer $' + fee + ' to Alliancevb.clinic@gmail.com. Include the child’s name, grade group, practice date and parent phone number.';
+      if (reviewOnly && selected) return `<strong>${p.name}</strong><p>${selected.date}<br>${selected.time}<br>${selected.location}</p><p>${p.eligibility || ''}</p><p><strong>$${fee} — one practice</strong></p><p>${payment}</p>`;
+      return `<strong>${p.name}</strong><p>${p.venue}<br>${p.address}<br>${p.time}</p><p>${p.payment}</p><label for="regClinicDate">Choose a ${p.dayName} practice date *</label><input class="form-control" type="date" id="regClinicDate" min="${this.clinicMinimumDate()}" max="${p.endDate}" value="${/^\d{4}-\d{2}-\d{2}$/.test(this.selectedSessionId) ? this.selectedSessionId : ''}" required><p class="session-choice-instruction">Book one date per registration; register again for additional dates.</p>`;
     }
 
 
@@ -255,7 +258,7 @@ const RegistrationModule = {
     if (clinicDate) clinicDate.addEventListener('change', () => {
       this.selectedSessionId = clinicDate.value;
       this.requestId = null;
-      clinicDate.setCustomValidity(this.getSelectedSession() ? '' : 'Choose a Thursday between September 24 and December 31, 2026, that has not passed.');
+      clinicDate.setCustomValidity(this.getSelectedSession() ? '' : 'Choose an upcoming ' + p.dayName + ' between ' + p.startDate + ' and ' + p.endDate + '.');
       clinicDate.reportValidity();
     });
 

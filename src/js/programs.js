@@ -152,7 +152,7 @@ window.ALLIANCE_PROGRAMS = {
 };
 
 window.ALLIANCE_PROGRAMS["clinic-grade-4-5"] = {
-  "name": "Mixed Youth Clinic — Grades 4–5",
+  "name": "Mixed Youth Clinic — Grades 4–6",
   "category": "Mixed Youth Clinic",
   "date": "September 24–December 31, 2026 · Choose individual Thursdays",
   "time": "Thursdays, 6:00–8:00 PM",
@@ -160,6 +160,49 @@ window.ALLIANCE_PROGRAMS["clinic-grade-4-5"] = {
   "address": "360 Hollywood Ave, North York",
   "entrance": "",
   "fee": 30,
-  "recurringThursday": true,
-  "payment": "Please e-transfer $30 per selected practice to Alliancevb.clinic@gmail.com. Include your child’s full name, practice date, Grades 4–5 clinic, and parent phone number. Payment Status: Unpaid until Alliance confirms receipt."
+  "recurringDay": 4,
+  "startDate": "2026-09-24",
+  "endDate": "2026-12-31",
+  "freeThrough": "2026-10-08",
+  "grades": "4–6",
+  "dayName": "Thursday",
+  "sessionTime": "6:00–8:00 PM",
+  "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 24, October 1 or October 8."
+};
+window.ALLIANCE_PROGRAMS["clinic-grade-7-8"] = {
+  "name": "Mixed Youth Clinic — Grades 7–8",
+  "category": "Mixed Youth Clinic",
+  "date": "September 24–December 31, 2026 · Choose individual Thursdays",
+  "time": "Thursdays, 8:00–10:00 PM",
+  "venue": "Hollywood Public School",
+  "address": "360 Hollywood Ave, North York",
+  "entrance": "",
+  "fee": 30,
+  "recurringDay": 4,
+  "startDate": "2026-09-24",
+  "endDate": "2026-12-31",
+  "freeThrough": "2026-10-08",
+  "grades": "7–8",
+  "dayName": "Thursday",
+  "sessionTime": "8:00–10:00 PM",
+  "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 24, October 1 or October 8."
+};
+window.ALLIANCE_PROGRAMS["clinic-richmond-rose-6-8"] = {
+  "name": "Richmond Rose Students Clinic — Grades 6–8",
+  "category": "Mixed Youth Clinic",
+  "date": "September 23–October 7, 2026 · 3 free weeks",
+  "time": "Wednesdays, 6:00–8:00 PM",
+  "venue": "Richmond Rose Public School",
+  "address": "160 Frank Endean Rd, Richmond Hill",
+  "entrance": "",
+  "fee": 0,
+  "recurringDay": 3,
+  "startDate": "2026-09-23",
+  "endDate": "2026-10-07",
+  "freeThrough": "2026-10-07",
+  "grades": "6–8",
+  "dayName": "Wednesday",
+  "sessionTime": "6:00–8:00 PM",
+  "payment": "$0 for the first 3 weeks: September 23, September 30 and October 7. For Richmond Rose Public School students in Grades 6–8 only. No payment required.",
+  "eligibility": "Richmond Rose Public School students in Grades 6–8 only."
 };
