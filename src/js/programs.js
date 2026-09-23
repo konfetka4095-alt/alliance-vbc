@@ -154,7 +154,7 @@ window.ALLIANCE_PROGRAMS = {
 window.ALLIANCE_PROGRAMS["clinic-grade-4-5"] = {
   "name": "Mixed Youth Clinic — Grades 4–5",
   "category": "Mixed Youth Clinic",
-  "date": "From September 24, 2026 · Ongoing",
+  "date": "September 24–December 31, 2026 · Choose individual Thursdays",
   "time": "Thursdays, 6:00–8:00 PM",
   "venue": "Hollywood Public School",
   "address": "360 Hollywood Ave, North York",
