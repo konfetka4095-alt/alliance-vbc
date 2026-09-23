@@ -150,3 +150,16 @@ window.ALLIANCE_PROGRAMS = {
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   }
 };
+
+window.ALLIANCE_PROGRAMS["clinic-grade-4-5"] = {
+  "name": "Mixed Youth Clinic — Grades 4–5",
+  "category": "Mixed Youth Clinic",
+  "date": "From September 24, 2026 · Ongoing",
+  "time": "Thursdays, 6:00–8:00 PM",
+  "venue": "Hollywood Public School",
+  "address": "360 Hollywood Ave, North York",
+  "entrance": "",
+  "fee": 30,
+  "recurringThursday": true,
+  "payment": "Please e-transfer $30 per selected practice to Alliancevb.clinic@gmail.com. Include your child’s full name, practice date, Grades 4–5 clinic, and parent phone number. Payment Status: Unpaid until Alliance confirms receipt."
+};
