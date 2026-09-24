@@ -81,7 +81,18 @@ const RegistrationModule = {
 
   openModal(categoryKey = 'tryouts', sessionId = '') {
     this.currentStep = 1;
-    categoryKey = window.ALLIANCE_PROGRAMS[categoryKey] ? categoryKey : '15u';
+
+    // The general Register buttons intentionally open the first tryout option.
+    if (categoryKey === 'tryouts') categoryKey = '15u';
+
+    // Never silently fall back to 15U for an unknown clinic key.
+    // A stale cached programs.js used to make newly added clinics open 15U.
+    if (!window.ALLIANCE_PROGRAMS || !window.ALLIANCE_PROGRAMS[categoryKey]) {
+      console.error('Unknown Alliance registration program:', categoryKey);
+      alert('This program was just updated. Please refresh the page and try again.');
+      return;
+    }
+
     this.selectedCategory = categoryKey;
     const sessions = window.ALLIANCE_PROGRAMS[categoryKey].sessions || [];
     this.selectedSessionId = sessions.some(session => session.id === sessionId) ? sessionId : '';
