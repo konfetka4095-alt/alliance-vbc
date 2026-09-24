@@ -187,8 +187,8 @@ window.ALLIANCE_PROGRAMS["clinic-grade-7-8"] = {
   "sessionTime": "8:00–10:00 PM",
   "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 24, October 1 or October 8."
 };
-window.ALLIANCE_PROGRAMS["clinic-richmond-rose-6-8"] = {
-  "name": "Richmond Rose Students Clinic — Grades 6–8",
+window.ALLIANCE_PROGRAMS["clinic-richmond-rose-4-5"] = {
+  "name": "Richmond Rose Students Clinic — Grades 4–5",
   "category": "Mixed Youth Clinic",
   "date": "September 23–December 31, 2026 · Choose individual Wednesdays",
   "time": "Wednesdays, 6:00–8:00 PM",
@@ -200,9 +200,27 @@ window.ALLIANCE_PROGRAMS["clinic-richmond-rose-6-8"] = {
   "startDate": "2026-09-23",
   "endDate": "2026-12-31",
   "freeThrough": "2026-10-07",
-  "grades": "6–8",
+  "grades": "4–5",
   "dayName": "Wednesday",
   "sessionTime": "6:00–8:00 PM",
   "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 23, September 30 or October 7.",
-  "eligibility": "Richmond Rose Public School students in Grades 6–8 only."
+  "eligibility": "Richmond Rose Public School students in Grades 4–5 only."
+};
+window.ALLIANCE_PROGRAMS["clinic-pleasantville-6-8"] = {
+  "name": "Mixed Youth Clinic — Grades 6–8 (Pleasantville)",
+  "category": "Mixed Youth Clinic",
+  "date": "September 21–December 31, 2026 · Choose individual Mondays",
+  "time": "Mondays, 6:00–8:00 PM",
+  "venue": "Pleasantville Public School",
+  "address": "400 Mill St, Richmond Hill",
+  "entrance": "",
+  "fee": 30,
+  "recurringDay": 1,
+  "startDate": "2026-09-21",
+  "endDate": "2026-12-31",
+  "freeThrough": "2026-10-05",
+  "grades": "6–8",
+  "dayName": "Monday",
+  "sessionTime": "6:00–8:00 PM",
+  "payment": "First 3 weeks: $0. From October 15: $30 per practice. No payment is required for September 21, September 28 or October 5."
 };
