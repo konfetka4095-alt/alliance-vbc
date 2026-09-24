@@ -211,7 +211,7 @@ window.ALLIANCE_PROGRAMS["clinic-pleasantville-6-8"] = {
   "category": "Mixed Youth Clinic",
   "date": "September 21–December 31, 2026 · Choose individual Mondays",
   "time": "Mondays, 6:00–8:00 PM",
-  "venue": "Pleasantville Public School",
+  "venue": "Pleasantville Primary School",
   "address": "400 Mill St, Richmond Hill",
   "entrance": "",
   "fee": 30,
