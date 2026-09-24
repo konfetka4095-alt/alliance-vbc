@@ -2,18 +2,12 @@ window.ALLIANCE_PROGRAMS = {
   "15u": {
     "name": "15U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 22, 24 & 25, 2026",
+    "date": "September 24, 25 & 29, 2026",
     "time": "Choose one tryout session",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "15u-2026-09-22",
-        "date": "Tuesday, September 22, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
       {
         "id": "15u-2026-09-24",
         "date": "Thursday, September 24, 2026",
@@ -25,6 +19,12 @@ window.ALLIANCE_PROGRAMS = {
         "date": "Friday, September 25, 2026",
         "time": "8:15–10:15 PM",
         "location": "2 Glass Drive, Aurora"
+      },
+      {
+        "id": "15u-2026-09-29",
+        "date": "Tuesday, September 29, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
       }
     ],
     "fee": 20,
@@ -34,18 +34,12 @@ window.ALLIANCE_PROGRAMS = {
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 22, 24 & 25, 2026",
+    "date": "September 24, 25 & 29, 2026",
     "time": "Choose one tryout session",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "13u-2026-09-22",
-        "date": "Tuesday, September 22, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
       {
         "id": "13u-2026-09-24",
         "date": "Thursday, September 24, 2026",
@@ -57,6 +51,12 @@ window.ALLIANCE_PROGRAMS = {
         "date": "Friday, September 25, 2026",
         "time": "6:00–8:00 PM",
         "location": "2 Glass Drive, Aurora"
+      },
+      {
+        "id": "13u-2026-09-29",
+        "date": "Tuesday, September 29, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
       }
     ],
     "fee": 20,
@@ -66,18 +66,12 @@ window.ALLIANCE_PROGRAMS = {
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 22, 24 & 25, 2026",
+    "date": "September 24, 25 & 29, 2026",
     "time": "Choose one tryout session",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "12u-2026-09-22",
-        "date": "Tuesday, September 22, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
       {
         "id": "12u-2026-09-24",
         "date": "Thursday, September 24, 2026",
@@ -89,6 +83,12 @@ window.ALLIANCE_PROGRAMS = {
         "date": "Friday, September 25, 2026",
         "time": "6:00–8:00 PM",
         "location": "2 Glass Drive, Aurora"
+      },
+      {
+        "id": "12u-2026-09-29",
+        "date": "Tuesday, September 29, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "121 Rollinghill Road, Richmond Hill"
       }
     ],
     "fee": 20,
@@ -98,29 +98,29 @@ window.ALLIANCE_PROGRAMS = {
   "14u": {
     "name": "14U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 21, 22 & 24, 2026",
+    "date": "September 24, 28 & 29, 2026",
     "time": "Choose one tryout session",
     "venue": "Thornhill, Richmond Hill & Maple",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
       {
-        "id": "14u-2026-09-21",
-        "date": "Monday, September 21, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "66 Henderson Avenue, Thornhill"
-      },
-      {
-        "id": "14u-2026-09-22",
-        "date": "Tuesday, September 22, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "85 Rolling Hill Road, Richmond Hill"
-      },
-      {
         "id": "14u-2026-09-24",
         "date": "Thursday, September 24, 2026",
         "time": "6:00–8:00 PM",
         "location": "240 Killian Road, Maple"
+      },
+      {
+        "id": "14u-2026-09-28",
+        "date": "Monday, September 28, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "66 Henderson Avenue, Thornhill"
+      },
+      {
+        "id": "14u-2026-09-29",
+        "date": "Tuesday, September 29, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "85 Rolling Hill Road, Richmond Hill"
       }
     ],
     "fee": 20,
