@@ -9,11 +9,11 @@ const ALLIANCE_REGISTRATION_ENDPOINT =
 const RegistrationModule = {
   initialized: false,
   currentStep: 1,
-  selectedCategory: '15u',
+  selectedCategory: 'free-tryout-grade-6-8',
   selectedSessionId: '',
   formData: {
     category: 'Rep Tryouts',
-    division: '14U Girls (Born 2013)',
+    division: 'Free Volleyball Tryout — Grades 6–8',
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',
@@ -82,8 +82,8 @@ const RegistrationModule = {
   openModal(categoryKey = 'tryouts', sessionId = '') {
     this.currentStep = 1;
 
-    // The general Register buttons intentionally open the first tryout option.
-    if (categoryKey === 'tryouts') categoryKey = '15u';
+    // The general Register buttons intentionally open the featured free tryout first.
+    if (categoryKey === 'tryouts') categoryKey = 'free-tryout-grade-6-8';
 
     // Never silently fall back to 15U for an unknown clinic key.
     // A stale cached programs.js used to make newly added clinics open 15U.

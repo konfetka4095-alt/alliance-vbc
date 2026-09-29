@@ -16,7 +16,7 @@ const ScheduleModule = {
   renderTryoutSchedule() {
     const container = document.querySelector('.tryout-session-grid');
     const programs = window.ALLIANCE_PROGRAMS || {};
-    const order = ['12u', '13u', '14u', '15u'];
+    const order = ['free-tryout-grade-6-8', '12u', '13u', '14u', '15u'];
 
     if (!container) return;
 
@@ -24,11 +24,15 @@ const ScheduleModule = {
       const program = programs[programId];
       if (!program || !program.sessions) return '';
 
+      const divisionLabel = program.scheduleLabel || program.name;
+      const divisionSubLabel = program.scheduleSubLabel || (program.born ? `Born ${program.born}` : '');
+      const featuredClass = program.featured ? ' featured-tryout-row' : '';
+
       return program.sessions.map((session, index) => `
-        <tr class="schedule-row${index === program.sessions.length - 1 ? ' division-end' : ''}" data-division="${programId}">
+        <tr class="schedule-row${featuredClass}${index === program.sessions.length - 1 ? ' division-end' : ''}" data-division="${programId}">
           <td class="tryout-division-cell" data-label="Division">
-            <strong>${program.name}</strong>
-            <small>Born ${program.born}</small>
+            <strong>${divisionLabel}</strong>
+            ${divisionSubLabel ? `<small>${divisionSubLabel}</small>` : ''}
           </td>
           <td data-label="Date & Time">
             <strong>${session.date}</strong>

@@ -1,4 +1,24 @@
 window.ALLIANCE_PROGRAMS = {
+  "free-tryout-grade-6-8": {
+    "name": "Free Volleyball Tryout — Grades 6–8",
+    "category": "Rep Team Tryouts",
+    "date": "October 1 & 8, 2026",
+    "time": "8:00–10:00 PM",
+    "venue": "Hollywood Public School",
+    "address": "360 Hollywood Ave, North York",
+    "entrance": "Gym",
+    "scheduleLabel": "FREE TRYOUT · GRADES 6–8",
+    "scheduleSubLabel": "12U–15U Girls",
+    "grades": "6–8",
+    "divisions": "12U–15U Girls",
+    "featured": true,
+    "sessions": [
+      {"id": "free-tryout-grade-6-8-2026-10-01", "date": "Thursday, October 1, 2026", "time": "8:00–10:00 PM", "location": "Hollywood Public School (Gym), 360 Hollywood Ave, North York"},
+      {"id": "free-tryout-grade-6-8-2026-10-08", "date": "Thursday, October 8, 2026", "time": "8:00–10:00 PM", "location": "Hollywood Public School (Gym), 360 Hollywood Ave, North York"}
+    ],
+    "fee": 0,
+    "payment": "FREE tryout — no payment required."
+  },
   "15u": {
     "name": "15U Girls",
     "category": "Rep Team Tryouts",
