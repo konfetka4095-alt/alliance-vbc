@@ -433,7 +433,9 @@ const RegistrationModule = {
     );
 
     alert(
-      "Registration could not be submitted. Please try again or contact Alliance directly."
+      error && error.message
+        ? "Registration could not be submitted: " + error.message
+        : "Registration could not be submitted. Please try again or contact Alliance directly."
     );
 
     submitBtn.innerHTML = originalText;
