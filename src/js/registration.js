@@ -9,6 +9,7 @@ const ALLIANCE_REGISTRATION_ENDPOINT =
 const RegistrationModule = {
   initialized: false,
   currentStep: 1,
+  skipProgramStep: false,
   selectedCategory: 'free-tryout-grade-6-8',
   selectedSessionId: '',
   formData: {
@@ -80,7 +81,12 @@ const RegistrationModule = {
   },
 
   openModal(categoryKey = 'tryouts', sessionId = '') {
-    this.currentStep = 1;
+    // Program-specific Register buttons already tell us what the parent chose,
+    // so skip the redundant Program screen and start at Athlete Details.
+    // Generic REGISTER buttons still keep the Program chooser because they do
+    // not provide a specific program.
+    this.skipProgramStep = categoryKey !== 'tryouts';
+    this.currentStep = this.skipProgramStep ? 2 : 1;
 
     // The general Register buttons intentionally open the featured free tryout first.
     if (categoryKey === 'tryouts') categoryKey = 'free-tryout-grade-6-8';
@@ -112,11 +118,40 @@ const RegistrationModule = {
     });
 
     this.updateDivisions();
-    this.renderStep(1);
+    this.configureStepIndicators();
+    this.renderStep(this.currentStep);
 
     const modal = document.getElementById('registrationModal');
     if (modal) modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+  },
+
+  configureStepIndicators() {
+    const programIndicator = document.getElementById('regInd1');
+    const athleteIndicator = document.getElementById('regInd2');
+    const parentIndicator = document.getElementById('regInd3');
+    const reviewIndicator = document.getElementById('regInd4');
+
+    if (programIndicator) {
+      programIndicator.style.display = this.skipProgramStep ? 'none' : '';
+    }
+
+    const setBubble = (indicator, value) => {
+      if (!indicator) return;
+      const bubble = indicator.querySelector('.reg-step-bubble');
+      if (bubble) bubble.textContent = value;
+    };
+
+    if (this.skipProgramStep) {
+      setBubble(athleteIndicator, '1');
+      setBubble(parentIndicator, '2');
+      setBubble(reviewIndicator, '3');
+    } else {
+      setBubble(programIndicator, '1');
+      setBubble(athleteIndicator, '2');
+      setBubble(parentIndicator, '3');
+      setBubble(reviewIndicator, '4');
+    }
   },
 
   closeModal() {
@@ -171,6 +206,10 @@ const RegistrationModule = {
   },
 
   prevStep() {
+    // When the program was already chosen from the website, Athlete Details is
+    // the first visible step. Do not send the user back to the hidden selector.
+    if (this.skipProgramStep && this.currentStep === 2) return;
+
     if (this.currentStep > 1) {
       this.currentStep--;
       this.renderStep(this.currentStep);
@@ -201,7 +240,10 @@ const RegistrationModule = {
     const nextBtn = document.getElementById('regNextBtn');
     const submitBtn = document.getElementById('regSubmitBtn');
 
-    if (prevBtn) prevBtn.style.display = step === 1 || step === 5 ? 'none' : 'inline-flex';
+    if (prevBtn) {
+      const firstVisibleStep = this.skipProgramStep ? 2 : 1;
+      prevBtn.style.display = step === firstVisibleStep || step === 5 ? 'none' : 'inline-flex';
+    }
     if (nextBtn) nextBtn.style.display = step >= 4 ? 'none' : 'inline-flex';
     if (submitBtn) submitBtn.style.display = step === 4 ? 'inline-flex' : 'none';
   },
