@@ -101,7 +101,9 @@ const RegistrationModule = {
 
     this.selectedCategory = categoryKey;
     const sessions = window.ALLIANCE_PROGRAMS[categoryKey].sessions || [];
-    this.selectedSessionId = sessions.some(session => session.id === sessionId) ? sessionId : '';
+    this.selectedSessionId = sessions.some(session => session.id === sessionId)
+      ? sessionId
+      : (sessions.length === 1 ? sessions[0].id : '');
     this.requestId = null;
     const submit = document.getElementById('regSubmitBtn');
     submit.disabled = false; submit.textContent = 'Complete Registration ✓';
