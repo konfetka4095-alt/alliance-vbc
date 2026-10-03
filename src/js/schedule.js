@@ -2,10 +2,10 @@
 
 const ScheduleModule = {
   ageData: {
-    2015: { division: '12U Girls', programId: '12u' },
-    2014: { division: '13U Girls', programId: '13u' },
+    2015: { division: '12U Girls', programId: 'free-tryout-grade-6-8' },
+    2014: { division: '13U Girls', programId: 'free-tryout-grade-6-8' },
     2013: { division: '14U Girls', programId: '14u' },
-    2012: { division: '15U Girls', programId: '15u' }
+    2012: { division: '15U Girls', programId: 'free-tryout-grade-6-8' }
   },
 
   init() {
@@ -16,7 +16,7 @@ const ScheduleModule = {
   renderTryoutSchedule() {
     const container = document.querySelector('.tryout-session-grid');
     const programs = window.ALLIANCE_PROGRAMS || {};
-    const order = ['free-tryout-grade-6-8', '12u', '13u', '14u', '15u'];
+    const order = ['free-tryout-grade-6-8', '14u'];
 
     if (!container) return;
 

@@ -2,7 +2,7 @@ window.ALLIANCE_PROGRAMS = {
   "free-tryout-grade-6-8": {
     "name": "Free Volleyball Tryout — Grades 6–8",
     "category": "Rep Team Tryouts",
-    "date": "October 1 & 8, 2026",
+    "date": "October 8, 2026",
     "time": "8:00–10:00 PM",
     "venue": "Hollywood Public School",
     "address": "360 Hollywood Ave, North York",
@@ -13,7 +13,6 @@ window.ALLIANCE_PROGRAMS = {
     "divisions": "12U–15U Girls",
     "featured": true,
     "sessions": [
-      {"id": "free-tryout-grade-6-8-2026-10-01", "date": "Thursday, October 1, 2026", "time": "8:00–10:00 PM", "location": "Hollywood Public School (Gym), 360 Hollywood Ave, North York"},
       {"id": "free-tryout-grade-6-8-2026-10-08", "date": "Thursday, October 8, 2026", "time": "8:00–10:00 PM", "location": "Hollywood Public School (Gym), 360 Hollywood Ave, North York"}
     ],
     "fee": 0,
@@ -22,125 +21,71 @@ window.ALLIANCE_PROGRAMS = {
   "15u": {
     "name": "15U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 29 & October 1–2, 2026",
-    "time": "Choose one tryout session",
-    "venue": "Richmond Hill, Thornhill & Aurora",
-    "address": "See the available sessions below",
+    "date": "Tryouts completed",
+    "time": "",
+    "venue": "",
+    "address": "",
     "entrance": "",
-    "sessions": [
-      {
-        "id": "15u-2026-09-29",
-        "date": "Tuesday, September 29, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
-      {
-        "id": "15u-2026-10-01",
-        "date": "Thursday, October 1, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "141 Kirk Drive, Thornhill"
-      },
-      {
-        "id": "15u-2026-10-02",
-        "date": "Friday, October 2, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "2 Glass Drive, Aurora"
-      }
-    ],
+    "sessions": [],
+    "registrationClosed": true,
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "",
     "born": 2012
   },
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 29 & October 1–2, 2026",
-    "time": "Choose one tryout session",
-    "venue": "Richmond Hill, Thornhill & Aurora",
-    "address": "See the available sessions below",
+    "date": "Tryouts completed",
+    "time": "",
+    "venue": "",
+    "address": "",
     "entrance": "",
-    "sessions": [
-      {
-        "id": "13u-2026-09-29",
-        "date": "Tuesday, September 29, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
-      {
-        "id": "13u-2026-10-01",
-        "date": "Thursday, October 1, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "141 Kirk Drive, Thornhill"
-      },
-      {
-        "id": "13u-2026-10-02",
-        "date": "Friday, October 2, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "2 Glass Drive, Aurora"
-      }
-    ],
+    "sessions": [],
+    "registrationClosed": true,
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "",
     "born": 2014
   },
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 29 & October 1–2, 2026",
-    "time": "Choose one tryout session",
-    "venue": "Richmond Hill, Thornhill & Aurora",
-    "address": "See the available sessions below",
+    "date": "Tryouts completed",
+    "time": "",
+    "venue": "",
+    "address": "",
     "entrance": "",
-    "sessions": [
-      {
-        "id": "12u-2026-09-29",
-        "date": "Tuesday, September 29, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "121 Rollinghill Road, Richmond Hill"
-      },
-      {
-        "id": "12u-2026-10-01",
-        "date": "Thursday, October 1, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "141 Kirk Drive, Thornhill"
-      },
-      {
-        "id": "12u-2026-10-02-mazi",
-        "date": "Friday, October 2, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "2 Glass Drive, Aurora"
-      }
-    ],
+    "sessions": [],
+    "registrationClosed": true,
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "",
     "born": 2015
   },
   "14u": {
     "name": "14U Girls",
     "category": "Rep Team Tryouts",
-    "date": "September 28–29 & October 1, 2026",
+    "date": "October 6, 8 & 9, 2026",
     "time": "Choose one tryout session",
-    "venue": "Thornhill, Richmond Hill & Maple",
+    "venue": "North York & Thornhill",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
       {
-        "id": "14u-2026-09-28",
-        "date": "Monday, September 28, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "66 Henderson Avenue, Thornhill"
+        "id": "14u-2026-10-06",
+        "date": "Tuesday, October 6, 2026",
+        "time": "8:00–10:00 PM",
+        "location": "Hollywood Public School, 360 Hollywood Ave, North York"
       },
       {
-        "id": "14u-2026-09-29",
-        "date": "Tuesday, September 29, 2026",
+        "id": "14u-2026-10-08",
+        "date": "Thursday, October 8, 2026",
         "time": "6:00–8:00 PM",
-        "location": "85 Rolling Hill Road, Richmond Hill"
+        "location": "St. Robert, 8101 Leslie St, Thornhill"
       },
       {
-        "id": "14u-2026-10-01",
-        "date": "Thursday, October 1, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "240 Killian Road, Maple"
+        "id": "14u-2026-10-09",
+        "date": "Friday, October 9, 2026",
+        "time": "8:15–10:15 PM",
+        "location": "St. Rene Goupil, 135 Green Lane, Thornhill"
       }
     ],
     "fee": 20,
