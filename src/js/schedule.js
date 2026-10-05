@@ -40,10 +40,7 @@ const ScheduleModule = {
             </td>
             <td data-label="Location">${session.location}</td>
             <td class="tryout-action-cell">
-              <div style="display:flex;gap:.4rem;flex-wrap:wrap;">
-                <button class="btn btn-pink btn-sm" data-open-reg data-program-type="12u" data-session-id="${session12.id}" aria-label="Register for 12U Girls on ${session.date}">12U</button>
-                <button class="btn btn-pink btn-sm" data-open-reg data-program-type="13u" data-session-id="${session.id}" aria-label="Register for 13U Girls on ${session.date}">13U</button>
-              </div>
+              <button class="btn btn-pink btn-sm" data-open-reg>Register</button>
             </td>
           </tr>`;
         }).join('');
