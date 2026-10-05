@@ -28,7 +28,7 @@ const ScheduleModule = {
         return combined.sessions.map((session, index) => `
           <tr class="schedule-row${index === combined.sessions.length - 1 ? ' division-end' : ''}" data-division="12u13u">
             <td class="tryout-division-cell" data-label="Division">
-              <strong>${index === 0 ? '12/13U Girls' : ''}</strong>
+              <strong>12/13U Girls</strong>
               ${index === 0 ? '<small>12U tryouts run during 13U practice</small>' : ''}
             </td>
             <td data-label="Date & Time">
