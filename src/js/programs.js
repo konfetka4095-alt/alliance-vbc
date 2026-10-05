@@ -21,43 +21,52 @@ window.ALLIANCE_PROGRAMS = {
   "15u": {
     "name": "15U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Tryouts completed",
-    "time": "",
-    "venue": "",
-    "address": "",
+    "date": "October 6, 8 & 9, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the available sessions below",
     "entrance": "",
-    "sessions": [],
-    "registrationClosed": true,
+    "sessions": [
+      {"id": "15u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "8:15–10:15 PM", "location": "St. Marguerite, 121 Rollinghill Road, Richmond Hill"},
+      {"id": "15u-2026-10-08", "date": "Thursday, October 8, 2026", "time": "8:15–10:15 PM", "location": "St. Anthony, 141 Kirk Dr, Thornhill"},
+      {"id": "15u-2026-10-09", "date": "Friday, October 9, 2026", "time": "8:15–10:15 PM", "location": "St. Joseph, 2 Glass Drive, Aurora"}
+    ],
     "fee": 20,
-    "payment": "",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2012
   },
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Tryouts completed",
-    "time": "",
-    "venue": "",
-    "address": "",
+    "date": "October 6, 8 & 9, 2026",
+    "time": "Choose one tryout session",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the available sessions below",
     "entrance": "",
-    "sessions": [],
-    "registrationClosed": true,
+    "sessions": [
+      {"id": "13u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "6:00–8:00 PM", "location": "St. Marguerite, 121 Rollinghill Road, Richmond Hill"},
+      {"id": "13u-2026-10-08", "date": "Thursday, October 8, 2026", "time": "6:00–8:00 PM", "location": "St. Anthony, 141 Kirk Dr, Thornhill"},
+      {"id": "13u-2026-10-09", "date": "Friday, October 9, 2026", "time": "6:00–8:00 PM", "location": "St. Joseph, 2 Glass Drive, Aurora"}
+    ],
     "fee": 20,
-    "payment": "",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2014
   },
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "Tryouts completed",
-    "time": "",
-    "venue": "",
-    "address": "",
+    "date": "October 6, 8 & 9, 2026",
+    "time": "Tryouts run with the 13U practice sessions",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the available sessions below",
     "entrance": "",
-    "sessions": [],
-    "registrationClosed": true,
+    "sessions": [
+      {"id": "12u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "6:00–8:00 PM", "location": "St. Marguerite, 121 Rollinghill Road, Richmond Hill"},
+      {"id": "12u-2026-10-08", "date": "Thursday, October 8, 2026", "time": "6:00–8:00 PM", "location": "St. Anthony, 141 Kirk Dr, Thornhill"},
+      {"id": "12u-2026-10-09", "date": "Friday, October 9, 2026", "time": "6:00–8:00 PM", "location": "St. Joseph, 2 Glass Drive, Aurora"}
+    ],
     "fee": 20,
-    "payment": "",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2015
   },
   "14u": {
