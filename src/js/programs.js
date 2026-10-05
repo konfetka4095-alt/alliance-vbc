@@ -35,6 +35,23 @@ window.ALLIANCE_PROGRAMS = {
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
     "born": 2012
   },
+
+  "12u13u": {
+    "name": "12/13U Girls",
+    "category": "Rep Team Tryouts",
+    "date": "October 6, 8 & 9, 2026",
+    "time": "6:00–8:00 PM",
+    "venue": "Richmond Hill, Thornhill & Aurora",
+    "address": "See the session schedule",
+    "entrance": "",
+    "sessions": [
+      {"id": "12u13u-2026-10-06", "date": "Tuesday, October 6, 2026", "time": "6:00–8:00 PM", "location": "St. Marguerite, 121 Rollinghill Road, Richmond Hill"},
+      {"id": "12u13u-2026-10-08", "date": "Thursday, October 8, 2026", "time": "6:00–8:00 PM", "location": "St. Anthony, 141 Kirk Dr, Thornhill"},
+      {"id": "12u13u-2026-10-09", "date": "Friday, October 9, 2026", "time": "6:00–8:00 PM", "location": "St. Joseph, 2 Glass Drive, Aurora"}
+    ],
+    "fee": 20,
+    "payment": "Please e-transfer $20 to Alliancevb.clinic@gmail.com. Include your child’s full name, age division, and parent phone number in the message. Payment Status: Unpaid until Alliance confirms receipt."
+  },
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",

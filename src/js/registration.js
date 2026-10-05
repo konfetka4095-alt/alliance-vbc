@@ -182,7 +182,36 @@ const RegistrationModule = {
       }
       this.formData.athleteName = athleteName;
       this.formData.athleteDob = athleteDob;
-      this.formData.division = document.getElementById('regDivisionSelect').value;
+
+      // The schedule has one 12/13U Register button. Route the athlete to
+      // the correct backend program from DOB without showing a Program step.
+      if (this.selectedCategory === '12u13u') {
+        const birthYear = Number(String(athleteDob).slice(0, 4));
+        const targetProgram = birthYear === 2015 ? '12u' : (birthYear === 2014 ? '13u' : '');
+        if (!targetProgram) {
+          alert('12/13U tryouts are for athletes born in 2014 or 2015.');
+          return;
+        }
+
+        const dateSuffix = String(this.selectedSessionId || '').match(/(2026-10-(?:06|08|09))$/);
+        const target = window.ALLIANCE_PROGRAMS[targetProgram];
+        const targetSession = dateSuffix && target && target.sessions
+          ? target.sessions.find(session => session.id.endsWith(dateSuffix[1]))
+          : null;
+
+        if (!target || !targetSession) {
+          alert('Please choose a valid upcoming 12/13U tryout date.');
+          return;
+        }
+
+        this.selectedCategory = targetProgram;
+        this.selectedSessionId = targetSession.id;
+        this.formData.category = target.category;
+        this.formData.division = target.name;
+      } else {
+        this.formData.division = document.getElementById('regDivisionSelect').value;
+      }
+
       this.formData.athletePosition = document.getElementById('regAthletePos').value;
       this.formData.experienceYears = document.getElementById('regAthleteExp').value;
       this.currentStep = 3;

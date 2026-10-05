@@ -22,17 +22,14 @@ const ScheduleModule = {
 
     const rows = order.map(programId => {
       if (programId === '12u13u') {
-        const p12 = programs['12u'];
-        const p13 = programs['13u'];
-        if (!p12 || !p13 || !p13.sessions) return '';
+        const combined = programs['12u13u'];
+        if (!combined || !combined.sessions) return '';
 
-        return p13.sessions.map((session, index) => {
-          const session12 = p12.sessions[index];
-          return `
-          <tr class="schedule-row${index === p13.sessions.length - 1 ? ' division-end' : ''}" data-division="12u13u">
+        return combined.sessions.map((session, index) => `
+          <tr class="schedule-row${index === combined.sessions.length - 1 ? ' division-end' : ''}" data-division="12u13u">
             <td class="tryout-division-cell" data-label="Division">
-              <strong>12/13U Girls</strong>
-              <small>12U tryouts run during 13U practice</small>
+              <strong>${index === 0 ? '12/13U Girls' : ''}</strong>
+              ${index === 0 ? '<small>12U tryouts run during 13U practice</small>' : ''}
             </td>
             <td data-label="Date & Time">
               <strong>${session.date}</strong>
@@ -40,10 +37,9 @@ const ScheduleModule = {
             </td>
             <td data-label="Location">${session.location}</td>
             <td class="tryout-action-cell">
-              <button class="btn btn-pink btn-sm" data-open-reg data-program-type="13u" data-session-id="${session.id}">Register</button>
+              <button class="btn btn-pink btn-sm" data-open-reg data-program-type="12u13u" data-session-id="${session.id}">Register</button>
             </td>
-          </tr>`;
-        }).join('');
+          </tr>`).join('');
       }
 
       const program = programs[programId];
