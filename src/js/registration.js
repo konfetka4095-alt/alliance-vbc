@@ -193,7 +193,7 @@ const RegistrationModule = {
           return;
         }
 
-        const dateSuffix = String(this.selectedSessionId || '').match(/(2026-10-(?:06|08|09))$/);
+        const dateSuffix = String(this.selectedSessionId || '').match(/(\d{4}-\d{2}-\d{2})$/);
         const target = window.ALLIANCE_PROGRAMS[targetProgram];
         const targetSession = dateSuffix && target && target.sessions
           ? target.sessions.find(session => session.id.endsWith(dateSuffix[1]))
