@@ -100,10 +100,19 @@ const RegistrationModule = {
     }
 
     this.selectedCategory = categoryKey;
-    const sessions = window.ALLIANCE_PROGRAMS[categoryKey].sessions || [];
+    const program = window.ALLIANCE_PROGRAMS[categoryKey];
+    const sessions = program.sessions || [];
     this.selectedSessionId = sessions.some(session => session.id === sessionId)
       ? sessionId
       : (sessions.length === 1 ? sessions[0].id : '');
+
+    // Recurring clinics use a date instead of a fixed session ID.
+    // Preselect the next valid clinic date so parents do not hit
+    // "choose a valid upcoming date" before they can continue.
+    if (program.recurringDay !== undefined && !this.selectedSessionId) {
+      this.selectedSessionId = this.nextRecurringDate(program);
+    }
+
     this.requestId = null;
     const submit = document.getElementById('regSubmitBtn');
     submit.disabled = false; submit.textContent = 'Complete Registration ✓';
@@ -297,6 +306,33 @@ const RegistrationModule = {
     const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Toronto', year:'numeric', month:'2-digit', day:'2-digit'}).formatToParts(new Date());
     const part = type => parts.find(p => p.type === type).value;
     return [part('year'),part('month'),part('day')].join('-') < p.startDate ? p.startDate : [part('year'),part('month'),part('day')].join('-');
+  },
+
+  nextRecurringDate(program) {
+    if (!program || program.recurringDay === undefined) return '';
+
+    const minDate = (() => {
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Toronto',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(new Date());
+      const part = type => parts.find(item => item.type === type).value;
+      const today = [part('year'), part('month'), part('day')].join('-');
+      return today < program.startDate ? program.startDate : today;
+    })();
+
+    let date = new Date(minDate + 'T12:00:00Z');
+    for (let i = 0; i < 7; i++) {
+      const iso = date.toISOString().slice(0, 10);
+      if (date.getUTCDay() === program.recurringDay) {
+        return iso <= program.endDate ? iso : '';
+      }
+      date.setUTCDate(date.getUTCDate() + 1);
+    }
+
+    return '';
   },
 
   sessionMarkup(reviewOnly = false) {
