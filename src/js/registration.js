@@ -10,11 +10,11 @@ const RegistrationModule = {
   initialized: false,
   currentStep: 1,
   skipProgramStep: false,
-  selectedCategory: 'free-tryout-grade-6-8',
+  selectedCategory: '12u13u',
   selectedSessionId: '',
   formData: {
     category: 'Rep Tryouts',
-    division: 'Free Volleyball Tryout — Grades 6–8',
+    division: '12/13U Girls',
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',
@@ -88,8 +88,8 @@ const RegistrationModule = {
     this.skipProgramStep = categoryKey !== 'tryouts';
     this.currentStep = this.skipProgramStep ? 2 : 1;
 
-    // The general Register buttons intentionally open the featured free tryout first.
-    if (categoryKey === 'tryouts') categoryKey = 'free-tryout-grade-6-8';
+    // The general Register buttons open the current Rep Tryout program chooser.
+    if (categoryKey === 'tryouts') categoryKey = '12u13u';
 
     // Never silently fall back to 15U for an unknown clinic key.
     // A stale cached programs.js used to make newly added clinics open 15U.
