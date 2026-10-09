@@ -18,10 +18,12 @@ const RegistrationModule = {
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',
+    schoolName: '',
     experienceYears: '2',
     parentName: '',
     parentEmail: '',
     parentPhone: '',
+    howHeard: '',
     comments: ''
   },
 
@@ -76,6 +78,7 @@ const RegistrationModule = {
         this.requestId = null;
         document.querySelectorAll('.reg-cat-card').forEach(c => c.setAttribute('aria-pressed', String(c === card)));
         this.updateDivisions();
+        this.configureAthleteFields();
       });
     });
   },
@@ -129,12 +132,32 @@ const RegistrationModule = {
     });
 
     this.updateDivisions();
+    this.configureAthleteFields();
     this.configureStepIndicators();
     this.renderStep(this.currentStep);
 
     const modal = document.getElementById('registrationModal');
     if (modal) modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+  },
+
+  isClinicOrLeague() {
+    const program = window.ALLIANCE_PROGRAMS && window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    if (!program) return false;
+    return program.category === 'Youth Volleyball Clinic' || program.category === 'House League';
+  },
+
+  configureAthleteFields() {
+    const schoolMode = this.isClinicOrLeague();
+    const positionGroup = document.getElementById('regPositionGroup');
+    const schoolGroup = document.getElementById('regSchoolGroup');
+    const schoolInput = document.getElementById('regSchoolName');
+    const reviewLabel = document.getElementById('revPositionLabel');
+
+    if (positionGroup) positionGroup.hidden = schoolMode;
+    if (schoolGroup) schoolGroup.hidden = !schoolMode;
+    if (schoolInput) schoolInput.required = schoolMode;
+    if (reviewLabel) reviewLabel.textContent = schoolMode ? 'School' : 'Position';
   },
 
   configureStepIndicators() {
@@ -221,7 +244,18 @@ const RegistrationModule = {
         this.formData.division = document.getElementById('regDivisionSelect').value;
       }
 
-      this.formData.athletePosition = document.getElementById('regAthletePos').value;
+      if (this.isClinicOrLeague()) {
+        const schoolName = document.getElementById('regSchoolName').value.trim();
+        if (!schoolName) {
+          alert('Please enter the athlete\'s current school.');
+          return;
+        }
+        this.formData.schoolName = schoolName;
+        this.formData.athletePosition = '';
+      } else {
+        this.formData.schoolName = '';
+        this.formData.athletePosition = document.getElementById('regAthletePos').value;
+      }
       this.formData.experienceYears = document.getElementById('regAthleteExp').value;
       this.currentStep = 3;
     } else if (this.currentStep === 3) {
@@ -229,13 +263,19 @@ const RegistrationModule = {
       const parentName = document.getElementById('regParentName').value.trim();
       const parentEmail = document.getElementById('regParentEmail').value.trim();
       const parentPhone = document.getElementById('regParentPhone').value.trim();
+      const howHeard = document.getElementById('regHowHeard').value;
       if (!parentName || !parentEmail || !parentPhone || !document.getElementById('regParentEmail').checkValidity()) {
         alert('Please fill in parent/guardian contact details.');
+        return;
+      }
+      if (!howHeard) {
+        alert('Please tell us how you heard about Alliance.');
         return;
       }
       this.formData.parentName = parentName;
       this.formData.parentEmail = parentEmail;
       this.formData.parentPhone = parentPhone;
+      this.formData.howHeard = howHeard;
       this.formData.comments = document.getElementById('regComments').value.trim();
       
       this.populateReview();
@@ -399,7 +439,9 @@ const RegistrationModule = {
     document.getElementById('revDivision').textContent = this.formData.division;
     document.getElementById('revAthleteName').textContent = this.formData.athleteName;
     document.getElementById('revAthleteDob').textContent = this.formData.athleteDob;
-    document.getElementById('revPosition').textContent = this.formData.athletePosition;
+    document.getElementById('revPosition').textContent = this.isClinicOrLeague() ? (this.formData.schoolName || '-') : (this.formData.athletePosition || '-');
+    document.getElementById('revPositionLabel').textContent = this.isClinicOrLeague() ? 'School' : 'Position';
+    document.getElementById('revHowHeard').textContent = this.formData.howHeard || '-';
     document.getElementById('revParentName').textContent = this.formData.parentName;
     document.getElementById('revParentEmail').textContent = this.formData.parentEmail;
     document.getElementById('revParentPhone').textContent = this.formData.parentPhone;
@@ -444,6 +486,9 @@ const RegistrationModule = {
     athletePosition:
       this.formData.athletePosition || "",
 
+    schoolName:
+      this.formData.schoolName || "",
+
     experienceYears:
       this.formData.experienceYears || "",
 
@@ -455,6 +500,9 @@ const RegistrationModule = {
 
     parentPhone:
       this.formData.parentPhone || "",
+
+    howHeard:
+      this.formData.howHeard || "",
 
     comments:
       this.formData.comments || "",
