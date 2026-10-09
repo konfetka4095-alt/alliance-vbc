@@ -22,8 +22,8 @@ $appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzX8p4bNGWZ_AKu0wtKVtj
 
 $allowedFields = [
     'formType', 'programId', 'sessionId', 'requestId', 'category', 'division',
-    'athleteName', 'athleteDob', 'athletePosition', 'experienceYears',
-    'parentName', 'parentEmail', 'parentPhone', 'comments', 'website', 'sourceUrl'
+    'athleteName', 'athleteDob', 'athletePosition', 'schoolName', 'experienceYears',
+    'parentName', 'parentEmail', 'parentPhone', 'howHeard', 'comments', 'website', 'sourceUrl'
 ];
 
 $payload = [];
