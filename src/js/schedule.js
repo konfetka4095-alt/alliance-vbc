@@ -12,6 +12,12 @@ const ScheduleModule = {
     this.bindEvents();
   },
 
+  addressOnlyLocation(value) {
+    const text = String(value || '').trim();
+    const parts = text.split(',').map(part => part.trim()).filter(Boolean);
+    return parts.length >= 3 ? parts.slice(1).join(', ') : text;
+  },
+
   renderTryoutSchedule() {
     const container = document.querySelector('.tryout-session-grid');
     const programs = window.ALLIANCE_PROGRAMS || {};
@@ -37,7 +43,7 @@ const ScheduleModule = {
             <strong>${session.date}</strong>
             <small>${session.time}</small>
           </td>
-          <td data-label="Location">${session.location}</td>
+          <td data-label="Location">${this.addressOnlyLocation(session.location)}</td>
           <td class="tryout-action-cell">
             <button class="btn btn-pink btn-sm" data-open-reg data-program-type="${programId}" data-session-id="${session.id}" aria-label="Register for ${program.name} on ${session.date}">Register</button>
           </td>
@@ -91,7 +97,7 @@ const ScheduleModule = {
       return;
     }
     const sessionList = program.sessions.map(session =>
-      `<li style="margin-bottom:.55rem;"><strong>${session.date} · ${session.time}</strong><br>${session.location}</li>`
+      `<li style="margin-bottom:.55rem;"><strong>${session.date} · ${session.time}</strong><br>${this.addressOnlyLocation(session.location)}</li>`
     ).join('');
 
     resultBox.innerHTML = `

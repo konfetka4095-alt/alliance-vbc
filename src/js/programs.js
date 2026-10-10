@@ -10,7 +10,7 @@ window.ALLIANCE_PROGRAMS = {
     "grades": "7–9",
     "dayName": "Monday",
     "fee": 240,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "clinic-grade-5-8-moraine": {
     "name": "Youth Volleyball Clinic — Grades 4–6",
@@ -23,7 +23,7 @@ window.ALLIANCE_PROGRAMS = {
     "grades": "4–6",
     "dayName": "Tuesday",
     "fee": 300,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "clinic-grade-4-5-fall": {
     "name": "Youth Volleyball Clinic — Grades 4–6",
@@ -36,7 +36,7 @@ window.ALLIANCE_PROGRAMS = {
     "grades": "4–6",
     "dayName": "Thursday",
     "fee": 300,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "clinic-pleasantville-6-8": {
     "name": "House League — Grades 7–9",
@@ -49,7 +49,7 @@ window.ALLIANCE_PROGRAMS = {
     "grades": "7–9",
     "dayName": "Monday",
     "fee": 270,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "clinic-8-11": {
     "name": "Youth Volleyball Clinic — Grades 4–6",
@@ -62,7 +62,7 @@ window.ALLIANCE_PROGRAMS = {
     "grades": "4–6",
     "dayName": "Wednesday",
     "fee": 390,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "13u": {
     "name": "13U Girls",
@@ -93,7 +93,7 @@ window.ALLIANCE_PROGRAMS = {
       }
     ],
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment.",
     "born": 2014
   },
   "12u": {
@@ -119,7 +119,7 @@ window.ALLIANCE_PROGRAMS = {
       }
     ],
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment.",
     "born": 2015
   },
   "14u": {
@@ -151,7 +151,7 @@ window.ALLIANCE_PROGRAMS = {
       }
     ],
     "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment.",
     "born": 2013
   }
 };

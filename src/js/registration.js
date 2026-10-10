@@ -147,6 +147,14 @@ const RegistrationModule = {
     return program.category === 'Youth Volleyball Clinic' || program.category === 'House League';
   },
 
+  addressOnlyLocation(value) {
+    const text = String(value || '').trim();
+    const parts = text.split(',').map(part => part.trim()).filter(Boolean);
+    // Tryout locations are stored as "School Name, Street Address, City".
+    // Registration screens intentionally show only "Street Address, City".
+    return parts.length >= 3 ? parts.slice(1).join(', ') : text;
+  },
+
   configureAthleteFields() {
     const schoolMode = this.isClinicOrLeague();
     const positionGroup = document.getElementById('regPositionGroup');
@@ -307,7 +315,7 @@ const RegistrationModule = {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
       const parsed = new Date(date + 'T12:00:00Z');
       if (isNaN(parsed) || parsed.toISOString().slice(0,10) !== date || parsed.getUTCDay() !== p.recurringDay || date < this.clinicMinimumDate() || date > p.endDate) return null;
-      return {id: date, date: parsed.toLocaleDateString('en-CA', {timeZone:'UTC', weekday:'long', year:'numeric', month:'long', day:'numeric'}), time:p.sessionTime, location:p.venue + ', ' + p.address};
+      return {id: date, date: parsed.toLocaleDateString('en-CA', {timeZone:'UTC', weekday:'long', year:'numeric', month:'long', day:'numeric'}), time:p.sessionTime, location:p.address};
     }
     if (!p || !p.sessions || !p.sessions.length) return null;
     return p.sessions.find(session => session.id === this.selectedSessionId) || null;
@@ -352,15 +360,15 @@ const RegistrationModule = {
     const selected = this.getSelectedSession();
     if (p.recurringDay !== undefined) {
       const fee = selected && selected.id <= p.freeThrough ? 0 : p.fee;
-      const payment = fee === 0 ? 'No payment required for this practice.' : 'Please e-transfer $' + fee + ' to Alliancevb.clinic@gmail.com. Include the child’s name, grade group, practice date and parent phone number.';
-      if (reviewOnly && selected) return `<strong>${p.name}</strong><p>${selected.date}<br>${selected.time}<br>${selected.location}</p><p>${p.eligibility || ''}</p><p><strong>$${fee} — one practice</strong></p><p>${payment}</p>`;
-      return `<strong>${p.name}</strong><p>${p.venue}<br>${p.address}<br>${p.time}</p><p>${p.payment}</p><label for="regClinicDate">Choose a ${p.dayName} practice date *</label><input class="form-control" type="date" id="regClinicDate" min="${this.clinicMinimumDate()}" max="${p.endDate}" value="${/^\d{4}-\d{2}-\d{2}$/.test(this.selectedSessionId) ? this.selectedSessionId : ''}" required><p class="session-choice-instruction">Book one date per registration; register again for additional dates.</p>`;
+      const payment = fee === 0 ? 'No payment required for this practice.' : 'Please e-transfer $' + fee + ' to Alliancevb.clinic@gmail.com. Include the child’s name, grade group, practice date and parent phone number. Spot is not secured without payment.';
+      if (reviewOnly && selected) return `<strong>${p.name}</strong><p>${selected.date}<br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${p.eligibility || ''}</p><p><strong>$${fee} — one practice</strong></p><p>${payment}</p>`;
+      return `<strong>${p.name}</strong><p>${p.address}<br>${p.time}</p><p>${p.payment}</p><label for="regClinicDate">Choose a ${p.dayName} practice date *</label><input class="form-control" type="date" id="regClinicDate" min="${this.clinicMinimumDate()}" max="${p.endDate}" value="${/^\d{4}-\d{2}-\d{2}$/.test(this.selectedSessionId) ? this.selectedSessionId : ''}" required><p class="session-choice-instruction">Book one date per registration; register again for additional dates.</p>`;
     }
 
 
     if (p.sessions && p.sessions.length) {
       if (reviewOnly && selected) {
-        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${selected.location}</p><p>${p.payment}</p>`;
+        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${p.payment}</p>`;
       }
 
       const options = p.sessions.map(session => `
@@ -369,14 +377,14 @@ const RegistrationModule = {
           <span>
             <strong>${session.date}</strong>
             <small>${session.time}</small>
-            <small>${session.location}</small>
+            <small>${this.addressOnlyLocation(session.location)}</small>
           </span>
         </label>`).join('');
 
       return `<strong>${p.name}</strong><p class="session-choice-instruction">Choose the tryout date your athlete will attend *</p><div class="tryout-session-choices">${options}</div>`;
     }
 
-    return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.venue}<br>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;
+    return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;
   },
 
   updateDivisions() {
