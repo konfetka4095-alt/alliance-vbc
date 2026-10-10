@@ -49,17 +49,24 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_MAXREDIRS => 5,
-    CURLOPT_CONNECTTIMEOUT => 10,
-    CURLOPT_TIMEOUT => 40,
+    CURLOPT_CONNECTTIMEOUT => 6,
+    CURLOPT_TIMEOUT => 20,
     CURLOPT_USERAGENT => 'AllianceVBC-Registration/1.0'
 ]);
 
 $responseBody = curl_exec($ch);
 $statusCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
+$curlErrno = curl_errno($ch);
 curl_close($ch);
 
 if ($responseBody === false || $curlError !== '') {
+    if ($curlErrno === CURLE_OPERATION_TIMEDOUT) {
+        http_response_code(504);
+        echo json_encode(['ok' => false, 'error' => 'Registration service took too long to respond. Please try again in a moment.']);
+        exit;
+    }
+
     http_response_code(502);
     echo json_encode(['ok' => false, 'error' => 'Registration service could not be reached. Please try again.']);
     exit;
