@@ -39,14 +39,14 @@ window.ALLIANCE_PROGRAMS = {
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
   "clinic-pleasantville-6-8": {
-    "name": "Youth Volleyball Clinic — Grades 6–8",
-    "category": "Youth Volleyball Clinic",
+    "name": "House League — Grades 7–9",
+    "category": "House League",
     "date": "October 19–December 14, 2026 · 9 weeks",
     "time": "Mondays, 6:00–8:00 PM",
     "venue": "Pleasantville Primary School",
     "address": "400 Mill St, Richmond Hill",
     "entrance": "",
-    "grades": "6–8",
+    "grades": "7–9",
     "dayName": "Monday",
     "fee": 270,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
