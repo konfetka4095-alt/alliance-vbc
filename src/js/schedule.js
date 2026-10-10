@@ -4,8 +4,7 @@ const ScheduleModule = {
   ageData: {
     2015: { division: '12U Girls', programId: '12u13u' },
     2014: { division: '13U Girls', programId: '12u13u' },
-    2013: { division: '14U Girls', programId: '14u' },
-    2012: { division: '15U Girls', programId: '15u' }
+    2013: { division: '14U Girls', programId: '14u' }
   },
 
   init() {
@@ -16,7 +15,7 @@ const ScheduleModule = {
   renderTryoutSchedule() {
     const container = document.querySelector('.tryout-session-grid');
     const programs = window.ALLIANCE_PROGRAMS || {};
-    const order = ['12u13u', '14u', '15u'];
+    const order = ['12u13u', '14u'];
 
     if (!container) return;
 
@@ -108,6 +107,10 @@ const ScheduleModule = {
     }
 
     const program = window.ALLIANCE_PROGRAMS[match.programId];
+    if (!program || !program.sessions || !program.sessions.length) {
+      resultBox.innerHTML = `<div style="color:#e2e8f0;font-weight:600;">${match.division} currently has no upcoming tryout registration dates listed. Please contact Alliance for availability.</div>`;
+      return;
+    }
     const sessionList = program.sessions.map(session =>
       `<li style="margin-bottom:.55rem;"><strong>${session.date} · ${session.time}</strong><br>${session.location}</li>`
     ).join('');

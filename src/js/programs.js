@@ -49,41 +49,15 @@ window.ALLIANCE_PROGRAMS = {
     "fee": 390,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
-  "15u": {
-    "name": "15U Girls",
-    "category": "Rep Team Tryouts",
-    "date": "October 9, 2026",
-    "time": "8:15–10:15 PM",
-    "venue": "Aurora",
-    "address": "St. Joseph, 2 Glass Drive",
-    "entrance": "",
-    "sessions": [
-      {
-        "id": "15u-2026-10-09",
-        "date": "Friday, October 9, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "St. Joseph, 2 Glass Drive, Aurora"
-      }
-    ],
-    "fee": 20,
-    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
-    "born": 2012
-  },
   "12u13u": {
     "name": "12/13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "October 9, 13, 15 & 16, 2026",
+    "date": "October 13, 15 & 16, 2026",
     "time": "6:00–8:00 PM",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the session schedule",
     "entrance": "",
     "sessions": [
-      {
-        "id": "12u13u-2026-10-09",
-        "date": "Friday, October 9, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "St. Joseph, 2 Glass Drive, Aurora"
-      },
       {
         "id": "12u13u-2026-10-13",
         "date": "Tuesday, October 13, 2026",
@@ -109,18 +83,12 @@ window.ALLIANCE_PROGRAMS = {
   "13u": {
     "name": "13U Girls",
     "category": "Rep Team Tryouts",
-    "date": "October 9, 13, 15 & 16, 2026",
+    "date": "October 13, 15 & 16, 2026",
     "time": "Choose one tryout session",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "13u-2026-10-09",
-        "date": "Friday, October 9, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "St. Joseph, 2 Glass Drive, Aurora"
-      },
       {
         "id": "13u-2026-10-13",
         "date": "Tuesday, October 13, 2026",
@@ -147,18 +115,12 @@ window.ALLIANCE_PROGRAMS = {
   "12u": {
     "name": "12U Girls",
     "category": "Rep Team Tryouts",
-    "date": "October 9, 13, 15 & 16, 2026",
+    "date": "October 13, 15 & 16, 2026",
     "time": "Tryouts run with the 13U practice sessions",
     "venue": "Richmond Hill, Thornhill & Aurora",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "12u-2026-10-09",
-        "date": "Friday, October 9, 2026",
-        "time": "6:00–8:00 PM",
-        "location": "St. Joseph, 2 Glass Drive, Aurora"
-      },
       {
         "id": "12u-2026-10-13",
         "date": "Tuesday, October 13, 2026",
@@ -185,18 +147,12 @@ window.ALLIANCE_PROGRAMS = {
   "14u": {
     "name": "14U Girls",
     "category": "Rep Team Tryouts",
-    "date": "October 9, 13, 15 & 16, 2026",
+    "date": "October 13, 15 & 16, 2026",
     "time": "Choose one tryout session",
     "venue": "North York & Thornhill",
     "address": "See the available sessions below",
     "entrance": "",
     "sessions": [
-      {
-        "id": "14u-2026-10-09",
-        "date": "Friday, October 9, 2026",
-        "time": "8:15–10:15 PM",
-        "location": "St. Rene Goupil, 135 Green Lane, Thornhill"
-      },
       {
         "id": "14u-2026-10-13",
         "date": "Tuesday, October 13, 2026",
