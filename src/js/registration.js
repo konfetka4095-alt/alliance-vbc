@@ -511,18 +511,35 @@ const RegistrationModule = {
     sourceUrl: window.location.href
   });
 
+  const controller = new AbortController();
+  const requestTimeout = window.setTimeout(() => controller.abort(), 25000);
+
   try {
     const response = await fetch(
       ALLIANCE_REGISTRATION_ENDPOINT,
       {
         method: "POST",
-
-        body: payload
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString(),
+        signal: controller.signal,
+        cache: "no-store"
       }
     );
 
-    const result = await response.json();
-    if (!response.ok || !result.ok) throw new Error(result.error || 'Registration was not saved.');
+    const responseText = await response.text();
+    let result = null;
+
+    try {
+      result = responseText ? JSON.parse(responseText) : null;
+    } catch (parseError) {
+      throw new Error('Registration service returned an unreadable response. Please try again.');
+    }
+
+    if (!response.ok || !result || !result.ok) {
+      throw new Error((result && result.error) || 'Registration was not saved.');
+    }
     document.getElementById('confirmationEmailStatus').textContent = result.emailStatus === 'sent'
       ? 'Your confirmation email has been sent. Please check your inbox and spam folder.'
       : 'Your confirmation email is pending. Please contact info@alliancevbc.ca if it does not arrive.';
@@ -545,15 +562,18 @@ const RegistrationModule = {
       error
     );
 
-    alert(
-      error && error.message
-        ? "Registration could not be submitted: " + error.message
-        : "Registration could not be submitted. Please try again or contact Alliance directly."
-    );
+    const message = error && error.name === 'AbortError'
+      ? 'The registration service took too long to respond. Your request may still have reached Alliance. Please wait a moment and press Complete Registration again; the same registration ID will be reused so it will not create a duplicate.'
+      : (error && error.message
+          ? error.message
+          : 'Registration could not be submitted. Please try again or contact Alliance directly.');
+
+    alert('Registration could not be submitted: ' + message);
 
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
   } finally {
+    window.clearTimeout(requestTimeout);
     this.submitting = false;
   }
 },
