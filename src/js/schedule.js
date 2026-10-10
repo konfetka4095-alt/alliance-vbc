@@ -2,8 +2,8 @@
 
 const ScheduleModule = {
   ageData: {
-    2015: { division: '12U Girls', programId: '12u13u' },
-    2014: { division: '13U Girls', programId: '12u13u' },
+    2015: { division: '12U Girls', programId: '12u' },
+    2014: { division: '13U Girls', programId: '13u' },
     2013: { division: '14U Girls', programId: '14u' }
   },
 
@@ -15,32 +15,11 @@ const ScheduleModule = {
   renderTryoutSchedule() {
     const container = document.querySelector('.tryout-session-grid');
     const programs = window.ALLIANCE_PROGRAMS || {};
-    const order = ['12u13u', '14u'];
+    const order = ['12u', '13u', '14u'];
 
     if (!container) return;
 
     const rows = order.map(programId => {
-      if (programId === '12u13u') {
-        const combined = programs['12u13u'];
-        if (!combined || !combined.sessions) return '';
-
-        return combined.sessions.map((session, index) => `
-          <tr class="schedule-row${index === combined.sessions.length - 1 ? ' division-end' : ''}" data-division="12u13u">
-            <td class="tryout-division-cell" data-label="Division">
-              <strong>12/13U Girls</strong>
-              ${index === 0 ? '<small>12U tryouts run during 13U practice</small>' : ''}
-            </td>
-            <td data-label="Date & Time">
-              <strong>${session.date}</strong>
-              <small>${session.time}</small>
-            </td>
-            <td data-label="Location">${session.location}</td>
-            <td class="tryout-action-cell">
-              <button class="btn btn-pink btn-sm" data-open-reg data-program-type="12u13u" data-session-id="${session.id}">Register</button>
-            </td>
-          </tr>`).join('');
-      }
-
       const program = programs[programId];
       if (!program || !program.sessions) return '';
 
