@@ -13,14 +13,14 @@ window.ALLIANCE_PROGRAMS = {
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
   "clinic-grade-5-8-moraine": {
-    "name": "Youth Volleyball Clinic — Grades 6–8",
+    "name": "Youth Volleyball Clinic — Grades 4–6",
     "category": "Youth Volleyball Clinic",
     "date": "October 13–December 15, 2026 · 10 weeks",
     "time": "Tuesdays, 6:00–8:00 PM",
     "venue": "Moraine Hills Public School",
     "address": "85 Rollinghill Rd, Richmond Hill",
     "entrance": "",
-    "grades": "6–8",
+    "grades": "4–6",
     "dayName": "Tuesday",
     "fee": 300,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
@@ -38,14 +38,29 @@ window.ALLIANCE_PROGRAMS = {
     "fee": 300,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
+  "clinic-pleasantville-6-8": {
+    "name": "Youth Volleyball Clinic — Grades 6–8",
+    "category": "Youth Volleyball Clinic",
+    "date": "October 19–December 14, 2026 · 9 weeks",
+    "time": "Mondays, 6:00–8:00 PM",
+    "venue": "Pleasantville Primary School",
+    "address": "400 Mill St, Richmond Hill",
+    "entrance": "",
+    "grades": "6–8",
+    "dayName": "Monday",
+    "fee": 270,
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
+  },
   "clinic-8-11": {
-    "name": "Youth Volleyball Clinic — Ages 8–11",
+    "name": "Youth Volleyball Clinic — Grades 4–6",
     "category": "Youth Volleyball Clinic",
     "date": "September 23–December 16, 2026 · 13 weeks",
     "time": "Wednesdays, 6:00–8:00 PM",
     "venue": "Richmond Rose Public School",
     "address": "160 Frank Endean Rd, Richmond Hill",
     "entrance": "",
+    "grades": "4–6",
+    "dayName": "Wednesday",
     "fee": 390,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt."
   },
