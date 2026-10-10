@@ -31,6 +31,57 @@ const RegistrationModule = {
     if (this.initialized) return;
     this.initialized = true;
     this.bindEvents();
+    this.openDirectRegistrationFromUrl();
+
+    // Some in-app email browsers restore pages from cache instead of doing
+    // a full reload. Re-check the URL when the page becomes visible again.
+    window.addEventListener('pageshow', () => this.openDirectRegistrationFromUrl());
+  },
+
+  getDirectRegistrationFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    let program = (params.get('register') || '').trim();
+    let session = (params.get('session') || '').trim();
+
+    // Also support hash-based links as a fallback:
+    // #register=clinic-8-11 or #register=12u&session=12u-2026-10-15
+    if (!program && window.location.hash) {
+      const hash = window.location.hash.replace(/^#/, '');
+      const hashParams = new URLSearchParams(hash);
+      program = (hashParams.get('register') || '').trim();
+      session = (hashParams.get('session') || '').trim();
+    }
+
+    return { program, session };
+  },
+
+  openDirectRegistrationFromUrl() {
+    const direct = this.getDirectRegistrationFromUrl();
+    if (!direct.program) return;
+
+    let attempts = 0;
+    const tryOpen = () => {
+      attempts += 1;
+
+      const programsReady =
+        window.ALLIANCE_PROGRAMS &&
+        window.ALLIANCE_PROGRAMS[direct.program];
+
+      const modalReady = document.getElementById('registrationModal');
+
+      if (programsReady && modalReady) {
+        this.openModal(direct.program, direct.session);
+        return;
+      }
+
+      // Give programs.js + the modal DOM time to become available in slower
+      // mobile/in-app browsers.
+      if (attempts < 30) {
+        window.setTimeout(tryOpen, 100);
+      }
+    };
+
+    tryOpen();
   },
 
   bindEvents() {
