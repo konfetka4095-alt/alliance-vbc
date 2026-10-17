@@ -10,11 +10,11 @@ const RegistrationModule = {
   initialized: false,
   currentStep: 1,
   skipProgramStep: false,
-  selectedCategory: '12u',
+  selectedCategory: 'house-league-grade-6-9',
   selectedSessionId: '',
   formData: {
-    category: 'Rep Tryouts',
-    division: '12U Girls',
+    category: 'House League',
+    division: 'House League — Grades 7–9',
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',
@@ -90,7 +90,7 @@ const RegistrationModule = {
       const btn = e.target.closest('[data-open-reg]');
       if (!btn) return;
       e.preventDefault();
-      const preselected = btn.getAttribute('data-program-type') || 'tryouts';
+      const preselected = btn.getAttribute('data-program-type') || 'programs';
       const preselectedSession = btn.getAttribute('data-session-id') || '';
       this.openModal(preselected, preselectedSession);
     });
@@ -134,16 +134,16 @@ const RegistrationModule = {
     });
   },
 
-  openModal(categoryKey = 'tryouts', sessionId = '') {
+  openModal(categoryKey = 'programs', sessionId = '') {
     // Program-specific Register buttons already tell us what the parent chose,
     // so skip the redundant Program screen and start at Athlete Details.
     // Generic REGISTER buttons still keep the Program chooser because they do
     // not provide a specific program.
-    this.skipProgramStep = categoryKey !== 'tryouts';
+    this.skipProgramStep = categoryKey !== 'programs';
     this.currentStep = this.skipProgramStep ? 2 : 1;
 
     // The general Register buttons open the current Rep Tryout program chooser.
-    if (categoryKey === 'tryouts') categoryKey = '12u';
+    if (categoryKey === 'programs') categoryKey = 'house-league-grade-6-9';
 
     // Never silently fall back to 15U for an unknown clinic key.
     // A stale cached programs.js used to make newly added clinics open 15U.

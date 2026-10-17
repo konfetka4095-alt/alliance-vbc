@@ -1,7 +1,7 @@
 // Router Module for Switching Views and Subpages
 
 const RouterModule = {
-  views: ['home', 'programs', 'rep-teams', 'tryouts', 'about', 'coaches', 'careers', 'locations', 'faq', 'contact'],
+  views: ['home', 'programs', 'rep-teams', 'about', 'coaches', 'careers', 'locations', 'faq', 'contact'],
   currentView: 'home',
 
   init() {
@@ -11,7 +11,7 @@ const RouterModule = {
 
   handleRoute() {
     const hash = window.location.hash.replace('#', '') || 'home';
-    const targetView = this.views.includes(hash) ? hash : 'home';
+    const targetView = hash === 'tryouts' ? 'programs' : (this.views.includes(hash) ? hash : 'home');
     this.navigate(targetView);
   },
 
