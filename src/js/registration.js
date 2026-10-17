@@ -168,6 +168,8 @@ const RegistrationModule = {
     }
 
     this.requestId = null;
+    const photoConsent = document.getElementById('regPhotoVideoConsent');
+    if (photoConsent) photoConsent.checked = false;
     const submit = document.getElementById('regSubmitBtn');
     submit.disabled = false; submit.textContent = 'Complete Registration ✓';
     
@@ -485,6 +487,12 @@ const RegistrationModule = {
     alert('Online registration is being updated. Please contact info@alliancevbc.ca to register.');
     return;
   }
+  const consentBox = document.getElementById('regPhotoVideoConsent');
+  if (!consentBox || !consentBox.checked) {
+    alert('Please review and acknowledge the Photo & Video Policy before registering.');
+    if (consentBox) consentBox.focus();
+    return;
+  }
   this.submitting = true;
   this.requestId = this.requestId || this.createRequestId();
 
@@ -538,6 +546,8 @@ const RegistrationModule = {
     comments:
       this.formData.comments || "",
 
+    photoVideoConsent: "Yes",
+    photoVideoPolicyVersion: "2026-10-17",
     website: "",
     sourceUrl: window.location.href
   });
