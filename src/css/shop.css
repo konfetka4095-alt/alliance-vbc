@@ -136,3 +136,10 @@
 #view-shop .shop-gallery-main {padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;background:transparent!important;}
 #view-shop .shop-gallery-main {border-radius:0!important;overflow:hidden!important;}
 #view-shop .shop-gallery-main > img {display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;background:transparent!important;border:0!important;border-radius:0!important;}
+
+/* Keep the entire merchandise image visible, including hems, sleeves and models. */
+#view-shop .shop-gallery-main > img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #fff !important;
+}
