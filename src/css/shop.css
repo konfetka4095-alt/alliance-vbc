@@ -238,3 +238,17 @@
 #view-shop .shop-gallery-prev::before { transform: translateX(2px) rotate(-135deg) !important; }
 #view-shop .shop-gallery-next::before { transform: translateX(-2px) rotate(45deg) !important; }
 @media(max-width:760px){ #view-shop .shop-product .shop-gallery-main{aspect-ratio:4/5!important;} }
+
+/* 2026-10-18: contained sizing table inside merchandise order dialog */
+.shop-order-dialog,
+.shop-order-dialog * { box-sizing: border-box; }
+.shop-order-dialog { min-width: 0; max-width: min(475px, calc(100vw - 24px)); overflow-x: hidden; }
+.shop-order-dialog form, .shop-order-size-guide, .shop-order-size-guide .shop-size-guide { min-width: 0; width: 100%; max-width: 100%; }
+.shop-order-size-guide .shop-size-guide { display: block; padding: 10px 0; margin: 0 0 8px; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.shop-order-size-guide summary { cursor: pointer; color: #10294a; font-weight: 750; font-size: 12px; }
+.shop-order-size-guide .shop-size-scroll { display: block; width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; overflow-y: hidden; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; margin: 10px 0 6px; border: 1px solid #e2e8f0; border-radius: 7px; }
+.shop-order-size-guide .shop-size-scroll table { border-collapse: collapse; display: table; table-layout: auto; width: max-content; min-width: 100%; max-width: none; font-size: 11px; color: #1e293b; margin: 0; }
+.shop-order-size-guide .shop-size-scroll th, .shop-order-size-guide .shop-size-scroll td { box-sizing: border-box; padding: 8px 9px; text-align: center; white-space: nowrap; border-bottom: 1px solid #e2e8f0; }
+.shop-order-size-guide .shop-size-scroll th:first-child { position: sticky; left: 0; z-index: 1; background: #f8fafc; text-align: left; box-shadow: 1px 0 #e2e8f0; }
+.shop-order-size-guide .shop-size-guide p { font-size: 11px; line-height: 1.55; color: #64748b; margin: 8px 0 0; overflow-wrap: anywhere; }
+@media(max-width:540px){ .shop-order-backdrop{padding:12px;} .shop-order-dialog{padding:22px 16px;max-width:100%;} .shop-order-size-guide .shop-size-scroll th, .shop-order-size-guide .shop-size-scroll td { padding:7px 8px; } }
