@@ -3,29 +3,21 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
-function respond(int $status, array $body): void { http_response_code($status); echo json_encode($body); exit; }
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') { header('Allow: POST'); respond(405,['ok'=>false,'error'=>'Method not allowed.']); }
-if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0)>8192) respond(413,['ok'=>false,'error'=>'Request is too large.']);
-// Ignore the legacy hidden 'website' field: browser autofill can populate it,
-// which previously rejected legitimate merchandise requests.
-$items=['Alliance Hoodie'=>['price'=>50,'sizes'=>['XS','S','M','L','XL','2XL','3XL','4XL','5XL']], 'Alliance Long Sleeve'=>['price'=>30,'sizes'=>['S','M','L','XL','2XL','3XL']]];
-$item=trim((string)($_POST['item']??''));$size=trim((string)($_POST['size']??''));$name=trim((string)($_POST['name']??''));$email=trim((string)($_POST['email']??''));$notes=trim((string)($_POST['notes']??''));$program=trim((string)($_POST['program']??''));$qty=filter_var($_POST['quantity']??null,FILTER_VALIDATE_INT,['options'=>['min_range'=>1,'max_range'=>30]]);
-if (!isset($items[$item])||!in_array($size,$items[$item]['sizes'],true)||$qty===false||strlen($name)>120||strlen($notes)>800||strlen($program)>240||strlen($program)<2||preg_match('/[\r\n]/',$program)||!preg_match('/^[\p{L}\p{M}\p{N} .\x27-]{2,120}$/u',$name)||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($email)>180||preg_match('/[\r\n]/',$email)) respond(400,['ok'=>false,'error'=>'Please check your order details.']);
-// Basic cross-site submission guard: browsers on the public site send this header.
-$origin=(string)($_SERVER['HTTP_ORIGIN']??'');
-if($origin!=='' && !in_array(strtolower((string)parse_url($origin,PHP_URL_HOST)),['alliancevbc.ca','www.alliancevbc.ca'],true)) respond(403,['ok'=>false,'error'=>'Invalid origin.']);
-$price=$items[$item]['price'];$sum=$price*$qty;
-try{$ref='AVC-'.strtoupper(bin2hex(random_bytes(4)));}catch(Throwable $e){respond(500,['ok'=>false,'error'=>'Please try again.']);}
-$esc=static fn(string $s):string=>htmlspecialchars($s,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');
-$details='<table style="width:100%;border-collapse:collapse;font-size:15px"><tr><td style="padding:9px;border-bottom:1px solid #dce4ed">Product</td><td style="padding:9px;border-bottom:1px solid #dce4ed;text-align:right">'.$esc($item).'</td></tr><tr><td style="padding:9px;border-bottom:1px solid #dce4ed">Colour / Size</td><td style="padding:9px;border-bottom:1px solid #dce4ed;text-align:right">Navy / '.$esc($size).'</td></tr><tr><td style="padding:9px;border-bottom:1px solid #dce4ed">Quantity</td><td style="padding:9px;border-bottom:1px solid #dce4ed;text-align:right">'.$qty.'</td></tr><tr><td style="padding:12px 9px;font-weight:bold">Total (CAD)</td><td style="padding:12px 9px;text-align:right;font-size:22px;font-weight:bold">$'.number_format($sum,2).'</td></tr></table>';
-$paymentAddress='Alliancevb.clinic@gmail.com';
-$programRow='<tr><td style="padding:9px;border-bottom:1px solid #dce4ed">Team / Clinic / League</td><td style="padding:9px;border-bottom:1px solid #dce4ed;text-align:right">'.$esc($program).'</td></tr>';
-$details=str_replace('</table>',$programRow.'</table>',$details);
-$content='<div style="font-family:Arial,Helvetica,sans-serif;background:#eef2f7;padding:28px 12px"><div style="max-width:580px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden"><div style="background:#07182e;color:#fff;padding:30px 28px;border-top:6px solid #ff0055"><p style="font-size:12px;letter-spacing:2px;color:#ff82aa;margin:0">ALLIANCE VOLLEYBALL CLUB</p><h1 style="font-size:26px;margin:12px 0 0">MERCHANDISE REQUEST CONFIRMATION</h1><p style="margin:10px 0 0;color:#d7e0ea;font-size:13px">ONE CLUB. ONE TEAM. ONE ALLIANCE.</p></div><div style="padding:28px;color:#182b42;font-size:15px;line-height:1.65"><p>Hi '.$esc($name).',</p><p>Thank you for supporting Alliance Volleyball Club! We have received your merchandise request. Here are your order details:</p><p><strong>Reference:</strong> '.$esc($ref).'</p>'.$details.'<div style="background:#fff2f7;padding:18px;border-left:4px solid #ff0055;margin:22px 0"><h2 style="font-size:18px;margin:0 0 8px">PAYMENT INSTRUCTIONS</h2><p style="margin:0 0 10px">Please send an Interac e-Transfer of <strong>$'.number_format($sum,2).' CAD</strong> to:</p><p style="margin:0 0 10px"><strong>'.$paymentAddress.'</strong></p><p style="margin:0">In the transfer message, include the customer name, merchandise item, and request reference <strong>'.$esc($ref).'</strong>.</p></div><p><strong>Payment Status: Unpaid until Alliance confirms receipt.</strong> Your order is a request; product availability and pickup will be confirmed by the club. This email is not a receipt or shipping confirmation.</p><p>Questions? Contact <a style="color:#c4004b" href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>.</p><p style="margin-top:28px;font-weight:bold;letter-spacing:1px">ONE CLUB. ONE TEAM. ONE ALLIANCE.</p></div></div></div>';
-$headers=['MIME-Version: 1.0','Content-Type: text/html; charset=UTF-8','From: Alliance Volleyball Club <info@alliancevbc.ca>','Reply-To: info@alliancevbc.ca'];
-// PHP mail() depends on a working outgoing mail transport in Hostinger; test after deployment.
-$adminHtml='<div style="font-family:Arial,sans-serif"><h2>New Alliance merch request: '.$ref.'</h2><p><b>Name:</b> '.$esc($name).'<br><b>Email:</b> '.$esc($email).'</p>'.$details.'<p><b>Notes:</b> '.nl2br($esc($notes)).'</p><p><b>Payment address:</b> '.$paymentAddress.'</p><p>Payment status: Unpaid until confirmed; check availability and contact customer.</p></div>';
-$adminHeaders=['MIME-Version: 1.0','Content-Type: text/html; charset=UTF-8','From: Alliance Volleyball Club <info@alliancevbc.ca>','Reply-To: '.$email];
-if(!mail('info@alliancevbc.ca','Alliance merch request '.$ref,$adminHtml,implode("\r\n",$adminHeaders))) respond(503,['ok'=>false,'error'=>'The Hostinger server could not send the order email. Please contact info@alliancevbc.ca. The request has not been confirmed.']);
-if(!mail($email,'Alliance merch request received - '.$ref,$content,implode("\r\n",$headers))) respond(503,['ok'=>false,'error'=>'Your request was sent to Alliance, but we could not send a confirmation email. Please contact info@alliancevbc.ca before retrying to avoid a duplicate request.']);
-respond(200,['ok'=>true,'reference'=>$ref]);
+function reply(int $code,array $data):void { http_response_code($code); echo json_encode($data); exit; }
+if (($_SERVER['REQUEST_METHOD']??'')!=='POST') reply(405,['ok'=>false,'error'=>'Method not allowed.']);
+if ((int)($_SERVER['CONTENT_LENGTH']??0)>8192) reply(413,['ok'=>false,'error'=>'Request too large.']);
+$products=['Alliance Hoodie'=>[50,['XS','S','M','L','XL','2XL','3XL','4XL','5XL']], 'Alliance Long Sleeve'=>[30,['S','M','L','XL','2XL','3XL']]];
+$item=(string)($_POST['item']??'');$size=(string)($_POST['size']??'');$qty=filter_var($_POST['quantity']??null,FILTER_VALIDATE_INT,['options'=>['min_range'=>1,'max_range'=>30]]);
+$name=trim((string)($_POST['name']??''));$email=trim((string)($_POST['email']??''));$program=trim((string)($_POST['program']??''));$notes=trim((string)($_POST['notes']??''));$ref=(string)($_POST['requestId']??'');
+if(!isset($products[$item])||!in_array($size,$products[$item][1],true)||$qty===false||!preg_match('/^AVC-[A-Z0-9]{8,24}$/',$ref)||strlen($name)<2||strlen($name)>120||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($email)>180||strlen($program)<2||strlen($program)>240||strlen($notes)>800) reply(400,['ok'=>false,'error'=>'Please check the order details.']);
+$origin=(string)($_SERVER['HTTP_ORIGIN']??'');if($origin && !in_array(strtolower((string)parse_url($origin,PHP_URL_HOST)),['alliancevbc.ca','www.alliancevbc.ca'],true)) reply(403,['ok'=>false,'error'=>'Invalid origin.']);
+$payload=http_build_query(['formType'=>'merch-order','requestId'=>$ref,'item'=>$item,'size'=>$size,'quantity'=>$qty,'name'=>$name,'email'=>$email,'program'=>$program,'notes'=>$notes],'','&',PHP_QUERY_RFC3986);
+$endpoint='https://script.google.com/macros/s/AKfycbzX8p4bNGWZ_AKu0wtKVtjDa28DkIE2MXSt_DB8BO-0WYZPJB93v6f89aINa4ZTeUtv/exec';
+if(!function_exists('curl_init')) reply(503,['ok'=>false,'error'=>'The order service is unavailable. Please contact Alliance.']);
+$ch=curl_init($endpoint);
+curl_setopt_array($ch,[CURLOPT_POST=>true,CURLOPT_POSTFIELDS=>$payload,CURLOPT_HTTPHEADER=>['Content-Type: application/x-www-form-urlencoded'],CURLOPT_RETURNTRANSFER=>true,CURLOPT_FOLLOWLOCATION=>true,CURLOPT_MAXREDIRS=>5,CURLOPT_CONNECTTIMEOUT=>8,CURLOPT_TIMEOUT=>25]);
+$raw=curl_exec($ch);$status=(int)curl_getinfo($ch,CURLINFO_HTTP_CODE);$error=curl_error($ch);curl_close($ch);
+if($raw===false||$error!=='')reply(502,['ok'=>false,'error'=>'Order service could not be reached. Please try again.']);
+$data=json_decode($raw,true);
+if($status<200||$status>=300||!is_array($data))reply(502,['ok'=>false,'error'=>'Order service response was invalid. Please contact Alliance before retrying.']);
+reply(!empty($data['ok'])?200:400,$data);
