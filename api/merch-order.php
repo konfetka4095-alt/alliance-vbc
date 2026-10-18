@@ -6,7 +6,8 @@ header('X-Content-Type-Options: nosniff');
 function respond(int $status, array $body): void { http_response_code($status); echo json_encode($body); exit; }
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') { header('Allow: POST'); respond(405,['ok'=>false,'error'=>'Method not allowed.']); }
 if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0)>8192) respond(413,['ok'=>false,'error'=>'Request is too large.']);
-if (trim((string)($_POST['website'] ?? ''))!=='') respond(400,['ok'=>false,'error'=>'Invalid request.']);
+// Ignore the legacy hidden 'website' field: browser autofill can populate it,
+// which previously rejected legitimate merchandise requests.
 $items=['Alliance Hoodie'=>['price'=>50,'sizes'=>['XS','S','M','L','XL','2XL','3XL','4XL','5XL']], 'Alliance Long Sleeve'=>['price'=>30,'sizes'=>['S','M','L','XL','2XL','3XL']]];
 $item=trim((string)($_POST['item']??''));$size=trim((string)($_POST['size']??''));$name=trim((string)($_POST['name']??''));$email=trim((string)($_POST['email']??''));$notes=trim((string)($_POST['notes']??''));$program=trim((string)($_POST['program']??''));$qty=filter_var($_POST['quantity']??null,FILTER_VALIDATE_INT,['options'=>['min_range'=>1,'max_range'=>30]]);
 if (!isset($items[$item])||!in_array($size,$items[$item]['sizes'],true)||$qty===false||strlen($name)>120||strlen($notes)>800||strlen($program)>240||strlen($program)<2||preg_match('/[\r\n]/',$program)||!preg_match('/^[\p{L}\p{M}\p{N} .\x27-]{2,120}$/u',$name)||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($email)>180||preg_match('/[\r\n]/',$email)) respond(400,['ok'=>false,'error'=>'Please check your order details.']);
