@@ -86,3 +86,26 @@
 #view-shop .shop-order-size-guide .shop-size-guide table{min-width:490px}
 @media(max-width:740px){#view-shop .shop-products{grid-template-columns:1fr;gap:18px}#view-shop .shop-gallery-main{height:360px}#view-shop .shop-product-copy{padding:22px}}
 @media(max-width:420px){#view-shop .shop-gallery-main{height:295px}#view-shop .shop-gallery-arrow{width:33px;height:33px}}
+
+/* Landscape gallery and clear, aligned two-product storefront */
+#view-shop .shop-collection{background:#f8f9fc;padding:48px 0 68px}
+#view-shop .shop-heading{margin-bottom:22px;align-items:center}
+#view-shop .shop-heading h2{font-size:clamp(32px,3.6vw,44px)}
+#view-shop .shop-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:stretch}
+#view-shop .shop-product{display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff;border:1px solid #e6eaf1;border-radius:12px;box-shadow:0 6px 20px rgba(7,18,40,.055)}
+#view-shop .shop-gallery{width:100%;padding:12px 12px 0;background:white}
+#view-shop .shop-gallery-main{width:100%;height:auto;aspect-ratio:16/10;background:#eff2f6;border-radius:8px;overflow:hidden;position:relative}
+#view-shop .shop-gallery-main img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+#view-shop .shop-gallery-controls{display:none}
+#view-shop .shop-product-copy{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:20px 22px 23px;flex:1}
+#view-shop .shop-item-kicker{font-size:10px;letter-spacing:.13em}
+#view-shop .shop-product h3{margin:7px 0 8px;font-size:clamp(27px,2.65vw,35px);line-height:1.1}
+#view-shop .shop-product-copy>p{margin:0 0 12px;font-size:13px;line-height:1.6;min-height:42px;color:#526075}
+#view-shop .shop-color{margin:0 0 13px;font-size:12px}
+#view-shop .shop-item-price{margin:auto 0 12px;padding-top:0;font-size:25px}
+#view-shop .shop-request-btn{width:100%;min-height:45px}
+#view-shop .shop-price-note{margin-top:8px;font-size:10px}
+#view-shop .shop-gallery-arrow{height:34px;width:34px}
+#view-shop .shop-gallery-dots{bottom:11px}
+#view-shop .shop-note{margin-top:22px;padding:17px 20px}
+@media(max-width:740px){#view-shop .shop-products{grid-template-columns:1fr;gap:18px}#view-shop .shop-gallery-main{height:auto;aspect-ratio:16/10}#view-shop .shop-product-copy{padding:19px 20px 22px}#view-shop .shop-product-copy>p{min-height:0}}
