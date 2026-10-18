@@ -130,3 +130,9 @@
 #view-shop .shop-request-btn{width:100%;max-width:100%;min-height:45px}
 #view-shop .shop-price-note{font-size:10px;margin-top:8px}
 @media(max-width:760px){#view-shop .shop-products{grid-template-columns:1fr!important;gap:20px!important}#view-shop .shop-gallery-main{aspect-ratio:3/2!important}#view-shop .shop-product-copy{padding:20px!important}}
+
+/* Full-bleed merch gallery images: no inset/border or letterboxing */
+#view-shop .shop-product .shop-gallery,
+#view-shop .shop-gallery-main {padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;background:transparent!important;}
+#view-shop .shop-gallery-main {border-radius:0!important;overflow:hidden!important;}
+#view-shop .shop-gallery-main > img {display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;background:transparent!important;border:0!important;border-radius:0!important;}
