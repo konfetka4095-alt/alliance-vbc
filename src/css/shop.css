@@ -143,3 +143,98 @@
   object-position: center center !important;
   background: #fff !important;
 }
+
+
+/* Alliance merch portrait galleries — images supplied at approximately 4:5. */
+#view-shop .shop-product .shop-gallery-main {
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:4 / 5 !important;
+  overflow:hidden !important;
+  background:#fff !important;
+  border:0 !important;
+  border-radius:0 !important;
+}
+#view-shop .shop-gallery-main > img {
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  background:transparent !important;
+}
+/* All gallery images have 4:5 framing, so cover fills without meaningful clipping. */
+#view-shop .shop-gallery-arrow {
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+  width:38px !important;
+  height:38px !important;
+  padding:0 !important;
+  line-height:0 !important;
+  font-size:0 !important;
+  border-radius:50% !important;
+  text-align:center !important;
+}
+#view-shop .shop-gallery-arrow::before {
+  content:"";
+  display:block;
+  flex:none;
+  width:9px;
+  height:9px;
+  border-top:2px solid currentColor;
+  border-right:2px solid currentColor;
+}
+#view-shop .shop-gallery-prev::before {transform:translateX(2px) rotate(-135deg)}
+#view-shop .shop-gallery-next::before {transform:translateX(-2px) rotate(45deg)}
+@media(max-width:420px){#view-shop .shop-gallery-arrow{width:34px !important;height:34px !important}}
+
+/* Final portrait ratio fix: all eight supplied photos have a 4:5 aspect ratio. */
+#view-shop .shop-product .shop-gallery-main {
+  aspect-ratio: 4 / 5 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  border: 0 !important;
+}
+#view-shop .shop-gallery-main > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #fff !important;
+}
+#view-shop .shop-gallery-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  z-index: 5 !important;
+}
+#view-shop .shop-gallery-prev { left: 13px !important; right: auto !important; }
+#view-shop .shop-gallery-next { right: 13px !important; left: auto !important; }
+#view-shop .shop-gallery-arrow::before {
+  content: '' !important;
+  display: block !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-top: 2px solid currentColor !important;
+  border-right: 2px solid currentColor !important;
+  flex-shrink: 0 !important;
+}
+#view-shop .shop-gallery-prev::before { transform: translateX(2px) rotate(-135deg) !important; }
+#view-shop .shop-gallery-next::before { transform: translateX(-2px) rotate(45deg) !important; }
+@media(max-width:760px){ #view-shop .shop-product .shop-gallery-main{aspect-ratio:4/5!important;} }
