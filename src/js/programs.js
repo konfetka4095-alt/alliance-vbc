@@ -38,6 +38,19 @@ window.ALLIANCE_PROGRAMS = {
     "fee": 270,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
+  "adult-clinic-bayswater": {
+    "name": "Volleyball Clinic — Ages 15+ & Adults",
+    "category": "Adult Volleyball Clinic",
+    "date": "November 9, 2026–February 22, 2027 · 13 weeks · No class December 21, December 28 or February 15",
+    "time": "Mondays, 8:15–10:15 PM",
+    "venue": "Bayswater Avenue",
+    "address": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
+    "entrance": "",
+    "grades": "15+ & Adults",
+    "dayName": "Monday",
+    "fee": 390,
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
+  },
   "clinic-pleasantville-6-8": {
     "name": "House League — Grades 7–9",
     "category": "House League",
@@ -63,5 +76,65 @@ window.ALLIANCE_PROGRAMS = {
     "dayName": "Wednesday",
     "fee": 390,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
+  },
+  "12u": {
+    "name": "12U Girls",
+    "category": "Rep Team Tryouts",
+    "date": "October 23, 2026",
+    "time": "Friday, 6:00–8:00 PM",
+    "venue": "Richmond Hill",
+    "address": "85 Rollinghill Rd, Richmond Hill",
+    "entrance": "",
+    "sessions": [
+      {
+        "id": "12u-2026-10-23",
+        "date": "Friday, October 23, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "Moraine Hills Public School, 85 Rollinghill Rd, Richmond Hill"
+      }
+    ],
+    "fee": 20,
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "born": 2015
+  },
+  "13u": {
+    "name": "13U Girls",
+    "category": "Rep Team Tryouts",
+    "date": "October 22, 2026",
+    "time": "Thursday, 6:00–8:00 PM",
+    "venue": "Thornhill",
+    "address": "141 Kirk Dr, Thornhill",
+    "entrance": "",
+    "sessions": [
+      {
+        "id": "13u-2026-10-22",
+        "date": "Thursday, October 22, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "St. Anthony, 141 Kirk Dr, Thornhill"
+      }
+    ],
+    "fee": 20,
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "born": 2014
+  },
+  "14u": {
+    "name": "14U Girls",
+    "category": "Rep Team Tryouts",
+    "date": "October 22, 2026",
+    "time": "Thursday, 6:00–8:00 PM",
+    "venue": "Thornhill",
+    "address": "8101 Leslie St, Thornhill",
+    "entrance": "",
+    "sessions": [
+      {
+        "id": "14u-2026-10-22",
+        "date": "Thursday, October 22, 2026",
+        "time": "6:00–8:00 PM",
+        "location": "St. Robert, 8101 Leslie St, Thornhill"
+      }
+    ],
+    "fee": 20,
+    "payment": "Please follow the e-transfer instructions in your confirmation email. Payment Status remains Unpaid until Alliance confirms receipt.",
+    "born": 2013
   }
 };

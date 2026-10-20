@@ -130,6 +130,7 @@ const RegistrationModule = {
         document.querySelectorAll('.reg-cat-card').forEach(c => c.setAttribute('aria-pressed', String(c === card)));
         this.updateDivisions();
         this.configureAthleteFields();
+        this.configureContactLabels();
       });
     });
   },
@@ -186,6 +187,7 @@ const RegistrationModule = {
 
     this.updateDivisions();
     this.configureAthleteFields();
+    this.configureContactLabels();
     this.configureStepIndicators();
     this.renderStep(this.currentStep);
 
@@ -219,6 +221,22 @@ const RegistrationModule = {
     if (schoolGroup) schoolGroup.hidden = !schoolMode;
     if (schoolInput) schoolInput.required = schoolMode;
     if (reviewLabel) reviewLabel.textContent = schoolMode ? 'School' : 'Position';
+  },
+
+  configureContactLabels() {
+    const program = window.ALLIANCE_PROGRAMS && window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    const adultMode = program && program.category === 'Adult Volleyball Clinic';
+    const stepTitle = document.getElementById('regContactStepTitle');
+    const contactHeading = document.getElementById('regContactHeading');
+    const contactNameLabel = document.getElementById('regContactNameLabel');
+    const contactNameInput = document.getElementById('regParentName');
+    const reviewLabel = document.getElementById('revParentContactLabel');
+
+    if (stepTitle) stepTitle.textContent = adultMode ? 'Contact' : 'Parent';
+    if (contactHeading) contactHeading.textContent = adultMode ? 'Participant / Contact Information' : 'Parent / Guardian Contact';
+    if (contactNameLabel) contactNameLabel.textContent = adultMode ? 'Participant / Contact Full Name *' : 'Parent / Guardian Full Name *';
+    if (contactNameInput) contactNameInput.placeholder = adultMode ? 'Full Name' : 'Parent First & Last Name';
+    if (reviewLabel) reviewLabel.textContent = adultMode ? 'Participant / Contact' : 'Parent / Contact';
   },
 
   configureStepIndicators() {
