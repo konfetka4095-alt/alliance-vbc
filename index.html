@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261003-mahdi-v1" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261022-private-training-v24" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 </head>
 <body>
@@ -35,6 +35,7 @@
 <!-- Desktop Nav -->
 <nav aria-label="Main Navigation" class="main-nav">
 <a class="nav-link" href="#programs">PROGRAMS</a>
+<a class="nav-link" href="#private-training">PRIVATE TRAINING</a>
 <a class="nav-link" href="#rep-teams"></a>
 <a class="nav-link" href="#tryouts">TRYOUTS</a>
 <a class="nav-link" href="#about">ABOUT</a>
@@ -64,6 +65,7 @@
 <div class="mobile-nav-links">
 <a class="mobile-nav-link" href="#home">HOME</a>
 <a class="mobile-nav-link" href="#programs">PROGRAMS</a>
+<a class="mobile-nav-link" href="#private-training">PRIVATE TRAINING</a>
 <a class="mobile-nav-link" href="#rep-teams"></a>
 <a class="mobile-nav-link" href="#tryouts">TRYOUTS</a>
 <a class="mobile-nav-link" href="#about">ABOUT</a>
@@ -497,6 +499,28 @@
 <button class="btn btn-pink" data-open-reg="" data-program-type="adult-clinic-bayswater" style="width:100%;margin-top:1.5rem">Register — Ages 15+ &amp; Adults</button>
 </div>
 </div>
+<!-- Private & Semi-Private Training -->
+<div class="program-detail-card pt-program-card" data-program-cat="clinics">
+<div>
+<span class="badge-pill badge-pink">1-on-1 &amp; Semi-Private · 1 Hour</span>
+<h2 style="font-size:1.8rem;margin:.5rem 0">Private Volleyball Training</h2>
+<p class="program-description">Focused coaching built around the athlete. Tell us which skill you want to improve and an Alliance coach will create a personalized 1-hour training plan for your goals.</p>
+<div class="program-features-list">
+<div class="program-feature-item"><span>✓</span><span>Private: one athlete with focused coach attention</span></div>
+<div class="program-feature-item"><span>✓</span><span>Semi-private: two athletes training together</span></div>
+<div class="program-feature-item"><span>✓</span><span>Serving, passing, setting, attacking, defense, footwork or position-specific work</span></div>
+</div>
+</div>
+<div>
+<div class="program-meta-box">
+<div class="meta-row"><span class="meta-label">When</span><span class="meta-val">Mondays · 1 hour within 8:15–10:15 PM</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">30 Bayswater Ave, Richmond Hill</span></div>
+<div class="meta-row"><span class="meta-label">Private</span><span class="meta-val" style="color:var(--color-brand-pink)">$120 · 1 athlete</span></div>
+<div class="meta-row"><span class="meta-label">Semi-Private</span><span class="meta-val" style="color:var(--color-brand-pink)">$70/person · 2 athletes</span></div>
+</div>
+<a class="btn btn-pink" href="#private-training" style="width:100%;margin-top:1.5rem">View Private Training →</a>
+</div>
+</div>
 <!-- House League: Grades 7–9 — Pleasantville -->
 <div class="program-detail-card" data-program-cat="house-league">
 <div>
@@ -616,6 +640,89 @@
 
 
 </div>
+</section>
+</div>
+<!-- ==========================================
+     VIEW: PRIVATE TRAINING
+     ========================================== -->
+<div class="view-panel" id="view-private-training" style="display:none;">
+<section class="page-hero private-training-hero">
+  <div class="container">
+    <span class="section-tag">PERSONALIZED VOLLEYBALL DEVELOPMENT</span>
+    <h1 class="page-hero-title">PRIVATE &amp; SEMI-PRIVATE TRAINING</h1>
+    <p class="page-hero-desc">One focused hour built around the athlete. Tell us what you want to improve and our coaches will create a personalized training plan around your goals.</p>
+  </div>
+</section>
+<section class="page-container">
+  <div class="container pt-layout">
+    <aside class="pt-info-card">
+      <div class="pt-info-top">
+        <span class="section-tag">TRAIN WITH PURPOSE</span>
+        <h2>Your Goal. Your Session.</h2>
+        <p>Choose private or semi-private training, select the skill you want to work on, and Alliance coaches will design the session around your needs.</p>
+      </div>
+      <div class="pt-price-grid">
+        <div class="pt-price-box"><span>Private</span><strong>$120</strong><small>1 athlete · 1 hour</small></div>
+        <div class="pt-price-box"><span>Semi-Private</span><strong>$70/person</strong><small>2 athletes · $140 total · 1 hour</small></div>
+      </div>
+      <div class="pt-details">
+        <div class="pt-detail"><div class="pt-detail-icon">01</div><div><strong>Monday training</strong><span>One-hour session scheduled within the 8:15–10:15 PM training window.</span></div></div>
+        <div class="pt-detail"><div class="pt-detail-icon">02</div><div><strong>Bayswater Avenue</strong><span>30 Bayswater Ave, Richmond Hill, ON L4E 2L3.</span></div></div>
+        <div class="pt-detail"><div class="pt-detail-icon">03</div><div><strong>Coach-built plan</strong><span>Tell us your focus — serving, setting, attacking, defense, footwork, position work or another goal.</span></div></div>
+        <div class="pt-detail"><div class="pt-detail-icon">04</div><div><strong>Request first, confirm second</strong><span>Alliance will confirm coach availability and the exact 1-hour time before the session is finalized.</span></div></div>
+      </div>
+    </aside>
+
+    <div class="pt-form-card">
+      <h2>Request a Session</h2>
+      <p class="pt-form-intro">Send us your preferred date, training format and skill focus. We’ll follow up to confirm coach availability and your exact session time.</p>
+      <form id="privateTrainingForm">
+        <div class="pt-form-section">
+          <h3>Training format</h3>
+          <div class="pt-form-grid">
+            <div><label for="ptTrainingType">Training type *</label><select id="ptTrainingType" required><option value="private">Private — 1 athlete ($120)</option><option value="semi-private">Semi-private — 2 athletes ($70/person)</option></select></div>
+            <div><label for="ptPreferredDate">Preferred Monday *</label><select id="ptPreferredDate" required><option value="">Choose a date</option></select></div>
+          </div>
+          <div class="pt-form-grid" style="margin-top:1rem;">
+            <div><label for="ptPreferredTime">Preferred 1-hour time *</label><select id="ptPreferredTime" required><option value="Flexible within 8:15–10:15 PM">Flexible within 8:15–10:15 PM</option><option value="8:15–9:15 PM">8:15–9:15 PM</option><option value="9:15–10:15 PM">9:15–10:15 PM</option></select></div>
+            <div class="pt-price-summary" id="ptPriceSummary"><strong>$120</strong><span>1 athlete · 1 hour</span></div>
+          </div>
+        </div>
+
+        <div class="pt-form-section">
+          <h3>Athlete information</h3>
+          <div class="pt-form-grid">
+            <div><label for="ptParticipantName">Athlete name *</label><input id="ptParticipantName" maxlength="120" required placeholder="First &amp; last name"/></div>
+            <div id="ptSecondParticipantWrap" hidden><label for="ptSecondParticipant">Second athlete name *</label><input id="ptSecondParticipant" maxlength="120" placeholder="First &amp; last name"/></div>
+          </div>
+          <div class="pt-form-grid" style="margin-top:1rem;">
+            <div><label for="ptExperience">Volleyball experience</label><select id="ptExperience"><option value="First Time / Beginner">First Time / Beginner</option><option value="1 Year (School / Clinic)">1 Year (School / Clinic)</option><option value="2-3 Years">2–3 Years</option><option value="4+ Years Competitive">4+ Years Competitive</option></select></div>
+            <div><label for="ptSkillFocus">Main skill focus *</label><select id="ptSkillFocus" required><option value="">Choose a focus</option><option>Serving</option><option>Passing / Defense</option><option>Setting</option><option>Attacking / Hitting</option><option>Blocking</option><option>Footwork / Movement</option><option>Position-Specific Training</option><option>All-Around Development</option><option>Other</option></select></div>
+          </div>
+          <div style="margin-top:1rem;"><label for="ptSkillDetails">What would you like to improve? *</label><textarea id="ptSkillDetails" maxlength="1200" required placeholder="Tell our coaches what you want to work on, what feels difficult, or any specific goal for the session."></textarea></div>
+        </div>
+
+        <div class="pt-form-section">
+          <h3>Contact information</h3>
+          <div class="pt-form-grid">
+            <div><label for="ptContactName">Contact name *</label><input id="ptContactName" maxlength="120" required placeholder="Full name"/></div>
+            <div><label for="ptContactEmail">Email *</label><input id="ptContactEmail" type="email" maxlength="180" required placeholder="name@example.com"/></div>
+          </div>
+          <div class="pt-form-grid" style="margin-top:1rem;">
+            <div><label for="ptContactPhone">Phone *</label><input id="ptContactPhone" type="tel" maxlength="50" required placeholder="(647) 000-0000"/></div>
+            <div><label for="ptHowHeard">How did you hear about Alliance? *</label><select id="ptHowHeard" required><option value="">Please select</option><option>Instagram</option><option>Facebook</option><option>TikTok</option><option>Telegram</option><option>Google Search</option><option>School / Teacher</option><option>Friend / Family</option><option>Coach / Club</option><option>Returning Alliance Family</option><option>Other</option></select></div>
+          </div>
+        </div>
+
+        <div class="pt-form-section">
+          <label class="pt-consent" for="ptPhotoConsent"><input id="ptPhotoConsent" type="checkbox" required/><span>I acknowledge and consent to photos and videos being taken during Alliance activities. <a href="photo-video-consent-policy.html" target="_blank" rel="noopener noreferrer">View Photo &amp; Video Policy</a>.</span></label>
+          <input class="pt-honeypot" id="ptWebsite" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+          <button class="btn btn-pink pt-submit" id="ptSubmit" type="submit">SEND TRAINING REQUEST →</button>
+          <div class="pt-form-feedback" id="ptFeedback" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
 </div>
 <!-- ==========================================
@@ -1758,6 +1865,7 @@
 <div class="footer-links-list">
 <a class="footer-link" href="#rep-teams">Rep Teams</a>
 <a class="footer-link" href="#programs">Youth Volleyball Clinic</a>
+<a class="footer-link" href="#private-training">Private &amp; Semi-Private Training</a>
 </div>
 </div>
 <!-- Col 3: Rep Teams -->
@@ -2021,11 +2129,12 @@
 </div>
 </div>
 <!-- JavaScript Scripts -->
-<script src="src/js/router.js?v=20261020-clinic-tryouts-v23"></script>
+<script src="src/js/router.js?v=20261022-private-training-v24"></script>
 <script src="src/js/shop.js?v=20261018-merch-appscript-v1" defer></script>
 <script src="src/js/shop-gallery.js?v=20261018-family3" defer></script>
 <script src="src/js/programs.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/registration-config.js?v=20260926-v4"></script>
+<script src="src/js/private-training.js?v=20261022-private-training-v24"></script>
 <script src="src/js/registration.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/schedule.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/faq.js"></script>
