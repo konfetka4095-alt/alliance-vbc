@@ -24,7 +24,10 @@ $allowedFields = [
     'formType', 'programId', 'sessionId', 'requestId', 'category', 'division',
     'athleteName', 'athleteDob', 'athletePosition', 'schoolName', 'experienceYears',
     'parentName', 'parentEmail', 'parentPhone', 'howHeard', 'comments',
-    'photoVideoConsent', 'photoVideoPolicyVersion', 'website', 'sourceUrl'
+    'photoVideoConsent', 'photoVideoPolicyVersion', 'website', 'sourceUrl',
+    'trainingType', 'participantName', 'secondParticipantName', 'skillFocus',
+    'skillDetails', 'preferredDate', 'preferredTime', 'contactName',
+    'contactEmail', 'contactPhone', 'experienceLevel'
 ];
 
 $payload = [];
