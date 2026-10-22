@@ -1,7 +1,7 @@
 // Router Module for Switching Views and Subpages
 
 const RouterModule = {
-  views: ['home', 'programs', 'rep-teams', 'tryouts', 'about', 'coaches', 'careers', 'shop', 'locations', 'faq', 'contact'],
+  views: ['home', 'programs', 'private-training', 'rep-teams', 'tryouts', 'about', 'coaches', 'careers', 'shop', 'locations', 'faq', 'contact'],
   currentView: 'home',
 
   init() {
