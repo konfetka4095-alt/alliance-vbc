@@ -14,7 +14,7 @@ const RegistrationModule = {
   selectedSessionId: '',
   formData: {
     category: 'House League',
-    division: 'House League — Grades 7–9',
+    division: 'House League — Grades 5–8',
     athleteName: '',
     athleteDob: '',
     athletePosition: 'Setter',

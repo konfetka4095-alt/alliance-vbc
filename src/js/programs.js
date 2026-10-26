@@ -1,15 +1,15 @@
 window.ALLIANCE_PROGRAMS = {
   "house-league-grade-6-9": {
-    "name": "House League — Grades 7–9",
+    "name": "House League — Grades 5–8",
     "category": "House League",
-    "date": "October 19–December 14, 2026 · 8 weeks · No class October 26",
-    "time": "Mondays, 8:00–10:00 PM",
-    "venue": "Hollywood Public School",
-    "address": "360 Hollywood Ave, North York",
+    "date": "November 2–December 21, 2026 · 8 weeks",
+    "time": "Mondays, 3:30–5:30 PM",
+    "venue": "St. Gabriel Catholic School",
+    "address": "396 Spring Garden Ave, North York, ON M2N 3H5",
     "entrance": "",
-    "grades": "7–9",
+    "grades": "5–8",
     "dayName": "Monday",
-    "fee": 240,
+    "fee": 210,
     "payment": "Please follow the e-transfer instructions in your confirmation email. Spot is not secured without payment."
   },
   "clinic-grade-5-8-moraine": {
