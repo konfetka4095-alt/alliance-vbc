@@ -1,54 +1,17 @@
 window.ALLIANCE_PROGRAMS = {
   "skill-sessions": {
-  "name": "Skill Sessions — Small Group",
-  "category": "Skill Sessions",
-  "date": "November 2–30, 2026 · 5 Mondays",
-  "time": "Mondays, 8:30–10:00 PM",
-  "venue": "Bayswater Avenue",
-  "address": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-  "entrance": "",
-  "dayName": "Monday",
-  "grades": "All skill levels",
-  "fee": 50,
-  "payment": "Please e-transfer $50 to Alliancevb.clinic@gmail.com. Include the athlete’s full name, session date and program location. Your spot is not secured until payment has been completed.",
-  "sessions": [
-    {
-      "id": "skill-2026-11-02",
-      "date": "Monday, November 2, 2026",
-      "time": "8:30–10:00 PM",
-      "location": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-      "fee": 50
-    },
-    {
-      "id": "skill-2026-11-09",
-      "date": "Monday, November 9, 2026",
-      "time": "8:30–10:00 PM",
-      "location": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-      "fee": 50
-    },
-    {
-      "id": "skill-2026-11-16",
-      "date": "Monday, November 16, 2026",
-      "time": "8:30–10:00 PM",
-      "location": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-      "fee": 50
-    },
-    {
-      "id": "skill-2026-11-23",
-      "date": "Monday, November 23, 2026",
-      "time": "8:30–10:00 PM",
-      "location": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-      "fee": 50
-    },
-    {
-      "id": "skill-2026-11-30",
-      "date": "Monday, November 30, 2026",
-      "time": "8:30–10:00 PM",
-      "location": "30 Bayswater Ave, Richmond Hill, ON L4E 2L3",
-      "fee": 50
-    }
-  ]
-},
+    "name": "Skill Sessions — Small Group",
+    "category": "Skill Sessions",
+    "date": "November 2–30, 2026 · 5 weeks",
+    "time": "Mondays, 8:30–10:00 PM",
+    "venue": "Hollywood Public School",
+    "address": "360 Hollywood Ave, North York",
+    "entrance": "",
+    "dayName": "Monday",
+    "grades": "All skill levels",
+    "fee": 250,
+    "payment": "Please e-transfer $250 to Alliancevb.clinic@gmail.com. Include the athlete’s full name, program location (Hollywood Public School), and time slot (Mondays, 8:30–10:00 PM). Payment status: Your spot is not secured until payment has been completed."
+  },
   "house-league-grade-6-9": {
     "name": "House League — Grades 5–8",
     "category": "House League",
