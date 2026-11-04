@@ -1,4 +1,24 @@
 window.ALLIANCE_PROGRAMS = {
+  "house-league-bayview-fridays": {
+    name: "Bayview Middle School — Friday House League",
+    category: "House League",
+    date: "November 13, 2026–January 29, 2027",
+    time: "Fridays, 3:30–5:00 PM",
+    venue: "Bayview Middle School",
+    address: "",
+    entrance: "",
+    dayName: "Friday",
+    fee: 0,
+    autoCreateStorage: true,
+    payment: "Choose one free November practice or the full $175 winter season. Free practices require no payment.",
+    sessions: [
+      { id: "bayview-free-2026-11-13", date: "Friday, November 13, 2026 — Free Practice", time: "3:30–5:00 PM", location: "Bayview Middle School", fee: 0 },
+      { id: "bayview-free-2026-11-20", date: "Friday, November 20, 2026 — Free Practice", time: "3:30–5:00 PM", location: "Bayview Middle School", fee: 0 },
+      { id: "bayview-free-2026-11-27", date: "Friday, November 27, 2026 — Free Practice", time: "3:30–5:00 PM", location: "Bayview Middle School", fee: 0 },
+      { id: "bayview-winter-2026", date: "December 4, 2026–January 29, 2027 · 7 weeks (no Dec 25 or Jan 1)", time: "Fridays, 3:30–5:00 PM", location: "Bayview Middle School", fee: 175 }
+    ]
+  },
+
   "skill-sessions": {
     "name": "Skill Sessions — Small Group",
     "category": "Skill Sessions",

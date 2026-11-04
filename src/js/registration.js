@@ -439,7 +439,7 @@ const RegistrationModule = {
 
     if (p.sessions && p.sessions.length) {
       if (reviewOnly && selected) {
-        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${p.payment}</p>`;
+        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${selected.fee === 0 ? 'No payment required for this practice.' : 'Winter season fee: $175. Please e-transfer to Alliancevb.clinic@gmail.com; your spot is not secured until payment is completed.'}</p>`;
       }
 
       const options = p.sessions.map(session => `
@@ -447,12 +447,12 @@ const RegistrationModule = {
           <input type="radio" name="tryoutSession" value="${session.id}" ${session.id === this.selectedSessionId ? 'checked' : ''}>
           <span>
             <strong>${session.date}</strong>
-            <small>${session.time}</small>
+            <small>${session.time} · ${session.fee === 0 ? 'FREE' : (session.fee !== undefined ? '$' + session.fee + ' total' : '')}</small>
             <small>${this.addressOnlyLocation(session.location)}</small>
           </span>
         </label>`).join('');
 
-      return `<strong>${p.name}</strong><p class="session-choice-instruction">Choose the tryout date your athlete will attend *</p><div class="tryout-session-choices">${options}</div>`;
+      return `<strong>${p.name}</strong><p class="session-choice-instruction">${p.category === 'House League' ? 'Choose one free practice or the full winter season *' : 'Choose the tryout date your athlete will attend *'}</p><div class="tryout-session-choices">${options}</div>`;
     }
 
     return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;
