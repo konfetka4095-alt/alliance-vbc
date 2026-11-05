@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261022-private-training-v24" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261105-mobile-filters-v1" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 </head>
 <body>
@@ -385,8 +385,28 @@
 <div class="programs-feature-image">
 <img alt="Alliance Volleyball athletes and coaches together in the gym" decoding="async" loading="lazy" src="src/assets/images/program-team.png?v=2"/>
 </div>
+<!-- Programs discovery filters: both filters may be used together -->
+<div class="program-finder" id="program-finder" aria-label="Find volleyball programs">
+  <div class="program-finder-heading">
+    <div><span class="program-finder-eyebrow">FIND YOUR PROGRAM</span><h2>Explore Alliance Programs</h2></div>
+    <button type="button" id="program-filter-reset" class="program-filter-reset">Clear filters</button>
+  </div>
+  <div class="program-filter-fields">
+    <label class="program-filter-field" for="program-location-filter"><span>Location</span>
+      <select id="program-location-filter"><option value="all">All locations</option><option value="north-york">North York</option><option value="thornhill">Thornhill</option><option value="richmond-hill">Richmond Hill</option></select>
+    </label>
+    <label class="program-filter-field" for="program-type-filter"><span>Program type</span>
+      <select id="program-type-filter"><option value="all">All programs</option><option value="house-league">House League</option><option value="clinics">Volleyball Clinics</option><option value="skill-sessions">Skill Sessions</option></select>
+    </label>
+    <label class="program-filter-field program-filter-keywords" for="program-search-filter"><span>Search (optional)</span>
+      <input type="search" id="program-search-filter" placeholder="School, grade, or program" autocomplete="off"/>
+    </label>
+  </div>
+  <p id="program-filter-count" class="program-filter-count" role="status" aria-live="polite"></p>
+</div>
+<div id="program-filter-empty" class="program-filter-empty" hidden><strong>No matching programs</strong><p>Try a different location or program type.</p><button type="button" id="program-filter-empty-reset" class="btn btn-pink">Show all programs</button></div>
 <!-- House League: Grades 5–8 — St. Gabriel -->
-<div class="program-detail-card" data-program-cat="house-league">
+<div class="program-detail-card" data-program-cat="house-league" data-program-location="north-york">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 5–8</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -418,11 +438,11 @@
 </div>
 </div>
 <!-- Bayview Friday House League: three free tryout practices + winter program -->
-<div class="program-detail-card" data-program-cat="house-league">
+<div class="program-detail-card program-bayview-card" data-program-cat="house-league" data-program-location="north-york">
   <div>
     <span class="badge-pill badge-pink">NEW · Friday after-school volleyball</span>
     <h2 style="font-size:1.8rem;margin:.5rem 0">Bayview Middle School House League</h2>
-    <p class="program-description">Join Alliance on Friday afternoons at Bayview Middle School. Try an individual free volleyball practice in November, or register for the full seven-week winter House League.</p>
+    <p class="program-description">Try a free Friday practice before joining our winter House League. Pick a free date or the full winter season when you register.</p>
     <div class="program-features-list">
       <div class="program-feature-item"><span>✓</span><span>Three separate free practice dates: November 13, 20 and 27</span></div>
       <div class="program-feature-item"><span>✓</span><span>Winter House League: December 4–January 29, seven weeks</span></div>
@@ -432,7 +452,7 @@
   <div>
     <div class="program-meta-box">
       <div class="meta-row"><span class="meta-label">Day &amp; Time</span><span class="meta-val">Fridays, 3:30–5:00 PM</span></div>
-      <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">Bayview Middle School</span></div>
+      <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">Bayview Middle School · North York</span></div>
       <div class="meta-row"><span class="meta-label">Free practice</span><span class="meta-val">Nov 13, 20 or 27 · $0 each</span></div>
       <div class="meta-row"><span class="meta-label">Winter season</span><span class="meta-val">Dec 4–Jan 29 · 7 weeks</span></div>
       <div class="meta-row"><span class="meta-label">No practice</span><span class="meta-val">Dec 25 &amp; Jan 1</span></div>
@@ -442,7 +462,7 @@
   </div>
 </div>
 <!-- Clinic: Grades 4–6 — Moraine Hills -->
-<div class="program-detail-card" data-program-cat="clinics">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -473,7 +493,7 @@
 </div>
 </div>
 <!-- Clinic: Grades 4–6 -->
-<div class="program-detail-card" data-program-cat="clinics">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="north-york">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -505,7 +525,7 @@
 </div>
 
 <!-- NEW: Ages 15+ & Adults — Bayswater -->
-<div class="program-detail-card" data-program-cat="clinics">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="thornhill">
 <div>
 <span class="badge-pill badge-pink">Ages 15+ · Adults Welcome</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">15+ &amp; Adult Volleyball Clinic</h2>
@@ -535,9 +555,9 @@
 </div>
 </div>
 <!-- Small Group Skill Sessions -->
-<div class="program-detail-card" data-program-cat="clinics"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></div></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
+<div class="program-detail-card" data-program-cat="skill-sessions" data-program-location="north-york"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></div></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
 <!-- House League: Grades 7–9 — Pleasantville -->
-<div class="program-detail-card" data-program-cat="house-league">
+<div class="program-detail-card" data-program-cat="house-league" data-program-location="richmond-hill">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 7–9</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -569,7 +589,7 @@
 </div>
 <!-- ONGOING PROGRAMS — retained because they have not finished -->
 <!-- Clinic 1: Grades 4–6 — Richmond Rose -->
-<div class="program-detail-card" data-program-cat="clinics">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill">
 <div>
 <span class="badge-pill badge-pink">
             Boys &amp; Girls · Grades 4–6
@@ -2033,19 +2053,7 @@
 <script src="src/js/schedule.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/faq.js"></script>
 <script src="src/js/main.js?v=20260926-v4"></script>
-<!-- In-page helper for program category filtering -->
-<script>
-    function filterPrograms(cat) {
-      document.querySelectorAll('.filter-tab-bar .filter-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      document.querySelectorAll('.program-detail-card').forEach(card => {
-        if (cat === 'all' || card.getAttribute('data-program-cat') === cat) {
-          card.style.display = 'grid';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
+<!-- Programs finder: front-end only; does not modify registrations -->
+<script src="src/js/program-filters.js?v=20261105-mobile-filters-v1"></script>
 </body>
 </html>
