@@ -62,7 +62,7 @@ window.ALLIANCE_PROGRAMS = {
     "name": "Youth Volleyball Clinic — Grades 4–6",
     "category": "Youth Volleyball Clinic",
     "date": "October 22–December 17, 2026 · 9 weeks",
-    "time": "Thursdays, 6:00–8:00 PM",
+    "time": "Thursdays, 4:00–6:00 PM",
     "venue": "Hollywood Public School",
     "address": "360 Hollywood Ave, North York",
     "entrance": "",
