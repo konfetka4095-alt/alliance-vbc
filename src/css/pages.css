@@ -2751,15 +2751,46 @@ html { overflow-x:clip; }
   #view-programs .program-bayview-card .meta-row { grid-template-columns:1fr; gap:.18rem; }
 }
 
-/* Adult Programs page – matches Alliance's existing navy/pink design */
-.adult-programs-hero { background: linear-gradient(125deg, #06152d 0%, #10213d 68%, #261029 100%); }
-.adult-programs-hero .btn { margin-top:1.4rem; }
-.adult-programs-intro { max-width:760px; margin:0 auto 2rem; text-align:center; }
-.adult-programs-intro p { color:var(--text-light-secondary, #cbd2dc); line-height:1.75; }
-.adult-programs-card { scroll-margin-top:95px; }
-.adult-programs-card h2 { font-size:clamp(1.75rem,3vw,2.4rem);margin:.75rem 0 1rem; }
-.adult-programs-highlights { display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0; }
-.adult-programs-highlights span { border:1px solid rgba(255,0,85,.35); border-radius:100px;padding:.55rem .8rem;color:inherit;font-weight:600;font-size:.86rem; }
-.adult-programs-price { color:var(--color-brand-pink, #ff0055); font-weight:800; }
-.adult-programs-payment-note { text-align:center;font-size:.8rem;opacity:.75;margin:.75rem auto 0; }
-@media(max-width:768px) { .adult-programs-hero .page-hero-title {font-size:clamp(2rem,9vw,3.3rem);} .adult-programs-highlights{gap:.5rem;} .adult-programs-highlights span{font-size:.78rem;} }
+/* Adult Programs — shared visual structure with Youth Programs */
+#view-adult-programs { width: 100%; min-width: 0; }
+#view-adult-programs, #view-adult-programs * { box-sizing: border-box; }
+#view-adult-programs .container { width: 100%; max-width: var(--container-width, 1200px); min-width:0; margin-inline:auto; }
+#view-adult-programs .adult-programs-intro { max-width: 760px; margin: 0 0 2rem; }
+#view-adult-programs .adult-programs-intro p { margin: .5rem 0 0; line-height:1.65; color:var(--text-light-secondary); }
+#view-adult-programs .adult-programs-card { scroll-margin-top:95px; width:100%; max-width:100%; min-width:0; }
+#view-adult-programs .adult-programs-card > div { min-width:0; }
+#view-adult-programs .adult-programs-card h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin:.55rem 0 .75rem; overflow-wrap:anywhere; }
+#view-adult-programs .adult-programs-info { min-width:0; width:100%; }
+#view-adult-programs .adult-programs-info .program-meta-box { width:100%; min-width:0; }
+#view-adult-programs .meta-row { gap:1rem; align-items:start; }
+#view-adult-programs .meta-label { flex: 0 0 32%; }
+#view-adult-programs .meta-val { min-width:0; flex:1 1 0; text-align:right; overflow-wrap:break-word; }
+#view-adult-programs .adult-programs-price { color:var(--color-brand-pink,#ff0055); font-weight:800; }
+#view-adult-programs .adult-programs-register { display:block; width:100%; max-width:100%; min-width:0; margin-top:1.25rem; white-space:normal; line-height:1.35; }
+#view-adult-programs .adult-programs-payment-note { text-align:center; font-size:.8rem; opacity:.75; margin:.75rem auto 0; }
+@media (max-width: 960px) {
+  #view-adult-programs .adult-programs-card { grid-template-columns:minmax(0,1fr); gap:1.25rem; }
+}
+@media (max-width: 640px) {
+  #view-adult-programs .page-container { padding:2rem 0 3rem; }
+  #view-adult-programs .container { padding-inline: 16px; }
+  #view-adult-programs .adult-programs-card { padding:1rem; border-radius:14px; gap:1rem; margin-bottom:1rem; }
+  #view-adult-programs .adult-programs-card h2 { font-size:1.45rem; line-height:1.2; }
+  #view-adult-programs .adult-programs-hero .page-hero-title { font-size:clamp(1.9rem,7.8vw,3.2rem); overflow-wrap:break-word; }
+  #view-adult-programs .adult-programs-intro { margin-bottom:1.25rem; }
+  #view-adult-programs .adult-programs-description .program-description { display:block; font-size:.88rem; line-height:1.5; margin:.7rem 0 1rem; }
+  #view-adult-programs .program-skills-dropdown { max-width:100%; }
+  #view-adult-programs .program-features-list { margin:.7rem 0 .5rem; }
+  #view-adult-programs .program-feature-item { font-size:.83rem; align-items:flex-start; line-height:1.4; }
+  #view-adult-programs .program-meta-box { padding:1rem; border-radius:10px; }
+  #view-adult-programs .meta-row { display:grid; grid-template-columns:minmax(0,33%) minmax(0,1fr); gap:.55rem; align-items:start; padding:.7rem 0; }
+  #view-adult-programs .meta-label { font-size:.72rem; letter-spacing:0; text-transform:none; line-height:1.35; }
+  #view-adult-programs .meta-val { font-size:.83rem; line-height:1.45; text-align:left; overflow-wrap:anywhere; }
+  #view-adult-programs .adult-programs-register { min-height:46px; padding:.75rem .8rem; font-size:.85rem; }
+}
+@media (max-width: 375px) {
+  #view-adult-programs .container { padding-inline:12px; }
+  #view-adult-programs .adult-programs-card { padding:.8rem; }
+  #view-adult-programs .program-meta-box { padding:.75rem; }
+  #view-adult-programs .meta-row { grid-template-columns:1fr; gap:.2rem; }
+}
