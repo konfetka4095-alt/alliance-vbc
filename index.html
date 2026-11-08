@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261108-adult-programs-v1" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261108-adult-layout-v2" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 </head>
 <body>
@@ -382,9 +382,9 @@
         FALL VOLLEYBALL PROGRAMS
       </h1>
 <p class="page-hero-desc">
-        Alliance Volleyball Club offers structured youth clinics, house league,
-        and a new 15+ &amp; adult clinic. Choose the program that best matches
-        your age, experience and development goals.
+        Alliance Volleyball Club offers structured youth clinics and house leagues.
+        Choose the program that best matches your age, experience and development goals.
+        Looking for adult volleyball? Visit our Adult Programs page.
       </p>
 </div>
 </section>
@@ -670,38 +670,42 @@
 <div class="view-panel" id="view-adult-programs" style="display:none;">
   <section class="page-hero adult-programs-hero">
     <div class="container">
-      <span class="section-tag">NEW AT ALLIANCE · AGES 15+ &amp; ADULTS</span>
+      <span class="section-tag">NEW AT ALLIANCE · 15+ &amp; ADULTS</span>
       <h1 class="page-hero-title">ADULT VOLLEYBALL PROGRAMS</h1>
-      <p class="page-hero-desc">Your game. Your court. Train with experienced coaches, sharpen your technique and enjoy game-based volleyball in a welcoming environment.</p>
-      <a class="btn btn-pink" href="#adult-programs" onclick="document.getElementById('adult-clinic-details').scrollIntoView({behavior:'smooth'});return false;">EXPLORE THE CLINIC →</a>
+      <p class="page-hero-desc">Structured coaching, volleyball development and game-based training for ages 15+ and adults.</p>
     </div>
   </section>
   <section class="page-container adult-programs-section">
     <div class="container">
       <div class="adult-programs-intro">
         <span class="section-tag">TRAIN · IMPROVE · PLAY</span>
-        <h2 class="section-heading">GET BACK IN THE GAME</h2>
-        <p>Looking to improve your ball control, develop consistency or enjoy more time on the court? Our mixed 15+ &amp; Adult Volleyball Clinic combines structured coaching with practical, game-based training.</p>
+        <h2 class="section-heading">FIND YOUR GAME</h2>
+        <p>Develop your skills, improve consistency and enjoy more time on the court in a welcoming training environment.</p>
       </div>
       <div class="program-detail-card adult-programs-card" id="adult-clinic-details">
-        <div>
-          <span class="badge-pill badge-pink">Ages 15+ · Adults Welcome</span>
+        <div class="adult-programs-description">
+          <span class="badge-pill badge-pink">Ages 15+ &amp; Adults</span>
           <h2>15+ &amp; Adult Volleyball Clinic</h2>
-          <p class="program-description">Develop passing, setting, serving and attacking while working on court positioning, communication and consistency. Enjoy coached sessions with plenty of volleyball action.</p>
-          <div class="adult-programs-highlights">
-            <span>✓ Skill development</span><span>✓ Coach feedback</span><span>✓ Game-based training</span>
-          </div>
+          <p class="program-description">Structured, coach-led volleyball sessions for players looking to build confidence, improve technique and enjoy active game-based training.</p>
+          <details class="program-skills-dropdown" open>
+            <summary>View clinic skills</summary>
+            <div class="program-features-list">
+              <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passing, setting, serving and attacking</span></div>
+              <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Ball control, movement and positioning</span></div>
+              <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Coach feedback and game-based training</span></div>
+            </div>
+          </details>
         </div>
         <div class="adult-programs-info">
           <div class="program-meta-box">
-            <div class="meta-row"><span class="meta-label">Day &amp; Time</span><span class="meta-val">Mondays · 8:15–10:15 PM</span></div>
+            <div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Mondays, 8:15–10:15 PM</span></div>
             <div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">November 23, 2026 – January 25, 2027</span></div>
-            <div class="meta-row"><span class="meta-label">No Class</span><span class="meta-val">Monday, December 28, 2026</span></div>
-            <div class="meta-row"><span class="meta-label">Sessions</span><span class="meta-val">9 classes</span></div>
+            <div class="meta-row"><span class="meta-label">No Class</span><span class="meta-val">December 28, 2026</span></div>
+            <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">9 classes</span></div>
             <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">St. Anthony Catholic School<br/>141 Kirk Dr, Thornhill</span></div>
             <div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val adult-programs-price">$390</span></div>
           </div>
-          <button type="button" class="btn btn-pink" data-open-reg="" data-program-type="adult-clinic-bayswater" style="width:100%;margin-top:1.25rem">REGISTER FOR ADULT VOLLEYBALL</button>
+          <button type="button" class="btn btn-pink adult-programs-register" data-open-reg="" data-program-type="adult-clinic-bayswater">REGISTER — 15+ &amp; ADULTS</button>
           <p class="adult-programs-payment-note">Your spot is not secured until payment has been completed.</p>
         </div>
       </div>
@@ -2070,10 +2074,10 @@
 </div>
 </div>
 <!-- JavaScript Scripts -->
-<script src="src/js/router.js?v=20261108-adult-programs-v1"></script>
+<script src="src/js/router.js?v=20261108-adult-layout-v2"></script>
 <script src="src/js/shop.js?v=20261018-merch-appscript-v1" defer></script>
 <script src="src/js/shop-gallery.js?v=20261018-family3" defer></script>
-<script src="src/js/programs.js?v=20261108-adult-programs-v1"></script>
+<script src="src/js/programs.js?v=20261108-adult-layout-v2"></script>
 <script src="src/js/registration-config.js?v=20260926-v4"></script>
 
 <script src="src/js/registration.js?v=20261106-bayview-v34"></script>
