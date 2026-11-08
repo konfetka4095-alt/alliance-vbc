@@ -72,7 +72,7 @@ window.ALLIANCE_PROGRAMS = {
   "adult-clinic-bayswater": {
     "name": "Volleyball Clinic — Ages 15+ & Adults",
     "category": "Adult Volleyball Clinic",
-    "date": "November 9, 2026–February 22, 2027 · 13 weeks · No class December 21, December 28 or February 15",
+    "date": "November 23, 2026–January 25, 2027 · 9 classes · No class December 28, 2026",
     "time": "Mondays, 8:15–10:15 PM",
     "venue": "St. Anthony Catholic School",
     "address": "141 Kirk Dr, Thornhill, ON L3T 3L3",
