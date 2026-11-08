@@ -2750,3 +2750,16 @@ html { overflow-x:clip; }
   #view-programs .program-filter-keywords { grid-column:auto; }
   #view-programs .program-bayview-card .meta-row { grid-template-columns:1fr; gap:.18rem; }
 }
+
+/* Adult Programs page – matches Alliance's existing navy/pink design */
+.adult-programs-hero { background: linear-gradient(125deg, #06152d 0%, #10213d 68%, #261029 100%); }
+.adult-programs-hero .btn { margin-top:1.4rem; }
+.adult-programs-intro { max-width:760px; margin:0 auto 2rem; text-align:center; }
+.adult-programs-intro p { color:var(--text-light-secondary, #cbd2dc); line-height:1.75; }
+.adult-programs-card { scroll-margin-top:95px; }
+.adult-programs-card h2 { font-size:clamp(1.75rem,3vw,2.4rem);margin:.75rem 0 1rem; }
+.adult-programs-highlights { display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0; }
+.adult-programs-highlights span { border:1px solid rgba(255,0,85,.35); border-radius:100px;padding:.55rem .8rem;color:inherit;font-weight:600;font-size:.86rem; }
+.adult-programs-price { color:var(--color-brand-pink, #ff0055); font-weight:800; }
+.adult-programs-payment-note { text-align:center;font-size:.8rem;opacity:.75;margin:.75rem auto 0; }
+@media(max-width:768px) { .adult-programs-hero .page-hero-title {font-size:clamp(2rem,9vw,3.3rem);} .adult-programs-highlights{gap:.5rem;} .adult-programs-highlights span{font-size:.78rem;} }
