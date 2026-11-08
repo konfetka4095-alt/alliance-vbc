@@ -2794,3 +2794,34 @@ html { overflow-x:clip; }
   #view-adult-programs .program-meta-box { padding:.75rem; }
   #view-adult-programs .meta-row { grid-template-columns:1fr; gap:.2rem; }
 }
+
+/* Bayview: keep the complete card, inset details frame and CTA inside mobile viewport. */
+#view-programs .program-bayview-card,
+#view-programs .program-bayview-card * { box-sizing: border-box; }
+#view-programs .program-bayview-card { min-width:0; max-width:100%; }
+#view-programs .program-bayview-card > div,
+#view-programs .program-bayview-card .program-meta-box { min-width:0; max-width:100%; }
+#view-programs .program-bayview-card .meta-val { overflow-wrap:anywhere; }
+#view-programs .program-bayview-card .program-feature-item > span:last-child { min-width:0; overflow-wrap:break-word; }
+@media (max-width:740px) {
+  #view-programs .program-bayview-card {
+    width:100%;
+    grid-template-columns:minmax(0,1fr);
+    gap:1rem;
+    padding:1rem;
+    margin-inline:0;
+    border-radius:14px;
+  }
+  #view-programs .program-bayview-card .program-meta-box { width:100%; padding:.85rem; }
+  #view-programs .program-bayview-card .meta-row {
+    grid-template-columns:minmax(0,36%) minmax(0,1fr);
+    gap:.55rem;
+  }
+  #view-programs .program-bayview-card .btn { max-width:100%; }
+}
+@media (max-width:420px) {
+  #view-programs .program-bayview-card { padding:.85rem; }
+  #view-programs .program-bayview-card .program-meta-box { padding:.7rem .8rem; }
+  #view-programs .program-bayview-card .meta-row { grid-template-columns:1fr; gap:.18rem; }
+  #view-programs .program-bayview-card .meta-val { text-align:left; }
+}
