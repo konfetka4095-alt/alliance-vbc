@@ -21,8 +21,9 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261108-adult-layout-v2" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261109-all-pins-v3" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
 <!-- Site Header -->
@@ -413,12 +414,21 @@
     </label>
   </div>
   <p id="program-filter-count" class="program-filter-count" role="status" aria-live="polite"></p>
-  <div class="program-map-controls" role="group" aria-label="Program display options"><button type="button" id="program-list-view" class="program-view-toggle is-selected" aria-pressed="true">List view</button><button type="button" id="program-map-view" class="program-view-toggle" aria-pressed="false">Map view</button></div>
+  <div class="program-map-controls" role="group" aria-label="Program display options">
+    <button type="button" id="program-list-view" class="program-view-toggle is-selected" aria-pressed="true"><span aria-hidden="true">☷</span> List view</button>
+    <button type="button" id="program-map-view" class="program-view-toggle" aria-pressed="false"><span aria-hidden="true">⌖</span> Map view</button>
+  </div>
   <div class="program-map-panel" id="program-map-panel" hidden>
-    <p class="program-map-explain">Choose a program location to see it on the map. The available locations follow your search filters.</p>
-    <label class="program-filter-field" for="program-map-select"><span>Show location on map</span><select id="program-map-select"></select></label>
-    <iframe id="program-map-frame" title="Map of selected Alliance program location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-    <a id="program-map-directions" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+    <div class="program-map-heading">
+      <div><span class="program-map-eyebrow">EXPLORE NEAR YOU</span><h3>Find a program on the map</h3><p>Tap any pink pin to explore classes at that school. Your filters apply to both views.</p></div>
+      <button type="button" id="program-map-close" class="program-map-close">← Back to list</button>
+    </div>
+    <div class="program-map-layout">
+      <div class="program-map-canvas-wrap"><div id="program-locations-map" role="region" aria-label="Interactive map of Alliance Volleyball Club program locations"></div><button type="button" id="program-map-fit" class="program-map-fit">Show all locations</button></div>
+      <aside class="program-map-sidebar" aria-label="Program locations"><div class="program-map-side-head"><strong>Locations &amp; programs</strong><span id="program-map-venue-count"></span></div><div id="program-map-location-list" class="program-map-location-list"></div></aside>
+    </div>
+    <div class="program-map-foot"><span>Select a location to view its classes, or use your filters above.</span><button type="button" id="program-map-bottom-close">← Return to program list</button></div>
+    <p id="program-map-load-error" class="program-map-load-error" hidden>The interactive map couldn't load. You can still choose a school below or return to list view.</p>
   </div>
 </div>
 <div id="program-filter-empty" class="program-filter-empty" hidden><strong>No matching programs</strong><p>Try a different location or program type.</p><button type="button" id="program-filter-empty-reset" class="btn btn-pink">Show all programs</button></div>
@@ -2087,6 +2097,7 @@
 <script src="src/js/faq.js"></script>
 <script src="src/js/main.js?v=20260926-v4"></script>
 <!-- Programs finder: front-end only; does not modify registrations -->
-<script src="src/js/program-filters.js?v=20261109-map-v2"></script>
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="src/js/program-filters.js?v=20261109-map-all-pins-v3"></script>
 </body>
 </html>
