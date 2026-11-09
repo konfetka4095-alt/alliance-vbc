@@ -413,10 +413,17 @@
     </label>
   </div>
   <p id="program-filter-count" class="program-filter-count" role="status" aria-live="polite"></p>
+  <div class="program-map-controls" role="group" aria-label="Program display options"><button type="button" id="program-list-view" class="program-view-toggle is-selected" aria-pressed="true">List view</button><button type="button" id="program-map-view" class="program-view-toggle" aria-pressed="false">Map view</button></div>
+  <div class="program-map-panel" id="program-map-panel" hidden>
+    <p class="program-map-explain">Choose a program location to see it on the map. The available locations follow your search filters.</p>
+    <label class="program-filter-field" for="program-map-select"><span>Show location on map</span><select id="program-map-select"></select></label>
+    <iframe id="program-map-frame" title="Map of selected Alliance program location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <a id="program-map-directions" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+  </div>
 </div>
 <div id="program-filter-empty" class="program-filter-empty" hidden><strong>No matching programs</strong><p>Try a different location or program type.</p><button type="button" id="program-filter-empty-reset" class="btn btn-pink">Show all programs</button></div>
 <!-- House League: Grades 5–8 — St. Gabriel -->
-<div class="program-detail-card" data-program-cat="house-league" data-program-location="north-york">
+<div class="program-detail-card" data-program-cat="house-league" data-program-location="north-york" data-map-place="St. Gabriel Catholic School, 396 Spring Garden Ave, North York, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 5–8</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -425,8 +432,8 @@
             more game experience, teamwork and competitive play while continuing
             to strengthen their volleyball fundamentals.
           </p>
-<details class="program-skills-dropdown" open="">
-<summary>View program focus</summary>
+<details class="program-skills-dropdown">
+<summary>What you'll learn</summary>
 <div class="program-features-list">
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Weekly game play and team-based development</span></div>
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Serving, passing, setting, attacking and court positioning</span></div>
@@ -447,35 +454,27 @@
 <button class="btn btn-pink" data-open-reg="" data-program-type="house-league-grade-6-9" style="width:100%;margin-top:1.5rem">Register — Grades 5–8</button>
 </div>
 </div>
-<!-- Bayview Middle School Volleyball — Free Trial + Winter Season -->
-<div class="program-detail-card program-bayview-card" data-program-cat="house-league" data-program-location="north-york">
+<!-- Bayview: separate independent registrations, each with its own workbook -->
+<div class="program-detail-card program-bayview-card" data-program-cat="house-league" data-program-location="north-york" data-map-place="Bayview Middle School, 25 Bunty Lane, North York, Ontario, Canada">
   <div>
-    <span class="badge-pill badge-pink">Free Trial · Wednesday, November 11</span>
-    <h2 style="font-size:1.8rem;margin:.5rem 0">Bayview Middle School Volleyball</h2>
-    <p class="program-description">Try a free volleyball class, or join our winter season for weekly game-based skill development, teamwork, and confidence on the court.</p>
-    <div class="program-features-list">
-      <div class="program-feature-item"><span>✓</span><span>Free trial: November 11, 3:30–5:00 PM</span></div>
-      <div class="program-feature-item"><span>✓</span><span>Winter season: Fridays, November 13–January 29</span>
-      </div>
-      <div class="program-feature-item"><span>✓</span><span>No class on December 25 or January 1</span></div>
-      <div class="program-feature-item"><span>✓</span><span>Limited to 20 spots for the program</span></div>
-    </div>
+    <span class="badge-pill badge-pink">FREE TRIAL · NOVEMBER 11</span>
+    <h2>Bayview Volleyball — Free Trial</h2>
+    <p class="program-description">Try a coach-led volleyball session before joining a full season. Athletes will practise the fundamentals and experience the supportive Alliance environment.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>Introduction to passing, setting and movement</span></div><div class="program-feature-item"><span>✓</span><span>Fun drills and game-based activities</span></div><div class="program-feature-item"><span>✓</span><span>A chance to meet the coaches before enrolling</span></div></div></details>
   </div>
+  <div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">Wednesday, November 11, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">3:30–5:00 PM</span></div><div class="meta-row"><span class="meta-label">Venue</span><span class="meta-val">Bayview Middle School · 25 Bunty Lane, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">FREE</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="bayview-free-trial" style="width:100%;margin-top:1.5rem">Register — Free Trial</button></div>
+</div>
+<div class="program-detail-card program-bayview-card" data-program-cat="house-league" data-program-location="north-york" data-map-place="Bayview Middle School, 25 Bunty Lane, North York, Ontario, Canada">
   <div>
-    <div class="program-meta-box">
-      <div class="meta-row"><span class="meta-label">Free Trial</span><span class="meta-val">Wednesday, Nov 11 · 3:30–5:00 PM · Free</span></div>
-      <div class="meta-row"><span class="meta-label">Winter Season</span><span class="meta-val">Fridays, Nov 13–Jan 29, 2027</span></div>
-      <div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">3:30–5:00 PM</span></div>
-      <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">10 classes</span></div>
-      <div class="meta-row"><span class="meta-label">No Class</span><span class="meta-val">December 25, 2026 &amp; January 1, 2027</span></div>
-      <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">Bayview Middle School</span></div>
-      <div class="meta-row"><span class="meta-label">Winter Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250</span></div>
-    </div>
-    <button class="btn btn-pink" data-open-reg="" data-program-type="house-league-bayview-fridays" style="width:100%;margin-top:1.5rem">Register — Free Trial or Winter Season</button>
+    <span class="badge-pill badge-pink">WINTER SEASON · 10 CLASSES</span>
+    <h2>Bayview Volleyball — Winter Season</h2>
+    <p class="program-description">A weekly volleyball program where athletes build stronger skills, court awareness and teamwork through structured coaching and game-based play.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>Serving, passing, setting and movement fundamentals</span></div><div class="program-feature-item"><span>✓</span><span>Teamwork, positioning and confidence in game situations</span></div><div class="program-feature-item"><span>✓</span><span>Consistent training in a supportive group</span></div></div></details>
   </div>
+  <div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Fridays, 3:30–5:00 PM</span></div><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">November 13, 2026–January 29, 2027</span></div><div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">10 classes</span></div><div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">December 25 and January 1</span></div><div class="meta-row"><span class="meta-label">Venue</span><span class="meta-val">Bayview Middle School · 25 Bunty Lane, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="bayview-winter-season" style="width:100%;margin-top:1.5rem">Register — Winter Season</button></div>
 </div>
 <!-- Clinic: Grades 4–6 — Moraine Hills -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Moraine Hills Public School, 85 Rollinghill Rd, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -484,8 +483,8 @@
             improving technique, movement, confidence and game understanding
             through structured training and game-based activities.
           </p>
-<details class="program-skills-dropdown" open="">
-<summary>View clinic skills</summary>
+<details class="program-skills-dropdown">
+<summary>What you'll learn</summary>
 <div class="program-features-list">
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passing, setting, serving and attacking fundamentals</span></div>
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Footwork, court positioning and ball control</span></div>
@@ -506,7 +505,7 @@
 </div>
 </div>
 <!-- Clinic: Grades 4–6 -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="north-york">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -515,8 +514,8 @@
             fundamentals, coordination and confidence through age-appropriate
             instruction, repetitions and team activities.
           </p>
-<details class="program-skills-dropdown" open="">
-<summary>View clinic skills</summary>
+<details class="program-skills-dropdown">
+<summary>What you'll learn</summary>
 <div class="program-features-list">
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passing, setting, serving and introductory attacking skills</span></div>
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Movement, coordination and basic court positioning</span></div>
@@ -539,9 +538,9 @@
 
 
 <!-- Small Group Skill Sessions -->
-<div class="program-detail-card" data-program-cat="skill-sessions" data-program-location="north-york"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></div></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
+<div class="program-detail-card" data-program-cat="skill-sessions" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></details></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
 <!-- House League: Grades 7–9 — Pleasantville -->
-<div class="program-detail-card" data-program-cat="house-league" data-program-location="richmond-hill">
+<div class="program-detail-card" data-program-cat="house-league" data-program-location="richmond-hill" data-map-place="Pleasantville Public School, 400 Mill St, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 7–9</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -550,8 +549,8 @@
             more game experience, teamwork and competitive play while continuing
             to strengthen their volleyball fundamentals.
           </p>
-<details class="program-skills-dropdown" open="">
-<summary>View program focus</summary>
+<details class="program-skills-dropdown">
+<summary>What you'll learn</summary>
 <div class="program-features-list">
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Weekly game play and team-based development</span></div>
 <div class="program-feature-item"><svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Serving, passing, setting, attacking and court positioning</span></div>
@@ -573,7 +572,7 @@
 </div>
 <!-- ONGOING PROGRAMS — retained because they have not finished -->
 <!-- Clinic 1: Grades 4–6 — Richmond Rose -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill">
+<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Richmond Rose Public School, 160 Frank Endean Rd, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">
             Boys &amp; Girls · Grades 4–6
@@ -587,8 +586,8 @@
             and gain confidence through structured drills and game-based
             activities.
           </p>
-<details class="program-skills-dropdown" open="">
-<summary>View clinic skills</summary>
+<details class="program-skills-dropdown">
+<summary>What you'll learn</summary>
 <div class="program-features-list">
 <div class="program-feature-item">
 <svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18">
@@ -687,8 +686,8 @@
           <span class="badge-pill badge-pink">Ages 15+ &amp; Adults</span>
           <h2>15+ &amp; Adult Volleyball Clinic</h2>
           <p class="program-description">Structured, coach-led volleyball sessions for players looking to build confidence, improve technique and enjoy active game-based training.</p>
-          <details class="program-skills-dropdown" open>
-            <summary>View clinic skills</summary>
+          <details class="program-skills-dropdown">
+            <summary>What you'll learn</summary>
             <div class="program-features-list">
               <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Passing, setting, serving and attacking</span></div>
               <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Ball control, movement and positioning</span></div>
@@ -1931,6 +1930,9 @@
             What would you like to register for today?
           </p>
 <div class="reg-option-grid">
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="bayview-free-trial" type="button"><span class="reg-program-kind">House League · Free Trial</span><span class="reg-option-name">Bayview Volleyball — Free Trial</span><span class="reg-option-desc">Wednesday, November 11 · 3:30–5:00 PM<br/>Bayview Middle School</span><span class="reg-option-fee">FREE</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="bayview-winter-season" type="button"><span class="reg-program-kind">House League · Winter Season</span><span class="reg-option-name">Bayview Volleyball — Winter Season</span><span class="reg-option-desc">Fridays, 3:30–5:00 PM<br/>November 13–January 29 · 10 classes<br/>No class Dec 25 or Jan 1</span><span class="reg-option-fee">$250</span></button>
+
 <button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="house-league-grade-6-9" type="button"><span class="reg-program-kind">House League</span><span class="reg-option-name">House League — Grades 5–8</span><span class="reg-option-desc">Mondays, 3:30–5:30 PM<br/>St. Gabriel Catholic School<br/>396 Spring Garden Ave, North York<br/>November 2–December 21 · 8 weeks</span><span class="reg-option-fee">$240</span></button>
 <button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="clinic-grade-5-8-moraine" type="button"><span class="reg-program-kind">Youth Volleyball Clinic</span><span class="reg-option-name">Youth Volleyball Clinic — Grades 4–6</span><span class="reg-option-desc">Tuesdays, 6:00–8:00 PM<br/>85 Rollinghill Rd, Richmond Hill<br/>October 20–December 15 · 9 weeks</span><span class="reg-option-fee">$270</span></button>
 <button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="clinic-grade-4-5-fall" type="button"><span class="reg-program-kind">Youth Volleyball Clinic</span><span class="reg-option-name">Youth Volleyball Clinic — Grades 4–6</span><span class="reg-option-desc">Thursdays, 4:00–6:00 PM<br/>360 Hollywood Ave, North York<br/>October 22–December 17 · 9 weeks</span><span class="reg-option-fee">$270</span></button>
@@ -2077,7 +2079,7 @@
 <script src="src/js/router.js?v=20261108-adult-layout-v2"></script>
 <script src="src/js/shop.js?v=20261018-merch-appscript-v1" defer></script>
 <script src="src/js/shop-gallery.js?v=20261018-family3" defer></script>
-<script src="src/js/programs.js?v=20261108-adult-layout-v2"></script>
+<script src="src/js/programs.js?v=20261109-bayview-split-v3"></script>
 <script src="src/js/registration-config.js?v=20260926-v4"></script>
 
 <script src="src/js/registration.js?v=20261106-bayview-v34"></script>
@@ -2085,6 +2087,6 @@
 <script src="src/js/faq.js"></script>
 <script src="src/js/main.js?v=20260926-v4"></script>
 <!-- Programs finder: front-end only; does not modify registrations -->
-<script src="src/js/program-filters.js?v=20261105-mobile-filters-v1"></script>
+<script src="src/js/program-filters.js?v=20261109-map-v2"></script>
 </body>
 </html>
