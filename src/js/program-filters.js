@@ -8,7 +8,7 @@
     {match:'Hollywood Public School',name:'Hollywood Public School',lat:43.770225,lng:-79.391908},
     {match:'Bayview Middle School',name:'Bayview Middle School',lat:43.775871,lng:-79.385473},
     {match:'Moraine Hills Public School',name:'Moraine Hills Public School',lat:43.9100496653,lng:-79.45451915},
-    {match:'Pleasantville Public School',name:'Pleasantville Public School',lat:43.8741289153,lng:-79.4601716},
+    {match:'Pleasantville Primary School',name:'Pleasantville Primary School',lat:43.8741289153,lng:-79.4601716},
     {match:'Richmond Rose Public School',name:'Richmond Rose Public School',lat:43.8847106153,lng:-79.41278085}
   ];
   function init(){

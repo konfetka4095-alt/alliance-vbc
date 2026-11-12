@@ -439,7 +439,7 @@ const RegistrationModule = {
 
     if (p.sessions && p.sessions.length) {
       if (reviewOnly && selected) {
-        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${selected.fee === 0 ? 'No payment required for the free trial class.' : 'Winter season fee: $' + selected.fee + '. Please e-transfer to Alliancevb.clinic@gmail.com; your spot is not secured until payment is completed.'}</p>`;
+        return `<strong>${p.name}</strong><p><strong>${selected.date}</strong><br>${selected.time}<br>${this.addressOnlyLocation(selected.location)}</p><p>${selected.fee === 0 ? 'No payment required.' : 'Winter season fee: $' + selected.fee + '. Please e-transfer to Alliancevb.clinic@gmail.com; your spot is not secured until payment is completed.'}</p>`;
       }
 
       const options = p.sessions.map(session => `
@@ -452,7 +452,7 @@ const RegistrationModule = {
           </span>
         </label>`).join('');
 
-      return `<strong>${p.name}</strong><p class="session-choice-instruction">${p.category === 'House League' ? 'Choose the November 11 free trial or the full winter season *' : 'Choose the tryout date your athlete will attend *'}</p><div class="tryout-session-choices">${options}</div>`;
+      return `<strong>${p.name}</strong><p class="session-choice-instruction">${'Choose a session *'}</p><div class="tryout-session-choices">${options}</div>`;
     }
 
     return `<strong>${p.name}</strong><p>${p.date}<br>${p.time}</p><p>${p.address}</p>${p.entrance ? `<div class="entrance-note">${p.entrance}</div>` : ''}<p>${p.payment}</p>`;

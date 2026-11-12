@@ -1,28 +1,8 @@
 window.ALLIANCE_PROGRAMS = {
-  "bayview-free-trial": {
-    name: "Bayview Volleyball — Free Trial", category: "House League", date: "Wednesday, November 11, 2026", time: "Wednesday, 3:30–5:00 PM", venue: "Bayview Middle School", address: "25 Bunty Lane, North York, ON", entrance: "", dayName: "Wednesday", fee: 0, payment: "Free trial — no payment required."
-  },
   "bayview-winter-season": {
     name: "Bayview Volleyball — Winter Season", category: "House League", date: "November 13, 2026–January 29, 2027 · 10 classes · No class December 25 or January 1", time: "Fridays, 3:30–5:00 PM", venue: "Bayview Middle School", address: "25 Bunty Lane, North York, ON", entrance: "", dayName: "Friday", fee: 250, payment: "Please e-transfer $250 to Alliancevb.clinic@gmail.com. Include the athlete's full name and Bayview Winter Season. Your spot is not secured until payment has been completed."
   },
 
-  "house-league-bayview-fridays": {
-    name: "Bayview Middle School Volleyball",
-    category: "House League",
-    date: "November 13, 2026–January 29, 2027 · 10 Fridays · No class December 25, 2026 or January 1, 2027",
-    time: "Fridays, 3:30–5:00 PM",
-    venue: "Bayview Middle School",
-    address: "",
-    entrance: "",
-    dayName: "Friday",
-    fee: 0,
-    autoCreateStorage: true,
-    payment: "Choose the free November 11 trial class or the $250 winter season. No winter class on December 25, 2026 or January 1, 2027. Trial registration is free; winter registration requires payment to secure the spot.",
-    sessions: [
-      { id: "bayview-free-2026-11-11", date: "Wednesday, November 11, 2026 — Free Trial Class", time: "3:30–5:00 PM", location: "Bayview Middle School", fee: 0 },
-      { id: "bayview-winter-2026", date: "Fridays, November 13, 2026–January 29, 2027 · 10 classes · No class December 25, 2026 or January 1, 2027", time: "3:30–5:00 PM", location: "Bayview Middle School", fee: 250 }
-    ]
-  },
 
   "skill-sessions": {
     "name": "Skill Sessions — Small Group",
