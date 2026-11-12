@@ -538,3 +538,13 @@
     background-position: 70% center !important;
   }
 }
+
+/* Keep the updated Youth Programs navigation comfortable on smaller laptops. */
+@media (min-width: 869px) and (max-width: 1199px) {
+  .main-nav { gap: .52rem; margin: 0 .45rem; }
+  .nav-link { letter-spacing: .025em; font-size: .72rem; padding-inline: .1rem; }
+}
+@media (min-width: 869px) and (max-width: 1060px) {
+  .main-nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
+}

@@ -2892,3 +2892,51 @@ html { overflow-x:clip; }
 #view-programs .program-map-target {outline:3px solid #ff0055;outline-offset:5px;}
 @media(max-width:830px){#view-programs .program-map-layout{grid-template-columns:1fr;}#view-programs #program-locations-map{height:390px;}#view-programs .program-map-sidebar{max-height:320px;}#view-programs .program-map-location-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;overflow:auto;}#view-programs .program-map-location{margin:0;}}
 @media(max-width:580px){#view-programs .program-map-panel{padding:.7rem;border-radius:13px;}#view-programs .program-map-heading{flex-direction:column;gap:.6rem;}#view-programs .program-map-close{align-self:stretch;width:100%;}#view-programs .program-map-heading h3{font-size:1.48rem;}#view-programs .program-map-layout{gap:.7rem;}#view-programs #program-locations-map{height:350px;}#view-programs .program-map-location-list{grid-template-columns:1fr;}#view-programs .program-map-sidebar{max-height:340px;}#view-programs .program-map-foot{flex-direction:column;align-items:stretch;}#view-programs .program-map-foot button{width:100%;}#view-programs .program-map-controls{max-width:none;}#view-programs .leaflet-popup-content{margin:10px;}}
+
+
+/* ==========================================
+   LOCATIONS — NOV 2026 compact map + cards
+   ========================================== */
+#view-locations .avc-locations-section { padding: 3.2rem 0 4.5rem; background: #f7f8fb; }
+#view-locations .avc-locations-header { display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:1.25rem; }
+#view-locations .avc-locations-eyebrow { display:block;margin-bottom:.4rem;color:#d9004c;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem;font-weight:800; }
+#view-locations .avc-locations-header h2 { font-family:var(--font-display);font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.07;margin:0 0 .45rem;color:#06152d; }
+#view-locations .avc-locations-header p {margin:0;line-height:1.55;color:#586579;font-size:.93rem;}
+#view-locations .avc-locations-total {color:#ad003e;background:#ffeaf1;border:1px solid #ffd2e1;border-radius:999px;padding:.52rem .8rem;letter-spacing:.08em;font-size:.72rem;font-weight:800;white-space:nowrap;}
+#view-locations .avc-locations-map-frame {position:relative;overflow:hidden;border:1px solid #dde5ee;border-radius:17px;background:#eaf0f6;box-shadow:0 6px 28px rgba(6,21,45,.06);margin-bottom:1.25rem;}
+#view-locations #alliance-locations-map {height:370px;width:100%;z-index:0;}
+#view-locations .avc-locations-fallback {position:absolute;inset:auto 1rem 1rem 1rem;border-radius:9px;background:white;padding:.9rem;font-size:.9rem;color:#06152d;box-shadow:0 4px 16px rgba(6,21,45,.14);}
+#view-locations .avc-locations-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;}
+#view-locations .avc-venue-card {min-width:0;background:#fff;border:1px solid #e0e6ee;border-radius:13px;padding:1.08rem 1.12rem;transition:box-shadow .2s,border-color .2s;}
+#view-locations .avc-venue-card:hover,#view-locations .avc-venue-card.is-selected {border-color:#ff99bb;box-shadow:0 6px 20px rgba(6,21,45,.07);}
+#view-locations .avc-venue-card-top {display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.65rem;}
+#view-locations .avc-venue-number {font:700 .94rem var(--font-display);color:#f05;}
+#view-locations .avc-venue-area {font-size:.67rem;letter-spacing:.04em;font-weight:800;color:#606e82;text-transform:uppercase;}
+#view-locations .avc-venue-card h3 {font:700 1.22rem/1.13 var(--font-display);color:#06152d;margin:0 0 .4rem;}
+#view-locations .avc-venue-address {font-size:.82rem;color:#536176;line-height:1.45;margin:0 0 .72rem;}
+#view-locations .avc-venue-programs {display:flex;flex-wrap:wrap;gap:.35rem;min-height:30px;margin:0 0 .85rem;}
+#view-locations .avc-venue-program {color:#7d123e;background:#fff0f5;border-radius:6px;padding:.3rem .48rem;font-size:.73rem;line-height:1.3;font-weight:650;}
+#view-locations .avc-venue-links {display:flex;gap:1rem;flex-wrap:wrap;}
+#view-locations .avc-venue-links a,#view-locations .avc-venue-links button {font-size:.78rem;color:#152849;font-weight:800;cursor:pointer;background:none;border:0;padding:.25rem 0;text-decoration:none;}
+#view-locations .avc-venue-links a:hover,#view-locations .avc-venue-links button:hover {color:#df0054;text-decoration:underline;}
+#view-locations .avc-venue-links a:focus-visible,#view-locations .avc-venue-links button:focus-visible {outline:2px solid #ff0055;outline-offset:3px;border-radius:2px;}
+#view-locations .avc-locations-footnote {margin:1.4rem 0 0;color:#586579;font-size:.88rem;line-height:1.6;}
+#view-locations .avc-locations-footnote a {color:#9d0039;text-decoration:underline;font-weight:750;}
+#view-locations .avc-pin {background:transparent;border:0;}
+#view-locations .avc-pin > span {display:block;width:23px;height:23px;background:#ff0055;border:3px solid #fff;box-shadow:0 2px 11px rgba(6,21,45,.34);border-radius:50%;}
+#view-locations .avc-map-popup {color:#152849;line-height:1.35;}
+#view-locations .avc-map-popup strong {display:block;font-size:1rem;margin-bottom:.27rem;}
+#view-locations .avc-map-popup small {display:block;color:#607085;font-size:.78rem;margin-bottom:.6rem;}
+#view-locations .avc-map-popup ul {margin:.15rem 0 .7rem;padding-left:1rem;font-size:.82rem;}
+#view-locations .avc-map-popup li {margin:.18rem 0;}
+#view-locations .avc-map-popup a {display:inline-block;color:#ac0041;font-size:.82rem;font-weight:800;margin-right:1rem;text-decoration:none;}
+#view-locations .avc-map-popup a:hover {text-decoration:underline;}
+@media(max-width:950px){#view-locations .avc-locations-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:620px){
+  #view-locations .avc-locations-section{padding:2.3rem 0 3rem;}
+  #view-locations .avc-locations-header{align-items:flex-start;flex-direction:column;gap:.65rem;}
+  #view-locations #alliance-locations-map{height:315px;}
+  #view-locations .avc-locations-grid{grid-template-columns:1fr;gap:.65rem;}
+  #view-locations .avc-venue-card{padding:1rem;}
+  #view-locations .avc-venue-programs{margin-bottom:.6rem;}
+}
