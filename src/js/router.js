@@ -10,7 +10,8 @@ const RouterModule = {
   },
 
   handleRoute() {
-    const hash = window.location.hash.replace('#', '') || 'home';
+    const hash = decodeURIComponent(window.location.hash.slice(1))
+      .replace(/^\/+|\/+$/g, '').toLowerCase() || 'home';
     const targetView = this.views.includes(hash) ? hash : 'home';
     this.navigate(targetView);
   },
