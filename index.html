@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261112-locations-v1" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261120-camps-winter-v2" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -38,6 +38,7 @@
 <a class="nav-link" href="#about">ABOUT</a>
 <a class="nav-link" href="#programs">YOUTH PROGRAMS</a>
 <a class="nav-link" href="#adult-programs">ADULT PROGRAMS</a>
+<a class="nav-link" href="#camps">CAMPS</a>
 <a class="nav-link" href="#rep-teams">REP TEAMS</a>
 <a class="nav-link" href="#coaches">COACHES</a>
 <a class="nav-link" href="#careers">CAREERS</a>
@@ -63,6 +64,7 @@
 <a class="mobile-nav-link" href="#about">ABOUT</a>
 <a class="mobile-nav-link" href="#programs">YOUTH PROGRAMS</a>
 <a class="mobile-nav-link" href="#adult-programs">ADULT PROGRAMS</a>
+<a class="mobile-nav-link" href="#camps">CAMPS</a>
 <a class="mobile-nav-link" href="#rep-teams">REP TEAMS</a>
 <a class="mobile-nav-link" href="#coaches">COACHES</a>
 <a class="mobile-nav-link" href="#careers">CAREERS</a>
@@ -373,7 +375,7 @@
 <!-- Programs Hero -->
 <section class="page-hero">
 <div class="container">
-<span class="section-tag">FALL 2026 REGISTRATION</span>
+<span class="section-tag">FALL 2026 · WINTER 2027</span>
 <h1 class="page-hero-title">
         YOUTH VOLLEYBALL PROGRAMS
       </h1>
@@ -398,6 +400,9 @@
     <button type="button" id="program-filter-reset" class="program-filter-reset">Clear filters</button>
   </div>
   <div class="program-filter-fields">
+    <label class="program-filter-field" for="program-season-filter"><span>Season</span>
+      <select id="program-season-filter"><option value="all">All seasons</option><option value="winter">Winter 2026–27</option><option value="fall">Fall 2026</option></select>
+    </label>
     <label class="program-filter-field" for="program-location-filter"><span>Location</span>
       <select id="program-location-filter"><option value="all">All locations</option><option value="north-york">North York</option><option value="thornhill">Thornhill</option><option value="richmond-hill">Richmond Hill</option></select>
     </label>
@@ -427,8 +432,126 @@
   </div>
 </div>
 <div id="program-filter-empty" class="program-filter-empty" hidden><strong>No matching programs</strong><p>Try a different location or program type.</p><button type="button" id="program-filter-empty-reset" class="btn btn-pink">Show all programs</button></div>
+
+<!-- NEW: Winter 2026–27 programs (filterable with Fall programs) -->
+<div class="program-detail-card winter-program-card" data-program-cat="clinics" data-program-season="winter" data-program-location="richmond-hill" data-map-place="Moraine Hills Public School, 85 Rollinghill Rd, Richmond Hill, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">Boys &amp; Girls · 4–6</span>
+    <h2>Youth Volleyball Clinic</h2>
+    <p class="program-description">A supportive youth clinic building stronger volleyball fundamentals, confidence and court awareness through structured coaching and game-based learning.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Tuesdays, 6:00–8:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">January 5–March 30, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">March 16, 2027</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">12 weeks</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Moraine Hills Public School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">85 Rollinghill Rd, Richmond Hill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$360</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-clinic-moraine-4-6">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<div class="program-detail-card winter-program-card" data-program-cat="house-league" data-program-season="winter" data-program-location="richmond-hill" data-map-place="Pleasantville Primary School, 400 Mill St, Richmond Hill, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">Boys &amp; Girls · 7–9</span>
+    <h2>House League</h2>
+    <p class="program-description">An active, game-focused house league for growing players to develop teamwork, confidence, skills and match experience.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Mondays, 6:00–8:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">January 4–March 22, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">February 15 &amp; March 15, 2027</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">10 weeks</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Pleasantville Primary School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">400 Mill St, Richmond Hill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$300</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-house-pleasantville-7-9">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<div class="program-detail-card winter-program-card" data-program-cat="clinics" data-program-season="winter" data-program-location="richmond-hill" data-map-place="Richmond Rose Public School, 160 Frank Endean Rd, Richmond Hill, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">Boys &amp; Girls · 4–6</span>
+    <h2>Youth Volleyball Clinic</h2>
+    <p class="program-description">Build serving, passing, setting and movement fundamentals while making new friends and developing skills in a welcoming environment.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Wednesdays, 6:00–8:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">January 6–March 31, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">March 17, 2027</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">12 weeks</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Richmond Rose Public School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">160 Frank Endean Rd, Richmond Hill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$360</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-clinic-richmond-rose-4-6">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<div class="program-detail-card winter-program-card" data-program-cat="skill-sessions" data-program-season="winter" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">REP PLAYERS · 13U–15U · 4–6 PER GROUP</span>
+    <h2>Rep Team Skill Sessions — 13U–15U</h2>
+    <p class="program-description">Focused small-group training for 13U–15U rep athletes, with individual feedback, purposeful repetitions and a maximum of six players per group.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Mondays, 8:30–10:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">December 7, 2026–January 25, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">December 21 &amp; 28, 2026</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">6 weeks</span></div>
+<div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–6 players</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Hollywood Public School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">360 Hollywood Ave, North York, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$300</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-rep-small-group-hollywood">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<div class="program-detail-card winter-program-card" data-program-cat="clinics" data-program-season="winter" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">Boys &amp; Girls · 4–6</span>
+    <h2>Youth Volleyball Clinic</h2>
+    <p class="program-description">An encouraging volleyball clinic helping younger athletes develop ball control, technique, coordination and a love of the game.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Thursdays, 4:00–6:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">January 7–March 25, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">March 18, 2027</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">11 weeks</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Hollywood Public School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">360 Hollywood Ave, North York, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$330</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-clinic-hollywood-4-6">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<div class="program-detail-card winter-program-card" data-program-cat="house-league" data-program-season="winter" data-program-location="north-york" data-map-place="St. Gabriel Catholic School, 396 Spring Garden Ave, North York, ON, Canada">
+  <div>
+    <span class="badge-pill badge-pink">Boys &amp; Girls · 5–8</span>
+    <h2>House League</h2>
+    <p class="program-description">Weekly house-league training with game play, teamwork and skill development for athletes ready to grow in a positive team setting.</p>
+    <details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Focused coaching and skill development</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Game play, communication and teamwork</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Positive, engaging sessions for the right experience level</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Mondays, 3:30–5:30 PM</span></div>
+<div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">January 4–March 29, 2027</span></div>
+<div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">February 15 &amp; March 15, 2027</span></div>
+<div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">11 weeks</span></div>
+<div class="meta-row"><span class="meta-label">School</span><span class="meta-val">St. Gabriel Catholic School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">396 Spring Garden Ave, North York, ON</span></div>
+<div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$330</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="winter-house-st-gabriel-5-8">REGISTER — WINTER PROGRAM</button>
+    <p class="winter-payment-note">Your spot is not secured until payment has been completed.</p>
+  </div>
+</div>
+<!-- END WINTER PROGRAMS -->
 <!-- House League: Grades 5–8 — St. Gabriel -->
-<div class="program-detail-card" data-program-cat="house-league" data-program-location="north-york" data-map-place="St. Gabriel Catholic School, 396 Spring Garden Ave, North York, Ontario, Canada">
+<div class="program-detail-card" data-program-season="fall" data-program-cat="house-league" data-program-location="north-york" data-map-place="St. Gabriel Catholic School, 396 Spring Garden Ave, North York, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 5–8</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -460,7 +583,7 @@
 </div>
 </div>
 <!-- Bayview: separate independent registrations, each with its own workbook -->
-<div class="program-detail-card program-bayview-card" data-program-cat="house-league" data-program-location="north-york" data-map-place="Bayview Middle School, 25 Bunty Lane, North York, Ontario, Canada">
+<div class="program-detail-card program-bayview-card" data-program-season="fall" data-program-cat="house-league" data-program-location="north-york" data-map-place="Bayview Middle School, 25 Bunty Lane, North York, Ontario, Canada">
   <div>
     <span class="badge-pill badge-pink">WINTER SEASON · 10 CLASSES</span>
     <h2>Bayview Volleyball — Winter Season</h2>
@@ -470,7 +593,7 @@
   <div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Schedule</span><span class="meta-val">Fridays, 3:30–5:00 PM</span></div><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">November 13, 2026–January 29, 2027</span></div><div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">10 classes</span></div><div class="meta-row"><span class="meta-label">No class</span><span class="meta-val">December 25 and January 1</span></div><div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Bayview Middle School</span></div><div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">25 Bunty Lane, North York, ON</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="bayview-winter-season" style="width:100%;margin-top:1.5rem">Register — Winter Season</button></div>
 </div>
 <!-- Clinic: Grades 4–6 — Moraine Hills -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Moraine Hills Public School, 85 Rollinghill Rd, Richmond Hill, Ontario, Canada">
+<div class="program-detail-card" data-program-season="fall" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Moraine Hills Public School, 85 Rollinghill Rd, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -502,7 +625,7 @@
 </div>
 </div>
 <!-- Clinic: Grades 4–6 -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada">
+<div class="program-detail-card" data-program-season="fall" data-program-cat="clinics" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 4–6</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Youth Volleyball Clinic</h2>
@@ -536,9 +659,9 @@
 
 
 <!-- Small Group Skill Sessions -->
-<div class="program-detail-card" data-program-cat="skill-sessions" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></details></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Hollywood Public School</span></div><div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
+<div class="program-detail-card" data-program-season="fall" data-program-cat="skill-sessions" data-program-location="north-york" data-map-place="Hollywood Public School, 360 Hollywood Ave, North York, Ontario, Canada"><div><span class="badge-pill badge-pink">4–5 players per group</span><h2 style="font-size:1.8rem;margin:.5rem 0">Skill Sessions</h2><p class="program-description">Small-group volleyball training designed to develop serving, passing, setting, attacking and court skills with focused coaching and purposeful repetitions.</p><details class="program-skills-dropdown"><summary>What you'll learn</summary><div class="program-features-list"><div class="program-feature-item"><span>✓</span><span>4–5 players per training group</span></div><div class="program-feature-item"><span>✓</span><span>Skill-based coaching and feedback</span></div><div class="program-feature-item"><span>✓</span><span>Five weekly Monday sessions</span></div></details></div><div><div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">Mondays, November 2–30, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">8:30–10:00 PM</span></div><div class="meta-row"><span class="meta-label">Group size</span><span class="meta-val">4–5 players</span></div><div class="meta-row"><span class="meta-label">School</span><span class="meta-val">Hollywood Public School</span></div><div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">360 Hollywood Ave, North York</span></div><div class="meta-row"><span class="meta-label">Fee</span><span class="meta-val" style="color:var(--color-brand-pink)">$250 for 5 weeks</span></div></div><button class="btn btn-pink" data-open-reg="" data-program-type="skill-sessions" style="width:100%;margin-top:1.5rem">Register — Skill Sessions</button></div></div>
 <!-- House League: Grades 7–9 — Pleasantville -->
-<div class="program-detail-card" data-program-cat="house-league" data-program-location="richmond-hill" data-map-place="Pleasantville Primary School, 400 Mill St, Richmond Hill, Ontario, Canada">
+<div class="program-detail-card" data-program-season="fall" data-program-cat="house-league" data-program-location="richmond-hill" data-map-place="Pleasantville Primary School, 400 Mill St, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">Boys &amp; Girls · Grades 7–9</span>
 <h2 style="font-size:1.8rem;margin:.5rem 0">Alliance House League</h2>
@@ -571,7 +694,7 @@
 </div>
 <!-- ONGOING PROGRAMS — retained because they have not finished -->
 <!-- Clinic 1: Grades 4–6 — Richmond Rose -->
-<div class="program-detail-card" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Richmond Rose Public School, 160 Frank Endean Rd, Richmond Hill, Ontario, Canada">
+<div class="program-detail-card" data-program-season="fall" data-program-cat="clinics" data-program-location="richmond-hill" data-map-place="Richmond Rose Public School, 160 Frank Endean Rd, Richmond Hill, Ontario, Canada">
 <div>
 <span class="badge-pill badge-pink">
             Boys &amp; Girls · Grades 4–6
@@ -666,6 +789,73 @@
 <!-- ========================================== -->
 <!-- VIEW: ADULT PROGRAMS -->
 <!-- ========================================== -->
+<!-- ==========================================
+     VIEW: CAMPS
+     ========================================== -->
+<div class="view-panel" id="view-camps" style="display:none;">
+  <section class="page-hero camps-hero"><div class="container">
+    <span class="section-tag">DECEMBER 2026 · WINTER BREAK</span>
+    <h1 class="page-hero-title">ALLIANCE VOLLEYBALL CAMPS</h1>
+    <p class="page-hero-desc">Five days of volleyball during winter break. Choose individual camp dates or save with the full five-day package. Find the right group for your athlete below.</p>
+  </div></section>
+  <section class="page-container camps-section"><div class="container">
+    <div class="camps-intro"><span class="program-finder-eyebrow">CHOOSE YOUR CAMP</span><h2>TRAIN. PLAY. GROW.</h2><p>December 21, 22, 23, 30 &amp; 31 · 9:00 AM–4:00 PM · Three camp groups, two convenient locations.</p>
+      <div class="camps-price-strip"><span><strong>$90</strong> per day</span><span><strong>$400</strong> all five days <small>Save $50</small></span></div>
+    </div>
+<div class="program-detail-card camps-detail-card" >
+  <div>
+    <span class="badge-pill badge-pink">Rep Team Players · 13U–15U</span>
+    <h2>13U–15U Rep Team Player Camp</h2>
+    <p class="program-description">A five-day winter break camp for 13U–15U rep players, focused on sharpening skills, game play and court decision-making.</p>
+    <details class="program-skills-dropdown"><summary>Camp highlights</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Flexible single-day or five-day registration</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Skills, confidence and active volleyball play</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Small-group coaching and team activities</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">December 21, 22, 23, 30 &amp; 31, 2026</span></div>
+<div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">9:00 AM–4:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">St. Anthony Catholic School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">141 Kirk Dr, Thornhill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Options</span><span class="meta-val" style="color:var(--color-brand-pink)">$90 per day · $400 for all five days</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="camp-rep-13-15u">REGISTER — CHOOSE CAMP DATES</button>
+    <p class="winter-payment-note">Camp registration includes your selected dates; you can choose one or more days in the form.</p>
+  </div>
+</div>
+<div class="program-detail-card camps-detail-card" >
+  <div>
+    <span class="badge-pill badge-pink">Non-Rep Players · 4–6</span>
+    <h2>Non-Rep Volleyball Camp — Grades 4–6</h2>
+    <p class="program-description">A welcoming volleyball camp for Grades 4–6 non-rep athletes to practise the fundamentals, play games and build confidence.</p>
+    <details class="program-skills-dropdown"><summary>Camp highlights</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Flexible single-day or five-day registration</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Skills, confidence and active volleyball play</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Small-group coaching and team activities</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">December 21, 22, 23, 30 &amp; 31, 2026</span></div>
+<div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">9:00 AM–4:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">St. Mary Immaculate Catholic School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">161 Regent St, Richmond Hill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Options</span><span class="meta-val" style="color:var(--color-brand-pink)">$90 per day · $400 for all five days</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="camp-nonrep-grades-4-6">REGISTER — CHOOSE CAMP DATES</button>
+    <p class="winter-payment-note">Camp registration includes your selected dates; you can choose one or more days in the form.</p>
+  </div>
+</div>
+<div class="program-detail-card camps-detail-card" >
+  <div>
+    <span class="badge-pill badge-pink">Non-Rep Players · 7–8</span>
+    <h2>Non-Rep Volleyball Camp — Grades 7–8</h2>
+    <p class="program-description">Build consistency, teamwork and volleyball skills through active training and games, designed for Grades 7–8 non-rep athletes.</p>
+    <details class="program-skills-dropdown"><summary>Camp highlights</summary><div class="program-features-list"><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Flexible single-day or five-day registration</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Skills, confidence and active volleyball play</span></div><div class="program-feature-item"><span aria-hidden="true">✓</span><span>Small-group coaching and team activities</span></div></div></details>
+  </div>
+  <div>
+    <div class="program-meta-box"><div class="meta-row"><span class="meta-label">Dates</span><span class="meta-val">December 21, 22, 23, 30 &amp; 31, 2026</span></div>
+<div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">9:00 AM–4:00 PM</span></div>
+<div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">St. Mary Immaculate Catholic School</span></div>
+<div class="meta-row"><span class="meta-label">Address</span><span class="meta-val">161 Regent St, Richmond Hill, ON</span></div>
+<div class="meta-row"><span class="meta-label">Options</span><span class="meta-val" style="color:var(--color-brand-pink)">$90 per day · $400 for all five days</span></div></div>
+    <button type="button" class="btn btn-pink winter-register-btn" data-open-reg="" data-program-type="camp-nonrep-grades-7-8">REGISTER — CHOOSE CAMP DATES</button>
+    <p class="winter-payment-note">Camp registration includes your selected dates; you can choose one or more days in the form.</p>
+  </div>
+</div>
+    <p class="camps-help">Questions about camp registration? Email <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>.</p>
+  </div></section>
+</div>
 <div class="view-panel" id="view-adult-programs" style="display:none;">
   <section class="page-hero adult-programs-hero">
     <div class="container">
@@ -1867,6 +2057,7 @@
 <div class="footer-links-list">
 <a class="footer-link" href="#about">About</a>
 <a class="footer-link" href="#adult-programs">Adult Programs</a>
+<a class="footer-link" href="#camps">Winter Camps</a>
 <a class="footer-link" href="#coaches">Coaches</a>
 <a class="footer-link" href="#careers">Careers</a>
 <a class="footer-link" href="#shop">Shop Alliance Merch</a>
@@ -1969,6 +2160,19 @@
             What would you like to register for today?
           </p>
 <div class="reg-option-grid">
+
+<!-- New winter programs and December camps -->
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="camp-rep-13-15u" type="button"><span class="reg-program-kind">Winter Camp · 13U–15U</span><span class="reg-option-name">13U–15U Rep Team Player Camp</span><span class="reg-option-desc">9:00 AM–4:00 PM<br>December 21, 22, 23, 30 &amp; 31<br>St. Anthony Catholic School<br>141 Kirk Dr, Thornhill, ON</span><span class="reg-option-fee">$90/day · $400/5 days</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="camp-nonrep-grades-4-6" type="button"><span class="reg-program-kind">Winter Camp · 4–6</span><span class="reg-option-name">Non-Rep Volleyball Camp — Grades 4–6</span><span class="reg-option-desc">9:00 AM–4:00 PM<br>December 21, 22, 23, 30 &amp; 31<br>St. Mary Immaculate Catholic School<br>161 Regent St, Richmond Hill, ON</span><span class="reg-option-fee">$90/day · $400/5 days</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="camp-nonrep-grades-7-8" type="button"><span class="reg-program-kind">Winter Camp · 7–8</span><span class="reg-option-name">Non-Rep Volleyball Camp — Grades 7–8</span><span class="reg-option-desc">9:00 AM–4:00 PM<br>December 21, 22, 23, 30 &amp; 31<br>St. Mary Immaculate Catholic School<br>161 Regent St, Richmond Hill, ON</span><span class="reg-option-fee">$90/day · $400/5 days</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-clinic-moraine-4-6" type="button"><span class="reg-program-kind">Winter 2026–27 · Youth Volleyball Clinic</span><span class="reg-option-name">Youth Volleyball Clinic — Grades 4–6</span><span class="reg-option-desc">Tuesdays, 6:00–8:00 PM<br>January 5–March 30, 2027 · 12 weeks<br>Moraine Hills Public School<br>85 Rollinghill Rd, Richmond Hill, ON</span><span class="reg-option-fee">$360</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-house-pleasantville-7-9" type="button"><span class="reg-program-kind">Winter 2026–27 · House League</span><span class="reg-option-name">House League — Grades 7–9</span><span class="reg-option-desc">Mondays, 6:00–8:00 PM<br>January 4–March 22, 2027 · 10 weeks<br>Pleasantville Primary School<br>400 Mill St, Richmond Hill, ON</span><span class="reg-option-fee">$300</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-clinic-richmond-rose-4-6" type="button"><span class="reg-program-kind">Winter 2026–27 · Youth Volleyball Clinic</span><span class="reg-option-name">Youth Volleyball Clinic — Grades 4–6</span><span class="reg-option-desc">Wednesdays, 6:00–8:00 PM<br>January 6–March 31, 2027 · 12 weeks<br>Richmond Rose Public School<br>160 Frank Endean Rd, Richmond Hill, ON</span><span class="reg-option-fee">$360</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-rep-small-group-hollywood" type="button"><span class="reg-program-kind">Winter 2026–27 · Skill Sessions</span><span class="reg-option-name">Rep Team Skill Sessions — 13U–15U</span><span class="reg-option-desc">Mondays, 8:30–10:00 PM<br>December 7, 2026–January 25, 2027 · 6 weeks<br>Hollywood Public School<br>360 Hollywood Ave, North York, ON</span><span class="reg-option-fee">$300</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-clinic-hollywood-4-6" type="button"><span class="reg-program-kind">Winter 2026–27 · Youth Volleyball Clinic</span><span class="reg-option-name">Youth Volleyball Clinic — Grades 4–6</span><span class="reg-option-desc">Thursdays, 4:00–6:00 PM<br>January 7–March 25, 2027 · 11 weeks<br>Hollywood Public School<br>360 Hollywood Ave, North York, ON</span><span class="reg-option-fee">$330</span></button>
+<button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="winter-house-st-gabriel-5-8" type="button"><span class="reg-program-kind">Winter 2026–27 · House League</span><span class="reg-option-name">House League — Grades 5–8</span><span class="reg-option-desc">Mondays, 3:30–5:30 PM<br>January 4–March 29, 2027 · 11 weeks<br>St. Gabriel Catholic School<br>396 Spring Garden Ave, North York, ON</span><span class="reg-option-fee">$330</span></button>
+<!-- End new programs -->
+
 
 <button aria-pressed="false" class="reg-option-card reg-cat-card" data-cat-value="bayview-winter-season" type="button"><span class="reg-program-kind">House League · Winter Season</span><span class="reg-option-name">Bayview Volleyball — Winter Season</span><span class="reg-option-desc">Fridays, 3:30–5:00 PM<br/>November 13–January 29 · 10 classes<br/>No class Dec 25 or Jan 1<br/>Bayview Middle School<br/>25 Bunty Lane, North York</span><span class="reg-option-fee">$250</span></button>
 
@@ -2118,16 +2322,16 @@
 <script src="src/js/router.js?v=20261108-adult-layout-v2"></script>
 <script src="src/js/shop.js?v=20261018-merch-appscript-v1" defer></script>
 <script src="src/js/shop-gallery.js?v=20261018-family3" defer></script>
-<script src="src/js/programs.js?v=20261112-youth-nav-v1"></script>
+<script src="src/js/programs.js?v=20261120-camps-winter-v2"></script>
 <script src="src/js/registration-config.js?v=20260926-v4"></script>
 
-<script src="src/js/registration.js?v=20261112-trial-hidden-v1"></script>
+<script src="src/js/registration.js?v=20261120-camps-winter-v2"></script>
 <script src="src/js/schedule.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/faq.js"></script>
 <script src="src/js/main.js?v=20260926-v4"></script>
 <!-- Programs finder: front-end only; does not modify registrations -->
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="src/js/program-filters.js?v=20261112-youth-nav-v1"></script>
+<script src="src/js/program-filters.js?v=20261120-camps-winter-v2"></script>
 <script src="src/js/locations-map.js?v=20261112-locations-v1"></script>
 </body>
 </html>
