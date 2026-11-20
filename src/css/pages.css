@@ -2940,3 +2940,50 @@ html { overflow-x:clip; }
   #view-locations .avc-venue-card{padding:1rem;}
   #view-locations .avc-venue-programs{margin-bottom:.6rem;}
 }
+
+
+/* Alliance winter programs + December camps: November 2026 update */
+#view-programs .program-filter-fields {grid-template-columns: repeat(3,minmax(0,1fr)) 1.2fr;}
+#view-programs .winter-program-card {border-color:#e7d5de;}
+#view-programs .winter-program-card h2,
+#view-camps .camps-detail-card h2 {font-family:var(--font-display);font-size:1.8rem;line-height:1.2;margin:.65rem 0;}
+#view-programs .winter-program-card .program-description,
+#view-camps .camps-detail-card .program-description {display:block;color:#475569;line-height:1.65;margin:.65rem 0 1rem;}
+#view-programs .winter-program-card .program-feature-item>span:first-child,
+#view-camps .camps-detail-card .program-feature-item>span:first-child {font-weight:900;color:#ff0055;}
+#view-programs .winter-register-btn,
+#view-camps .winter-register-btn {display:block;width:100%;margin-top:1.3rem;min-height:46px;white-space:normal;line-height:1.35;}
+#view-programs .winter-payment-note,
+#view-camps .winter-payment-note {font-size:.76rem;line-height:1.5;color:#64748b;margin:.75rem 0 0;}
+#view-camps .camps-section {padding-top:2rem;}
+#view-camps .camps-intro {margin:0 0 2rem;padding:1.7rem 2rem;border-radius:18px;background:#fff;border:1px solid #e2e8f0;box-shadow:0 6px 24px rgba(7,18,38,.04);}
+#view-camps .camps-intro h2 {font-family:var(--font-display);font-size:2rem;color:#07182e;margin:.2rem 0 .4rem;}
+#view-camps .camps-intro p {color:#475569;line-height:1.65;}
+#view-camps .camps-price-strip {display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.3rem;}
+#view-camps .camps-price-strip>span {background:#fff4f8;border:1px solid #ffc1d6;border-radius:12px;padding:.85rem 1.15rem;font-size:.9rem;color:#243047;}
+#view-camps .camps-price-strip strong {font-family:var(--font-display);font-size:1.65rem;color:#ff0055;vertical-align:middle;margin-right:.2rem;}
+#view-camps .camps-price-strip small {font-weight:700;color:#a20b40;margin-left:.45rem;}
+#view-camps .camps-detail-card {border-color:#e5e7eb;}
+#view-camps .camps-help {text-align:center;color:#64748b;margin:1.5rem 0 0;}
+#view-camps .camps-help a {color:#ed0050;font-weight:700;}
+.camp-date-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.9rem 0;}
+.camp-date-choice {display:flex;align-items:center;gap:.7rem;border:1px solid #dbe1eb;border-radius:10px;background:#fff;padding:.85rem;cursor:pointer;font-size:.88rem;font-weight:700;}
+.camp-date-choice.selected {border-color:#ff0055;background:#fff3f7;}
+.camp-date-choice input {accent-color:#ff0055;width:17px;height:17px;flex-shrink:0;}
+.camp-price-summary {display:flex;align-items:center;justify-content:space-between;gap:.7rem;background:#f8fafc;border-radius:10px;padding:1rem;margin-top:.8rem;color:#334155;}
+.camp-price-summary strong {font-size:1.15rem;color:#ff0055;}
+.camp-select-all {border:0;background:transparent;color:#d00048;font-size:.85rem;font-weight:800;cursor:pointer;margin-top:.5rem;padding:.5rem 0;text-decoration:underline;}
+@media(max-width:900px){#view-programs .program-filter-fields{grid-template-columns:repeat(2,minmax(0,1fr));}#view-programs .program-filter-keywords{grid-column:1/-1;}}
+@media(max-width:640px){
+  #view-programs .winter-program-card,#view-camps .camps-detail-card {padding:1.2rem;gap:1rem;min-width:0;}
+  #view-programs .winter-program-card>div,#view-camps .camps-detail-card>div {min-width:0;}
+  #view-programs .winter-program-card h2,#view-camps .camps-detail-card h2 {font-size:1.45rem;overflow-wrap:break-word;}
+  #view-programs .winter-program-card .program-meta-box,#view-camps .camps-detail-card .program-meta-box {padding:.8rem 1rem;}
+  #view-programs .winter-program-card .meta-row,#view-camps .camps-detail-card .meta-row {display:grid;grid-template-columns:minmax(82px,34%) 1fr;gap:.55rem;align-items:start;padding:.55rem 0;}
+  #view-programs .winter-program-card .meta-val,#view-camps .camps-detail-card .meta-val {min-width:0;font-size:.82rem;line-height:1.5;overflow-wrap:anywhere;}
+  #view-programs .winter-program-card .meta-label,#view-camps .camps-detail-card .meta-label {font-size:.75rem;}
+  #view-camps .camps-intro{padding:1.2rem;}
+  #view-camps .camps-intro h2{font-size:1.7rem;}
+  .camp-date-grid{grid-template-columns:1fr;}
+}
+@media(max-width:380px){#view-programs .program-filter-fields{grid-template-columns:1fr;}#view-programs .program-filter-keywords{grid-column:auto;}}
