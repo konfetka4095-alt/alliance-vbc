@@ -21,7 +21,7 @@ window.ALLIANCE_PROGRAMS = {
       "payment": "Choose any camp days at $90 per day or all five days for $400. Please e-transfer your calculated total to Alliancevb.clinic@gmail.com. Include the athlete’s full name, program name, school location and time slot in the transfer message. Your spot is not secured until payment has been completed."
   },
   "camp-nonrep-grades-4-6": {
-      "name": "Non-Rep Volleyball Camp — Grades 4–6",
+      "name": "Winter Camp — Grades 4–6",
       "category": "Volleyball Camp",
       "date": "December 21–23 & 30–31, 2026 · Choose 1–5 days",
       "time": "9:00 AM–4:00 PM",
@@ -42,7 +42,7 @@ window.ALLIANCE_PROGRAMS = {
       "payment": "Choose any camp days at $90 per day or all five days for $400. Please e-transfer your calculated total to Alliancevb.clinic@gmail.com. Include the athlete’s full name, program name, school location and time slot in the transfer message. Your spot is not secured until payment has been completed."
   },
   "camp-nonrep-grades-7-8": {
-      "name": "Non-Rep Volleyball Camp — Grades 7–8",
+      "name": "Winter Camp — Grades 7–8",
       "category": "Volleyball Camp",
       "date": "December 21–23 & 30–31, 2026 · Choose 1–5 days",
       "time": "9:00 AM–4:00 PM",
