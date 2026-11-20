@@ -14,7 +14,7 @@
   function init(){
     const panel=document.getElementById('view-programs'),finder=document.getElementById('program-finder');
     if(!panel||!finder)return;
-    const location=document.getElementById('program-location-filter'),type=document.getElementById('program-type-filter'),search=document.getElementById('program-search-filter');
+    const season=document.getElementById('program-season-filter'),location=document.getElementById('program-location-filter'),type=document.getElementById('program-type-filter'),search=document.getElementById('program-search-filter');
     const count=document.getElementById('program-filter-count'),empty=document.getElementById('program-filter-empty');
     const listButton=document.getElementById('program-list-view'),mapButton=document.getElementById('program-map-view'),mapPanel=document.getElementById('program-map-panel');
     const closeButton=document.getElementById('program-map-close'),bottomClose=document.getElementById('program-map-bottom-close'),fitButton=document.getElementById('program-map-fit');
@@ -93,9 +93,9 @@
       window.requestAnimationFrame(()=>{map.invalidateSize();fitMarkers();});
     }
     function apply(){
-      const loc=location.value,kind=type.value,term=search.value.trim().toLowerCase();
+      const selectedSeason=season.value,loc=location.value,kind=type.value,term=search.value.trim().toLowerCase();
       visibleCards=cards.filter(card=>{
-        const match=(loc==='all'||card.dataset.programLocation===loc)&&(kind==='all'||card.dataset.programCat===kind)&&(!term||card.textContent.toLowerCase().includes(term));
+        const match=(selectedSeason==='all'||card.dataset.programSeason===selectedSeason)&&(loc==='all'||card.dataset.programLocation===loc)&&(kind==='all'||card.dataset.programCat===kind)&&(!term||card.textContent.toLowerCase().includes(term));
         card.dataset.filterMatch=String(match);card.hidden=!match||view==='map';return match;
       });
       count.textContent=visibleCards.length+' program'+(visibleCards.length===1?'':'s')+' found';empty.hidden=visibleCards.length!==0;
@@ -106,8 +106,8 @@
       listButton.setAttribute('aria-pressed','false');mapButton.setAttribute('aria-pressed','true');
       apply();mapPanel.scrollIntoView({behavior:'smooth',block:'start'});
     }
-    function reset(){location.value='all';type.value='all';search.value='';apply();}
-    [location,type].forEach(el=>el.addEventListener('change',apply));search.addEventListener('input',apply);
+    function reset(){season.value='all';location.value='all';type.value='all';search.value='';apply();}
+    [season,location,type].forEach(el=>el.addEventListener('change',apply));search.addEventListener('input',apply);
     document.getElementById('program-filter-reset').addEventListener('click',reset);
     document.getElementById('program-filter-empty-reset').addEventListener('click',reset);
     listButton.addEventListener('click',()=>backToList());mapButton.addEventListener('click',showMap);

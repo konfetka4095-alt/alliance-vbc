@@ -199,7 +199,7 @@ const RegistrationModule = {
   isClinicOrLeague() {
     const program = window.ALLIANCE_PROGRAMS && window.ALLIANCE_PROGRAMS[this.selectedCategory];
     if (!program) return false;
-    return program.category === 'Youth Volleyball Clinic' || program.category === 'House League';
+    return ['Youth Volleyball Clinic','House League','Volleyball Camp'].includes(program.category);
   },
 
   addressOnlyLocation(value) {
@@ -283,7 +283,7 @@ const RegistrationModule = {
       const athleteName = document.getElementById('regAthleteName').value.trim();
       const athleteDob = document.getElementById('regAthleteDob').value;
       const program = window.ALLIANCE_PROGRAMS[this.selectedCategory];
-      if ((program.recurringDay !== undefined || (program.sessions && program.sessions.length)) && !this.getSelectedSession()) {
+      if ((Array.isArray(program.campDays) || program.recurringDay !== undefined || (program.sessions && program.sessions.length)) && !this.getSelectedSession()) {
         alert('Please choose a valid upcoming date for the selected program.');
         return;
       }
@@ -381,6 +381,13 @@ const RegistrationModule = {
 
   getSelectedSession() {
     const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
+    if (p && Array.isArray(p.campDays)) {
+      const dates = String(this.selectedSessionId || '').split(',').filter(Boolean);
+      const ordered = [...new Set(dates)].sort();
+      if (!ordered.length || ordered.length !== dates.length || ordered.some(d => !p.campDays.includes(d))) return null;
+      const fee = ordered.length === p.campDays.length ? p.fullCampFee : ordered.length * p.fee;
+      return { id: ordered.join(','), date: ordered.map(d => new Date(d+'T12:00:00Z').toLocaleDateString('en-CA',{timeZone:'UTC',month:'long',day:'numeric',year:'numeric'})).join(' · '), time:p.time, location:p.venue + ', ' + p.address, fee, count:ordered.length };
+    }
     if (p && p.recurringDay !== undefined) {
       const date = this.selectedSessionId;
       if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
@@ -429,6 +436,12 @@ const RegistrationModule = {
   sessionMarkup(reviewOnly = false) {
     const p = window.ALLIANCE_PROGRAMS[this.selectedCategory];
     const selected = this.getSelectedSession();
+    if (Array.isArray(p.campDays)) {
+      if (reviewOnly) return selected ? `<strong>${p.name}</strong><p><strong>Selected dates:</strong> ${selected.date}</p><p>${p.time}<br>${p.venue}<br>${p.address}</p><p><strong>Total: $${selected.fee} CAD</strong></p><p>Pay by e-transfer to Alliancevb.clinic@gmail.com. Your spot is not secured until payment has been completed.</p>` : '';
+      const selectedDates=String(this.selectedSessionId||'').split(',');
+      const days=p.campDays.map(iso=>{const d=new Date(iso+'T12:00:00Z');const label=d.toLocaleDateString('en-CA',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'});return `<label class="camp-date-choice"><input type="checkbox" name="campDay" value="${iso}" ${selectedDates.includes(iso)?'checked':''}><span>${label}</span></label>`;}).join('');
+      return `<strong>${p.name}</strong><p>${p.time} · ${p.venue}<br>${p.address}</p><p class="session-choice-instruction">Choose any camp dates. $90 per day or $400 for all five days.</p><div class="camp-date-grid">${days}</div><div class="camp-price-summary"><span id="campSelectionCount">${selected?selected.count+' day(s) selected':'Select at least one date'}</span><strong id="campSelectionPrice">${selected?'$'+selected.fee+' CAD':'—'}</strong></div><button type="button" class="camp-select-all" id="campSelectAll">Select all 5 days — $400</button>`;
+    }
     if (p.recurringDay !== undefined) {
       const fee = selected && selected.id <= p.freeThrough ? 0 : p.fee;
       const payment = fee === 0 ? 'No payment required for this practice.' : 'Please e-transfer $' + fee + ' to Alliancevb.clinic@gmail.com. Include the child’s name, grade group, practice date and parent phone number. Spot is not secured without payment.';
@@ -465,6 +478,20 @@ const RegistrationModule = {
     select.appendChild(new Option(p.name, p.name));
     this.formData.division = p.name;
     document.getElementById('regSessionSummary').innerHTML = this.sessionMarkup();
+    if (Array.isArray(p.campDays)) {
+      const inputs=[...document.querySelectorAll('input[name="campDay"]')];
+      const syncCamp=()=>{
+        this.selectedSessionId=inputs.filter(x=>x.checked).map(x=>x.value).sort().join(',');
+        this.requestId=null;
+        const selection=this.getSelectedSession();
+        document.getElementById('campSelectionCount').textContent=selection?selection.count+' day(s) selected':'Select at least one date';
+        document.getElementById('campSelectionPrice').textContent=selection?'$'+selection.fee+' CAD':'—';
+        inputs.forEach(x=>x.closest('.camp-date-choice')?.classList.toggle('selected',x.checked));
+      };
+      inputs.forEach(input=>input.addEventListener('change',syncCamp));
+      document.getElementById('campSelectAll')?.addEventListener('click',()=>{inputs.forEach(input=>input.checked=true);syncCamp();});
+      syncCamp();
+    }
     const clinicDate = document.getElementById('regClinicDate');
     if (clinicDate) clinicDate.addEventListener('change', () => {
       this.selectedSessionId = clinicDate.value;
