@@ -27,7 +27,8 @@ $allowedFields = [
     'photoVideoConsent', 'photoVideoPolicyVersion', 'website', 'sourceUrl',
     'trainingType', 'participantName', 'secondParticipantName', 'skillFocus',
     'skillDetails', 'preferredDate', 'preferredTime', 'contactName',
-    'contactEmail', 'contactPhone', 'experienceLevel'
+    'contactEmail', 'contactPhone', 'experienceLevel',
+    'teamName', 'playerCount', 'notes'
 ];
 
 $payload = [];
