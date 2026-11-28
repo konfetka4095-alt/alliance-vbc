@@ -3079,3 +3079,15 @@ html { overflow-x:clip; }
 #view-adult-programs .adult-programs-intro{margin-bottom:1.5rem}
 #view-adult-programs .avc-adult-clinic-heading{padding-top:0;margin-top:0}
 @media(max-width:640px){#view-adult-programs .adult-tournament-card{margin-bottom:2.3rem}}
+
+/* Tournament wizard: centre the final submit and success actions like Alliance registration. */
+#tournamentRegistrationModal #tourneyWizardActions {justify-content:center;align-items:center;gap:14px;}
+#tournamentRegistrationModal #tourneyWizardActions .reg-modal-actions-primary {display:flex;justify-content:center;align-items:center;flex:0 1 auto;margin-inline:auto;}
+#tournamentRegistrationModal #tourneyWizardActions {position:relative;}
+#tournamentRegistrationModal #tourneyPrev:not([hidden]) {position:absolute;left:0;top:50%;transform:translateY(-50%);}
+@media(max-width:520px){#tournamentRegistrationModal #tourneyPrev:not([hidden]){position:static;transform:none}#tournamentRegistrationModal #tourneyWizardActions:has(#tourneyPrev:not([hidden])){flex-direction:column}#tournamentRegistrationModal #tourneyWizardActions .reg-modal-actions-primary{width:100%}}
+#tournamentRegistrationModal #tourneyWizardActions #avcTournamentSubmit {min-width:220px;text-align:center;justify-content:center;}
+#tournamentRegistrationModal #tourneyDoneWrap {display:flex;justify-content:center;align-items:center;margin-top:14px;}
+#tournamentRegistrationModal #tourneyDoneWrap[hidden] {display:none!important;}
+#tournamentRegistrationModal #tourneyDoneWrap .btn {min-width:195px;text-align:center;justify-content:center;}
+@media(max-width:520px){#tournamentRegistrationModal #tourneyWizardActions #avcTournamentSubmit,#tournamentRegistrationModal #tourneyDoneWrap .btn{width:100%;min-width:0}}
