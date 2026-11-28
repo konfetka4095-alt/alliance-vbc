@@ -3070,3 +3070,12 @@ html { overflow-x:clip; }
 #tournamentRegistrationModal .tourney-success-close{text-align:right;margin-top:18px}
 #tournamentRegistrationModal [hidden],.tourney-wizard-pane[hidden]{display:none!important}
 @media(max-width:700px){.avc-tournament-portal-cta{flex-direction:column;align-items:stretch;padding:23px 20px}.avc-tournament-portal-cta .btn{width:100%}#tournamentRegistrationModal .modal-header{padding:18px 20px}#tournamentRegistrationModal .modal-body{padding:20px}#tournamentRegistrationModal .form-row{grid-template-columns:1fr}#tournamentRegistrationModal .reg-step-title{font-size:.67rem}}
+
+/* November 28: tournament now has the identical program card layout as the adult clinic. */
+#view-adult-programs .adult-tournament-card{margin-bottom:3rem;scroll-margin-top:110px;box-shadow:0 8px 30px rgba(12,23,49,.06)}
+#view-adult-programs .adult-tournament-card .program-description{line-height:1.7}
+#view-adult-programs .adult-tournament-card .program-features-list{margin-top:1.35rem}
+#view-adult-programs .adult-tournament-card .adult-programs-info .btn{width:100%}
+#view-adult-programs .adult-programs-intro{margin-bottom:1.5rem}
+#view-adult-programs .avc-adult-clinic-heading{padding-top:0;margin-top:0}
+@media(max-width:640px){#view-adult-programs .adult-tournament-card{margin-bottom:2.3rem}}
