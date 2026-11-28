@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261120-camps-winter-v2" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261128-tournament-layout-v2" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -128,17 +128,20 @@
               </a>
 </div>
 
-<!-- Featured community tournament: compact homepage promotion -->
-<div class="avc-tournament-homepromo">
-  <div class="avc-tournament-homepromo-copy">
-    <span class="avc-tournament-kicker">DECEMBER 19 · COMMUNITY EVENT</span>
-    <strong>ADULT VOLLEYBALL TOURNAMENT</strong>
-    <span>Organized by Alliance in support of the Deaf community · 10 AM–5 PM</span>
+</div>
+</div>
+</section>
+<!-- DECEMBER 19 — HOMEPAGE FEATURE: outside hero for reliable visibility -->
+<section class="avc-event-spotlight" aria-labelledby="avc-event-spotlight-title">
+  <div class="container avc-event-spotlight-inner">
+    <div class="avc-event-date"><strong>19</strong><span>DEC 2026</span></div>
+    <div class="avc-event-spotlight-copy">
+      <span class="avc-event-eyebrow">UPCOMING COMMUNITY EVENT · TEAM REGISTRATION</span>
+      <h2 id="avc-event-spotlight-title">ADULT VOLLEYBALL <em>TOURNAMENT</em></h2>
+      <p>Saturday, December 19 · 10:00 AM–5:00 PM · Hosted by Alliance Volleyball Club in support of the Deaf community.</p>
+    </div>
+    <a class="avc-event-spotlight-action" href="#adult-programs?tournament-register">REGISTER YOUR TEAM <span aria-hidden="true">→</span></a>
   </div>
-  <a href="#adult-programs?tournament" class="avc-tournament-homepromo-link">TEAM REGISTRATION →</a>
-</div>
-</div>
-</div>
 </section>
 <!-- SECTION 2: PROGRAMS FOR EVERY PLAYER -->
 <section class="programs-section" id="programsSection">
@@ -867,17 +870,58 @@
 <div class="view-panel" id="view-adult-programs" style="display:none;">
   <section class="page-hero adult-programs-hero">
     <div class="container">
-      <span class="section-tag">NEW AT ALLIANCE · 15+ &amp; ADULTS</span>
+      <span class="section-tag">ADULT VOLLEYBALL · ALLIANCE VBC</span>
       <h1 class="page-hero-title">ADULT VOLLEYBALL PROGRAMS</h1>
-      <p class="page-hero-desc">Structured coaching, volleyball development and game-based training for ages 15+ and adults.</p>
+      <p class="page-hero-desc">Compete, improve and connect through volleyball — from our community tournament to weekly training.</p>
     </div>
   </section>
-  <section class="page-container adult-programs-section">
+  <section class="page-container avc-adult-rebuild">
     <div class="container">
-      <div class="adult-programs-intro">
-        <span class="section-tag">TRAIN · IMPROVE · PLAY</span>
-        <h2 class="section-heading">FIND YOUR GAME</h2>
-        <p>Develop your skills, improve consistency and enjoy more time on the court in a welcoming training environment.</p>
+      <div class="avc-adult-feature-heading">
+        <span class="section-tag">FEATURED EVENT · DECEMBER 19</span>
+        <h2 class="section-heading">MORE THAN A GAME.</h2>
+        <p>One day of competition and connection, organized by Alliance Volleyball Club in support of the Deaf community.</p>
+      </div>
+      <article class="avc-adult-feature" id="adult-tournament-details">
+        <div class="avc-adult-feature-main">
+          <span class="avc-feature-label">ADULT TEAM TOURNAMENT</span>
+          <h3>PLAY TOGETHER.<br><span>COMPETE TOGETHER.</span></h3>
+          <p>Join adult teams, including interested Deaf volleyball teams, for a day of volleyball, friendly competition and community connection.</p>
+          <div class="avc-feature-stat-row"><span><strong>DEC 19</strong><small>SATURDAY · 2026</small></span><span><strong>10–5</strong><small>AM–PM · 7 HOURS</small></span></div>
+        </div>
+        <div class="avc-adult-feature-side">
+          <span class="avc-feature-side-title">TOURNAMENT DETAILS</span>
+          <div class="avc-feature-detail"><small>DATE</small><strong>Saturday, December 19, 2026</strong></div>
+          <div class="avc-feature-detail"><small>TIME</small><strong>10:00 AM–5:00 PM</strong></div>
+          <div class="avc-feature-detail"><small>VENUE</small><strong>Bayview MS / Avondale Elementary Alternative School</strong></div>
+          <div class="avc-feature-detail"><small>GYM</small><strong>Gymnasium Double 209</strong></div>
+          <a href="#adult-programs?tournament-register" class="btn btn-pink avc-feature-cta">REGISTER YOUR TEAM →</a>
+          <p>Team participation is subject to organizer confirmation.</p>
+        </div>
+      </article>
+      <div class="avc-tournament-form-wrap" id="adult-tournament-register">
+        <div class="avc-tournament-form-heading">
+          <span class="section-tag">REGISTER FOR DECEMBER 19</span>
+          <h2>TEAM REGISTRATION</h2>
+          <p>One contact registers the team. Alliance will follow up by email with the next steps.</p>
+        </div>
+        <form id="avcTournamentForm" class="avc-tournament-form" novalidate>
+          <div class="avc-tournament-grid">
+            <label>Team name <span aria-hidden="true">*</span><input name="teamName" autocomplete="organization" required maxlength="120" placeholder="Your team's name" /></label>
+            <label>Team captain / contact person <span aria-hidden="true">*</span><input name="contactName" autocomplete="name" required maxlength="120" placeholder="Full name" /></label>
+            <label>Email address <span aria-hidden="true">*</span><input name="contactEmail" type="email" autocomplete="email" required maxlength="180" placeholder="name@example.com" /></label>
+            <label>Phone number <span aria-hidden="true">*</span><input name="contactPhone" type="tel" autocomplete="tel" required maxlength="50" placeholder="Phone number" /></label>
+            <label>Number of players <span aria-hidden="true">*</span><input name="playerCount" type="number" min="1" max="100" step="1" required placeholder="Number of players" /></label>
+          </div>
+          <label class="avc-tournament-notes">Additional notes (optional)<textarea name="notes" rows="3" maxlength="1500" placeholder="Anything else you'd like us to know?"></textarea></label>
+          <div class="avc-tournament-form-footer"><button type="submit" class="btn btn-pink" id="avcTournamentSubmit">SUBMIT TEAM REGISTRATION</button><span id="avcTournamentStatus" role="status" aria-live="polite"></span></div>
+          <p class="avc-tournament-privacy">Your team's contact details will only be used to coordinate this event. For questions, email <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>.</p>
+        </form>
+      </div>
+      <div class="avc-adult-clinic-heading">
+        <span class="section-tag">WEEKLY TRAINING · AGES 15+ &amp; ADULTS</span>
+        <h2 class="section-heading">KEEP YOUR GAME GROWING.</h2>
+        <p>Looking for regular training? Our adult clinic focuses on technique, movement and game play.</p>
       </div>
       <div class="program-detail-card adult-programs-card" id="adult-clinic-details">
         <div class="adult-programs-description">
@@ -906,45 +950,6 @@
           <button type="button" class="btn btn-pink adult-programs-register" data-open-reg="" data-program-type="adult-clinic-bayswater">REGISTER — 15+ &amp; ADULTS</button>
           <p class="adult-programs-payment-note">Your spot is not secured until payment has been completed.</p>
         </div>
-      </div>
-
-      <div class="program-detail-card adult-programs-card avc-tournament-card" id="adult-tournament-details">
-        <div class="adult-programs-description">
-          <span class="badge-pill badge-pink">December 19 · Adult Tournament</span>
-          <h2>Alliance Adult Volleyball Tournament</h2>
-          <p class="program-description">Join Alliance Volleyball Club for a day of friendly competition and community connection. Organized in support of the Deaf community, the event welcomes interested adult volleyball teams, including Deaf volleyball teams.</p>
-          <p class="avc-tournament-community">ONE COURT. ONE COMMUNITY. ONE ALLIANCE.</p>
-        </div>
-        <div class="adult-programs-info">
-          <div class="program-meta-box">
-            <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">Saturday, December 19, 2026</span></div>
-            <div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">10:00 AM–5:00 PM</span></div>
-            <div class="meta-row"><span class="meta-label">Venue</span><span class="meta-val">Bayview MS / Avondale Elementary Alternative School</span></div>
-            <div class="meta-row"><span class="meta-label">Gym</span><span class="meta-val">Gymnasium Double 209</span></div>
-            <div class="meta-row"><span class="meta-label">Registration</span><span class="meta-val">Teams · subject to organizer confirmation</span></div>
-          </div>
-          <a class="btn btn-pink adult-programs-register" href="#adult-tournament-register">REGISTER YOUR TEAM</a>
-          <p class="adult-programs-payment-note">Registration is a request to participate. Alliance will confirm team participation and event details by email.</p>
-        </div>
-      </div>
-      <div class="avc-tournament-form-wrap" id="adult-tournament-register">
-        <div class="avc-tournament-form-heading">
-          <span class="section-tag">DECEMBER 19 · 2026</span>
-          <h2>TEAM REGISTRATION</h2>
-          <p>One team contact can register the entire team. We'll follow up by email with next steps.</p>
-        </div>
-        <form id="avcTournamentForm" class="avc-tournament-form" novalidate>
-          <div class="avc-tournament-grid">
-            <label>Team name <span aria-hidden="true">*</span><input name="teamName" autocomplete="organization" required maxlength="120" placeholder="Your team's name" /></label>
-            <label>Team captain / contact person <span aria-hidden="true">*</span><input name="contactName" autocomplete="name" required maxlength="120" placeholder="Full name" /></label>
-            <label>Email address <span aria-hidden="true">*</span><input name="contactEmail" type="email" autocomplete="email" required maxlength="180" placeholder="name@example.com" /></label>
-            <label>Phone number <span aria-hidden="true">*</span><input name="contactPhone" type="tel" autocomplete="tel" required maxlength="50" placeholder="Phone number" /></label>
-            <label>Number of players <span aria-hidden="true">*</span><input name="playerCount" type="number" min="1" max="100" step="1" required placeholder="Number of players" /></label>
-          </div>
-          <label class="avc-tournament-notes">Additional notes (optional)<textarea name="notes" rows="3" maxlength="1500" placeholder="Anything else you'd like us to know?"></textarea></label>
-          <div class="avc-tournament-form-footer"><button type="submit" class="btn btn-pink" id="avcTournamentSubmit">SUBMIT TEAM REGISTRATION</button><span id="avcTournamentStatus" role="status" aria-live="polite"></span></div>
-          <p class="avc-tournament-privacy">Your team's contact details will only be used to coordinate this event. For questions, email <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>.</p>
-        </form>
       </div>
     </div>
   </section>
@@ -2252,7 +2257,7 @@
 </div>
 </div>
 <!-- JavaScript Scripts -->
-<script src="src/js/router.js?v=20261120-camps-routefix-v4"></script>
+<script src="src/js/router.js?v=20261128-tournament-links-v2"></script>
 <script>
 // Make the new Camps route available even when a previous router module is cached.
 if (window.RouterModule && Array.isArray(window.RouterModule.views) && !window.RouterModule.views.includes('camps')) {
