@@ -3050,3 +3050,23 @@ html { overflow-x:clip; }
 #view-adult-programs #adult-clinic-details{margin-bottom:0;box-shadow:0 8px 30px rgba(12,23,49,.06)}
 @media(max-width:900px){.avc-event-spotlight-inner{grid-template-columns:72px minmax(0,1fr)}.avc-event-spotlight-action{grid-column:2;justify-self:start}.avc-event-date{min-height:78px}.avc-event-date strong{font-size:35px}#view-adult-programs .avc-adult-feature{grid-template-columns:1fr}}
 @media(max-width:600px){.avc-event-spotlight{padding:21px 0}.avc-event-spotlight-inner{grid-template-columns:58px minmax(0,1fr);column-gap:14px;row-gap:17px}.avc-event-date{min-height:66px;border-radius:9px}.avc-event-date strong{font-size:29px}.avc-event-date span{font-size:9px;margin-top:5px}.avc-event-spotlight h2{font-size:24px}.avc-event-spotlight p{font-size:12px}.avc-event-eyebrow{font-size:10px}.avc-event-spotlight-action{grid-column:1/-1;width:100%;min-height:46px}#view-adult-programs .avc-adult-rebuild{padding-top:28px}#view-adult-programs .avc-adult-feature-main{padding:28px 22px}#view-adult-programs .avc-adult-feature-main h3{font-size:38px}#view-adult-programs .avc-adult-feature-side{padding:25px 22px}#view-adult-programs .avc-tournament-form-wrap{margin-bottom:45px}}
+
+/* Tournament registration uses the same modal / form / wizard design as Alliance program registration. */
+.avc-tournament-portal-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;margin:0 0 55px;border:1px solid #e0e5ee;background:#fff;border-radius:14px;scroll-margin-top:110px}
+.avc-tournament-portal-cta h3{font-family:Oswald,'Arial Narrow',Arial,sans-serif;color:#091127;font-size:27px;margin:8px 0}
+.avc-tournament-portal-cta p{color:#58657b;margin:0;font-size:14px;line-height:1.6}
+.avc-tournament-portal-cta .btn{flex-shrink:0}
+#tournamentRegistrationModal .reg-step-indicator{min-width:0}
+#tournamentRegistrationModal .tourney-step-title{font-size:1.25rem;margin:0 0 .5rem;color:var(--text-light-primary)}
+#tournamentRegistrationModal .tourney-step-desc{font-size:.875rem;color:var(--text-light-muted);line-height:1.6;margin:0 0 1.25rem}
+#tournamentRegistrationModal .tourney-event-summary,#tournamentRegistrationModal .tourney-review-card{background:var(--color-bg-light);border:1px solid var(--color-border-light);border-radius:var(--radius-md);padding:1.3rem;margin:0 0 1.3rem}
+#tournamentRegistrationModal .tourney-event-summary .meta-row,#tournamentRegistrationModal .tourney-review-card .meta-row{gap:18px}
+#tournamentRegistrationModal .tourney-status{font-size:.88rem;color:#bc174a;line-height:1.5;min-height:0;margin:0}
+#tournamentRegistrationModal .tourney-status:not(:empty){margin:14px 0}
+#tournamentRegistrationModal .tourney-success{text-align:center;padding:2rem 1rem}
+#tournamentRegistrationModal .tourney-success h2{margin:12px 0}
+#tournamentRegistrationModal .tourney-success p{color:#596579;line-height:1.7}
+#tournamentRegistrationModal .tourney-success-check{display:flex;align-items:center;justify-content:center;margin:auto;background:#e5f5e3;color:#287c39;font-size:2rem;width:64px;height:64px;border-radius:100%}
+#tournamentRegistrationModal .tourney-success-close{text-align:right;margin-top:18px}
+#tournamentRegistrationModal [hidden],.tourney-wizard-pane[hidden]{display:none!important}
+@media(max-width:700px){.avc-tournament-portal-cta{flex-direction:column;align-items:stretch;padding:23px 20px}.avc-tournament-portal-cta .btn{width:100%}#tournamentRegistrationModal .modal-header{padding:18px 20px}#tournamentRegistrationModal .modal-body{padding:20px}#tournamentRegistrationModal .form-row{grid-template-columns:1fr}#tournamentRegistrationModal .reg-step-title{font-size:.67rem}}
