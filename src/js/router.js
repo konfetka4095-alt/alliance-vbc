@@ -11,7 +11,7 @@ const RouterModule = {
 
   handleRoute() {
     const hash = decodeURIComponent(window.location.hash.slice(1))
-      .replace(/^\/+|\/+$/g, '').toLowerCase() || 'home';
+      .replace(/^\/+|\/+$/g, '').split('?')[0].toLowerCase() || 'home';
     const targetView = this.views.includes(hash) ? hash : 'home';
     this.navigate(targetView);
   },
