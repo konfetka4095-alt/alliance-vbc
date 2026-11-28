@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261128-tournament-layout-v2" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261128-tournament-wizard-v3" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -895,28 +895,13 @@
           <div class="avc-feature-detail"><small>TIME</small><strong>10:00 AM–5:00 PM</strong></div>
           <div class="avc-feature-detail"><small>VENUE</small><strong>Bayview MS / Avondale Elementary Alternative School</strong></div>
           <div class="avc-feature-detail"><small>GYM</small><strong>Gymnasium Double 209</strong></div>
-          <a href="#adult-programs?tournament-register" class="btn btn-pink avc-feature-cta">REGISTER YOUR TEAM →</a>
+          <button type="button" data-open-tournament class="btn btn-pink avc-feature-cta">REGISTER YOUR TEAM →</button>
           <p>Team participation is subject to organizer confirmation.</p>
         </div>
       </article>
-      <div class="avc-tournament-form-wrap" id="adult-tournament-register">
-        <div class="avc-tournament-form-heading">
-          <span class="section-tag">REGISTER FOR DECEMBER 19</span>
-          <h2>TEAM REGISTRATION</h2>
-          <p>One contact registers the team. Alliance will follow up by email with the next steps.</p>
-        </div>
-        <form id="avcTournamentForm" class="avc-tournament-form" novalidate>
-          <div class="avc-tournament-grid">
-            <label>Team name <span aria-hidden="true">*</span><input name="teamName" autocomplete="organization" required maxlength="120" placeholder="Your team's name" /></label>
-            <label>Team captain / contact person <span aria-hidden="true">*</span><input name="contactName" autocomplete="name" required maxlength="120" placeholder="Full name" /></label>
-            <label>Email address <span aria-hidden="true">*</span><input name="contactEmail" type="email" autocomplete="email" required maxlength="180" placeholder="name@example.com" /></label>
-            <label>Phone number <span aria-hidden="true">*</span><input name="contactPhone" type="tel" autocomplete="tel" required maxlength="50" placeholder="Phone number" /></label>
-            <label>Number of players <span aria-hidden="true">*</span><input name="playerCount" type="number" min="1" max="100" step="1" required placeholder="Number of players" /></label>
-          </div>
-          <label class="avc-tournament-notes">Additional notes (optional)<textarea name="notes" rows="3" maxlength="1500" placeholder="Anything else you'd like us to know?"></textarea></label>
-          <div class="avc-tournament-form-footer"><button type="submit" class="btn btn-pink" id="avcTournamentSubmit">SUBMIT TEAM REGISTRATION</button><span id="avcTournamentStatus" role="status" aria-live="polite"></span></div>
-          <p class="avc-tournament-privacy">Your team's contact details will only be used to coordinate this event. For questions, email <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a>.</p>
-        </form>
+      <div class="avc-tournament-portal-cta" id="adult-tournament-register">
+        <div><span class="section-tag">TEAM REGISTRATION · DECEMBER 19</span><h3>READY TO JOIN THE TOURNAMENT?</h3><p>Register your team through the Alliance registration portal. You'll review the details before submitting.</p></div>
+        <button type="button" class="btn btn-pink" data-open-tournament>REGISTER YOUR TEAM →</button>
       </div>
       <div class="avc-adult-clinic-heading">
         <span class="section-tag">WEEKLY TRAINING · AGES 15+ &amp; ADULTS</span>
@@ -2256,6 +2241,48 @@
 </div>
 </div>
 </div>
+<!-- ADULT TOURNAMENT REGISTRATION — MATCHES THE EXISTING ALLIANCE WIZARD -->
+<div class="modal-backdrop" id="tournamentRegistrationModal" aria-hidden="true">
+  <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="tourneyModalTitle">
+    <div class="modal-header"><div><div class="section-tag" style="margin-bottom:.2rem">ONLINE REGISTRATION PORTAL</div><h2 class="modal-title" id="tourneyModalTitle">Alliance Tournament Registration</h2></div><button type="button" class="modal-close-btn" id="tourneyModalClose" aria-label="Close tournament registration">✕</button></div>
+    <form id="avcTournamentForm" novalidate>
+      <div class="modal-body">
+        <div class="reg-wizard-steps" id="tourneySteps">
+          <div class="reg-step-indicator active"><div class="reg-step-bubble">1</div><span class="reg-step-title">Event</span></div>
+          <div class="reg-step-indicator"><div class="reg-step-bubble">2</div><span class="reg-step-title">Team</span></div>
+          <div class="reg-step-indicator"><div class="reg-step-bubble">3</div><span class="reg-step-title">Contact</span></div>
+          <div class="reg-step-indicator"><div class="reg-step-bubble">4</div><span class="reg-step-title">Review</span></div>
+        </div>
+        <div class="tourney-wizard-pane" data-tourney-step="1">
+          <h3 class="tourney-step-title">Your Tournament</h3><p class="tourney-step-desc">Review the event information before continuing.</p>
+          <div class="registration-session-summary tourney-event-summary"><div class="meta-row"><span class="meta-label">Event</span><span class="meta-val">Adult Volleyball Tournament</span></div><div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">Saturday, December 19, 2026</span></div><div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">10:00 AM–5:00 PM</span></div><div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">Bayview MS / Avondale Elementary Alternative School · Gymnasium Double 209</span></div></div>
+          <p class="tourney-step-desc">Organized by Alliance Volleyball Club in support of the Deaf community. Team registrations are subject to organizer confirmation.</p>
+        </div>
+        <div class="tourney-wizard-pane" data-tourney-step="2" hidden>
+          <h3 class="tourney-step-title">Team Details</h3><p class="tourney-step-desc">Tell us about the team you'd like to register.</p>
+          <div class="form-group"><label class="form-label" for="tourneyTeamName">Team Name *</label><input class="form-control" id="tourneyTeamName" name="teamName" maxlength="120" autocomplete="organization" required placeholder="Your team's name"></div>
+          <div class="form-group"><label class="form-label" for="tourneyPlayerCount">Number of Players *</label><input class="form-control" id="tourneyPlayerCount" name="playerCount" type="number" min="1" max="100" step="1" required placeholder="Number of players"></div>
+        </div>
+        <div class="tourney-wizard-pane" data-tourney-step="3" hidden>
+          <h3 class="tourney-step-title">Team Contact</h3><p class="tourney-step-desc">We'll use these details to contact your team about the tournament.</p>
+          <div class="form-group"><label class="form-label" for="tourneyContact">Team Captain / Contact Person *</label><input class="form-control" id="tourneyContact" name="contactName" maxlength="120" autocomplete="name" required placeholder="Full name"></div>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="tourneyEmail">Email Address *</label><input class="form-control" id="tourneyEmail" name="contactEmail" type="email" autocomplete="email" maxlength="180" required placeholder="name@example.com"></div><div class="form-group"><label class="form-label" for="tourneyPhone">Phone / Mobile *</label><input class="form-control" id="tourneyPhone" name="contactPhone" type="tel" autocomplete="tel" maxlength="50" required placeholder="(647) 000-0000"></div></div>
+          <div class="form-group"><label class="form-label" for="tourneyNotes">Additional Notes (optional)</label><textarea class="form-control" id="tourneyNotes" name="notes" rows="3" maxlength="1500" placeholder="Anything else you'd like us to know?"></textarea></div>
+        </div>
+        <div class="tourney-wizard-pane" data-tourney-step="4" hidden>
+          <h3 class="tourney-step-title">Review &amp; Confirm Registration</h3><p class="tourney-step-desc">Please check the details before submitting.</p><div class="tourney-review-card" id="tourneyReview"></div>
+          <p class="tourney-step-desc">By submitting, you are requesting team registration. Alliance will follow up with further information.</p>
+        </div>
+        <div class="tourney-wizard-pane" data-tourney-step="5" hidden>
+          <div class="tourney-success"><div class="tourney-success-check">✓</div><h2>Registration Submitted!</h2><p>Your team registration request has been received. Alliance will contact your team captain with next steps.</p><p>Questions? <a href="mailto:info@alliancevbc.ca">info@alliancevbc.ca</a></p></div>
+        </div>
+        <p id="avcTournamentStatus" class="tourney-status" role="status" aria-live="polite"></p>
+        <div class="reg-modal-actions" id="tourneyWizardActions"><button class="btn btn-outline-dark" type="button" id="tourneyPrev" hidden>← Back</button><div class="reg-modal-actions-primary"><button class="btn btn-pink" type="button" id="tourneyNext">Continue →</button><button class="btn btn-pink" type="submit" id="avcTournamentSubmit" hidden>Complete Registration ✓</button></div></div>
+        <div class="tourney-success-close" id="tourneyDoneWrap" hidden><button type="button" class="btn btn-pink" id="tourneyDone">Back to Website</button></div>
+      </div>
+    </form>
+  </div>
+</div>
 <!-- JavaScript Scripts -->
 <script src="src/js/router.js?v=20261128-tournament-links-v2"></script>
 <script>
@@ -2272,7 +2299,7 @@ if (window.RouterModule && Array.isArray(window.RouterModule.views) && !window.R
 <script src="src/js/registration.js?v=20261120-camps-winter-v2"></script>
 <script src="src/js/schedule.js?v=20261020-clinic-tryouts-v23"></script>
 <script src="src/js/faq.js"></script>
-<script src="src/js/tournament-registration.js?v=20261128-v1" defer></script>
+<script src="src/js/tournament-registration.js?v=20261128-wizard-v3" defer></script>
 <script src="src/js/main.js?v=20260926-v4"></script>
 <!-- Programs finder: front-end only; does not modify registrations -->
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
