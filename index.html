@@ -21,7 +21,7 @@
 <link href="src/css/base.css" rel="stylesheet"/>
 <link href="src/css/layout.css?v=20261022-nav-v26" rel="stylesheet"/>
 <link href="src/css/components.css?v=17" rel="stylesheet"/>
-<link href="src/css/pages.css?v=20261128-tournament-wizard-v3" rel="stylesheet"/>
+<link href="src/css/pages.css?v=20261128-adult-card-v4" rel="stylesheet"/>
 <link href="src/css/shop.css?v=20261018-beyond-court-chart-v10" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -877,31 +877,35 @@
   </section>
   <section class="page-container avc-adult-rebuild">
     <div class="container">
-      <div class="avc-adult-feature-heading">
-        <span class="section-tag">FEATURED EVENT · DECEMBER 19</span>
-        <h2 class="section-heading">MORE THAN A GAME.</h2>
-        <p>One day of competition and connection, organized by Alliance Volleyball Club in support of the Deaf community.</p>
+      <!-- Tournament uses exactly the same program-detail-card structure as the adult clinic. -->
+      <div class="adult-programs-intro">
+        <span class="section-tag">SPECIAL EVENT · DECEMBER 19</span>
+        <h2 class="section-heading">ADULT VOLLEYBALL TOURNAMENT</h2>
+        <p>Alliance Volleyball Club is bringing adult teams together for a day of volleyball and community connection in support of the Deaf community.</p>
       </div>
-      <article class="avc-adult-feature" id="adult-tournament-details">
-        <div class="avc-adult-feature-main">
-          <span class="avc-feature-label">ADULT TEAM TOURNAMENT</span>
-          <h3>PLAY TOGETHER.<br><span>COMPETE TOGETHER.</span></h3>
-          <p>Join adult teams, including interested Deaf volleyball teams, for a day of volleyball, friendly competition and community connection.</p>
-          <div class="avc-feature-stat-row"><span><strong>DEC 19</strong><small>SATURDAY · 2026</small></span><span><strong>10–5</strong><small>AM–PM · 7 HOURS</small></span></div>
+      <div class="program-detail-card adult-programs-card adult-tournament-card" id="adult-tournament-details">
+        <div class="adult-programs-description">
+          <span class="badge-pill badge-pink">Saturday · December 19, 2026</span>
+          <h2>Adult Volleyball Tournament</h2>
+          <p class="program-description">Join Alliance Volleyball Club for a day of friendly competition and community connection. Interested adult teams, including Deaf volleyball teams, are welcome to register.</p>
+          <div class="program-features-list">
+            <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Seven hours of volleyball and team competition</span></div>
+            <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Organized in support of the Deaf community</span></div>
+            <div class="program-feature-item"><svg fill="none" height="18" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="18" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Team registration directly through Alliance</span></div>
+          </div>
         </div>
-        <div class="avc-adult-feature-side">
-          <span class="avc-feature-side-title">TOURNAMENT DETAILS</span>
-          <div class="avc-feature-detail"><small>DATE</small><strong>Saturday, December 19, 2026</strong></div>
-          <div class="avc-feature-detail"><small>TIME</small><strong>10:00 AM–5:00 PM</strong></div>
-          <div class="avc-feature-detail"><small>VENUE</small><strong>Bayview MS / Avondale Elementary Alternative School</strong></div>
-          <div class="avc-feature-detail"><small>GYM</small><strong>Gymnasium Double 209</strong></div>
-          <button type="button" data-open-tournament class="btn btn-pink avc-feature-cta">REGISTER YOUR TEAM →</button>
-          <p>Team participation is subject to organizer confirmation.</p>
+        <div class="adult-programs-info">
+          <div class="program-meta-box">
+            <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">Saturday, December 19, 2026</span></div>
+            <div class="meta-row"><span class="meta-label">Time</span><span class="meta-val">10:00 AM–5:00 PM</span></div>
+            <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">7 hours</span></div>
+            <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">Bayview MS / Avondale Elementary Alternative School</span></div>
+            <div class="meta-row"><span class="meta-label">Gym</span><span class="meta-val">Gymnasium Double 209</span></div>
+            <div class="meta-row"><span class="meta-label">Registration</span><span class="meta-val">Teams</span></div>
+          </div>
+          <button type="button" class="btn btn-pink adult-programs-register" data-open-tournament>REGISTER YOUR TEAM</button>
+          <p class="adult-programs-payment-note">Alliance will contact your team captain with the next steps after registration.</p>
         </div>
-      </article>
-      <div class="avc-tournament-portal-cta" id="adult-tournament-register">
-        <div><span class="section-tag">TEAM REGISTRATION · DECEMBER 19</span><h3>READY TO JOIN THE TOURNAMENT?</h3><p>Register your team through the Alliance registration portal. You'll review the details before submitting.</p></div>
-        <button type="button" class="btn btn-pink" data-open-tournament>REGISTER YOUR TEAM →</button>
       </div>
       <div class="avc-adult-clinic-heading">
         <span class="section-tag">WEEKLY TRAINING · AGES 15+ &amp; ADULTS</span>
