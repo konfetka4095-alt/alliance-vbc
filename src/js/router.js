@@ -10,10 +10,18 @@ const RouterModule = {
   },
 
   handleRoute() {
-    const hash = decodeURIComponent(window.location.hash.slice(1))
-      .replace(/^\/+|\/+$/g, '').split('?')[0].toLowerCase() || 'home';
+    const rawHash = decodeURIComponent(window.location.hash.slice(1)).replace(/^\/+|\/+$/g, '');
+    const [hashPart, sectionPart] = rawHash.split('?');
+    const hash = (hashPart || 'home').toLowerCase();
     const targetView = this.views.includes(hash) ? hash : 'home';
     this.navigate(targetView);
+    // Route to a section inside a view without treating its ID as a new page.
+    const targets = { 'tournament-register': 'adult-tournament-register', 'tournament': 'adult-tournament-details' };
+    if (targetView === 'adult-programs' && targets[sectionPart]) {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.getElementById(targets[sectionPart])?.scrollIntoView({behavior:'smooth', block:'start'});
+      }));
+    }
   },
 
   navigate(viewName) {
