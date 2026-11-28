@@ -2987,3 +2987,28 @@ html { overflow-x:clip; }
   .camp-date-grid{grid-template-columns:1fr;}
 }
 @media(max-width:380px){#view-programs .program-filter-fields{grid-template-columns:1fr;}#view-programs .program-filter-keywords{grid-column:auto;}}
+
+/* Alliance December 19 adult tournament: responsive, consistent with existing program cards */
+.avc-tournament-homepromo{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 20px;border:1px solid rgba(255,255,255,.28);border-radius:13px;background:rgba(6,11,24,.72);backdrop-filter:blur(5px);color:#fff;max-width:760px}
+.avc-tournament-homepromo-copy{display:flex;flex-direction:column;gap:3px;line-height:1.4}
+.avc-tournament-kicker{color:#ff78a6;font:700 11px Arial,sans-serif;letter-spacing:1.2px}
+.avc-tournament-homepromo-copy strong{font-family:Oswald,'Arial Narrow',Arial,sans-serif;letter-spacing:.4px;font-size:22px}
+.avc-tournament-homepromo-copy>span:last-child{font:400 12px/1.5 Arial,sans-serif;color:#e2e7f0}
+.avc-tournament-homepromo-link{color:#fff;text-decoration:none;white-space:nowrap;font:700 12px Arial,sans-serif;border:1px solid rgba(255,255,255,.5);padding:12px 15px;border-radius:7px}
+.avc-tournament-homepromo-link:hover{background:#ff0055;border-color:#ff0055;color:#fff}
+.avc-tournament-card{margin-top:28px}
+.avc-tournament-community{font-family:Oswald,'Arial Narrow',Arial,sans-serif;font-size:19px;color:#ff0055;letter-spacing:.8px;margin-top:18px}
+.avc-tournament-form-wrap{scroll-margin-top:105px;margin:32px auto 8px;background:#fff;border:1px solid #e0e5ee;box-shadow:0 12px 28px rgba(8,18,40,.06);border-radius:16px;padding:30px;max-width:1000px}
+.avc-tournament-form-heading h2{font-family:Oswald,'Arial Narrow',Arial,sans-serif;font-size:34px;margin:7px 0;color:#091127}
+.avc-tournament-form-heading p{color:#596579;margin:0 0 23px}
+.avc-tournament-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.avc-tournament-form label{font:700 13px/1.4 Arial,sans-serif;color:#16233a;display:flex;flex-direction:column;gap:7px}
+.avc-tournament-form label>span{display:inline;color:#ff0055}
+.avc-tournament-form input,.avc-tournament-form textarea{width:100%;max-width:100%;min-width:0;box-sizing:border-box;border:1px solid #ccd4e0;border-radius:8px;padding:13px 14px;font:400 15px Arial,sans-serif;background:#fff;color:#10182c}
+.avc-tournament-form input:focus,.avc-tournament-form textarea:focus{outline:2px solid rgba(255,0,85,.3);border-color:#ff0055}
+.avc-tournament-notes{margin-top:19px}.avc-tournament-notes textarea{resize:vertical}
+.avc-tournament-form-footer{margin-top:23px;display:flex;align-items:center;flex-wrap:wrap;gap:15px}
+#avcTournamentStatus{font:500 14px/1.5 Arial,sans-serif;flex:1;min-width:190px;color:#123c56}
+.avc-tournament-privacy{font:400 12px/1.5 Arial,sans-serif;color:#6a7281;margin:15px 0 0}
+.avc-tournament-privacy a{color:#d80049}
+@media(max-width:700px){.avc-tournament-homepromo{flex-direction:column;align-items:stretch;padding:14px}.avc-tournament-homepromo-link{text-align:center}.avc-tournament-grid{grid-template-columns:1fr}.avc-tournament-form-wrap{padding:20px 16px}.avc-tournament-form-footer .btn{width:100%;text-align:center}}
